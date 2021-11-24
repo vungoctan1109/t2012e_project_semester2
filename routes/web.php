@@ -12,6 +12,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+#admin 
+Route::prefix('admin')->group(function() {
+    Route::get('form', function() {
+        return view('admin.template.form');
+    });
+    Route::get('table', function() {
+        return view('admin.template.table_data');
+    });
+});
 Route::prefix('client/page')->group(function () {
     Route::get('shop', function () {
         return view('client.page.shop');
