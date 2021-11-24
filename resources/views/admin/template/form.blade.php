@@ -7,6 +7,7 @@
         min-height: 400px;
     }
 </style>
+<meta content="{{ csrf_token() }}" name="csrf-token" />
 @endSection
 @section('breadcrumb')
 <div class="col-sm-6">
@@ -31,28 +32,30 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="" method="">
-                <div class="card-body">
+            <form action="" method="">                
+                <div class="card-body">                    
+                    <div class="form-group">
+                        <label for="email">Name</label>
+                        <input type="text" name="name" class="form-control c" id="exampleInputEmail1"
+                            placeholder="Enter name...">
+                        <span class="error name_error" style="color: red"></span>
+                    </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" name="email" class="form-control c" id="exampleInputEmail1" placeholder="Enter email">
+                        <input type="email" name="email" class="form-control c" id="exampleInputEmail1"
+                            placeholder="Enter email">
+                        <span class="error email_error" style="color: red"></span>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="address" name="address" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="Content_detail">Content detail</label>
-                        <textarea name="Content_detail" class="ck-editor__editable_inline" id="editor"></textarea>
+                        <label for="phone">Phone</label>
+                        <input type="text" name="phone" class="form-control" id="exampleInputPassword1"
+                            placeholder="Enter email">
+                        <span class="error phone_error" style="color: red"></span>
                     </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" id="btn-submit">Submit</button>
                 </div>
             </form>
         </div>
@@ -72,4 +75,63 @@
             console.error(error);
         });
 </script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    $('#btn-submit').click(function (e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Do you want to save the changes?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Save',
+            denyButtonText: `Don't save`,
+            }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                var name = $('input[name="name"]').val();
+                var email = $('input[name="email"]').val();
+                var phone = $('input[name="phone"]').val();
+                var data = {name: name, email:email, phone:phone};                
+                $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                }); 
+                $.ajax({
+                    url: '{{route('product.store')}}',
+                    method: 'POST',
+                    data: data,
+                    beforeSend: function () {
+                        $(document).find('span.error').text('');
+                    },
+                    success: function(response) {                       
+                        if(response.status == 400) {
+                            $.each(response.errors, function(prefix, val) {
+                                $('span.' + prefix + '_error').text(val[0])
+                            });
+                        }   
+                        if(response.status == 201) {
+                            Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Your work has been saved',
+  showConfirmButton: false,
+  timer: 1500
+})
+                        }                                                                                            
+                    }                  
+                });
+               
+            } else if (result.isDenied) {                
+                Swal.fire('Changes are not saved', '', 'info')
+            }
+        })
+    });
+
+
+
+});
+</script>
+
 @endSection

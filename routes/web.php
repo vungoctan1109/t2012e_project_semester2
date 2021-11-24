@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\demo_validate;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 #admin 
+
 Route::prefix('admin')->group(function() {
     Route::get('form', function() {
         return view('admin.template.form');
@@ -20,6 +22,7 @@ Route::prefix('admin')->group(function() {
     Route::get('table', function() {
         return view('admin.template.table_data');
     });
+    Route::resource('product', demo_validate::class);
 });
 Route::prefix('client/page')->group(function () {
     Route::get('shop', function () {
@@ -38,7 +41,7 @@ Route::prefix('client/page')->group(function () {
         return view('client.page.checkout');
     })->name('client.checkout');
     #detail
-    Route::get('detail', [Client_Product_Controller::class, 'get_detail'])->name('client.detail');
+    // Route::get('detail', [Client_Product_Controller::class, 'get_detail'])->name('client.detail');
     #login
     Route::get('login', function () {
         return view('client.page.login');
