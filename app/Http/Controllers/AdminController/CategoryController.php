@@ -92,7 +92,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $result = DB::table('categories')->where('id', '=', $id)->first();
+        return view('admin.page.category.edit_category', compact('result'));
     }
 
     /**
@@ -104,7 +105,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except(['_token']);
+        $result = DB::table('categories')->where('id', '=', $id)->update($data);
     }
 
     /**
