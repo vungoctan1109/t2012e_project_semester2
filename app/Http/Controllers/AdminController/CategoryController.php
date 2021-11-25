@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\AdminController;
 
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -14,7 +17,6 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -35,7 +37,23 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response() -> json(['status' => 400, 'errors' => $validator -> errors() -> toArray(),'message' => 'Data not valid!']);
+        } else {
+            $category = new Category();
+            $category->name = $request->get('name');
+            $category->description = $request->get('description');
+            $category->created_at = Carbon::now();
+            $category->updated_at = Carbon::now();
+            if ($category->save()) {
+                return response()->json(['status' => 200, 'message' => 'Data have been successfully insert']);
+            }
+            return response()->json(['status' => 500, 'message' => 'Something went wrong!']);
+        }
     }
 
     /**
