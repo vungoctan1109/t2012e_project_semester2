@@ -34,63 +34,82 @@ class CategorySeeder extends Seeder
             ],
             [
                 'id'=> 3,
-                'name'=>'accessory 1',
-                'description'=>'Accessories include any hardware that is not integral to the operation of a mobile smartphone as designed by the manufacturer.',
+                'name'=>'headphone',
+                'description'=>'accessories for computers and laptops',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'id'=> 4,
-                'name'=>'accessory 2',
-                'description'=>'Accessories include any hardware that is not integral to the operation of a mobile smartphone as designed by the manufacturer.',
+                'name'=>'backup charger',
+                'description'=>'accessories for computers and laptops',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'id'=> 5,
-                'name'=>'accessory 3',
-                'description'=>'Accessories include any hardware that is not integral to the operation of a mobile smartphone as designed by the manufacturer.',
+                'name'=>'memory card',
+                'description'=>'accessories for computers and laptops',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'id'=> 6,
-                'name'=>'accessory 4',
-                'description'=>'Accessories include any hardware that is not integral to the operation of a mobile smartphone as designed by the manufacturer.',
+                'name'=>'screen protector',
+                'description'=>'accessories for computers and laptops',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'id'=> 7,
-                'name'=>'accessory 5',
-                'description'=>'Accessories include any hardware that is not integral to the operation of a mobile smartphone as designed by the manufacturer.',
+                'name'=>'USB-Hard Drive',
+                'description'=>'accessories for computers and laptops',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'id'=> 8,
-                'name'=>'accessory 6',
-                'description'=>'Accessories include any hardware that is not integral to the operation of a mobile smartphone as designed by the manufacturer.',
+                'name'=>'charging cable',
+                'description'=>'accessories for computers and laptops',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'id'=> 9,
-                'name'=>'accessory 7',
-                'description'=>'Accessories include any hardware that is not integral to the operation of a mobile smartphone as designed by the manufacturer.',
+                'name'=>'mouse',
+                'description'=>'accessories for computers and laptops',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'id'=> 10,
-                'name'=>'accessory 8',
-                'description'=>'Accessories include any hardware that is not integral to the operation of a mobile smartphone as designed by the manufacturer.',
+                'name'=>'keyboard',
+                'description'=>'accessories for computers and laptops',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'id'=> 11,
+                'name'=>'laptop backpack',
+                'description'=>'accessories for computers and laptops',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'id'=> 12,
+                'name'=>'TV Box',
+                'description'=>'accessories for computers and laptops',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'id'=> 13,
+                'name'=>'router',
+                'description'=>'accessories for computers and laptops',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ]
-
         ]);
-
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
