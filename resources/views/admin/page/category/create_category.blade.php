@@ -44,14 +44,14 @@
                             placeholder="Enter description category ..."></textarea>
                         <span class="error description_error"></span>
                     </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary" id="btn-submit">Submit</button>
-                </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success" id="btn-submit">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
             </form>
         </div>
     </div>
+</div>
 </div>
 @endSection
 @section('script_private')

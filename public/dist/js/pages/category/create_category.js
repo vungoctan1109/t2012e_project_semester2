@@ -34,7 +34,6 @@ $(document).ready(function () {
                             alertAction(response.message);
                         }, 1500);
                         alertProcessData();
-
                         return;
                     }
                 }
