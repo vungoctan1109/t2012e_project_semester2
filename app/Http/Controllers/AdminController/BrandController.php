@@ -2,57 +2,41 @@
 
 namespace App\Http\Controllers\AdminController;
 
-use Carbon\Carbon;
-use App\Models\Category as Category_Model;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use App\Models\Brand as Brand_Model;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
-
-class CategoryController extends Controller
+class BrandController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index(Request $request)
     {
-        // $result = DB::table('categories')->paginate(5);
-
-        // if ($result-> count() > 0) {
-        //     return view('admin.page.category.table_data', ['categories' => $result]);
-        // } else {
-        //     $data = [
-        //         'status' => 404,
-        //         'message' => 'get information fails',
-        //     ];
-        //     return view('404_Page', $data);
-        // }
-        $categories = Category_Model::query()
+        $brands = Brand_Model::query()
             ->select('*')
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
         if ($request->ajax()) {
-            return view('admin.page.category.render_table')->with('categories', $categories)->render();
+            return view('admin.page.brand.render_table')->with('brands', $brands)->render();
         }
-        return view('admin.page.category.table_data', ['categories' => $categories]);
+        return view('admin.page.brand.table_data', ['brands' => $brands]);
     }
-
-
-
 
     public function fetch_data(Request $request)
     {
         if ($request->ajax()) {
-            $categories = Category_Model::query()
+            $brands = Brand_Model::query()
                 ->select('*')
                 ->sortBy($request)
                 ->name($request)
                 ->pagination($request);
-            return view('admin.page.category.render_table')->with('categories', $categories)->render();
+            return view('admin.page.brand.render_table')->with('brands', $brands)->render();
         }
     }
 
@@ -63,13 +47,13 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.page.category.create_category');
+        return view('admin.page.brand.create_brand');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -81,21 +65,22 @@ class CategoryController extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 400, 'errors' => $validator->errors()->toArray(), 'message' => 'Data not valid!']);
         } else {
-            $category = new Category();
-            $category->name = $request->get('name');
-            $category->description = $request->get('description');
-            $category->created_at = Carbon::now();
-            $category->updated_at = Carbon::now();
-            if ($category->save()) {
+            $brand = new Brand();
+            $brand->name = $request->get('name');
+            $brand->description = $request->get('description');
+            $brand->created_at = Carbon::now();
+            $brand->updated_at = Carbon::now();
+            if ($brand->save()) {
                 return response()->json(['status' => 200, 'message' => 'Data have been successfully insert']);
             }
             return response()->json(['status' => 500, 'message' => 'Something went wrong!']);
         }
     }
+
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -106,20 +91,20 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $result = DB::table('categories')->where('id', '=', $id)->first();
-        return view('admin.page.category.edit_category', compact('result'));
+        $result = DB::table('brands')->where('id', '=', $id)->first();
+        return view('admin.page.brand.edit_brand', compact('result'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -132,8 +117,8 @@ class CategoryController extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 400, 'errors' => $validator->errors()->toArray(), 'message' => 'Data not valid!']);
         } else {
-            $result = DB::table('categories')->where('id', '=', $id)->update($data);
-            Category::where('id', $id)->update(array('updated_at' => Carbon::now()));
+            $result = DB::table('brands')->where('id', '=', $id)->update($data);
+            Brand::where('id', $id)->update(array('updated_at' => Carbon::now()));
             if ($result) {
                 return response()->json(['status' => 200, 'message' => 'Data have been successfully update']);
             }
@@ -144,15 +129,15 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, $id)
     {
         if ($request->ajax()) {
-            $category = Category_Model::find($id);
-            if ($category) {
-                if ($category->delete()) {
+            $brand = Brand_Model::find($id);
+            if ($brand) {
+                if ($brand->delete()) {
                     return response()->json([
                         'status' => 200,
                         'message' => 'Data have been successfully deleted!'

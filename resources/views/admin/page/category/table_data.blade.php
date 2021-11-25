@@ -23,7 +23,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Table</h3>              
+                <h3 class="card-title">Table</h3>
             </div>
 
             <div class="card-header">
@@ -57,7 +57,7 @@
                                 <option value="created_at_asc">Created At (ASC)</option>
                                 {{-- <option value="price_desc">Price(DESC)</option>
                                 <option value="price_asc">Price(ASC)</option> --}}
-                                <option value="name_desc">Nam (DESC)</option>
+                                <option value="name_desc">Name (DESC)</option>
                                 <option value="name_asc">Name (ASC)</option>
                                 <option value="id_desc">ID (DESC)</option>
                                 <option value="id_asc">ID (ASC)</option>
@@ -99,7 +99,7 @@
                         <div class="col-md-2 m-3">
                             <label for="endCreate">End date</label>
                             <input type="date" class="form-control" id="endCreate" name="endCreate">
-                        </div>                       
+                        </div>
                     </div> --}}
                     <div class="row">
                         <div class="col-md-2 m-3">

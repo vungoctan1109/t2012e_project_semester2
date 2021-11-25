@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController\BrandController;
 use App\Http\Controllers\AdminController\CategoryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,12 @@ Route::prefix('admin')->group(function() {
     Route::get('/category/fetch_data', [CategoryController::class, 'fetch_data']);
     Route::resource('category', CategoryController::class)->parameters([
         'category' => 'category_id'
+    ]);
+
+    Route::get('/brand/search', [BrandController::class, 'search']);
+    Route::get('/brand/fetch_data', [BrandController::class, 'fetch_data']);
+    Route::resource('brand', BrandController::class)->parameters([
+        'brand' => 'brand_id'
     ]);
 
     Route::get('form', function() {
