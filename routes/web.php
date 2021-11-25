@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 #admin 
-Route::prefix('admin')->group(function() {
+Route::prefix('admin')->group(function() {  
+    Route::resource('category', CategoryController::class)->parameters([
+        'category' => 'category_id'
+    ]);
     Route::get('form', function() {
         return view('admin.template.form');
     });
@@ -38,7 +42,7 @@ Route::prefix('client/page')->group(function () {
         return view('client.page.checkout');
     })->name('client.checkout');
     #detail
-    Route::get('detail', [Client_Product_Controller::class, 'get_detail'])->name('client.detail');
+    // Route::get('detail', [Client_Product_Controller::class, 'get_detail'])->name('client.detail');
     #login
     Route::get('login', function () {
         return view('client.page.login');
