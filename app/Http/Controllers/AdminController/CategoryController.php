@@ -5,8 +5,12 @@ namespace App\Http\Controllers\AdminController;
 use Carbon\Carbon;
 use App\Models\Category;
 use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+
+use Illuminate\Support\Facades\DB;
+
 
 class CategoryController extends Controller
 {
@@ -15,8 +19,44 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
+        $result = DB::table('categories')->paginate(5);
+        if ($result-> count() > 0) {
+            return view('admin.template.table_data', ['categories' => $result]);
+        } else {
+            $data = [
+                'status' => 404,
+                'message' => 'get information fails',
+            ];
+            return view('404_Page', $data);
+        }
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = '';
+        if ($request->has('keyword')) {
+            $keyword = $request->get('keyword');
+        }
+        $result = DB::table('categories')->where('name', 'LIKE', '%' . $keyword . '%')->paginate(5);
+        return view('admin.template.include.render_table', ['categories' => $result])->render();
+    }
+
+    public function fetch_data(Request $request)
+    {
+        if ($request->ajax()) {
+            $page = $request->page;
+        }
+        $keyword = $request->get('keyword');
+        $result = DB::table('categories')->where('name', 'LIKE', '%' . $keyword . '%')->paginate(5);
+        return view('admin.template.include.render_table',
+            [
+                'page' => $page,
+                'categories' => $result
+            ])->render();
+
     }
 
     /**
@@ -32,7 +72,7 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -55,11 +95,10 @@ class CategoryController extends Controller
             return response()->json(['status' => 500, 'message' => 'Something went wrong!']);
         }
     }
-
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -70,7 +109,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -81,8 +120,8 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -93,7 +132,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

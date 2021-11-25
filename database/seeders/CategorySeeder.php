@@ -34,7 +34,56 @@ class CategorySeeder extends Seeder
             ],
             [
                 'id'=> 3,
-                'name'=>'accessory',
+                'name'=>'accessory 1',
+                'description'=>'Accessories include any hardware that is not integral to the operation of a mobile smartphone as designed by the manufacturer.',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'id'=> 4,
+                'name'=>'accessory 2',
+                'description'=>'Accessories include any hardware that is not integral to the operation of a mobile smartphone as designed by the manufacturer.',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'id'=> 5,
+                'name'=>'accessory 3',
+                'description'=>'Accessories include any hardware that is not integral to the operation of a mobile smartphone as designed by the manufacturer.',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'id'=> 6,
+                'name'=>'accessory 4',
+                'description'=>'Accessories include any hardware that is not integral to the operation of a mobile smartphone as designed by the manufacturer.',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'id'=> 7,
+                'name'=>'accessory 5',
+                'description'=>'Accessories include any hardware that is not integral to the operation of a mobile smartphone as designed by the manufacturer.',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'id'=> 8,
+                'name'=>'accessory 6',
+                'description'=>'Accessories include any hardware that is not integral to the operation of a mobile smartphone as designed by the manufacturer.',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'id'=> 9,
+                'name'=>'accessory 7',
+                'description'=>'Accessories include any hardware that is not integral to the operation of a mobile smartphone as designed by the manufacturer.',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'id'=> 10,
+                'name'=>'accessory 8',
                 'description'=>'Accessories include any hardware that is not integral to the operation of a mobile smartphone as designed by the manufacturer.',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
