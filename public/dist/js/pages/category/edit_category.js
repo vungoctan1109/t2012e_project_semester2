@@ -32,7 +32,7 @@ $(document).ready(function () {
                     }
                     if (response.status == 500) {
                         setTimeout(function () {
-                            alertAction(response.message);
+                            alertActionFailed(response.message);
                         }, 1500);
                         alertProcessData();
 
@@ -43,6 +43,7 @@ $(document).ready(function () {
             error: function (response) {},
         });
     });
+
     //alert
     function alertAction(message) {
         Swal.fire({
@@ -53,6 +54,17 @@ $(document).ready(function () {
             timer: 1500,
         });
     }
+
+    function alertActionFailed(message) {
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: `${message}`,
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    }
+
     function alertProcessData() {
         let timerInterval;
         Swal.fire({

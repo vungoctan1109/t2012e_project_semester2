@@ -141,7 +141,7 @@ class CategoryController extends Controller
             if ($result) {
                 return response()->json(['status' => 200, 'message' => 'Data have been successfully update']);
             }
-            return response()->json(['status' => 500, 'message' => 'Something went wrong!']);
+            return response()->json(['status' => 500, 'message' => 'You do not change anything!']);
         }
     }
 
