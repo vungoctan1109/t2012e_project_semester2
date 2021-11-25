@@ -15,19 +15,19 @@ window.addEventListener('DOMContentLoaded', function () {
         })
     })
 
-    // $(document).on('click', '.pagination a', function (event) {
-    //     event.preventDefault();
-    //     const page = $(this).attr('href').split('page=')[1];
-    //     fetch_data(page);
-    // })
-    //
-    // function fetch_data(page) {
-    //     $.ajax({
-    //         url: '/category/fetch_data?page=' + page,
-    //         data: data11.serialize(),
-    //         success: function (data) {
-    //             $('#data_table').html(data);
-    //         }
-    //     })
-    // }
+    $(document).on('click', '.pagination a', function (event) {
+        event.preventDefault();
+        const page = $(this).attr('href').split('page=')[1];
+        fetch_data(page);
+    })
+
+    function fetch_data(page) {
+        $.ajax({
+            url: '/admin/category/fetch_data?page=' + page,
+            data: data11.serialize(),
+            success: function (data) {
+                $('#data_table').html(data);
+            }
+        })
+    }
 })

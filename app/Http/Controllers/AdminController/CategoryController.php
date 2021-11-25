@@ -38,19 +38,19 @@ class CategoryController extends Controller
         return view('admin.template.include.render_table', ['categories' => $result])->render();
     }
 
-//    public function fetch_data(Request $request)
-//    {
-//        if ($request->ajax()) {
-//            $page = $request->page;
-//        }
-//        $keyword = $request->get('keyword');
-//        $result = DB::table('categories')->where('name', 'LIKE', '%' . $keyword . '%')->paginate(5);
-//        return view('admin.renderTable',
-//            [
-//                'page' => $page,
-//                'items' => $result
-//            ])->render();
-//    }
+    public function fetch_data(Request $request)
+    {
+        if ($request->ajax()) {
+            $page = $request->page;
+        }
+        $keyword = $request->get('keyword');
+        $result = DB::table('categories')->where('name', 'LIKE', '%' . $keyword . '%')->paginate(5);
+        return view('admin.template.include.render_table',
+            [
+                'page' => $page,
+                'categories' => $result
+            ])->render();
+    }
 
     /**
      * Show the form for creating a new resource.
