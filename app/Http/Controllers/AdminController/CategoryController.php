@@ -137,6 +137,7 @@ class CategoryController extends Controller
             return response() -> json(['status' => 400, 'errors' => $validator -> errors() -> toArray(),'message' => 'Data not valid!']);
         } else {
             $result = DB::table('categories')->where('id', '=', $id)->update($data);
+            Category::where('id', $id)->update(array('updated_at'=>Carbon::now()));
             if ($result) {
                 return response()->json(['status' => 200, 'message' => 'Data have been successfully update']);
             }
