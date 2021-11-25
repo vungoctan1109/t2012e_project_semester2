@@ -1,4 +1,7 @@
 @extends('admin.template.master_layout')
+@section('link_private')
+    <link rel="stylesheet" href="/dist/css/admin_pages/table_data.css">
+@endsection
 @section('page-title','Admin | Table')
 @section('breadcrumb')
 <div class="col-sm-6">
@@ -21,57 +24,25 @@
             <div class="card-header">
                 <h3 class="card-title">Table</h3>
                 <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-default">
-                                <i class="fas fa-search"></i>
-                            </button>
+                    <form action="" id="searchForm">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="keyword" id="keyword" class="form-control float-right" placeholder="Search">
+                            <div class="input-group-append">
+                                <button type="submit" id="btnSearch" class="btn btn-default">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th style="width: 10px">#</th>
-                            <th>Task</th>
-                            <th>Progress</th>
-                            <th style="width: 40px">Label</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1.</td>
-                            <td>Update software</td>
-                            <td>
-                                <div class="progress progress-xs">
-                                    <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                </div>
-                            </td>
-                            <td><span class="badge bg-danger">55%</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="card-body" id="data_table">
+                @include('admin.template.include.render_table')
             </div>
-            <!-- /.card-body -->
-            <div class="card-footer clearfix">
-                <ul class="pagination pagination-sm m-0 float-right">
-                    <li class="page-item"><a class="page-link" href="#">«</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">»</a></li>
-                </ul>
-            </div>
-        </div>
     </div>
 </div>
 @endSection
-
-
-
 @section('script_private')
+<script src="/dist/js/pages/table_data.js"></script>
 @endSection
