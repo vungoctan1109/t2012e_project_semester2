@@ -129,7 +129,19 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->except(['_token']);
-        $result = DB::table('categories')->where('id', '=', $id)->update($data);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response() -> json(['status' => 400, 'errors' => $validator -> errors() -> toArray(),'message' => 'Data not valid!']);
+        } else {
+            $result = DB::table('categories')->where('id', '=', $id)->update($data);
+            if ($result) {
+                return response()->json(['status' => 200, 'message' => 'Data have been successfully update']);
+            }
+            return response()->json(['status' => 500, 'message' => 'Something went wrong!']);
+        }
     }
 
     /**

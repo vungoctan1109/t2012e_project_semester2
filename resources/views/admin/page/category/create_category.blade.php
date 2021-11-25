@@ -11,7 +11,7 @@
 @endSection
 @section('breadcrumb')
 <div class="col-sm-6">
-    <h1 class="m-0">Create Category</h1>
+    <h1 class="m-0">Category</h1>
 </div><!-- /.col -->
 <div class="col-sm-6">
     <ol class="breadcrumb float-sm-right">
@@ -26,20 +26,20 @@
         <!-- jquery validation -->
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Form</h3>
+                <h3 class="card-title">Create Category</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
             <form action="" method="">
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="name">Name Category</label>
+                        <label for="name">Category Name</label>
                         <input type="text" name="name" class="form-control col-4" id="name"
                             placeholder="Enter name category...">
                         <span class="error name_error"></span>
                     </div>
                     <div class="form-group">
-                        <label>Description</label>
+                        <label>Category Description</label>
                         <textarea name="description" class="form-control col-7" rows="3"
                             placeholder="Enter description category ..."></textarea>
                         <span class="error description_error"></span>
