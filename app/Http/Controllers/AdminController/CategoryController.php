@@ -23,8 +23,9 @@ class CategoryController extends Controller
     public function index()
     {
         $result = DB::table('categories')->paginate(5);
-        if ($result-> count() > 0) {
-            return view('admin.template.table_data', ['categories' => $result]);
+
+        if ($result->count() > 0) {
+            return view('admin.page.category.table_data', ['categories' => $result]);
         } else {
             $data = [
                 'status' => 404,
@@ -41,7 +42,7 @@ class CategoryController extends Controller
             $keyword = $request->get('keyword');
         }
         $result = DB::table('categories')->where('name', 'LIKE', '%' . $keyword . '%')->paginate(5);
-        return view('admin.template.include.render_table', ['categories' => $result])->render();
+        return view('admin.page.category.render_table', ['categories' => $result])->render();
     }
 
     public function fetch_data(Request $request)
@@ -51,7 +52,7 @@ class CategoryController extends Controller
         }
         $keyword = $request->get('keyword');
         $result = DB::table('categories')->where('name', 'LIKE', '%' . $keyword . '%')->paginate(5);
-        return view('admin.template.include.render_table',
+        return view('admin.page.category.render_table',
             [
                 'page' => $page,
                 'categories' => $result
