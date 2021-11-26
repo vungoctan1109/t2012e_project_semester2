@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController\AccessoryController;
+use App\Http\Controllers\AdminController\LaptopController;
+use App\Http\Controllers\AdminController\MobileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController\BrandController;
 use App\Http\Controllers\AdminController\CategoryController;
@@ -29,6 +32,19 @@ Route::prefix('admin')->group(function() {
     Route::get('/brand/fetch_data', [BrandController::class, 'fetch_data']);
     Route::resource('brand', BrandController::class)->parameters([
         'brand' => 'brand_id'
+    ]);
+    //all product start here -------------------------------------------------------
+    //1. mobile
+    Route::resource('mobile', MobileController::class)->parameters([
+        'mobile' => 'mobile_id'
+    ]);
+    //1. laptop
+    Route::resource('laptop', LaptopController::class)->parameters([
+        'laptop' => 'laptop_id'
+    ]);
+    //1. accessory
+    Route::resource('accessory', AccessoryController::class)->parameters([
+        'accessory' => 'accessory_id'
     ]);
 
     Route::get('form', function() {
