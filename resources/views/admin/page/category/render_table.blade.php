@@ -18,7 +18,7 @@
             <td>{{$cate->created_at}}</td>
             <td>{{$cate->updated_at}}</td>
             <td>
-                <a href="admin/category/{{$cate->id}}" class="mr-2">Detail</a>
+                <a href="{{route('category.show', $cate->id)}}" class="mr-2">Detail</a>
                 <a href="{{route('category.edit', $cate->id)}}" class="mr-2">Edit</a>
                 <a href="admin/category/{{$cate->id}}" class="mr-2">Delete</a>
             </td>

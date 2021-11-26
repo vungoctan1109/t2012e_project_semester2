@@ -104,7 +104,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = DB::table('categories')->where('id', '=', $id)->first();
+        return view('admin.page.category.detail_category', compact('result'));
     }
 
     /**
