@@ -7,7 +7,7 @@
                     <th style="text-align: center;width: 50px;">ID</th>
                     <th style="text-align: center;width: 200px; ">Name</th>
                     <th style="text-align: center;">Description</th>
-                    <th style="text-align: center;width: 100px;">Created At</th>                    
+                    <th style="text-align: center;width: 100px;">Created At</th>
                     <th style="text-align: center;width: 250px;">Action</th>
                 </tr>
             </thead>
@@ -20,7 +20,7 @@
                     <td style="text-align:center; vertical-align: middle">{{$cate->name}}</td>
                     <td>{{$cate->description}}</td>
                     <td style="text-align:center; vertical-align: middle">{{date('d-m-Y', strtotime($cate->created_at))}}
-                    </td>                   
+                    </td>
                     <td style="text-align:center; vertical-align: middle">
                         <a class="btn btn-primary btn-sm" href="admin/category/{{$cate->id}}">
                             <i class="fas fa-folder">View</i>
@@ -41,7 +41,7 @@
                     <th style="text-align: center;width: 50px;">ID</th>
                     <th style="text-align: center;">Name</th>
                     <th style="text-align: center; width: 550px;">Description</th>
-                    <th style="text-align: center;width: 100px;">Created At</th>                   
+                    <th style="text-align: center;width: 100px;">Created At</th>
                     <th style="text-align: center;width: 250px;">Action</th>
                 </tr>
             </thread>
@@ -90,7 +90,7 @@
                                 -=$half_total_links - ($categories->lastPage() - $categories->currentPage()) - 1;
                             }
                         @endphp
-                        @if ($from < $i && $i < $to) 
+                        @if ($from < $i && $i < $to)
                             <li class="page-item {{ ($categories->currentPage() == $i) ? ' active' : '' }}">
                                 <a class="page-link" href="{{ $categories->url($i) }}">{{ $i }}</a>
                             </li>

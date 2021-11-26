@@ -35,6 +35,8 @@ Route::prefix('admin')->group(function() {
     ]);
     //all product start here -------------------------------------------------------
     //1. mobile
+//    Route::get('/mobile/search', [MobileController::class, 'search']);
+    Route::get('/mobile/fetch_data', [MobileController::class, 'fetch_data']);
     Route::resource('mobile', MobileController::class)->parameters([
         'mobile' => 'mobile_id'
     ]);
