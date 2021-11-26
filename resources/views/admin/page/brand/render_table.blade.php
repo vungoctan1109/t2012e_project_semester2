@@ -14,21 +14,20 @@
             <tbody>
             @foreach($brands as $brand)
                 <tr>
-                    <td style="text-align:center; vertical-align: middle"><input type="checkbox"
-                                                                                 style="width: 20px;height:20px;" value="{{$brand->id}}" /></td>
+                    <td style="text-align:center; vertical-align: middle"><input type="checkbox" style="width: 20px;height:20px;" value="{{$brand->id}}"/></td>
                     <td style="text-align:center; vertical-align: middle">{{$brand->id}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$brand->name}}</td>
                     <td>{{$brand->description}}</td>
                     <td style="text-align:center; vertical-align: middle">{{date('d-m-Y', strtotime($brand->created_at))}}
                     </td>
                     <td style="text-align:center; vertical-align: middle">
-                        <a class="btn btn-primary btn-sm" href="admin/brand/{{$brand->id}}">
+                        <a class="btn btn-primary btn-sm" href="{{route('brand.show', $brand->id)}}">
                             <i class="fas fa-folder">View</i>
                         </a>
                         <a class="btn btn-info btn-sm" href="{{route('brand.edit', $brand->id)}}">
                             <i class="fas fa-pencil-alt">Edit</i>
                         </a>
-                        <a class="btn btn-danger btn-sm delete" href="#" brand_id = "{{$brand->id}}" >
+                        <a class="btn btn-danger btn-sm delete" href="#" brand_id="{{$brand->id}}">
                             <i class="fas fa-trash">Delete</i>
                         </a>
                     </td>
