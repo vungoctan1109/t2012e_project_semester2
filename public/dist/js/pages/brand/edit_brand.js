@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $("#btn-submit").click(function (e) {
         e.preventDefault();
+        var id = $('input[name="id"]').val()
         var name = $('input[name="name"]').val();
         var description = $('textarea[name="description"]').val();
         var data = { name: name, description: description };
@@ -10,8 +11,8 @@ $(document).ready(function () {
             },
         });
         $.ajax({
-            url: "/admin/category",
-            method: "POST",
+            url: "/admin/brand/" + id,
+            method: "PUT",
             data: data,
             beforeSend: function () {
                 $(document).find("span.error").text("");
@@ -31,9 +32,10 @@ $(document).ready(function () {
                     }
                     if (response.status == 500) {
                         setTimeout(function () {
-                            alertAction(response.message);
+                            alertActionFailed(response.message);
                         }, 1500);
                         alertProcessData();
+
                         return;
                     }
                 }
@@ -41,6 +43,7 @@ $(document).ready(function () {
             error: function (response) {},
         });
     });
+
     //alert
     function alertAction(message) {
         Swal.fire({
@@ -51,10 +54,21 @@ $(document).ready(function () {
             timer: 1500,
         });
     }
+
+    function alertActionFailed(message) {
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: `${message}`,
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    }
+
     function alertProcessData() {
         let timerInterval;
         Swal.fire({
-            title: "Insert in progress!",
+            title: "Update in progress!",
             html: "Progress will be completed in about in <b></b> milliseconds.",
             timer: 1500,
             timerProgressBar: true,

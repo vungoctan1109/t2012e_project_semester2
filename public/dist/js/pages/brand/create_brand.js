@@ -10,7 +10,7 @@ $(document).ready(function () {
             },
         });
         $.ajax({
-            url: "/admin/category",
+            url: "/admin/brand",
             method: "POST",
             data: data,
             beforeSend: function () {
