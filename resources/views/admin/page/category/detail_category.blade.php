@@ -45,11 +45,6 @@
                             <h4>{{$result->name}}</h4>
                             <div class="post">
                                 <p>{{$result->description}}</p>
-                                <div class="user-block">
-                                    <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-                                    <span class="username"><a href="#">{{$result->creator}}</a></span>
-                                    <span class="description">{{$result->created_at}}</span>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -17,7 +17,6 @@ class CreateCategoriesTable extends Migration
             $table->id()->autoIncrement();
             $table->string('name');
             $table->text('description');
-            $table->string('creator');
             $table->timestamps();
         });
     }
