@@ -3,24 +3,24 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th style="text-align: center;width: 20px;">Check</th>
-                <th style="text-align: center;width: 10px;">ID</th>
-                <th style="text-align: center;width: 20px;">name</th>
-                <th style="text-align: center;">brandID</th>
-                <th style="text-align: center;width: 20px;">quantity</th>
-                <th style="text-align: center;width: 20px;">saleOff</th>
-                <th style="text-align: center;width: 100px;">price (VND)</th>
-                <th style="text-align: center;width: 150px;">thumbnail</th>
-                <th style="text-align: center;width: 20px;">color</th>
-                <th style="text-align: center;width: 10px;">ram (GB)</th>
-                <th style="text-align: center;width: 20px;">memory (GB)</th>
-                <th style="text-align: center;width: 20px;">pin (mAh)</th>
-                <th style="text-align: center;width: 20px;">camera (pixel)</th>
-                <th style="text-align: center;width: 20px;">screenSize (inch)</th>
-                <th style="text-align: center;width: 10px;">status</th>
-                <th style="text-align: center;width: 30px;">created_at</th>
-                <th style="text-align: center;width: 30px;">updated_at</th>
-                <th style="text-align: center;width: 50px;">Action</th>
+                <th style="text-align: center;width: 3%;">Check</th>
+                <th style="text-align: center;width: 1%;">ID</th>
+                <th style="text-align: center;width: 8%;">name</th>
+                <th style="text-align: center;width: 4%;">brandID</th>
+                <th style="text-align: center;width: 4%;">quantity</th>
+                <th style="text-align: center;width: 5%;">saleOff</th>
+                <th style="text-align: center;width: 11%;">price (VND)</th>
+                <th style="text-align: center;width: 5%;">thumbnail</th>
+                <th style="text-align: center;width: 5%;">color</th>
+                <th style="text-align: center;width: 5%;">ram (GB)</th>
+                <th style="text-align: center;width: 5%;">memory (GB)</th>
+                <th style="text-align: center;width: 3%;">pin (mAh)</th>
+                <th style="text-align: center;width: 5%;">camera (pixel)</th>
+                <th style="text-align: center;width: 5%;">screenSize (inch)</th>
+                <th style="text-align: center;width: 5%;">status</th>
+                <th style="text-align: center;width: 5%;">created_at</th>
+                <th style="text-align: center;width: 5%;">updated_at</th>
+                <th style="text-align: center;width: 16%;">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -63,24 +63,24 @@
             </tbody>
             <thread>
                 <tr>
-                    <th style="text-align: center;width: 20px;">Check</th>
-                    <th style="text-align: center;width: 10px;">ID</th>
-                    <th style="text-align: center;width: 20px;">name</th>
-                    <th style="text-align: center;">brandID</th>
-                    <th style="text-align: center;width: 20px;">quantity</th>
-                    <th style="text-align: center;width: 20px;">saleOff</th>
-                    <th style="text-align: center;width: 100px;">price (VND)</th>
-                    <th style="text-align: center;width: 150px;">thumbnail</th>
-                    <th style="text-align: center;width: 20px;">color</th>
-                    <th style="text-align: center;width: 10px;">ram (GB)</th>
-                    <th style="text-align: center;width: 20px;">memory (GB)</th>
-                    <th style="text-align: center;width: 20px;">pin (mAh)</th>
-                    <th style="text-align: center;width: 20px;">camera (pixel)</th>
-                    <th style="text-align: center;width: 20px;">screenSize (inch)</th>
-                    <th style="text-align: center;width: 10px;">status</th>
-                    <th style="text-align: center;width: 30px;">created_at</th>
-                    <th style="text-align: center;width: 30px;">updated_at</th>
-                    <th style="text-align: center;width: 50px;">Action</th>
+                    <th style="text-align: center;width: 3%;">Check</th>
+                    <th style="text-align: center;width: 1%;">ID</th>
+                    <th style="text-align: center;width: 8%;">name</th>
+                    <th style="text-align: center;width: 4%;">brandID</th>
+                    <th style="text-align: center;width: 4%;">quantity</th>
+                    <th style="text-align: center;width: 5%;">saleOff</th>
+                    <th style="text-align: center;width: 11%;">price (VND)</th>
+                    <th style="text-align: center;width: 5%;">thumbnail</th>
+                    <th style="text-align: center;width: 5%;">color</th>
+                    <th style="text-align: center;width: 5%;">ram (GB)</th>
+                    <th style="text-align: center;width: 5%;">memory (GB)</th>
+                    <th style="text-align: center;width: 3%;">pin (mAh)</th>
+                    <th style="text-align: center;width: 5%;">camera (pixel)</th>
+                    <th style="text-align: center;width: 5%;">screenSize (inch)</th>
+                    <th style="text-align: center;width: 5%;">status</th>
+                    <th style="text-align: center;width: 5%;">created_at</th>
+                    <th style="text-align: center;width: 5%;">updated_at</th>
+                    <th style="text-align: center;width: 16%;">Action</th>
                 </tr>
             </thread>
         </table>
