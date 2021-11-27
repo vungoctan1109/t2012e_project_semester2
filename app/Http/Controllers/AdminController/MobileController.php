@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\AdminController;
 
 
+use App\Models\Brand;
+use App\Models\Mobile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Brand as Brand_Model;
@@ -70,7 +72,7 @@ class MobileController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'categoryID' => 'required',
-            'brandID' => 'required',           
+            'brandID' => 'required',
             'quantity' => 'required',
             'status' => 'required',
             'saleOff' => 'required',
@@ -83,7 +85,7 @@ class MobileController extends Controller
             'memory' => 'required',
             'pin' => 'required',
             'camera' => 'required',
-            'screenSize' => 'required',                       
+            'screenSize' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json(['status' => 400, 'errors' => $validator->errors()->toArray(), 'message' => 'Data not valid!']);
@@ -101,7 +103,7 @@ class MobileController extends Controller
             $mobiles->ram = $request->get('ram');
             $mobiles->pin = $request->get('pin');
             $mobiles->camera = $request->get('camera');
-            $mobiles->screenSize = $request->get('screenSize');            
+            $mobiles->screenSize = $request->get('screenSize');
             $mobiles->memory = $request->get('memory');
             $mobiles->detail = $request->get('detail');
             $mobiles->description = $request->get('description');
