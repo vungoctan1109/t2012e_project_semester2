@@ -12,8 +12,8 @@ $(document).ready(function () {
     var btnThumbnailLink = document.getElementById("btnThumbnailLink");
     var myWidget_thumbnail = cloudinary.createUploadWidget(
         {
-            cloudName: "tanvnth2012002",
-            uploadPreset: "bcz7zmw5",
+            cloudName: "binht2012e",
+            uploadPreset: "cndcrp9y",
         },
         (error, result) => {
             if (!error && result && result.event === "success") {
@@ -24,9 +24,9 @@ $(document).ready(function () {
                 // alert(document.getElementById("valueUpLoad").value);
                 document.getElementById("list-preview-image").innerHTML += `
                <span class="m-2" id="preview-image" style="position: relative; with:220px; display:inline-block;">
-                   <img src="${result.info.secure_url}" class="img-thumbnail img-bordered" style="width: 220px; ml-2" delete="${result.info.delete_token}">
-                   <i class="fas fa-times btnDeleteImg" style="position: absolute;right: 0;top: 0; cursor: pointer;"></i>
-               </span>
+                   <img src="${result.info.secure_url}" class="img-thumbnail img-bordered" style="width: 220px; ml-2" delete="${result.info.delete_token}">                    
+                   <i class="fas fa-times btnDeleteImg" style="position: absolute;right: 0;top: 0; cursor: pointer;"></i>  
+               </span>                                                   
                `;
             }
         }
@@ -46,7 +46,7 @@ $(document).ready(function () {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
-            icon: "warning",
+            icon: "warning", 
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
@@ -95,7 +95,7 @@ $(document).ready(function () {
                     error: function () {
                         Swal.fire(
                             "Deleted!",
-                            "Image has been deleted!",
+                            "Something went wrong!",
                             "error"
                         );
                     },
@@ -130,9 +130,7 @@ $(document).ready(function () {
         var status = $('select[name="status"]').val();
         var saleOff = $('input[name="saleOff"]').val();
         var description = $('textarea[name="description"]').val();
-        var detail = editorData;
-        // alert(thumbnail);
-        // console.log(detail);
+        var detail = editorData;        
         var data = {
             name: name,
             brandID: brandID,
