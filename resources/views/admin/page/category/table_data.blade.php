@@ -1,6 +1,6 @@
 @extends('admin.template.master_layout')
 @section('link_private')
-<link rel="stylesheet" href="/dist/css/admin_pages/table_data.css">
+<link rel="stylesheet" href="/dist/css/admin_pages/category_table_data.css">
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection
 @section('page-title','Admin | Table')
@@ -15,8 +15,6 @@
     </ol>
 </div><!-- /.col -->
 @endSection
-
-
 @section('content')
 
 <div class="row">
@@ -33,11 +31,9 @@
                         <div class="col-md-2 m-3">
                             <label for="pagination_limit">Show</label>
                             <select class="form-control" name="pagination_limit" id="pagination_limit">
-                                <option value="limit_12" selected>Default litmit 12</option>
-                                <option value="limit_24">Litmit 24</option>
-                                <option value="limit_48">Litmit 48</option>
-                                <option value="limit_96">Litmit 96</option>
-                                <option value="limit_198">Litmit 198</option>
+                                <option value="limit_5" selected>Litmit 5</option>
+                                <option value="limit_10">Litmit 10</option>
+                                <option value="limit_20">Litmit 20</option>
                             </select>
                         </div>
                         {{-- <div class="col-md-2 m-3">

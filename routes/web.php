@@ -32,9 +32,11 @@ Route::prefix('admin')->group(function() {
     Route::resource('brand', BrandController::class)->parameters([
         'brand' => 'brand_id'
     ]);
-    #all product start here -------------------------------------------------------
-    #1. mobile
-    Route::resource('/mobile', MobileController::class)->parameters([
+
+    //all product start here -------------------------------------------------------
+    //1. mobile
+    Route::get('/mobile/fetch_data', [MobileController::class, 'fetch_data']);
+    Route::resource('mobile', MobileController::class)->parameters([
         'mobile' => 'mobile_id'
     ]);
     #1. laptop

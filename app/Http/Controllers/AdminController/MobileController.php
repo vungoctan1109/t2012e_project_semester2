@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\AdminController;
 
-use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Brand as Brand_Model;
@@ -17,9 +17,34 @@ class MobileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $brands = Brand::all();
+        $mobiles = Mobile::query()
+            ->select('*')
+            ->orderBy('created_at', 'DESC')
+            ->paginate(5);
+        if ($request->ajax()) {
+            return view('admin.page.mobile.render_table', ['mobiles' => $mobiles, 'brands'=>$brands])->render();
+        }
+        return view('admin.page.mobile.table_data', ['mobiles' => $mobiles, 'brands'=>$brands]);
+    }
+
+    public function fetch_data(Request $request)
+    {
+        if ($request->ajax()) {
+            $mobiles = Mobile::query()
+                ->select('*')
+                ->sortBy($request)
+                ->name($request)
+                ->ram($request)
+                ->brand($request)
+                ->dateFilter($request)
+                ->status($request)
+                ->priceFilter($request)
+                ->Pagination($request);
+            return view('admin.page.mobile.render_table')->with('mobiles', $mobiles)->render();
+        }
     }
 
     /**

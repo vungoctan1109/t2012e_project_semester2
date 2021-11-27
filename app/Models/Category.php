@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'id', 'name', 'description', 'created_at', 'updated_at'
-    ];
+    protected $fillable = ['id', 'name', 'description', 'created_at', 'updated_at'];
     public function scopeName($query, $request)
     {
         if ($request->has('name')) {
@@ -37,7 +35,7 @@ class Category extends Model
                 case 'id_desc':
                     return $query->orderBy('id', 'desc');
                 case 'id_asc':
-                    return $query->orderBy('id', 'asc');                
+                    return $query->orderBy('id', 'asc');
                 default:
                     return $query->orderBy('created_at', 'asc');
             }
@@ -48,16 +46,12 @@ class Category extends Model
     {
         if ($request->has('pagination_limit')) {
             switch ($request->pagination_limit) {
-                case 'limit_12':
-                    return $query->paginate(12);
-                case 'limit_24':
-                    return $query->paginate(24);
-                case 'limit_48':
-                    return $query->paginate(48);
-                case 'limit_96':
-                    return $query->paginate(96);
-                case 'limit_198':
-                    return $query->paginate(198);
+                case 'limit_5':
+                    return $query->paginate(5);
+                case 'limit_10':
+                    return $query->paginate(10);
+                case 'limit_20':
+                    return $query->paginate(20);
             }
         }
     }

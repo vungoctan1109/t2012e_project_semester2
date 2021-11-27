@@ -20,10 +20,11 @@ class CategoryController extends Controller
 
     public function index(Request $request)
     {      
+
         $categories = Category_Model::query()
             ->select('*')
             ->orderBy('created_at', 'DESC')
-            ->paginate(12);
+            ->paginate(5);
         if ($request->ajax()) {
             return view('admin.page.category.render_table')->with('categories', $categories)->render();
         }
@@ -46,7 +47,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource.https://www.youtube.com/watch?v=FjHGZj2IjBk
      *
      * @return \Illuminate\Http\Response
      */
@@ -89,7 +90,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = DB::table('categories')->where('id', '=', $id)->first();
+        return view('admin.page.category.detail_category', compact('result'));
     }
 
     /**
