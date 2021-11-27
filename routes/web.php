@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\AdminController\AccessoryController;
-use App\Http\Controllers\AdminController\LaptopController;
-use App\Http\Controllers\AdminController\MobileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController\BrandController;
+use App\Http\Controllers\ClientController\ShopMobileController;
+use App\Http\Controllers\AdminController\LaptopController;
+use App\Http\Controllers\AdminController\MobileController;
 use App\Http\Controllers\AdminController\CategoryController;
+use App\Http\Controllers\AdminController\AccessoryController;
+use App\Http\Controllers\ClientController\ShoppingCartController;
 
 
 /*
@@ -20,7 +22,7 @@ use App\Http\Controllers\AdminController\CategoryController;
 */
 #admin
 
-Route::prefix('admin')->group(function() {
+Route::prefix('admin')->group(function () {
     #category 
     Route::get('/category/fetch_data', [CategoryController::class, 'fetch_data']);
     Route::resource('category', CategoryController::class)->parameters([
@@ -48,66 +50,71 @@ Route::prefix('admin')->group(function() {
         'accessory' => 'accessory_id'
     ]);
 
-    Route::get('form', function() {
+    Route::get('form', function () {
         return view('admin.template.form');
     });
-    Route::get('table', function() {
+    Route::get('table', function () {
         return view('admin.template.table_data');
     });
 });
 
- Route::prefix('client/page')->group(function () {
-     Route::get('shop', function () {
-         return view('client.page.shop');
-     })->name('client.shop');
-     #home
-     Route::get('home', function () {
-         return view('client.page.home');
-     })->name('client.home');
-     #cart
-     Route::get('cart', function () {
-         return view('client.page.cart');
-     })->name('client.cart');
-     #checkout
-     Route::get('checkout', function () {
-         return view('client.page.checkout');
-     })->name('client.checkout');
-     #detail
-     // Route::get('detail', [Client_Product_Controller::class, 'get_detail'])->name('client.detail');
-     #login
-     Route::get('login', function () {
-         return view('client.page.login');
-     })->name('client.login');
-     #register
-     Route::get('register', function () {
-         return view('client.page.register');
-     })->name('client.register');
-     #about
-     Route::get('about', function () {
-         return view('client.page.about');
-     })->name('client.about');
-     #contact
-     Route::get('contact', function () {
-         return view('client.page.contact');
-     })->name('client.contact');
-     #thankyou
-     Route::get('thankyou', function () {
-         return view('client.page.thankyou');
-     })->name('client.thankyou');
-     #privacy policy
-     Route::get('privacy', function () {
-         return view('client.page.privacy');
-     })->name('client.privacy');
-     #terms conditions
-     Route::get('terms-conditions', function () {
-         return view('client.page.terms_conditions');
-     })->name('client.terms_conditions');
-     # return policy
-     Route::get('return-policy', function () {
-         return view('client.page.return_policy');
-     })->name('client.return_policy');
- });
+Route::prefix('client/page')->group(function () {
+    #shop
+    Route::get('shop', [ShopMobileController::class, 'index'])->name('client.shop');
+    #home
+    Route::get('home', function () {
+        return view('client.page.home');
+    })->name('client.home');
+    #cart
+    Route::get('cart', function () {
+        return view('client.page.cart');
+    })->name('client.cart');
+    #checkout
+    Route::get('checkout', function () {
+        return view('client.page.checkout');
+    })->name('client.checkout');
+    #detail
+    // Route::get('detail', [Client_Product_Controller::class, 'get_detail'])->name('client.detail');
+    #login
+    Route::get('login', function () {
+        return view('client.page.login');
+    })->name('client.login');
+    #register
+    Route::get('register', function () {
+        return view('client.page.register');
+    })->name('client.register');
+    #about
+    Route::get('about', function () {
+        return view('client.page.about');
+    })->name('client.about');
+    #contact
+    Route::get('contact', function () {
+        return view('client.page.contact');
+    })->name('client.contact');
+    #thankyou
+    Route::get('thankyou', function () {
+        return view('client.page.thankyou');
+    })->name('client.thankyou');
+    #privacy policy
+    Route::get('privacy', function () {
+        return view('client.page.privacy');
+    })->name('client.privacy');
+    #terms conditions
+    Route::get('terms-conditions', function () {
+        return view('client.page.terms_conditions');
+    })->name('client.terms_conditions');
+    # return policy
+    Route::get('return-policy', function () {
+        return view('client.page.return_policy');
+    })->name('client.return_policy');
 
 
-
-
+    #cart
+    Route::prefix('shopping')->group(function () {
+        Route::get('cart', [ShoppingCartController::class, 'cartList'])->name('cart.list');
+        Route::post('cart', [ShoppingCartController::class, 'addToCart'])->name('cart.store');
+        Route::post('update-cart', [ShoppingCartController::class, 'updateCart'])->name('cart.update');
+        Route::post('remove', [ShoppingCartController::class, 'removeCart'])->name('cart.remove');
+        Route::post('clear', [ShoppingCartController::class, 'clearAllCart'])->name('cart.clear');
+    });    
+});
