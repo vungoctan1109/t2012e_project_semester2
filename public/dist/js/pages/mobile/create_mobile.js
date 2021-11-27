@@ -95,7 +95,7 @@ $(document).ready(function () {
                     error: function () {
                         Swal.fire(
                             "Deleted!",
-                            "Image has been deleted!",
+                            "Something went wrong!",
                             "error"
                         );
                     },
