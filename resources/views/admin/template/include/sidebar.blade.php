@@ -30,7 +30,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
-                                    General Category
+                                    Manage Category
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -38,7 +38,7 @@
                                 <li class="nav-item">
                                     <a href="/admin/category/create" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Create new category</p>
+                                        <p>Create New Category</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -53,7 +53,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
-                                    Brand Category
+                                    Manage Brand
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -61,7 +61,7 @@
                                 <li class="nav-item">
                                     <a href="/admin/brand/create" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Create new brand</p>
+                                        <p>Create New Brand</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -76,7 +76,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
-                                    Mobile
+                                    Manage Mobile
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -84,7 +84,7 @@
                                 <li class="nav-item">
                                     <a href="/admin/mobile/create" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Create new mobile</p>
+                                        <p>Create New Mobile</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">

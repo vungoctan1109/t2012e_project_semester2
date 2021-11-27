@@ -17,7 +17,7 @@
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active"><a href="{{route('brand.index')}}">Brand</a> / <a href="{{route('brand.edit', $result->id)}}">Edit</a></li>
+            <li class="breadcrumb-item active"><a href="{{route('brand.index')}}">Brand</a> / Detail</li>
         </ol>
     </div><!-- /.col -->
 @endSection
