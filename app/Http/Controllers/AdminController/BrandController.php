@@ -85,7 +85,8 @@ class BrandController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = DB::table('brands')->where('id', '=', $id)->first();
+        return view('admin.page.brand.detail_brand', compact('result'));
     }
 
     /**

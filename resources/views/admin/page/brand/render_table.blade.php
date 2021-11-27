@@ -22,7 +22,7 @@
                     <td style="text-align:center; vertical-align: middle">{{date('d-m-Y', strtotime($brand->created_at))}}
                     </td>
                     <td style="text-align:center; vertical-align: middle">
-                        <a class="btn btn-primary btn-sm" href="admin/brand/{{$brand->id}}">
+                        <a class="btn btn-primary btn-sm" href="{{route('brand.show', $brand->id)}}">
                             <i class="fas fa-folder">View</i>
                         </a>
                         <a class="btn btn-info btn-sm" href="{{route('brand.edit', $brand->id)}}">

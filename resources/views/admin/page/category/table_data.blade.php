@@ -15,8 +15,6 @@
     </ol>
 </div><!-- /.col -->
 @endSection
-
-
 @section('content')
 
 <div class="row">

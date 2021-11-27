@@ -20,42 +20,42 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
             [
                 'id'=> 1,
-                'name'=>'mobile',
+                'name'=>'Mobile',
                 'description'=>'A mobile phone, cellular phone, cell phone, cellphone, handphone, or hand phone, sometimes shortened to simply mobile, cell or just phone, is a portable telephone that can make and receive calls over a radio frequency link while the user is moving within a telephone service area. The radio frequency link establishes a connection to the switching systems of a mobile phone operator, which provides access to the public switched telephone network (PSTN).',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'id'=> 2,
-                'name'=>'laptop',
+                'name'=>'Laptop',
                 'description'=>'A laptop, laptop computer, or notebook computer is a small, portable personal computer (PC) with a screen and alphanumeric keyboard. These typically have a clam shell form factor, typically having the screen mounted on the inside of the upper lid and the keyboard on the inside of the lower lid, although 2-in-1 PCs with a detachable keyboard are often marketed as laptops or as having a laptop mode.',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'id'=> 3,
-                'name'=>'headphone',
+                'name'=>'Headphone',
                 'description'=>'accessories for computers and laptops',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'id'=> 4,
-                'name'=>'backup charger',
+                'name'=>'Backup Charger',
                 'description'=>'accessories for computers and laptops',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'id'=> 5,
-                'name'=>'memory card',
+                'name'=>'Memory Card',
                 'description'=>'accessories for computers and laptops',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'id'=> 6,
-                'name'=>'screen protector',
+                'name'=>'Screen Protector',
                 'description'=>'accessories for computers and laptops',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
@@ -69,28 +69,28 @@ class CategorySeeder extends Seeder
             ],
             [
                 'id'=> 8,
-                'name'=>'charging cable',
+                'name'=>'Charging Cable',
                 'description'=>'accessories for computers and laptops',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'id'=> 9,
-                'name'=>'mouse',
+                'name'=>'Mouse',
                 'description'=>'accessories for computers and laptops',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'id'=> 10,
-                'name'=>'keyboard',
+                'name'=>'Keyboard',
                 'description'=>'accessories for computers and laptops',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'id'=> 11,
-                'name'=>'laptop backpack',
+                'name'=>'Laptop backpack',
                 'description'=>'accessories for computers and laptops',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
@@ -104,7 +104,7 @@ class CategorySeeder extends Seeder
             ],
             [
                 'id'=> 13,
-                'name'=>'router',
+                'name'=>'Router',
                 'description'=>'accessories for computers and laptops',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
