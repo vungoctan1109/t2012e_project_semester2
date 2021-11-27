@@ -1,7 +1,6 @@
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="/dist/img/images.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Admin</span>
+                <span class="brand-text font-weight-light">Wiki Mobile</span>
             </a>
             <!-- Sidebar -->
             <div class="sidebar">
@@ -11,7 +10,7 @@
                         <img src="/dist/img/avatar4.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander</a>
+                        <a href="#" class="d-block">Admin</a>
                     </div>
                 </div>
                 <!-- SidebarSearch Form -->
@@ -31,27 +30,67 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
-                                    Tables
+                                    General Category
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/tables/simple.html" class="nav-link">
+                                    <a href="/admin/category/create" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Simple Tables</p>
+                                        <p>Create new category</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/tables/data.html" class="nav-link">
+                                    <a href="/admin/category" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>DataTables</p>
+                                        <p>Show All & Search</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>
+                                    Brand Category
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/admin/brand/create" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Create new brand</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/tables/jsgrid.html" class="nav-link">
+                                    <a href="/admin/brand" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>jsGrid</p>
+                                        <p>Show All & Search</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>
+                                    Mobile
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/admin/mobile/create" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Create new mobile</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/mobile" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Show All & Search</p>
                                     </a>
                                 </li>
                             </ul>

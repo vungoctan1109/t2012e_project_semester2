@@ -20,21 +20,10 @@ class CategoryController extends Controller
 
     public function index(Request $request)
     {
-        // $result = DB::table('categories')->paginate(5);
-
-        // if ($result-> count() > 0) {
-        //     return view('admin.page.category.table_data', ['categories' => $result]);
-        // } else {
-        //     $data = [
-        //         'status' => 404,
-        //         'message' => 'get information fails',
-        //     ];
-        //     return view('404_Page', $data);
-        // }
         $categories = Category_Model::query()
             ->select('*')
             ->orderBy('created_at', 'DESC')
-            ->paginate(12);
+            ->paginate(5);
         if ($request->ajax()) {
             return view('admin.page.category.render_table')->with('categories', $categories)->render();
         }
