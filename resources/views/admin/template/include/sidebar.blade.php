@@ -38,7 +38,7 @@
                                 <li class="nav-item">
                                     <a href="/admin/category/create" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Create new general category</p>
+                                        <p>Create new category</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
