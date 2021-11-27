@@ -21,30 +21,29 @@ use App\Http\Controllers\AdminController\CategoryController;
 #admin
 
 Route::prefix('admin')->group(function() {
-//    Route::get('category/view', CategoryController::class, 'getViewAll');
-    Route::get('/category/search', [CategoryController::class, 'search']);
+    #category 
     Route::get('/category/fetch_data', [CategoryController::class, 'fetch_data']);
     Route::resource('category', CategoryController::class)->parameters([
         'category' => 'category_id'
     ]);
-
+    #brand
     Route::get('/brand/search', [BrandController::class, 'search']);
     Route::get('/brand/fetch_data', [BrandController::class, 'fetch_data']);
     Route::resource('brand', BrandController::class)->parameters([
         'brand' => 'brand_id'
     ]);
+
     //all product start here -------------------------------------------------------
     //1. mobile
-//    Route::get('/mobile/search', [MobileController::class, 'search']);
     Route::get('/mobile/fetch_data', [MobileController::class, 'fetch_data']);
     Route::resource('mobile', MobileController::class)->parameters([
         'mobile' => 'mobile_id'
     ]);
-    //1. laptop
+    #1. laptop
     Route::resource('laptop', LaptopController::class)->parameters([
         'laptop' => 'laptop_id'
     ]);
-    //1. accessory
+    #1. accessory
     Route::resource('accessory', AccessoryController::class)->parameters([
         'accessory' => 'accessory_id'
     ]);
