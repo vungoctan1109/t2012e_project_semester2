@@ -12,8 +12,8 @@ $(document).ready(function () {
     var btnThumbnailLink = document.getElementById("btnThumbnailLink");
     var myWidget_thumbnail = cloudinary.createUploadWidget(
         {
-            cloudName: "tanvnth2012002",
-            uploadPreset: "bcz7zmw5",
+            cloudName: "binht2012e",
+            uploadPreset: "cndcrp9y",
         },
         (error, result) => {
             if (!error && result && result.event === "success") {
