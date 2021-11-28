@@ -30,7 +30,7 @@
                     <td style="text-align:center; vertical-align: middle">{{$mobile->saleOff * 100}}%</td>
                     <td style="text-align:center; vertical-align: middle">{{$mobile->fPrice}}</td>
                     <td style="text-align:center; vertical-align: middle">
-                        <img width="120px" src="{{$mobile->thumbnail}}" alt="">
+                        <img width="120px" src="{{$mobile->mainThumbnail}}" alt="">
                     </td>
                     <td style="text-align:center; vertical-align: middle">{{$mobile->strStatus}}</td>
                     <td style="text-align:center; vertical-align: middle">{{date('d-m-Y', strtotime($mobile->created_at))}}</td>

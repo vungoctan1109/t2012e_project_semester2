@@ -23,7 +23,7 @@ use App\Http\Controllers\ClientController\ShoppingCartController;
 #admin
 
 Route::prefix('admin')->group(function () {
-    #category 
+    #category
     Route::get('/category/fetch_data', [CategoryController::class, 'fetch_data']);
     Route::resource('category', CategoryController::class)->parameters([
         'category' => 'category_id'
@@ -61,6 +61,7 @@ Route::prefix('admin')->group(function () {
 Route::prefix('client/page')->group(function () {
     #shop
     Route::get('shop', [ShopMobileController::class, 'index'])->name('client.shop');
+    Route::get('shop/mobile/{mobile_id}', [ShopMobileController::class, 'show']) ->name('client.show_phone');
     #home
     Route::get('home', function () {
         return view('client.page.home');
@@ -116,5 +117,5 @@ Route::prefix('client/page')->group(function () {
         Route::post('update-cart', [ShoppingCartController::class, 'updateCart'])->name('cart.update');
         Route::post('remove', [ShoppingCartController::class, 'removeCart'])->name('cart.remove');
         Route::post('clear', [ShoppingCartController::class, 'clearAllCart'])->name('cart.clear');
-    });    
+    });
 });
