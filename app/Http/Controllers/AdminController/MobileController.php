@@ -21,8 +21,8 @@ class MobileController extends Controller
      */
     public function index(Request $request)
     {
-        $brands = Brand::all();
-        $mobiles = Mobile::query()
+        $brands = Brand_Model::all();
+        $mobiles = Mobile_Model::query()
             ->select('*')
             ->orderBy('created_at', 'DESC')
             ->paginate(5);

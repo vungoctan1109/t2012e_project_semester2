@@ -12,8 +12,8 @@ $(document).ready(function () {
     var btnThumbnailLink = document.getElementById("btnThumbnailLink");
     var myWidget_thumbnail = cloudinary.createUploadWidget(
         {
-            cloudName: "quynv300192",
-            uploadPreset: "ebgwagho",
+            cloudName: "binht2012e",
+            uploadPreset: "cndcrp9y",
         },
         (error, result) => {
             if (!error && result && result.event === "success") {
@@ -95,7 +95,7 @@ $(document).ready(function () {
                     error: function () {
                         Swal.fire(
                             "Deleted!",
-                            "Image has been deleted!",
+                            "Something went wrong!",
                             "error"
                         );
                     },
@@ -131,8 +131,6 @@ $(document).ready(function () {
         var saleOff = $('input[name="saleOff"]').val();
         var description = $('textarea[name="description"]').val();
         var detail = editorData;
-        // alert(thumbnail);
-        // console.log(detail);
         var data = {
             name: name,
             brandID: brandID,
