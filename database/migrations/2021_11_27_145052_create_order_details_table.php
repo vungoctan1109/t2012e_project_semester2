@@ -14,8 +14,11 @@ class CreateOrderDetailsTable extends Migration
     public function up()
     {
         Schema::create('order_details', function (Blueprint $table) {
-            $table->id();
-            $table->integer('productId');
+            $table->unsignedBigInteger('orderID');
+            $table->foreign('orderID')->references('id')->on('orders');
+            $table->unsignedBigInteger('mobileID');
+            $table->foreign('mobileID')->references('id')->on('mobiles');
+            $table->primary(['orderID', 'mobileID']);
             $table->integer('quantity');
             $table->double('unitPrice');
             $table->double('discount')->default(0);

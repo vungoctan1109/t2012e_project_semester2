@@ -17,10 +17,13 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('userId');
             $table->integer('status');
+            $table->string('name', 100);
             $table->string('comment', 100);
             $table->string('address', 100);
             $table->string('phone', 13);
             $table->string('email', 50);
+            $table->double('totalPrice');
+            $table->boolean('checkOut');
             $table->timestamps();
         });
     }
