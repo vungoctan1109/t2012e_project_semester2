@@ -47,7 +47,7 @@ class ShoppingCartController extends Controller
         );
         $quantity = \Cart::getTotalQuantity();
         $total = \Cart::getTotal();
-        return response()->json(['message' => 'Add to cart successfully!!', 'quantity' => $quantity, 'total' => $total]);       
+        return response()->json(['message' => 'Add to cart successfully!!', 'quantity' => $quantity, 'total' => $total]);
     }
     public function removeCart(Request $request)
     {
@@ -59,7 +59,8 @@ class ShoppingCartController extends Controller
     public function clearAllCart()
     {
         \Cart::clear();
-        session()->flash('success', 'All Item Cart Clear Successfully !');
-        return redirect()->route('cart.list');
+        $quantity = \Cart::getTotalQuantity();
+        $total = \Cart::getTotal();
+        return response()->json(['message' => 'Clear to cart successfully!!', 'quantity' => $quantity, 'total' => $total]);        
     }
 }

@@ -33,7 +33,7 @@
                             <a class="link-to-product" href="#">{{$item-> name}}</a>
                         </div>
                         <div class="price-field produtc-price">
-                            <p class="price">{{$price_format}} (VND)</p>
+                            <p class="price">{{$price_format}} VND</p>
                         </div>
                         <div class="quantity">
                             <div class="quantity-input">
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="price-field sub-total">
-                            <p class="price totalPrice">{{$total_price_format}} (VND)</p>
+                            <p class="price totalPrice">{{$total_price_format}} VND</p>
                         </div>
                         <div class="delete">
                             <a href="#" class="btn btn-delete" title="">
@@ -86,11 +86,11 @@
                 <div class="order-summary">
                     <h4 class="title-box">Order Summary</h4>
                     <p class="summary-info"><span class="title">Subtotal</span><b class="index"
-                            id="total_bill">{{number_format(Cart::getTotal(), 0, '', '.')}} (VND)</b></p>
+                            id="total_bill">{{number_format(Cart::getTotal(), 0, '', '.')}} VND</b></p>
                     <p class="summary-info"><span class="title">Shipping</span><b class="index">Free Shipping</b>
                     </p>
                     <p class="summary-info total-info "><span class="title">Total</span><b class="index"
-                            id="total-info">{{number_format(Cart::getTotal(), 0, '', '.')}} (VND)</b></p>
+                            id="total-info">{{number_format(Cart::getTotal(), 0, '', '.')}} VND</b></p>
                     </p>
                 </div>
                 <div class="checkout-info">

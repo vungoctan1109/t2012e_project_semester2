@@ -1,4 +1,4 @@
-$(document).ready(function () {    
+$(document).ready(function () {
     $(document).on("click", ".btn-quantity", function (e) {
         e.preventDefault();
         var quantity = $(this).siblings(".quantity_item").val();
@@ -40,10 +40,15 @@ $(document).ready(function () {
                 );
             },
         });
-    });    
-    $(document).on("click", ".btn-delete", function (e) {  
-        let id = $(this).parent().siblings(".quantity").children('.quantity-input').children('.id').val();
-        var data = { id: id};         
+    });
+    $(document).on("click", ".btn-delete", function (e) {
+        let id = $(this)
+            .parent()
+            .siblings(".quantity")
+            .children(".quantity-input")
+            .children(".id")
+            .val();
+        var data = { id: id };
         $.ajaxSetup({
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
@@ -67,6 +72,33 @@ $(document).ready(function () {
                         currency: "VND",
                     })
                 );
+            },
+        });
+    });
+    $(document).on("click", ".btn-clear", function (e) {
+        e.preventDefault();
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+        $.ajax({
+            url: "/client/page/shopping/clear",
+            method: "POST",
+            success: function (response) {
+                $("#total_cart").text(response.quantity + " items");
+                $("#total_bill").text(
+                    response.total.toLocaleString("it-IT", {
+                        style: "currency",
+                        currency: "VND",
+                    })
+                );
+                $("#total-info").text(
+                    response.total.toLocaleString("it-IT", {
+                        style: "currency",
+                        currency: "VND",
+                    })
+                );              
             },
         });
     });
