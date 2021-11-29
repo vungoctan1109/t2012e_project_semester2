@@ -67,6 +67,7 @@ Route::prefix('client/page')->group(function () {
 
     #shop
     Route::get('shop', [ShopMobileController::class, 'index'])->name('client.shop');
+    Route::get('shop/mobile/{mobile_id}', [ShopMobileController::class, 'show']) ->name('client.show_phone');
     #home
     Route::get('home', function () {
         return view('client.page.home');

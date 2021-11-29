@@ -8,7 +8,7 @@
             <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
                 <div class="product product-style-3 equal-elem ">
                     <div class="product-thumnail">
-                        <a href="detail.html" title="{{$mobile -> name}}">
+                        <a href="{{route('client.show_phone', $mobile -> id)}}" title="{{$mobile -> name}}">
                             <figure><img src="{{$mobile -> mainThumbnail}}" alt="{{$mobile -> name}}">
                             </figure>
                         </a>
@@ -21,11 +21,11 @@
                             @csrf
                             <input type="hidden" value="{{$mobile -> id}}" name="id"/>
                             <input type="hidden" value="{{$mobile -> price}}" name="price"/>
-                            <input type="hidden" value="{{$mobile -> name}}" name = "name">                            
+                            <input type="hidden" value="{{$mobile -> name}}" name = "name">
                             <input type="hidden" value="{{$mobile -> mainThumbnail}}" name="image">
-                            <input type="hidden" value="1" name="quantity">                                                                                               
+                            <input type="hidden" value="1" name="quantity">
                             <a href="#" class="btn add-to-cart" id="btnAddToCart">Add To Cart</a>
-                        </form>                        
+                        </form>
                     </div>
                 </div>
             </li>

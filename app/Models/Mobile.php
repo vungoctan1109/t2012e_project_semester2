@@ -26,12 +26,23 @@ class Mobile extends Model
         return $defaultThumbnail;
     }
 
-    public function getArrayThumbnailAttribute(){
-        if($this->thumbnail != null && strlen($this->thumbnail) >0){
+//    public function getArrayThumbnailAttribute(){
+//        if($this->thumbnail != null && strlen($this->thumbnail) >0){
+//            $this->thumbnail = substr($this->thumbnail, 0, -1);
+//            $arrayThumbnail = explode(',', $this->thumbnail);
+//            if(sizeof($arrayThumbnail)>0){
+//                return $arrayThumbnail;
+//            }
+//        }
+//        return [];
+//    }
+    public function getArrayThumbnailAttribute()
+    {
+        if ($this->thumbnail != null && strlen($this->thumbnail) > 0) {
             $this->thumbnail = substr($this->thumbnail, 0, -1);
-            $arrayThumbnail = explode(',', $this->thumbnail);
-            if(sizeof($arrayThumbnail)>0){
-                return $arrayThumbnail;
+            $arr_thumbnail = explode(',', $this->thumbnail);
+            if (sizeof($arr_thumbnail) >= 0) {
+                return $arr_thumbnail;
             }
         }
         return [];
