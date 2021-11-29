@@ -14,7 +14,7 @@ class LaptopController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
