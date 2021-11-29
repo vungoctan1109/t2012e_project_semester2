@@ -74,7 +74,7 @@ Route::prefix('client/page')->group(function () {
         return view('client.page.checkout');
     })->name('client.checkout');
     #detail
-    // Route::get('detail', [Client_Product_Controller::class, 'get_detail'])->name('client.detail');
+    Route::get('detail', [ShopMobileController::class, 'get_detail'])->name('client.detail');
     #login
     Route::get('login', function () {
         return view('client.page.login');
