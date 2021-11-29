@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientController\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController\BrandController;
 use App\Http\Controllers\ClientController\ShopMobileController;
@@ -23,7 +24,7 @@ use App\Http\Controllers\ClientController\ShoppingCartController;
 #admin
 
 Route::prefix('admin')->group(function () {
-    #category 
+    #category
     Route::get('/category/fetch_data', [CategoryController::class, 'fetch_data']);
     Route::resource('category', CategoryController::class)->parameters([
         'category' => 'category_id'
@@ -59,6 +60,11 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::prefix('client/page')->group(function () {
+    Route::resource('order', OrderController::class)->parameters([
+        'order' => 'order_id'
+    ]);
+
+
     #shop
     Route::get('shop', [ShopMobileController::class, 'index'])->name('client.shop');
     #home
@@ -116,5 +122,5 @@ Route::prefix('client/page')->group(function () {
         Route::post('update-cart', [ShoppingCartController::class, 'updateCart'])->name('cart.update');
         Route::post('remove', [ShoppingCartController::class, 'removeCart'])->name('cart.remove');
         Route::post('clear', [ShoppingCartController::class, 'clearAllCart'])->name('cart.clear');
-    });    
+    });
 });
