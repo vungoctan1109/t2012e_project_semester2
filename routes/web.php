@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientController\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController\BrandController;
 use App\Http\Controllers\ClientController\ShopMobileController;
@@ -59,6 +60,11 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::prefix('client/page')->group(function () {
+    Route::resource('order', OrderController::class)->parameters([
+        'order' => 'order_id'
+    ]);
+
+
     #shop
     Route::get('shop', [ShopMobileController::class, 'index'])->name('client.shop');
     Route::get('shop/mobile/{mobile_id}', [ShopMobileController::class, 'show']) ->name('client.show_phone');

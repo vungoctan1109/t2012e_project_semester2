@@ -24,6 +24,21 @@
                     $total_price = $quantity * $price;
                     $total_price_format = number_format($total_price, 0, '', '.'); // 1,000,000
                     $price_format = number_format($price, 0, '', '.');
+
+                    $status = session_status();
+                    if($status == PHP_SESSION_NONE){
+                        //There is no active session
+                        session_start();
+                    }else
+                    if($status == PHP_SESSION_DISABLED){
+                    //Sessions are not available
+                    }else
+                    if($status == PHP_SESSION_ACTIVE){
+                    //Destroy current and start new one
+                        session_destroy();
+                        session_start();
+                    }
+                    $_SESSION['total_price'] = Cart::getTotal();
                     @endphp
                     <li class="pr-cart-item">
                         <div class="product-image">
@@ -98,13 +113,12 @@
                         <input class="frm-input " name="have-code" id="have-code" value="" type="checkbox"><span>I
                             have promo code</span>
                     </label>
-                    <a class="btn btn-checkout" href="checkout.html">Check out</a>
+                    <a class="btn btn-checkout" href="{{route('client.checkout')}}">Check out</a>
                     <a class="link-to-shop" href="shop.html">Continue Shopping<i class="fa fa-arrow-circle-right"
                             aria-hidden="true"></i></a>
                 </div>
                 <div class="update-clear">
                     <a class="btn btn-clear" href="#">Clear Shopping Cart</a>
-                    <a class="btn btn-update" href="#">Update Shopping Cart</a>
                 </div>
             </div>
             <div class="wrap-show-advance-info-box style-1 box-in-site">
@@ -306,7 +320,7 @@
 @section('private_scripts')
 <script>
     $(document).ready(function () {
-        $('body').addClass('shopping-cart page');           
+        $('body').addClass('shopping-cart page');
     });
 </script>
 <script src="/dist/js/pages/client/cart.js"></script>
