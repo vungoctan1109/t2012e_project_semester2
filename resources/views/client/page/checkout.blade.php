@@ -298,6 +298,24 @@
 <script src="/dist/js/pages/client/checkout.js"></script>
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script>
+    @php
+        $status = session_status();
+        if($status == PHP_SESSION_NONE){
+            //There is no active session
+            session_start();
+        }else
+        if($status == PHP_SESSION_DISABLED){
+        //Sessions are not available
+        }else
+        if($status == PHP_SESSION_ACTIVE){
+        //Destroy current and start new one
+            session_destroy();
+            session_start();
+        }
+        $total_price = $_SESSION['total_price'];
+        $vnd_to_usd = $total_price/22695;
+        $paypal_format = round($vnd_to_usd, 2);
+    @endphp
     paypal.Button.render({
         // Configure environment
         env: 'sandbox',
@@ -315,13 +333,12 @@
 
         // Enable Pay Now checkout flow (optional)
         commit: true,
-
         // Set up a payment
         payment: function(data, actions) {
             return actions.payment.create({
                 transactions: [{
                     amount: {
-                        total: `100`,
+                        total: `<?php echo $paypal_format ?>`,
                         currency: 'USD'
                     }
                 }]
@@ -342,6 +359,7 @@
                         window.location.href = "/client/page/shop";
                     }
                 })
+
                 window.alert('Thank you for your purchase!');
             });
         }
