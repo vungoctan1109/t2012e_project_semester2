@@ -10,21 +10,6 @@
         $total_price = $quantity * $price;
         $total_price_format = number_format($total_price, 0, '', '.'); // 1,000,000
         $price_format = number_format($price, 0, '', '.');
-
-        $status = session_status();
-        if($status == PHP_SESSION_NONE){
-        //There is no active session
-        session_start();
-        }else
-        if($status == PHP_SESSION_DISABLED){
-        //Sessions are not available
-        }else
-        if($status == PHP_SESSION_ACTIVE){
-        //Destroy current and start new one
-        session_destroy();
-        session_start();
-        }
-        $_SESSION['total_price'] = Cart::getTotal();
         @endphp
         <li class="pr-cart-item">
             <div class="product-image">

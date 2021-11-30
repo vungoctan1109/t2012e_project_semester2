@@ -73,17 +73,26 @@
                                     </b>
                                 </p>
                             </div>
-                            <div class="quantity">
-                                <span>Quantity:</span>
-                                <div class="quantity-input">
-                                    <input type="text" name="product-quatity" value="1" data-max="120" pattern="[0-9]*" >
-
-                                    <a class="btn btn-reduce" href="#"></a>
-                                    <a class="btn btn-increase" href="#"></a>
-                                </div>
-                            </div>
+{{--                            <div class="quantity">--}}
+{{--                                <div class="quantity-input">--}}
+{{--                                    <input type="text" name="product-quatity" value="{{$mobile->quantity}}" data-max="5" pattern="[0-9]*"--}}
+{{--                                           class="quantity_item">--}}
+{{--                                    <a class="btn btn-increase btn-quantity" href="#"></a>--}}
+{{--                                    <a class="btn btn-reduce btn-quantity" href="#"></a>--}}
+{{--                                    <input type="hidden" class="price_item" value="{{$mobile -> price}}">--}}
+{{--                                    <input type="hidden" name="id" class='id' value="{{$mobile -> id}}">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="wrap-butons">
-                                <a href="#" class="btn add-to-cart">Add to Cart</a>
+                                <form id="formCart">
+                                    @csrf
+                                    <input type="hidden" value="{{$mobile -> id}}" name="id"/>
+                                    <input type="hidden" value="{{$mobile -> price}}" name="price"/>
+                                    <input type="hidden" value="{{$mobile -> name}}" name = "name">
+                                    <input type="hidden" value="{{$mobile -> mainThumbnail}}" name="image">
+                                    <input type="hidden" value="1" name="quantity">
+                                    <a href="#" class="btn add-to-cart" id="btnAddToCart">Add To Cart</a>
+                                </form>
                                 <div class="wrap-btn">
                                     <a href="#" class="btn btn-compare">Add Compare</a>
                                     <a href="#" class="btn btn-wishlist">Add Wishlist</a>
@@ -469,4 +478,5 @@
         $('body').addClass('detail page');
     });
 </script>
+<script src="/dist/js/pages/client/mobile_detail.js"></script>
 @endsection
