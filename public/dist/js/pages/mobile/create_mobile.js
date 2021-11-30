@@ -131,8 +131,6 @@ $(document).ready(function () {
         var saleOff = $('input[name="saleOff"]').val();
         var description = $('textarea[name="description"]').val();
         var detail = editorData;
-        alert(thumbnail);
-        console.log(detail);
         var data = {
             name: name,
             brandID: brandID,
