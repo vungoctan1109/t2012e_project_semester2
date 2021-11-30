@@ -25,19 +25,21 @@ $(document).ready(function () {
             method: "POST",
             data: data,
             success: function (response) {
-                $("#total_cart").text(response.quantity + " items");
-                $("#total_bill").text(
-                    response.total.toLocaleString("it-IT", {
-                        style: "currency",
-                        currency: "VND",
-                    })
-                );
-                $("#total-info").text(
-                    response.total.toLocaleString("it-IT", {
-                        style: "currency",
-                        currency: "VND",
-                    })
-                );
+                if (response.status === 200) {
+                    $("#total_cart").text(response.quantity + " items");
+                    $("#total_bill").text(
+                        response.total.toLocaleString("it-IT", {
+                            style: "currency",
+                            currency: "VND",
+                        })
+                    );
+                    $("#total-info").text(
+                        response.total.toLocaleString("it-IT", {
+                            style: "currency",
+                            currency: "VND",
+                        })
+                    );
+                }
             },
         });
     });
@@ -55,51 +57,72 @@ $(document).ready(function () {
             },
         });
         $.ajax({
-            url: "/client/page/shopping/update-cart",
+            url: "/client/page/shopping/remove",
             method: "POST",
             data: data,
             success: function (response) {
-                $("#total_cart").text(response.quantity + " items");
-                $("#total_bill").text(
-                    response.total.toLocaleString("it-IT", {
-                        style: "currency",
-                        currency: "VND",
-                    })
-                );
-                $("#total-info").text(
-                    response.total.toLocaleString("it-IT", {
-                        style: "currency",
-                        currency: "VND",
-                    })
-                );
+                if (response.status === 200) {
+                    $("#total_cart").text(response.quantity + " items");
+                    $("#total_bill").text(
+                        response.total.toLocaleString("it-IT", {
+                            style: "currency",
+                            currency: "VND",
+                        })
+                    );
+                    $("#total-info").text(
+                        response.total.toLocaleString("it-IT", {
+                            style: "currency",
+                            currency: "VND",
+                        })
+                    );
+                    $("#listCart").html(response.list_cart);
+                }
             },
         });
     });
     $(document).on("click", ".btn-clear", function (e) {
         e.preventDefault();
-        $.ajaxSetup({
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            },
-        });
-        $.ajax({
-            url: "/client/page/shopping/clear",
-            method: "POST",
-            success: function (response) {
-                $("#total_cart").text(response.quantity + " items");
-                $("#total_bill").text(
-                    response.total.toLocaleString("it-IT", {
-                        style: "currency",
-                        currency: "VND",
-                    })
-                );
-                $("#total-info").text(
-                    response.total.toLocaleString("it-IT", {
-                        style: "currency",
-                        currency: "VND",
-                    })
-                );              
-            },
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajaxSetup({
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
+                    },
+                });
+                $.ajax({
+                    url: "/client/page/shopping/clear",
+                    method: "POST",
+                    success: function (response) {
+                        if (response.status === 200) {
+                            $("#total_cart").text(response.quantity + " items");
+                            $("#total_bill").text(
+                                response.total.toLocaleString("it-IT", {
+                                    style: "currency",
+                                    currency: "VND",
+                                })
+                            );
+                            $("#total-info").text(
+                                response.total.toLocaleString("it-IT", {
+                                    style: "currency",
+                                    currency: "VND",
+                                })
+                            );
+                            $("#listCart").html(response.list_cart);
+                            Swal.fire("Deleted!", `${response.message}`, "success");
+                        }
+                    },
+                });               
+            }
         });
     });
 });
