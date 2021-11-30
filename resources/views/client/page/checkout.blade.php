@@ -18,16 +18,16 @@
                 <h3 class="box-title">Billing Address</h3>
                 <form action="#" method="get" name="frm-billing" id="formOrder">
                     @csrf
-                    <p class="row-in-form">
+                    <p class="row-in-form m-2">
                         <label for="fname">Full name<span>*</span></label>
                         <input id="name" type="text" name="name" value="" placeholder="Your name">
                     </p>
+{{--                    <p class="row-in-form">--}}
+{{--                        <label for="lname">last name<span>*</span></label>--}}
+{{--                        <input id="lname" type="text" name="lname" value="" placeholder="Your last name">--}}
+{{--                    </p>--}}
                     <p class="row-in-form">
-                        <label for="lname">last name<span>*</span></label>
-                        <input id="lname" type="text" name="lname" value="" placeholder="Your last name">
-                    </p>
-                    <p class="row-in-form">
-                        <label for="email">Email Address:</label>
+                        <label for="email">Email Address:<span>*</span></label>
                         <input id="email" type="email" name="email" value="" placeholder="Type your email">
                     </p>
                     <p class="row-in-form">
@@ -35,37 +35,37 @@
                         <input id="phone" type="number" name="phone" value="" placeholder="10 digits format">
                     </p>
                     <p class="row-in-form">
-                        <label for="add">Address:</label>
+                        <label for="add">Address:<span>*</span></label>
                         <input id="address" type="text" name="address" value=""
                             placeholder="Street at apartment number">
                     </p>
                     <p class="row-in-form">
-                        <label for="comment">Comment for shop:</label>
-                        <input id="comment" type="text" name="comment" value="" placeholder="Comment here">
+                        <label for="comment">Shipping Note:</label>
+                        <input id="comment" type="text" name="comment" value="" placeholder="comments here">
                     </p>
-                    {{-- <p class="row-in-form">--}}
-                        {{-- <label for="country">Country<span>*</span></label>--}}
-                        {{-- <input id="country" type="text" name="country" value="" placeholder="United States">--}}
-                        {{-- </p>--}}
-                    {{-- <p class="row-in-form">--}}
-                        {{-- <label for="zip-code">Postcode / ZIP:</label>--}}
-                        {{-- <input id="zip-code" type="number" name="zip-code" value=""
-                            placeholder="Your postal code">--}}
-                        {{-- </p>--}}
-                    {{-- <p class="row-in-form">--}}
-                        {{-- <label for="city">Town / City<span>*</span></label>--}}
-                        {{-- <input id="city" type="text" name="city" value="" placeholder="City name">--}}
-                        {{-- </p>--}}
-                    {{-- <p class="row-in-form fill-wife">--}}
-                        {{-- <label class="checkbox-field">--}}
-                            {{-- <input name="create-account" id="create-account" value="forever" type="checkbox">--}}
-                            {{-- <span>Create an account?</span>--}}
-                            {{-- </label>--}}
-                        {{-- <label class="checkbox-field">--}}
-                            {{-- <input name="different-add" id="different-add" value="forever" type="checkbox">--}}
-                            {{-- <span>Ship to a different address?</span>--}}
-                            {{-- </label>--}}
-                    </p>
+{{--                     <p class="row-in-form">--}}
+{{--                         <label for="country">Country<span>*</span></label>--}}
+{{--                         <input id="country" type="text" name="country" value="" placeholder="United States">--}}
+{{--                         </p>--}}
+{{--                     <p class="row-in-form">--}}
+{{--                         <label for="zip-code">Postcode / ZIP:</label>--}}
+{{--                         <input id="zip-code" type="number" name="zip-code" value=""--}}
+{{--                            placeholder="Your postal code">--}}
+{{--                         </p>--}}
+{{--                     <p class="row-in-form">--}}
+{{--                         <label for="city">Town / City<span>*</span></label>--}}
+{{--                         <input id="city" type="text" name="city" value="" placeholder="City name">--}}
+{{--                         </p>--}}
+{{--                     <p class="row-in-form fill-wife">--}}
+{{--                         <label class="checkbox-field">--}}
+{{--                             <input name="create-account" id="create-account" value="forever" type="checkbox">--}}
+{{--                             <span>Create an account?</span>--}}
+{{--                             </label>--}}
+{{--                         <label class="checkbox-field">--}}
+{{--                             <input name="different-add" id="different-add" value="forever" type="checkbox">--}}
+{{--                             <span>Ship to a different address?</span>--}}
+{{--                             </label>--}}
+{{--                    </p>--}}
                 </form>
             </div>
             <div class="summary summary-checkout">
@@ -73,16 +73,16 @@
                     <h4 class="title-box">Payment Method</h4>
                     <p class="summary-info"><span class="title">Check / Money order</span></p>
                     <p class="summary-info"><span class="title">Credit Cart (saved)</span></p>
-                    <div class="choose-payment-methods">                                          
+                    <div class="choose-payment-methods">
                         <label class="payment-method">
                             <input name="payment-method" id="payment-method-paypal" value="paypal" type="radio">
                             <span>Paypal</span>
-                            <span class="payment-desc">You can pay with your paypal account</span>                            
+                            <span class="payment-desc">You can pay with your paypal account</span>
                         </label>
                         <label class="payment-method">
                             <input name="payment-method" id="payment-method-paypal" value="cod" type="radio">
                             <span>COD</span>
-                            <span class="payment-desc">You can pay when recieve goods</span>                           
+                            <span class="payment-desc">You can pay when recieve goods</span>
                         </label>
                     </div>
                     <p class="summary-info grand-total"><span>Grand Total</span> <span
@@ -90,17 +90,17 @@
                     <a href="" class="btn btn-medium" id='btnCod'>Place order now</a>
                     <a href="" class="btn btn-medium" id="btnPlaceOrder" style="display: none"></a>
                 </div>
-                <div class="summary-item shipping-method">
-                    <h4 class="title-box f-title">Shipping method</h4>
-                    <p class="summary-info"><span class="title">Flat Rate</span></p>
-                    <p class="summary-info"><span class="title">Fixed $50.00</span></p>
-                    <h4 class="title-box">Discount Codes</h4>
-                    <p class="row-in-form">
-                        <label for="coupon-code">Enter Your Coupon code:</label>
-                        <input id="coupon-code" type="text" name="coupon-code" value="" placeholder="">
-                    </p>
-                    <a href="#" class="btn btn-small">Apply</a>
-                </div>
+{{--                <div class="summary-item shipping-method">--}}
+{{--                    <h4 class="title-box f-title">Shipping method</h4>--}}
+{{--                    <p class="summary-info"><span class="title">Flat Rate</span></p>--}}
+{{--                    <p class="summary-info"><span class="title">Fixed $50.00</span></p>--}}
+{{--                    <h4 class="title-box">Discount Codes</h4>--}}
+{{--                    <p class="row-in-form">--}}
+{{--                        <label for="coupon-code">Enter Your Coupon code:</label>--}}
+{{--                        <input id="coupon-code" type="text" name="coupon-code" value="" placeholder="">--}}
+{{--                    </p>--}}
+{{--                    <a href="#" class="btn btn-small">Apply</a>--}}
+{{--                </div>--}}
             </div>
 
             <div class="wrap-show-advance-info-box style-1 box-in-site">
