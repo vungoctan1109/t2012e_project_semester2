@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExportExcelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController\BrandController;
 use App\Http\Controllers\AdminController\LaptopController;
@@ -58,6 +59,10 @@ Route::prefix('admin')->group(function () {
     Route::get('table', function () {
         return view('admin.template.table_data');
     });
+
+    #Export excel
+    Route::get('/export_excel', [ExportExcelController::class, 'index']);
+    Route::get('/export_excel/excel', [ExportExcelController::class, 'excel']);
 });
 
 Route::prefix('client/page')->group(function () {
