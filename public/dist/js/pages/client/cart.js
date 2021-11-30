@@ -99,6 +99,7 @@ $(document).ready(function () {
                         ),
                     },
                 });
+
                 $.ajax({
                     url: "/client/page/shopping/clear",
                     method: "POST",
@@ -118,10 +119,14 @@ $(document).ready(function () {
                                 })
                             );
                             $("#listCart").html(response.list_cart);
-                            Swal.fire("Deleted!", `${response.message}`, "success");
+                            Swal.fire(
+                                "Deleted!",
+                                `${response.message}`,
+                                "success"
+                            );
                         }
                     },
-                });               
+                });
             }
         });
     });

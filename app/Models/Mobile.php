@@ -12,30 +12,34 @@ class Mobile extends Model
     {
         return $this->belongsTo(Brand::class, 'brandID');
     }
-
+    public function order_detail()
+    {
+        return $this->hasMany(OrderDetail::class,'mobileID', 'id');        
+    }
     //get url thumbnail
-    public function getMainThumbnailAttribute(){
+    public function getMainThumbnailAttribute()
+    {
         $defaultThumbnail = 'https://res.cloudinary.com/quynv300192/image/upload/v1634800182/ixdpahcfqqmee12obutt.png';
-        if($this->thumbnail != null && strlen($this->thumbnail) >0){
+        if ($this->thumbnail != null && strlen($this->thumbnail) > 0) {
             $this->thumbnail = substr($this->thumbnail, 0, -1);
             $arrayThumbnail = explode(',', $this->thumbnail);
-            if(sizeof($arrayThumbnail)>0){
+            if (sizeof($arrayThumbnail) > 0) {
                 return $arrayThumbnail[0];
             }
         }
         return $defaultThumbnail;
     }
 
-//    public function getArrayThumbnailAttribute(){
-//        if($this->thumbnail != null && strlen($this->thumbnail) >0){
-//            $this->thumbnail = substr($this->thumbnail, 0, -1);
-//            $arrayThumbnail = explode(',', $this->thumbnail);
-//            if(sizeof($arrayThumbnail)>0){
-//                return $arrayThumbnail;
-//            }
-//        }
-//        return [];
-//    }
+    //    public function getArrayThumbnailAttribute(){
+    //        if($this->thumbnail != null && strlen($this->thumbnail) >0){
+    //            $this->thumbnail = substr($this->thumbnail, 0, -1);
+    //            $arrayThumbnail = explode(',', $this->thumbnail);
+    //            if(sizeof($arrayThumbnail)>0){
+    //                return $arrayThumbnail;
+    //            }
+    //        }
+    //        return [];
+    //    }
     public function getArrayThumbnailAttribute()
     {
         if ($this->thumbnail != null && strlen($this->thumbnail) > 0) {
@@ -49,27 +53,29 @@ class Mobile extends Model
     }
 
     //convert status
-    public function getStrStatusAttribute(){
+    public function getStrStatusAttribute()
+    {
         $strStatus = '';
-        if($this->status ==-1){
+        if ($this->status == -1) {
             $strStatus = 'out of stock';
         }
-        if($this->status ==0){
+        if ($this->status == 0) {
             $strStatus = 'stop selling';
         }
-        if($this->status ==1){
+        if ($this->status == 1) {
             $strStatus = 'on sale';
         }
-        if($this->status ==2){
+        if ($this->status == 2) {
             $strStatus = 'sale off';
         }
-        if($this->status ==3){
+        if ($this->status == 3) {
             $strStatus = 'top sale';
         }
         return $strStatus;
     }
 
-    public function getFPriceAttribute(){
+    public function getFPriceAttribute()
+    {
         return number_format($this->price, 0, ',', ' ');
     }
 
@@ -162,7 +168,7 @@ class Mobile extends Model
     public function scopeDateFilter($query, $request)
     {
         if ($request->has('start_date') && $request->has('end_date')) {
-            if(isset($request->start_date) && isset($request->end_date)){
+            if (isset($request->start_date) && isset($request->end_date)) {
                 $query->whereBetween('updated_at', [$request->start_date, $request->end_date]);
             }
         }
@@ -172,7 +178,7 @@ class Mobile extends Model
     public function scopePriceFilter($query, $request)
     {
         if ($request->has('from_price') && $request->has('to_price')) {
-            if(isset($request->from_price) && isset($request->to_price)){
+            if (isset($request->from_price) && isset($request->to_price)) {
                 $query->whereBetween('price', [$request->from_price, $request->to_price]);
             }
         }
@@ -183,7 +189,7 @@ class Mobile extends Model
     {
         if ($request->has('from_price')) {
             if (isset($request->from_price) && ($request->from_price) != 99) {
-                $query->where('price','>=', $request->from_price);
+                $query->where('price', '>=', $request->from_price);
                 return $query;
             }
         }
@@ -194,7 +200,7 @@ class Mobile extends Model
     {
         if ($request->has('to_price')) {
             if (isset($request->to_price) && ($request->to_price) != 99) {
-                $query->where('price','<=', $request->to_price);
+                $query->where('price', '<=', $request->to_price);
                 return $query;
             }
         }
