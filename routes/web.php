@@ -125,4 +125,6 @@ Route::prefix('client/page')->group(function () {
     #payPal
     Route::get('/checkout',[PayPalController::class, 'index'])->name('client.checkout');
     Route::get('/checkout-total',[PayPalController::class, 'getTotal'])->name('client.checkout_total');
+//    Update order checkout
+    Route::post('/update/checkout_order', [OrderController::class, 'update'])->name('order.update.checkout');
 });

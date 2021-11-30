@@ -11,7 +11,8 @@ $(document).ready(function (e) {
         method: "GET",
         success: function (response) {
             total = response.paypal_format;
-            total_vnd = response.total.toLocaleString('it-IT', {style : 'currency', currency : 'VND'});;
+            total_vnd = response.total.toLocaleString('it-IT', {style: 'currency', currency: 'VND'});
+            ;
             $('#grand-total-price').html(total_vnd)
         },
     });
@@ -21,7 +22,7 @@ $(document).ready(function (e) {
             $("#btnPlaceOrder").show();
             $("#btnCod").hide();
         }
-        if($(this).is(":checked") && $(this).val() == "cod")  {
+        if ($(this).is(":checked") && $(this).val() == "cod") {
             $("#btnPlaceOrder").hide();
             $("#btnCod").show();
         }
@@ -69,11 +70,26 @@ $(document).ready(function (e) {
                         method: "post",
                         data: data1,
                         success: function (resp) {
-                            window.location.href = "/client/page/shop";
+                            var orderID = resp.orderID;
+                            let data3 = {'id': orderID};
+                            $.ajax({
+                                url: "/client/page/update/checkout_order",
+                                method: "post",
+                                data: data3,
+                                success: function () {
+                                    window.location.href = "/client/page/thankyou";
+                                }
+                            })
                         },
                     });
-                    window.alert("Thank you for your purchase!");
-
+                    //sweetalert
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Payment success !!!!',
+                        showConfirmButton: false,
+                        timer: 2500
+                    })
                 });
             },
         },
@@ -89,10 +105,16 @@ window.addEventListener('DOMContentLoaded', function () {
             url: '/client/page/order',
             method: 'post',
             data: data1,
-            success: function(resp){
-                console.log(resp);
-                alert(resp.message)
-                window.location.href = "/client/page/shop";
+            success: function (resp) {
+                //sweetalert
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: `${resp.message}`,
+                    showConfirmButton: false,
+                    timer: 5500
+                })
+                window.location.href = "/client/page/thankyou";
             }
         })
     })
