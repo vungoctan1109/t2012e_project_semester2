@@ -105,12 +105,12 @@ class Mobile extends Model
     {
         if ($request->has('pagination_limit')) {
             switch ($request->pagination_limit) {
-                case 'limit_5':
-                    return $query->paginate(5);
-                case 'limit_10':
-                    return $query->paginate(10);
-                case 'limit_20':
-                    return $query->paginate(20);
+                case 'limit_9':
+                    return $query->paginate(9);
+                case 'limit_18':
+                    return $query->paginate(18);
+                case 'limit_32':
+                    return $query->paginate(32);
             }
         }
     }
@@ -174,6 +174,28 @@ class Mobile extends Model
         if ($request->has('from_price') && $request->has('to_price')) {
             if(isset($request->from_price) && isset($request->to_price)){
                 $query->whereBetween('price', [$request->from_price, $request->to_price]);
+            }
+        }
+        return $query;
+    }
+
+    public function scopeFromPrice($query, $request)
+    {
+        if ($request->has('from_price')) {
+            if (isset($request->from_price) && ($request->from_price) != 99) {
+                $query->where('price','>=', $request->from_price);
+                return $query;
+            }
+        }
+        return $query;
+    }
+
+    public function scopeToPrice($query, $request)
+    {
+        if ($request->has('to_price')) {
+            if (isset($request->to_price) && ($request->to_price) != 99) {
+                $query->where('price','<=', $request->to_price);
+                return $query;
             }
         }
         return $query;

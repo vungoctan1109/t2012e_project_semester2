@@ -64,11 +64,11 @@ Route::prefix('client/page')->group(function () {
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'
     ]);
-
-
     #shop
     Route::get('shop', [ShopMobileController::class, 'index'])->name('client.shop');
+    Route::get('/shop/fetch_data', [ShopMobileController::class, 'fetch_data']);
     Route::get('shop/mobile/{mobile_id}', [ShopMobileController::class, 'show']) ->name('client.show_phone');
+    Route::post('shop/mobile/filter', [ShopMobileController::class, 'fetch_data']) ->name('client.shop.fetch_data');
     #home
     Route::get('home', function () {
         return view('client.page.home');
@@ -77,7 +77,7 @@ Route::prefix('client/page')->group(function () {
     Route::get('cart', function () {
         return view('client.page.cart');
     })->name('client.cart');
-    #checkout    
+    #checkout
     #detail
     Route::get('detail', [ShopMobileController::class, 'get_detail'])->name('client.detail');
     #login
