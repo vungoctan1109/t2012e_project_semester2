@@ -73,20 +73,20 @@
                     <h4 class="title-box">Payment Method</h4>
                     <p class="summary-info"><span class="title">Check / Money order</span></p>
                     <p class="summary-info"><span class="title">Credit Cart (saved)</span></p>
-                    <div class="choose-payment-methods">                                          
+                    <div class="choose-payment-methods">
                         <label class="payment-method">
                             <input name="payment-method" id="payment-method-paypal" value="paypal" type="radio">
                             <span>Paypal</span>
-                            <span class="payment-desc">You can pay with your paypal account</span>                            
+                            <span class="payment-desc">You can pay with your paypal account</span>
                         </label>
                         <label class="payment-method">
                             <input name="payment-method" id="payment-method-paypal" value="cod" type="radio">
                             <span>COD</span>
-                            <span class="payment-desc">You can pay when recieve goods</span>                           
+                            <span class="payment-desc">You can pay when recieve goods</span>
                         </label>
                     </div>
                     <p class="summary-info grand-total"><span>Grand Total</span> <span
-                            class="grand-total-price">$100.00</span></p>
+                            id="grand-total-price"></span></p>
                     <a href="" class="btn btn-medium" id='btnCod'>Place order now</a>
                     <a href="" class="btn btn-medium" id="btnPlaceOrder" style="display: none"></a>
                 </div>

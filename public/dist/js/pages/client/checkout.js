@@ -1,5 +1,6 @@
 $(document).ready(function (e) {
     var total;
+    var total_vnd;
     $.ajaxSetup({
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
@@ -10,35 +11,22 @@ $(document).ready(function (e) {
         method: "GET",
         success: function (response) {
             total = response.paypal_format;
+            total_vnd = response.total.toLocaleString('it-IT', {style : 'currency', currency : 'VND'});;
+            $('#grand-total-price').html(total_vnd)
         },
     });
 
     $('input:radio[name="payment-method"]').change(function () {
-        if ($(this).is(":checked") && $(this).val() == "paypal") {            
+        if ($(this).is(":checked") && $(this).val() == "paypal") {
             $("#btnPlaceOrder").show();
             $("#btnCod").hide();
         }
         if($(this).is(":checked") && $(this).val() == "cod")  {
             $("#btnPlaceOrder").hide();
-            $("#btnCod").show();           
+            $("#btnCod").show();
         }
-    
-    });
-    $("#btnPlaceOrder").click(function (e) {
-        e.preventDefault();
-        var data1 = $("#formOrder").serialize();
-        $.ajax({
-            url: "/client/page/order",
-            method: "post",
-            data: data1,
-            success: function (resp) {
-                console.log(resp);
-                alert(resp.message);
-                window.location.href = "/client/page/shop";
-            },
-        });
-    });
 
+    });
     paypal.Button.render(
         {
             // Configure environment
@@ -80,16 +68,32 @@ $(document).ready(function (e) {
                         url: "/client/page/order",
                         method: "post",
                         data: data1,
-                        success: function (resp) {                         
+                        success: function (resp) {
                             window.location.href = "/client/page/shop";
-                           
                         },
                     });
                     window.alert("Thank you for your purchase!");
-                  
+
                 });
             },
         },
         "#btnPlaceOrder"
     );
 });
+
+window.addEventListener('DOMContentLoaded', function () {
+    $('#btnCod').click(function (e) {
+        e.preventDefault();
+        var data1 = $('#formOrder').serialize();
+        $.ajax({
+            url: '/client/page/order',
+            method: 'post',
+            data: data1,
+            success: function(resp){
+                console.log(resp);
+                alert(resp.message)
+                window.location.href = "/client/page/shop";
+            }
+        })
+    })
+})

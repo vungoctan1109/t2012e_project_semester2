@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 
 class PayPalController extends Controller
 {
-    function getTotal(Request $request) {        
+    function getTotal(Request $request) {
         if($request -> ajax()) {
             $total = \Cart::getTotal();
             $vnd_to_usd = $total/22695;
             $paypal_format = round($vnd_to_usd, 2);
-            return  response() -> json(['paypal_format' => $paypal_format]);
-        }        
-    }   
-    function index(Request $request) {            
-        return view('client.page.checkout');;     
-    } 
+            return  response() -> json(['paypal_format' => $paypal_format, 'total' => $total]);
+        }
+    }
+    function index(Request $request) {
+        return view('client.page.checkout');;
+    }
 }
