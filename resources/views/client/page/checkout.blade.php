@@ -86,7 +86,7 @@
                         </label>
                     </div>
                     <p class="summary-info grand-total"><span>Grand Total</span> <span
-                            class="grand-total-price">$100.00</span></p>
+                            id="grand-total-price"></span></p>
                     <a href="" class="btn btn-medium" id='btnCod'>Place order now</a>
                     <a href="" class="btn btn-medium" id="btnPlaceOrder" style="display: none"></a>
                 </div>
