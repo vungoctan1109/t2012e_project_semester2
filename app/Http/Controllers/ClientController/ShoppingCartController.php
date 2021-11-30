@@ -7,33 +7,28 @@ use Illuminate\Http\Request;
 
 class ShoppingCartController extends Controller
 {
+    #LIST
     public function cartList()
     {
         $cartItems = \Cart::getContent();
         return view('client.page.cart')->with('cartItems', $cartItems);
     }
+    #SAVE
     public function addToCart(Request $request)
     {
-
-        if ($request->ajax()) {
-            // if($request->status == "") {
-            //     return response()->json(['message' => 'Add to cart successfully!!', 'total_quantity' => $total_quantity]);
-            // };
-            \Cart::add([
-                'id' => $request->id,
-                'name' => $request->name,
-                'price' => $request->price,
-                'quantity' => $request->quantity,
-                'attributes' => array(
-                    'image' => $request->image,
-                )
-            ]);
-            $total_quantity = \Cart::getTotalQuantity();
-            return response()->json(['message' => 'Add to cart successfully!!', 'total_quantity' => $total_quantity]);
-        }
-        // session()->flash('success', 'Product is Added to Cart Successfully !');
-        // return redirect()->route('cart.list');
+        \Cart::add([
+            'id' => $request->id,
+            'name' => $request->name,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'attributes' => array(
+                'image' => $request->image,
+            )
+        ]);
+        $total_quantity = \Cart::getTotalQuantity();
+        return response()->json(['status' => 200,'message' => 'Add to cart successfully!!', 'total_quantity' => $total_quantity]);
     }
+    #UPDATE
     public function updateCart(Request $request)
     {
         \Cart::update(
@@ -47,19 +42,29 @@ class ShoppingCartController extends Controller
         );
         $quantity = \Cart::getTotalQuantity();
         $total = \Cart::getTotal();
-        return response()->json(['message' => 'Add to cart successfully!!', 'quantity' => $quantity, 'total' => $total]);       
+        return response()->json(['status' => 200, 'message' => 'Add to cart successfully!!', 'quantity' => $quantity, 'total' => $total]);
     }
+    //REMOVE ITEM INTO CART
     public function removeCart(Request $request)
     {
         \Cart::remove($request->id);
-        session()->flash('success', 'Item Cart Remove Successfully !');
-        return redirect()->route('cart.list');
+        $quantity = \Cart::getTotalQuantity();
+        $total = \Cart::getTotal();       
+        if($quantity == 0)  {
+            $cartItems = \Cart::getContent();  
+            $list_cart = view('client.page.fetch_data.list_cart')->with('cartItems', $cartItems)->render();  
+            return response()->json(['status' => 200, 'message' => 'Remove item successfully!!', 'quantity' => $quantity, 'total' => $total,'list_cart' => $list_cart]);
+        }
+        return response()->json(['status' => 200, 'message' => 'Remove item successfully!!', 'quantity' => $quantity, 'total' => $total]);
     }
-
+    #CLEAR
     public function clearAllCart()
     {
         \Cart::clear();
-        session()->flash('success', 'All Item Cart Clear Successfully !');
-        return redirect()->route('cart.list');
+        $quantity = \Cart::getTotalQuantity();
+        $total = \Cart::getTotal();
+        $cartItems = \Cart::getContent();   
+        $list_cart = view('client.page.fetch_data.list_cart')->with('cartItems', $cartItems)->render();     
+        return response()->json(['status' => 200, 'message' => 'Clear cart successfully!!', 'quantity' => $quantity, 'total' => $total,'list_cart' => $list_cart]);
     }
 }
