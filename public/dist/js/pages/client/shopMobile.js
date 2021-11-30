@@ -10,7 +10,7 @@ $(document).ready(function () {
             success: function (response) {
                 $("#total_cart").text(response.total_quantity + " items");
                 Swal.fire({
-                    position: "top-end",
+                    position: "bottom-start",
                     icon: "success",
                     title: `${response.message}`,
                     showConfirmButton: false,
@@ -19,7 +19,7 @@ $(document).ready(function () {
             },
             error: function (response) {
                 Swal.fire({
-                    position: "top-end",
+                    position: "bottom-start",
                     icon: "error",
                     title: `${response.message}`,
                     showConfirmButton: false,

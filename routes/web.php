@@ -64,11 +64,13 @@ Route::prefix('client/page')->group(function () {
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'
     ]);
+    #thankyou 
+    Route::get('thankyou/{id}', [OrderController::class, 'show_thankyou'])->name('client.thankyou');
     #shop
     Route::get('shop', [ShopMobileController::class, 'index'])->name('client.shop');
     Route::get('/shop/fetch_data', [ShopMobileController::class, 'fetch_data']);
-    Route::get('shop/mobile/{mobile_id}', [ShopMobileController::class, 'show']) ->name('client.show_phone');
-    Route::post('shop/mobile/filter', [ShopMobileController::class, 'fetch_data']) ->name('client.shop.fetch_data');
+    Route::get('shop/mobile/{mobile_id}', [ShopMobileController::class, 'show'])->name('client.show_phone');
+    Route::post('shop/mobile/filter', [ShopMobileController::class, 'fetch_data'])->name('client.shop.fetch_data');
     #home
     Route::get('home', function () {
         return view('client.page.home');
@@ -96,10 +98,7 @@ Route::prefix('client/page')->group(function () {
     Route::get('contact', function () {
         return view('client.page.contact');
     })->name('client.contact');
-    #thankyou
-    Route::get('thankyou', function () {
-        return view('client.page.thankyou');
-    })->name('client.thankyou');
+
     #privacy policy
     Route::get('privacy', function () {
         return view('client.page.privacy');
@@ -123,8 +122,8 @@ Route::prefix('client/page')->group(function () {
         Route::post('clear', [ShoppingCartController::class, 'clearAllCart'])->name('cart.clear');
     });
     #payPal
-    Route::get('/checkout',[PayPalController::class, 'index'])->name('client.checkout');
-    Route::get('/checkout-total',[PayPalController::class, 'getTotal'])->name('client.checkout_total');
-//    Update order checkout
+    Route::get('/checkout', [PayPalController::class, 'index'])->name('client.checkout');
+    Route::get('/checkout-total', [PayPalController::class, 'getTotal'])->name('client.checkout_total');
+    //    Update order checkout
     Route::post('/update/checkout_order', [OrderController::class, 'update'])->name('order.update.checkout');
 });
