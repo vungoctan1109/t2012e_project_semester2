@@ -25,7 +25,7 @@ class MobileController extends Controller
         $mobiles = Mobile_Model::query()
             ->select('*')
             ->orderBy('created_at', 'DESC')
-            ->paginate(5);
+            ->paginate(9);
         if ($request->ajax()) {
             return view('admin.page.mobile.render_table', ['mobiles' => $mobiles, 'brands'=>$brands])->render();
         }
@@ -44,6 +44,8 @@ class MobileController extends Controller
                 ->dateFilter($request)
                 ->status($request)
                 ->priceFilter($request)
+                ->toPrice($request)
+                ->fromPrice($request)
                 ->Pagination($request);
             return view('admin.page.mobile.render_table')->with('mobiles', $mobiles)->render();
         }

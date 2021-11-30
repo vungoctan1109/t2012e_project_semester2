@@ -71,7 +71,7 @@
                                 <input type="hidden" name="product-cate" value="0" id="product-cate">
                                 <a href="#" class="link-control">All Category</a>
                                 <ul class="list-cate">
-                                    <li class="level-0">All Category</li>                                  
+                                    <li class="level-0">All Category</li>
                                     <li class="level-0">All Category</li>
                                     <li class="level-1">-Electronics</li>
                                     <li class="level-2">Batteries & Chargens</li>
@@ -152,16 +152,22 @@
                                     aria-hidden="true"></i></a>
                         </li>
                         <li class="menu-item">
+                            <a href="{{route('client.shop')}}" class="link-term mercado-item-title">Mobile</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{{route('client.shop')}}" class="link-term mercado-item-title">Laptop</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{{route('client.shop')}}" class="link-term mercado-item-title">Accessory</a>
+                        </li>
+{{--                        <li class="menu-item">--}}
+{{--                            <a href="{{route('cart.list')}}" class="link-term mercado-item-title">Cart</a>--}}
+{{--                        </li>--}}
+{{--                        <li class="menu-item">--}}
+{{--                            <a href="{{route('client.checkout')}}" class="link-term mercado-item-title">Checkout</a>--}}
+{{--                        </li>--}}
+                        <li class="menu-item">
                             <a href="{{route('client.about')}}" class="link-term mercado-item-title">About Us</a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="{{route('client.shop')}}" class="link-term mercado-item-title">Shop</a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="{{route('cart.list')}}" class="link-term mercado-item-title">Cart</a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="{{route('client.checkout')}}" class="link-term mercado-item-title">Checkout</a>
                         </li>
                         <li class="menu-item">
                             <a href="{{route('client.contact')}}" class="link-term mercado-item-title">Contact Us</a>
