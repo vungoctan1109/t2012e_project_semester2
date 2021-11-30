@@ -33,9 +33,9 @@
                             <div class="col-md-2 m-3">
                                 <label for="pagination_limit">Show</label>
                                 <select class="form-control" name="pagination_limit" id="pagination_limit">
-                                    <option value="limit_5" selected>Litmit 5</option>
-                                    <option value="limit_10">Litmit 10</option>
-                                    <option value="limit_20">Litmit 20</option>
+                                    <option value="limit_9" selected>Litmit 9</option>
+                                    <option value="limit_18">Litmit 18</option>
+                                    <option value="limit_32">Litmit 32</option>
                                 </select>
                             </div>
                             <div class="col-md-2 m-3">

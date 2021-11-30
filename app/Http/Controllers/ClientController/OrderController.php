@@ -93,7 +93,7 @@ class OrderController extends Controller
             }
             DB::commit();
             \Cart::clear();
-            return response()->json(['status' => 200, 'message' => 'save order successfully']);
+            return response()->json(['status' => 200, 'message' => 'save order successfully', 'orderID'=> $orderID1]);
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json(['status' => 500, 'message' => 'save order information false']);
@@ -132,9 +132,14 @@ class OrderController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $id = $request->get('id');
+        $result = DB::table('orders')->where('id', $id)->update([
+            'checkOut'=> true,
+            'updated_at' =>Carbon::now(),
+            'status'=>1
+        ]);
     }
 
     /**
