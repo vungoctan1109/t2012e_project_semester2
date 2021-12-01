@@ -22,10 +22,10 @@
                         <label for="fname">Full name<span>*</span></label>
                         <input id="name" type="text" name="name" value="" placeholder="Your name">
                     </p>
-{{--                    <p class="row-in-form">--}}
-{{--                        <label for="lname">last name<span>*</span></label>--}}
-{{--                        <input id="lname" type="text" name="lname" value="" placeholder="Your last name">--}}
-{{--                    </p>--}}
+                    <p class="row-in-form">
+                        <label for="lname">last name<span>*</span></label>
+                        <input id="lname" type="text" name="lname" value="" placeholder="Your last name">
+                    </p>
                     <p class="row-in-form">
                         <label for="email">Email Address:<span>*</span></label>
                         <input id="email" type="email" name="email" value="" placeholder="Type your email">
@@ -35,37 +35,39 @@
                         <input id="phone" type="number" name="phone" value="" placeholder="10 digits format">
                     </p>
                     <p class="row-in-form">
-                        <label for="add">Address:<span>*</span></label>
-                        <input id="address" type="text" name="address" value=""
-                            placeholder="Street at apartment number">
+                        <label for="add">Province:<span>*</span></label>
+                        <input type="text" list="listProvinces" id="province" type="text" name="address"
+                            placeholder="Your province" />                       
+                        <datalist id="listProvinces">
+                        </datalist>
+                    </p>
+                    <p class="row-in-form">
+                        <label for="add">District:<span>*</span></label>
+                        <input type="text" list="districts" id="district" type="text" name="address"
+                            placeholder="Your district" />
+                        <datalist id="districts">
+                        </datalist>
+                    </p>
+                    <p class="row-in-form">
+                        <label for="add">Ward:<span>*</span></label>
+                        <input type="text" list="wards" id="ward" type="text" name="address" placeholder="Your ward" />
+                        <datalist id="wards">                          
+                        </datalist>
                     </p>
                     <p class="row-in-form">
                         <label for="comment">Shipping Note:</label>
                         <input id="comment" type="text" name="comment" value="" placeholder="comments here">
                     </p>
-{{--                     <p class="row-in-form">--}}
-{{--                         <label for="country">Country<span>*</span></label>--}}
-{{--                         <input id="country" type="text" name="country" value="" placeholder="United States">--}}
-{{--                         </p>--}}
-{{--                     <p class="row-in-form">--}}
-{{--                         <label for="zip-code">Postcode / ZIP:</label>--}}
-{{--                         <input id="zip-code" type="number" name="zip-code" value=""--}}
-{{--                            placeholder="Your postal code">--}}
-{{--                         </p>--}}
-{{--                     <p class="row-in-form">--}}
-{{--                         <label for="city">Town / City<span>*</span></label>--}}
-{{--                         <input id="city" type="text" name="city" value="" placeholder="City name">--}}
-{{--                         </p>--}}
-{{--                     <p class="row-in-form fill-wife">--}}
-{{--                         <label class="checkbox-field">--}}
-{{--                             <input name="create-account" id="create-account" value="forever" type="checkbox">--}}
-{{--                             <span>Create an account?</span>--}}
-{{--                             </label>--}}
-{{--                         <label class="checkbox-field">--}}
-{{--                             <input name="different-add" id="different-add" value="forever" type="checkbox">--}}
-{{--                             <span>Ship to a different address?</span>--}}
-{{--                             </label>--}}
-{{--                    </p>--}}
+                    <p class="row-in-form fill-wife">
+                        <label class="checkbox-field">
+                            <input name="create-account" id="create-account" value="forever" type="checkbox">
+                            <span>Create an account?</span>
+                        </label>
+                        <label class="checkbox-field">
+                            <input name="different-add" id="different-add" value="forever" type="checkbox">
+                            <span>Ship to a different address?</span>
+                        </label>
+                    </p>
                 </form>
             </div>
             <div class="summary summary-checkout">
@@ -85,22 +87,22 @@
                             <span class="payment-desc">You can pay when recieve goods</span>
                         </label>
                     </div>
-                    <p class="summary-info grand-total"><span>Grand Total</span> <span
-                            id="grand-total-price"></span></p>
+                    <p class="summary-info grand-total"><span>Grand Total</span> <span id="grand-total-price"></span>
+                    </p>
                     <a href="" class="btn btn-medium" id='btnCod'>Place order now</a>
                     <a href="" class="btn btn-medium" id="btnPlaceOrder" style="display: none"></a>
                 </div>
-{{--                <div class="summary-item shipping-method">--}}
-{{--                    <h4 class="title-box f-title">Shipping method</h4>--}}
-{{--                    <p class="summary-info"><span class="title">Flat Rate</span></p>--}}
-{{--                    <p class="summary-info"><span class="title">Fixed $50.00</span></p>--}}
-{{--                    <h4 class="title-box">Discount Codes</h4>--}}
-{{--                    <p class="row-in-form">--}}
-{{--                        <label for="coupon-code">Enter Your Coupon code:</label>--}}
-{{--                        <input id="coupon-code" type="text" name="coupon-code" value="" placeholder="">--}}
-{{--                    </p>--}}
-{{--                    <a href="#" class="btn btn-small">Apply</a>--}}
-{{--                </div>--}}
+                <div class="summary-item shipping-method">
+                    <h4 class="title-box f-title">Shipping method</h4>
+                    <p class="summary-info"><span class="title">Flat Rate</span></p>
+                    <p class="summary-info"><span class="title">Fixed $50.00</span></p>
+                    <h4 class="title-box">Discount Codes</h4>
+                    <p class="row-in-form">
+                        <label for="coupon-code">Enter Your Coupon code:</label>
+                        <input id="coupon-code" type="text" name="coupon-code" value="" placeholder="">
+                    </p>
+                    <a href="#" class="btn btn-small">Apply</a>
+                </div>
             </div>
 
             <div class="wrap-show-advance-info-box style-1 box-in-site">
@@ -292,5 +294,6 @@
 
 @section('private_scripts')
 <script src="/dist/js/pages/client/checkout.js"></script>
+<script src="/dist/js/pages/client/address.js"></script>
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 @endsection
