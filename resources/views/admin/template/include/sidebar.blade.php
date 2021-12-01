@@ -98,12 +98,20 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
-                                    Manage Order
+                                    Manage Account
+
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
+                                    <a href="/client/page/user/create" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Create account</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/client/page/user" class="nav-link">
                                     <a href="/admin/order" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Show All & Search</p>
