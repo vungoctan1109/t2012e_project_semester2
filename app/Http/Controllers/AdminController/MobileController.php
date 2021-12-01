@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\AdminController;
 
 
+use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Mobile;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Brand as Brand_Model;
 use App\Models\Mobile as Mobile_Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Category as Category_Model;
 
@@ -126,7 +127,8 @@ class MobileController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = DB::table('mobiles')->where('id', '=', $id)->first();
+        return view('admin.page.mobile.detail_mobile', compact('result'));
     }
 
     /**

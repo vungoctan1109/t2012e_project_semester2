@@ -2,7 +2,7 @@
 @section('page-title','Admin | Form')
 @section('link_private')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <meta name="csrf-token" content="{{ csrf_token() }}"/>
+    <meta name="csrf-token" content="{{ csrf_token()}}"/>
     <style>
         .error {
             color: red;
