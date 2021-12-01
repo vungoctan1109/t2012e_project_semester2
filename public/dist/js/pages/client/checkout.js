@@ -11,9 +11,11 @@ $(document).ready(function (e) {
         method: "GET",
         success: function (response) {
             total = response.paypal_format;
-            total_vnd = response.total.toLocaleString('it-IT', {style: 'currency', currency: 'VND'});
-            ;
-            $('#grand-total-price').html(total_vnd)
+            total_vnd = response.total.toLocaleString("it-IT", {
+                style: "currency",
+                currency: "VND",
+            });
+            $("#grand-total-price").html(total_vnd);
         },
     });
 
@@ -26,7 +28,6 @@ $(document).ready(function (e) {
             $("#btnPlaceOrder").hide();
             $("#btnCod").show();
         }
-
     });
     paypal.Button.render(
         {
@@ -71,51 +72,91 @@ $(document).ready(function (e) {
                         data: data1,
                         success: function (resp) {
                             var orderID = resp.orderID;
-                            let data3 = {'id': orderID};
+                            let data3 = { id: orderID };
                             $.ajax({
                                 url: "/client/page/update/checkout_order",
                                 method: "post",
                                 data: data3,
-                                success: function () {
-                                    window.location.href = "/client/page/thankyou";
-                                }
-                            })
+                                success: function (resp) {
+                                    if (resp.status == 200) {
+                                        var status = "success";
+                                        alertAction(resp.message, status);
+                                        setTimeout(function () {
+                                            $.ajax({
+                                                url: `/client/page/thankyou/${resp.orderID}`,
+                                                method: "GET",
+                                                success: function () {
+                                                    window.location.href = `/client/page/thankyou/${resp.orderID}`;
+                                                },
+                                            });
+                                        }, 1000);
+                                    }
+                                    if (resp.status == 400) {
+                                        var status = "error";
+                                        alertAction(resp.message, status);
+                                    }
+                                    if (resp.status == 500) {
+                                        var status = "error";
+                                        alertAction(resp.message, status);
+                                    }
+                                },
+                            });
+                            //sweetalert
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "Payment success !!!!",
+                                showConfirmButton: false,
+                                timer: 2500,
+                            });
                         },
                     });
-                    //sweetalert
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Payment success !!!!',
-                        showConfirmButton: false,
-                        timer: 2500
-                    })
                 });
             },
         },
         "#btnPlaceOrder"
     );
-});
 
-window.addEventListener('DOMContentLoaded', function () {
-    $('#btnCod').click(function (e) {
+    $("#btnCod").click(function (e) {
         e.preventDefault();
-        var data1 = $('#formOrder').serialize();
+        var data1 = $("#formOrder").serialize();
         $.ajax({
-            url: '/client/page/order',
-            method: 'post',
+            url: "/client/page/order",
+            method: "post",
             data: data1,
             success: function (resp) {
                 //sweetalert
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: `${resp.message}`,
-                    showConfirmButton: false,
-                    timer: 5500
-                })
-                window.location.href = "/client/page/thankyou";
-            }
-        })
-    })
-})
+                if (resp.status == 200) {
+                    var status = "success";
+                    alertAction(resp.message, status);
+                    setTimeout(function () {
+                        $.ajax({
+                            url: `/client/page/thankyou/${resp.orderID}`,
+                            method: "GET",
+                            success: function () {
+                                window.location.href = `/client/page/thankyou/${resp.orderID}`;
+                            },
+                        });
+                    }, 1000);
+                }
+                if (resp.status == 400) {
+                    var status = "error";
+                    alertAction(resp.message, status);
+                }
+                if (resp.status == 500) {
+                    var status = "error";
+                    alertAction(resp.message, status);
+                }
+            },
+        });
+    });
+    function alertAction(message, status) {
+        Swal.fire({
+            position: "top-end",
+            icon: `${status}`,
+            title: `${message}`,
+            showConfirmButton: false,
+            timer: 1000,
+        });
+    }
+});

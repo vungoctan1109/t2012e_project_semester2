@@ -20,7 +20,6 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-
     }
 
 
@@ -87,13 +86,13 @@ class OrderController extends Controller
             $orderID1 = $order->id;
             foreach ($arrayOderDetail as $orderDetail) {
                 $orderDetail->orderID = $orderID1;
-                if ($orderDetail->quantity > 0){
+                if ($orderDetail->quantity > 0) {
                     $orderDetail->save();
                 }
             }
             DB::commit();
             \Cart::clear();
-            return response()->json(['status' => 200, 'message' => 'save order successfully', 'orderID'=> $orderID1]);
+            return response()->json(['status' => 200, 'message' => 'save order successfully', 'orderID' => $orderID1]);
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json(['status' => 500, 'message' => 'save order information false']);
@@ -136,10 +135,11 @@ class OrderController extends Controller
     {
         $id = $request->get('id');
         $result = DB::table('orders')->where('id', $id)->update([
-            'checkOut'=> true,
-            'updated_at' =>Carbon::now(),
-            'status'=>1
+            'checkOut' => true,
+            'updated_at' => Carbon::now(),
+            'status' => 1
         ]);
+        return response()->json(['status' => 200, 'message' => 'save order successfully', 'orderID' => $id]);
     }
 
     /**
@@ -151,5 +151,12 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function show_thankyou($id)
+    {
+        if ($order = Order::find($id)) {
+            $order_details = $order->order_detail;                        
+            return view('client.page.thankyou')->with('order', $order)->with('order_details', $order_details);
+        }
     }
 }

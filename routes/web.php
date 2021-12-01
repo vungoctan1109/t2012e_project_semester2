@@ -1,9 +1,14 @@
 <?php
 
-use App\Http\Controllers\AdminController\AccessoryController;
+use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\AdminController\CategoryController;
+use App\Http\Controllers\AdminController\BrandController;
+use App\Http\Controllers\AdminController\AccessoryController;
 use App\Http\Controllers\AdminController\LaptopController;
 use App\Http\Controllers\AdminController\MobileController;
+use App\Http\Controllers\AdminController\UserController;
+
 use App\Http\Controllers\ClientController\OrderController;
 use App\Http\Controllers\ClientController\PayPalController;
 use App\Http\Controllers\ClientController\ShopMobileController;
@@ -45,11 +50,11 @@ Route::prefix('admin')->group(function () {
     Route::resource('mobile', MobileController::class)->parameters([
         'mobile' => 'mobile_id'
     ]);
-    #1. laptop
+    #2. laptop
     Route::resource('laptop', LaptopController::class)->parameters([
         'laptop' => 'laptop_id'
     ]);
-    #1. accessory
+    #3. accessory
     Route::resource('accessory', AccessoryController::class)->parameters([
         'accessory' => 'accessory_id'
     ]);
@@ -57,6 +62,11 @@ Route::prefix('admin')->group(function () {
     Route::get('/order/fetch_data', [\App\Http\Controllers\AdminController\OrderController::class, 'fetch_data']);
     Route::resource('order', \App\Http\Controllers\AdminController\OrderController::class)->parameters([
         'order' => 'order_id'
+    ]);
+
+    #4. user
+    Route::resource('user', UserController::class)->parameters([
+        'user' => 'user_id'
     ]);
 
     Route::get('form', function () {
@@ -76,11 +86,13 @@ Route::prefix('client/page')->group(function () {
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'
     ]);
+    #thankyou
+    Route::get('thankyou/{id}', [OrderController::class, 'show_thankyou'])->name('client.thankyou');
     #shop
     Route::get('shop', [ShopMobileController::class, 'index'])->name('client.shop');
     Route::get('/shop/fetch_data', [ShopMobileController::class, 'fetch_data']);
-    Route::get('shop/mobile/{mobile_id}', [ShopMobileController::class, 'show']) ->name('client.show_phone');
-    Route::post('shop/mobile/filter', [ShopMobileController::class, 'fetch_data']) ->name('client.shop.fetch_data');
+    Route::get('shop/mobile/{mobile_id}', [ShopMobileController::class, 'show'])->name('client.show_phone');
+    Route::post('shop/mobile/filter', [ShopMobileController::class, 'fetch_data'])->name('client.shop.fetch_data');
     #home
     Route::get('home', function () {
         return view('client.page.home');
@@ -108,10 +120,7 @@ Route::prefix('client/page')->group(function () {
     Route::get('contact', function () {
         return view('client.page.contact');
     })->name('client.contact');
-    #thankyou
-    Route::get('thankyou', function () {
-        return view('client.page.thankyou');
-    })->name('client.thankyou');
+
     #privacy policy
     Route::get('privacy', function () {
         return view('client.page.privacy');
@@ -135,8 +144,8 @@ Route::prefix('client/page')->group(function () {
         Route::post('clear', [ShoppingCartController::class, 'clearAllCart'])->name('cart.clear');
     });
     #payPal
-    Route::get('/checkout',[PayPalController::class, 'index'])->name('client.checkout');
-    Route::get('/checkout-total',[PayPalController::class, 'getTotal'])->name('client.checkout_total');
-//    Update order checkout
+    Route::get('/checkout', [PayPalController::class, 'index'])->name('client.checkout');
+    Route::get('/checkout-total', [PayPalController::class, 'getTotal'])->name('client.checkout_total');
+    //    Update order checkout
     Route::post('/update/checkout_order', [OrderController::class, 'update'])->name('order.update.checkout');
 });
