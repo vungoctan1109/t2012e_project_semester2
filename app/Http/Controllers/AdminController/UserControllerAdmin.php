@@ -5,7 +5,7 @@ namespace App\Http\Controllers\AdminController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class LaptopController extends Controller
+class UserControllerAdmin extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class LaptopController extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**

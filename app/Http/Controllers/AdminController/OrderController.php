@@ -3,18 +3,39 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Models\Order as Order_model;
 
-class LaptopController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $order = Order_Model::query()
+            ->select('*')
+            ->orderBy('created_at', 'DESC')
+            ->paginate(9);
+        if ($request->ajax()) {
+            return view('admin.page.order.render_table', ['order' => $order])->render();
+        }
+        return view('admin.page.order.table_data', ['order' => $order]);
+    }
 
+    public function fetch_data(Request $request)
+    {
+        if ($request->ajax()) {
+            $order = Order_Model::query()
+                ->select('*')
+                ->sortBy($request)
+                ->name($request)
+                ->Pagination($request);
+            return view('admin.page.order.render_table')->with('order', $order)->render();
+        }
     }
 
     /**
