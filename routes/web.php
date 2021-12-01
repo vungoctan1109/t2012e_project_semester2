@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\ExportExcelController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController\BrandController;
+use App\Http\Controllers\AdminController\AccessoryController;
+use App\Http\Controllers\AdminController\CategoryController;
 use App\Http\Controllers\AdminController\LaptopController;
 use App\Http\Controllers\AdminController\MobileController;
 use App\Http\Controllers\ClientController\OrderController;
 use App\Http\Controllers\ClientController\PayPalController;
-use App\Http\Controllers\AdminController\CategoryController;
-use App\Http\Controllers\AdminController\AccessoryController;
 use App\Http\Controllers\ClientController\ShopMobileController;
 use App\Http\Controllers\ClientController\ShoppingCartController;
+use App\Http\Controllers\ExportExcelController;
+use App\Http\Controllers\AdminController\BrandController;
+
+use Illuminate\Support\Facades\Route;
 
 
 /*
@@ -52,6 +53,11 @@ Route::prefix('admin')->group(function () {
     Route::resource('accessory', AccessoryController::class)->parameters([
         'accessory' => 'accessory_id'
     ]);
+    #1. order
+    Route::get('/order/fetch_data', [\App\Http\Controllers\AdminController\OrderController::class, 'fetch_data']);
+    Route::resource('order', \App\Http\Controllers\AdminController\OrderController::class)->parameters([
+        'order' => 'order_id'
+    ]);
 
     Route::get('form', function () {
         return view('admin.template.form');
@@ -59,6 +65,7 @@ Route::prefix('admin')->group(function () {
     Route::get('table', function () {
         return view('admin.template.table_data');
     });
+
 
     #Export excel
     Route::get('/export_excel', [ExportExcelController::class, 'index']);

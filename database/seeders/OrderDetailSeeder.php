@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Carbon\Carbon;
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -15,520 +16,283 @@ class OrderDetailSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker::create('App\Order_details');
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         DB::table('order_details')->truncate();
         DB::table('order_details')->insert([
             [
-                'orderID'=> 1,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 1,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 1,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addMonth(-3),
+                'updated_at' => Carbon::now()->addMonth(-3)
             ],[
-                'orderID'=> 2,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 2,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 1,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addMonth(-3),
+                'updated_at' => Carbon::now()->addMonth(-3)
             ],[
-                'orderID'=> 3,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 3,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 2,
+                'mobileID' => $faker->numberBetween(1, 18),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-84),
+                'updated_at' => Carbon::now()->addDay(-84),
             ],[
-                'orderID'=> 4,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 4,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 2,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-84),
+                'updated_at' => Carbon::now()->addDay(-84)
             ],[
-                'orderID'=> 5,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 5,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 3,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-81),
+                'updated_at' => Carbon::now()->addDay(-81)
             ],[
-                'orderID'=> 6,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 6,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 3,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-81),
+                'updated_at' => Carbon::now()->addDay(-81)
             ],[
-                'orderID'=> 7,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 7,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 4,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-78),
+                'updated_at' => Carbon::now()->addDay(-78)
             ],[
-                'orderID'=> 8,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 8,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 4,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-78),
+                'updated_at' => Carbon::now()->addDay(-78)
             ],[
-                'orderID'=> 9,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 9,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 5,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-75),
+                'updated_at' => Carbon::now()->addDay(-75)
             ],[
-                'orderID'=> 10,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 10,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 5,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-75),
+                'updated_at' => Carbon::now()->addDay(-75)
             ],[
-                'orderID'=> 11,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 11,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 6,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-72),
+                'updated_at' => Carbon::now()->addDay(-72)
             ],[
-                'orderID'=> 12,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 12,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 6,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-72),
+                'updated_at' => Carbon::now()->addDay(-72)
             ],[
-                'orderID'=> 13,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 13,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 7,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-69),
+                'updated_at' => Carbon::now()->addDay(-69)
             ],[
-                'orderID'=> 14,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 14,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 7,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-69),
+                'updated_at' => Carbon::now()->addDay(-69)
             ],[
-                'orderID'=> 15,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 15,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 8,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-66),
+                'updated_at' => Carbon::now()->addDay(-66)
             ],[
-                'orderID'=> 16,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 16,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 8,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-66),
+                'updated_at' => Carbon::now()->addDay(-66)
             ],[
-                'orderID'=> 17,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 17,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 9,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-63),
+                'updated_at' => Carbon::now()->addDay(-63)
             ],[
-                'orderID'=> 18,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 18,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 9,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-63),
+                'updated_at' => Carbon::now()->addDay(-63)
             ],[
-                'orderID'=> 19,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 19,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 4,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-60),
+                'updated_at' => Carbon::now()->addDay(-60)
             ],[
-                'orderID'=> 20,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 20,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 10,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-60),
+                'updated_at' => Carbon::now()->addDay(-60)
             ],[
-                'orderID'=> 21,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 21,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 11,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-57),
+                'updated_at' => Carbon::now()->addDay(-57)
             ],[
-                'orderID'=> 22,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 22,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 11,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-57),
+                'updated_at' => Carbon::now()->addDay(-57)
             ],[
-                'orderID'=> 23,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 23,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 12,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-54),
+                'updated_at' => Carbon::now()->addDay(-54)
             ],[
-                'orderID'=> 24,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 24,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 12,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-54),
+                'updated_at' => Carbon::now()->addDay(-54)
             ],[
-                'orderID'=> 25,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 25,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 13,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-51),
+                'updated_at' => Carbon::now()->addDay(-51)
             ],[
-                'orderID'=> 26,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 26,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 13,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-51),
+                'updated_at' => Carbon::now()->addDay(-51)
             ],[
-                'orderID'=> 27,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 27,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 14,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-48),
+                'updated_at' => Carbon::now()->addDay(-48)
             ],[
-                'orderID'=> 28,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 28,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 14,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-48),
+                'updated_at' => Carbon::now()->addDay(-48)
             ],[
-                'orderID'=> 29,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 29,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
+                'orderID' => 15,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-45),
+                'updated_at' => Carbon::now()->addDay(-45)
             ],[
-                'orderID'=> 30,
-                'mobileID'=>  1,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'orderID'=> 30,
-                'mobileID'=>  2,
-                'quantity'=>  1,
-                'unitPrice'=>  22490000,
-                'discount'=>  0.25,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
+                'orderID' => 15,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-45),
+                'updated_at' => Carbon::now()->addDay(-45)
+            ],[
+                'orderID' => 16,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-42),
+                'updated_at' => Carbon::now()->addDay(-42)
+            ],[
+                'orderID' => 16,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-42),
+                'updated_at' => Carbon::now()->addDay(-42)
+            ],[
+                'orderID' => 17,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-39),
+                'updated_at' => Carbon::now()->addDay(-39)
+            ],[
+                'orderID' => 17,
+                'mobileID' => $faker->numberBetween(1, 26),
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-39),
+                'updated_at' => Carbon::now()->addDay(-39)
+            ]
         ]);
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }

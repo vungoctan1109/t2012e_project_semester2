@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\AdminController;
 
 
+use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Mobile;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Brand as Brand_Model;
 use App\Models\Mobile as Mobile_Model;
 use Illuminate\Support\Facades\DB;
