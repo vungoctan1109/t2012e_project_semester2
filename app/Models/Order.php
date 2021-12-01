@@ -59,9 +59,10 @@ class Order extends Model
             }
         }
         return $query;
-      
+    }
+
     public function order_detail()
     {
-        return $this->hasMany(OrderDetail::class,'orderID', 'id');        
+        return $this->hasMany(OrderDetail::class,'orderID', 'id');
     }
 }

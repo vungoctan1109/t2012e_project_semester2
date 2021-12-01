@@ -15,9 +15,8 @@ use App\Http\Controllers\ClientController\PayPalController;
 use App\Http\Controllers\ClientController\ShopMobileController;
 use App\Http\Controllers\ClientController\ShoppingCartController;
 use App\Http\Controllers\ExportExcelController;
-use App\Http\Controllers\AdminController\BrandController;
 
-use Illuminate\Support\Facades\Route;
+
 
 
 /*
