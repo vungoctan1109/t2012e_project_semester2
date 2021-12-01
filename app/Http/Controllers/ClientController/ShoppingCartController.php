@@ -49,10 +49,10 @@ class ShoppingCartController extends Controller
     {
         \Cart::remove($request->id);
         $quantity = \Cart::getTotalQuantity();
-        $total = \Cart::getTotal();       
+        $total = \Cart::getTotal();
         if($quantity == 0)  {
-            $cartItems = \Cart::getContent();  
-            $list_cart = view('client.page.fetch_data.list_cart')->with('cartItems', $cartItems)->render();  
+            $cartItems = \Cart::getContent();
+            $list_cart = view('client.page.fetch_data.list_cart')->with('cartItems', $cartItems)->render();
             return response()->json(['status' => 200, 'message' => 'Remove item successfully!!', 'quantity' => $quantity, 'total' => $total,'list_cart' => $list_cart]);
         }
         return response()->json(['status' => 200, 'message' => 'Remove item successfully!!', 'quantity' => $quantity, 'total' => $total]);
@@ -63,8 +63,8 @@ class ShoppingCartController extends Controller
         \Cart::clear();
         $quantity = \Cart::getTotalQuantity();
         $total = \Cart::getTotal();
-        $cartItems = \Cart::getContent();   
-        $list_cart = view('client.page.fetch_data.list_cart')->with('cartItems', $cartItems)->render();     
+        $cartItems = \Cart::getContent();
+        $list_cart = view('client.page.fetch_data.list_cart')->with('cartItems', $cartItems)->render();
         return response()->json(['status' => 200, 'message' => 'Clear cart successfully!!', 'quantity' => $quantity, 'total' => $total,'list_cart' => $list_cart]);
     }
 }

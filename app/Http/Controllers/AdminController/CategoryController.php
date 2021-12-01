@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\AdminController;
 
+use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Models\Category as Category_Model;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
@@ -19,8 +19,7 @@ class CategoryController extends Controller
      */
 
     public function index(Request $request)
-    {      
-
+    {
         $categories = Category_Model::query()
             ->select('*')
             ->orderBy('created_at', 'DESC')
