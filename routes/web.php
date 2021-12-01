@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController\BrandController;
 use App\Http\Controllers\AdminController\LaptopController;
@@ -43,13 +44,18 @@ Route::prefix('admin')->group(function () {
     Route::resource('mobile', MobileController::class)->parameters([
         'mobile' => 'mobile_id'
     ]);
-    #1. laptop
+    #2. laptop
     Route::resource('laptop', LaptopController::class)->parameters([
         'laptop' => 'laptop_id'
     ]);
-    #1. accessory
+    #3. accessory
     Route::resource('accessory', AccessoryController::class)->parameters([
         'accessory' => 'accessory_id'
+    ]);
+
+    #4. user
+    Route::resource('user', UserController::class)->parameters([
+        'user' => 'user_id'
     ]);
 
     Route::get('form', function () {
@@ -64,7 +70,7 @@ Route::prefix('client/page')->group(function () {
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'
     ]);
-    #thankyou 
+    #thankyou
     Route::get('thankyou/{id}', [OrderController::class, 'show_thankyou'])->name('client.thankyou');
     #shop
     Route::get('shop', [ShopMobileController::class, 'index'])->name('client.shop');

@@ -17,8 +17,14 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('fullName');
+            $table->string('phone');
+            $table->string('address');
+            $table->string('avatar')->default('https://res.cloudinary.com/tanvnth2012002/image/upload/v1638316998/default-avatar-profile-icon-vector-social-media-user-portrait-176256935_mlifmc.jpg');
+            $table->string('description')->nullable();
+            $table->integer('role');
+            $table->integer('status');
             $table->rememberToken();
             $table->timestamps();
         });
