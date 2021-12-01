@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use HoangPhi\VietnamMap\Models\Province;
+use HoangPhi\VietnamMap\Models\District;
+use HoangPhi\VietnamMap\Models\Ward;
 
 class OrderController extends Controller
 {
@@ -155,8 +158,25 @@ class OrderController extends Controller
     public function show_thankyou($id)
     {
         if ($order = Order::find($id)) {
-            $order_details = $order->order_detail;                        
+            $order_details = $order->order_detail;
             return view('client.page.thankyou')->with('order', $order)->with('order_details', $order_details);
         }
+    }
+    public function get_district(Request $request)
+    {
+        $province = Province::query()->select('*')->where('name', 'LIKE', '%' . $request->get('province') . '%')->first();
+        $districts = District::query()->select('*')->where('province_id', $province->id)->get();
+        return response()->json(['status' => 200, 'districts' => $districts]);
+    }
+    public function get_province()
+    {
+        $provinces = Province::all();
+        return response()->json(['status' => 200, 'provinces' => $provinces]);
+    }
+    public function get_ward(Request $request)
+    {
+        $district = District::query()->select('*')->where('name', 'LIKE', '%' . $request->get('district') . '%')->first();
+        $wards = Ward::query()->select('*')->where('district_id', $district->id)->get();       
+        return response()->json(['status' => 200, 'wards' => $wards]);
     }
 }

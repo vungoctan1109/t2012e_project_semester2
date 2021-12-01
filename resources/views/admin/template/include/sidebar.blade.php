@@ -14,8 +14,7 @@
                     </div>
                 </div>
                 <!-- SidebarSearch Form -->
-
-                <!-- Sidebar Menu -->
+            <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
@@ -100,6 +99,7 @@
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Manage Account
+
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -112,6 +112,24 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href="/client/page/user" class="nav-link">
+                                    <a href="/admin/order" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Show All & Search</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>
+                                    Manage Order Detail
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/admin/order_detail" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Show All & Search</p>
                                     </a>
