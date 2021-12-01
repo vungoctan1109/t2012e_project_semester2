@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\AdminController\UserController;
+use App\Http\Controllers\AdminController\UserControllerAdmin;
+use App\Http\Controllers\ClientController\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController\BrandController;
 use App\Http\Controllers\AdminController\LaptopController;
@@ -54,7 +55,7 @@ Route::prefix('admin')->group(function () {
     ]);
 
     #4. user
-    Route::resource('user', UserController::class)->parameters([
+    Route::resource('user', UserControllerAdmin::class)->parameters([
         'user' => 'user_id'
     ]);
 
@@ -67,6 +68,10 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::prefix('client/page')->group(function () {
+    Route::resource('user', UserController::class)->parameters([
+        'user' => 'user_id'
+    ]);
+
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'
     ]);
@@ -130,6 +135,6 @@ Route::prefix('client/page')->group(function () {
     #payPal
     Route::get('/checkout', [PayPalController::class, 'index'])->name('client.checkout');
     Route::get('/checkout-total', [PayPalController::class, 'getTotal'])->name('client.checkout_total');
-    //    Update order checkout
+    //Update order_checkout
     Route::post('/update/checkout_order', [OrderController::class, 'update'])->name('order.update.checkout');
 });
