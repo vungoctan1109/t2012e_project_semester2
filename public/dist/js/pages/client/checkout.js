@@ -1,4 +1,37 @@
 $(document).ready(function (e) {
+    //jquery validation
+    $("#formOrder").validate({
+        onfocusout: false,
+        onkeyup: false,
+        onclick: false,
+        rules: {
+            "name": {
+                required: true
+            },
+            "email": {
+                required: true
+            },
+            "phone": {
+                required: true
+            },
+            "province": {
+                required: true
+            },
+            "district": {
+                required: true
+            },
+            "ward": {
+                required: true
+            },
+            "address_detail": {
+                required: true
+            },
+            "comment": {
+                required: true
+            }
+        }
+    });
+
     var total;
     var total_vnd;
     $.ajaxSetup({
@@ -72,7 +105,7 @@ $(document).ready(function (e) {
                         data: data1,
                         success: function (resp) {
                             var orderID = resp.orderID;
-                            let data3 = { id: orderID };
+                            let data3 = {id: orderID};
                             $.ajax({
                                 url: "/client/page/update/checkout_order",
                                 method: "post",
@@ -150,6 +183,7 @@ $(document).ready(function (e) {
             },
         });
     });
+
     function alertAction(message, status) {
         Swal.fire({
             position: "top-end",

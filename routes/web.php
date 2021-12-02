@@ -31,6 +31,12 @@ use App\Http\Controllers\ExportExcelController;
 #admin
 
 Route::prefix('admin')->group(function () {
+    #user
+    Route::post('/update/user', [UserControllerAdmin::class, 'update'])->name('User.Info.Update');
+    Route::get('/users_admin/fetch_data', [UserControllerAdmin::class, 'fetch_data']);
+    Route::resource('user_admin', UserControllerAdmin::class)->parameters([
+        'user_admin' => 'user_admin_id'
+    ]);
     #category
     Route::get('/category/fetch_data', [CategoryController::class, 'fetch_data']);
     Route::resource('category', CategoryController::class)->parameters([
@@ -85,7 +91,7 @@ Route::prefix('admin')->group(function () {
 Route::prefix('client/page')->group(function () {
 
     #Route resource order
-    #thankyou 
+    #thankyou
     Route::get('thankyou/{id}', [OrderController::class, 'show_thankyou'])->name('client.thankyou');
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'
@@ -98,7 +104,7 @@ Route::prefix('client/page')->group(function () {
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'
     ]);
-   
+
     #shop
     Route::get('shop', [ShopMobileController::class, 'index'])->name('client.shop');
     Route::get('/shop/fetch_data', [ShopMobileController::class, 'fetch_data']);
