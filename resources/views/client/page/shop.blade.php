@@ -16,27 +16,111 @@
             <div class="row">
                 <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
                     <div class="banner-shop">
-                                            <a href="#" class="banner-link">
-                                                <figure><img src="/client-assets/assets/images/shop-banner.jpg" alt=""></figure>
-                                            </a>
+                        {{--                    <a href="#" class="banner-link">--}}
+                        {{--                        <figure><img src="/client-assets/assets/images/shop-banner.jpg" alt=""></figure>--}}
+                        {{--                    </a>--}}
+                        <div class="card-header">
+                            <form name="formFilter2" id="formFilter">
+                                {{csrf_field ()}}
+                                <div class="row ">
+                                    <div class="col-md-3 mt-3">
+                                        <label for="status">Filter by status</label>
+                                        <select class="form-control" name="status" id="status">
+                                            <option value="99" selected>---select---</option>
+                                            <option value="-1">Out of stock</option>
+                                            <option value="0">stop selling</option>
+                                            <option value="1">on sale</option>
+                                            <option value="2">sale off</option>
+                                            <option value="3">top sale</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label for="brandID">Filter by Brand</label>
+                                        <select class="form-control" name="brandID" id="brandID">
+                                            <option value="99" selected>---select---</option>
+                                            @foreach($brands as $brand)
+                                                <option value="{{$brand->id}}">{{$brand->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label for="from_price">Search price from</label>
+                                        <input type="number" class="form-control" id="from_price"
+                                               placeholder="Min price..."
+                                               name="from_price">
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label for="to_price">Search price to</label>
+                                        <input type="number" class="form-control" id="to_price"
+                                               placeholder="Max price..."
+                                               name="to_price">
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label for="ram">Filter by RAM</label>
+                                        <select class="form-control" name="ram" id="ram">
+                                            <option value="99" selected>---select---</option>
+                                            <option value="4">4 GB</option>
+                                            <option value="8">8 GB</option>
+                                            <option value="16">16 GB</option>
+                                            <option value="32">32 GB</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label for="name">Search by Name</label>
+                                        <input type="text" class="form-control" id="name" placeholder="mobile's name"
+                                               name="name">
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label for="sortBy">Sort by </label>
+                                        <select class="form-control" name="sortBy">
+                                            <option value="price_desc">Price Descending</option>
+                                            <option value="price_asc">Price Ascending</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label for="pagination_limit">Show</label>
+                                        <select class="form-control" name="pagination_limit" id="pagination_limit">
+                                            <option value="limit_9" selected>Litmit 9</option>
+                                            <option value="limit_18">Litmit 18</option>
+                                            <option value="limit_32">Litmit 32</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <button type="submit" class="btn btn-block btn-secondary m-4"
+                                                id="filterSubmit1">Find
+                                        </button>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <a href="/client/page/shop">
+                                            <button type="button" class="btn btn-block btn-default m-4"
+                                                    id="resetFilter">Refresh
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <div class="wrap-shop-control">
                         <h1 class="shop-title">Digital & Electronics</h1>
-                                            <div class="wrap-right">
-                                                <div class="sort-item orderby ">
-                                                    <select name="orderby" class="use-chosen">
-                                                        <option value="price_desc">Price Descending</option>
-                                                        <option value="price_asc">Price Ascending</option>
-                                                    </select>
-                                                </div>
-                                                <div class="sort-item product-per-page">
-                                                    <select name="post-per-page" class="use-chosen">
-                                                        <option value="limit_5" selected>Litmit 5</option>
-                                                        <option value="limit_10">Litmit 10</option>
-                                                        <option value="limit_20">Litmit 20</option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                        {{--                    <div class="wrap-right">--}}
+                        {{--                        <div class="sort-item orderby ">--}}
+                        {{--                            <select name="orderby" class="use-chosen">--}}
+                        {{--                                <option value="price_desc">Price Descending</option>--}}
+                        {{--                                <option value="price_asc">Price Ascending</option>--}}
+                        {{--                            </select>--}}
+                        {{--                        </div>--}}
+                        {{--                        <div class="sort-item product-per-page">--}}
+                        {{--                            <select name="post-per-page" class="use-chosen">--}}
+                        {{--                                <option value="limit_5" selected>Litmit 5</option>--}}
+                        {{--                                <option value="limit_10">Litmit 10</option>--}}
+                        {{--                                <option value="limit_20">Litmit 20</option>--}}
+                        {{--                            </select>--}}
+                        {{--                        </div>--}}
+                        {{--                    </div>--}}
                     </div>
                     <!--end wrap shop control-->
                     <!--pagination and fetch_data-->
