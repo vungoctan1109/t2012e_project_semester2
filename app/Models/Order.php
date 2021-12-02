@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Order extends Model
 {
     use HasFactory;
-
-
     //Scope start here
     #pagination
     public function scopePagination($query, $request)

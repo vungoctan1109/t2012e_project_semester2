@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController\OrderDetailController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController\CategoryController;
@@ -69,6 +70,12 @@ Route::prefix('admin')->group(function () {
         'user' => 'user_id'
     ]);
 
+    #6. order-detail
+    Route::get('/order-detail/fetch_data', [OrderDetailController::class, 'fetch_data']);
+    Route::resource('order-detail', OrderDetailController::class)->parameters([
+        'order-detail' => 'order-detail_id'
+    ]);
+
     Route::get('form', function () {
         return view('admin.template.form');
     });
@@ -85,7 +92,7 @@ Route::prefix('admin')->group(function () {
 Route::prefix('client/page')->group(function () {
 
     #Route resource order
-    #thankyou 
+    #thankyou
     Route::get('thankyou/{id}', [OrderController::class, 'show_thankyou'])->name('client.thankyou');
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'
@@ -98,7 +105,7 @@ Route::prefix('client/page')->group(function () {
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'
     ]);
-   
+
     #shop
     Route::get('shop', [ShopMobileController::class, 'index'])->name('client.shop');
     Route::get('/shop/fetch_data', [ShopMobileController::class, 'fetch_data']);
