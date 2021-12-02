@@ -20,9 +20,7 @@
             <tbody>
             @foreach($mobiles as $mobile)
                 <tr>
-                    <td style="text-align:center; vertical-align: middle"><input type="checkbox"
-                                                                                 style="width: 20px;height:20px;"
-                                                                                 value="{{$mobile->id}}"/></td>
+                    <td style="text-align:center; vertical-align: middle"><input type="checkbox" value="{{$mobile->id}}"/></td>
                     <td style="text-align:center; vertical-align: middle">{{$mobile->id}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$mobile->name}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$mobile->brand->name}}</td>
@@ -36,7 +34,7 @@
                     <td style="text-align:center; vertical-align: middle">{{date('d-m-Y', strtotime($mobile->created_at))}}</td>
                     <td style="text-align:center; vertical-align: middle">{{date('d-m-Y', strtotime($mobile->created_at))}}</td>
                     <td style="text-align:center; vertical-align: middle">
-                        <a class="btn btn-primary btn-sm m-1" href="admin/mobile/{{$mobile->id}}">
+                        <a class="btn btn-primary btn-sm m-1" href="{{route('mobile.show', $mobile->id)}}">
                             <i class="fas fa-folder">View</i>
                         </a>
                         <a class="btn btn-info btn-sm m-1" href="admin/mobile/{{$mobile->id}}/edit">
