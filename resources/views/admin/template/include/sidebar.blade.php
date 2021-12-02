@@ -99,7 +99,6 @@
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Manage Account
-
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
