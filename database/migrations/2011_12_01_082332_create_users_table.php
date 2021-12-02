@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->default('https://res.cloudinary.com/tanvnth2012002/image/upload/v1638316998/default-avatar-profile-icon-vector-social-media-user-portrait-176256935_mlifmc.jpg');
             $table->string('description')->nullable();
             $table->integer('role'); //1 admin, 0 customer
-            $table->integer('status')->default(1); // (1 đang hoạt động, 0 tạm khóa, -1 đã xóa)
+            $table->integer('status')->default(1); // (1 đang hoạt động, 0 tạm khóa)
             $table->date('email_verified_at')->nullable();
             $table->rememberToken()->nullable();
             $table->timestamps();
