@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController\OrderDetailController;
+use App\Http\ExportExcelController\ExportExcelBrandController;
+use App\Http\ExportExcelController\ExportExcelCategoryController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController\CategoryController;
@@ -14,7 +16,6 @@ use App\Http\Controllers\ClientController\OrderController;
 use App\Http\Controllers\ClientController\PayPalController;
 use App\Http\Controllers\ClientController\ShopMobileController;
 use App\Http\Controllers\ClientController\ShoppingCartController;
-use App\Http\Controllers\ExportExcelController;
 
 
 
@@ -84,9 +85,12 @@ Route::prefix('admin')->group(function () {
     });
 
 
-    #Export excel
-    Route::get('/export_excel', [ExportExcelController::class, 'index']);
-    Route::get('/export_excel/excel', [ExportExcelController::class, 'excel']);
+    #Export excel Category
+    Route::get('/export-excel/category', [ExportExcelCategoryController::class, 'index']);
+    Route::get('/export-excel/excel/category', [ExportExcelCategoryController::class, 'excel']);
+
+    #Export excel Brand
+    Route::get('/export-excel/excel/brand', [ExportExcelBrandController::class, 'excel']);
 });
 
 Route::prefix('client/page')->group(function () {

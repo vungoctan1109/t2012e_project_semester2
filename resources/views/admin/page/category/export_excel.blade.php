@@ -17,7 +17,7 @@
 <br />
 <div class="container">
     <div align="center">
-        <a href="/admin/export_excel/excel" class="btn btn-success">Export to Excel</a>
+        <a href="/admin/export-excel/excel/category" class="btn btn-success">Export to Excel</a>
     </div>
     <br />
     <div class="table-responsive">

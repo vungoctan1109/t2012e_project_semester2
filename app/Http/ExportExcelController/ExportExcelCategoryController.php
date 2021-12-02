@@ -1,17 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\ExportExcelController;
 
 use App\Exports\CategoryExport;
-use App\Models\Category;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
-//use Maatwebsite\Excel\Excel;
 
-
-
-class ExportExcelController extends Controller
+class ExportExcelCategoryController extends Controller
 {
     function index(){
         $category_data = DB::table('categories')->get();

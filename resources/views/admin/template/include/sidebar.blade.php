@@ -46,6 +46,12 @@
                             <p>Show All & Search</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/admin/export-excel/category" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Export Excel</p>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item">
@@ -67,6 +73,12 @@
                         <a href="/admin/brand" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Show All & Search</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/admin/export-excel/excel/brand" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Export Excel</p>
                         </a>
                     </li>
                 </ul>
