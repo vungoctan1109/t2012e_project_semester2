@@ -33,6 +33,12 @@ use App\Http\Controllers\ClientController\ShoppingCartController;
 #admin
 
 Route::prefix('admin')->group(function () {
+    #user
+    Route::post('/update/user', [UserControllerAdmin::class, 'update'])->name('User.Info.Update');
+    Route::get('/users_admin/fetch_data', [UserControllerAdmin::class, 'fetch_data']);
+    Route::resource('user_admin', UserControllerAdmin::class)->parameters([
+        'user_admin' => 'user_admin_id'
+    ]);
     #category
     Route::get('/category/fetch_data', [CategoryController::class, 'fetch_data']);
     Route::resource('category', CategoryController::class)->parameters([
