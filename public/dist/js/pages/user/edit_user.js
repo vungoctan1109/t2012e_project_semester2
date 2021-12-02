@@ -1,6 +1,7 @@
 window.addEventListener('DOMContentLoaded', function () {
 
     // upload file Thumbnail
+
     var btnThumbnailLink = document.getElementById("btnThumbnailLink");
     var myWidget_thumbnail = cloudinary.createUploadWidget(
         {
@@ -25,6 +26,8 @@ window.addEventListener('DOMContentLoaded', function () {
     btnThumbnailLink.addEventListener(
         "click",
         function () {
+            document.getElementById("list-preview-image").innerHTML = '';
+            document.getElementById("avatar").value = '';
             myWidget_thumbnail.open();
         },
         false
@@ -49,7 +52,7 @@ window.addEventListener('DOMContentLoaded', function () {
                     url: "https://api.cloudinary.com/v1_1/binht2012e/delete_by_token",
                     cache: false,
                     method: "POST",
-                    data: { token: delete_token },
+                    data: {token: delete_token},
                     success: function (result) {
                         if (result.result == "ok") {
                             btnDeleteImg.parent().remove();
@@ -93,6 +96,7 @@ window.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
     //remove array
     function removeElement(array, elem) {
         var index = array.indexOf(elem);
@@ -136,69 +140,66 @@ window.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
-    if (document.forms['formRegis'].reportValidity()){
-        //process submit button
-        $('form[name=frm-login]').submit(function(e){
-            e.preventDefault();
-            const email = $('input[name=email]').val();
-            const fullName = $('input[name=fullName]').val();
-            const password = $('input[name=password]').val();
-            const cfpassword = $('input[name=cfpassword]').val();
-            const phone = $('input[name=phone]').val();
-            const address = $('input[name=address]').val();
-            const description = $('input[name=description]').val();
-            const avatar = $('input[name=avatar]').val();
-            let data1 = {
-                'email':email,
-                'fullName':fullName,
-                'password':password,
-                'cfpassword':cfpassword,
-                'phone':phone,
-                'address':address,
-                'description':description,
-                'avatar':avatar
-            };
-            console.log(data1)
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                url:'/client/page/user',
-                method:'post',
-                data:data1,
-                success: function(res){
-                    if(res.status === 400){
-                        Swal.fire({
-                            icon: 'error',
-                            // title: 'Oops...',
-                            text: 'This email already exist',
-                            // footer: '<a href="">Why do I have this issue?</a>'
-                        })
-                    }
-                    if(res.status === 200){
-                        Swal.fire({
-                            icon: 'success',
-                            // title: 'Oops...',
-                            text: 'Register successfully !!!',
-                            // footer: '<a href="">Why do I have this issue?</a>'
-                        })
-                        setTimeout(function() {
-                            window.location.href = "/client/page/login";
-                        },2000)
 
-                    }
-                    if(res.status === 500){
-                        Swal.fire({
-                            icon: 'error',
-                            // title: 'Oops...',
-                            text: 'Register failed !!!',
-                            // footer: '<a href="">Why do I have this issue?</a>'
-                        })
-                    }
+    //process submit button
+    $('#formRegis').submit(function (e) {
+        e.preventDefault();
+        const id = $('input[name=id]').val();
+        const role = $('select[name=role]').val();
+        const fullName = $('input[name=fullName]').val();
+        const phone = $('input[name=phone]').val();
+        const address = $('input[name=address]').val();
+        const description = $('input[name=description]').val();
+        const avatar = $('input[name=avatar]').val();
+        let data1 = {
+            'id': id,
+            'role': role,
+            'fullName': fullName,
+            'phone': phone,
+            'address': address,
+            'description': description,
+            'avatar': avatar
+        };
+        console.log(data1)
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url:'/admin/update/user',
+            method:'POST',
+            data:data1,
+            success: function(res){
+                if(res.status === 400){
+                    Swal.fire({
+                        icon: 'error',
+                        // title: 'Oops...',
+                        text: 'This email already exist',
+                        // footer: '<a href="">Why do I have this issue?</a>'
+                    })
                 }
-            })
+                if(res.status === 200){
+                    Swal.fire({
+                        icon: 'success',
+                        // title: 'Oops...',
+                        text: 'Update successfully !!!',
+                        // footer: '<a href="">Why do I have this issue?</a>'
+                    })
+                    setTimeout(function() {
+                        window.location.href = "/admin/user_admin";
+                    },2000)
+
+                }
+                if(res.status === 500){
+                    Swal.fire({
+                        icon: 'error',
+                        // title: 'Oops...',
+                        text: 'Update failed !!!',
+                        // footer: '<a href="">Why do I have this issue?</a>'
+                    })
+                }
+            }
         })
-    }
+    })
 })
