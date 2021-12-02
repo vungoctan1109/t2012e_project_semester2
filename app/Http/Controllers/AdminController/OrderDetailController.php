@@ -31,7 +31,6 @@ class OrderDetailController extends Controller
             $order_details = OrderDetail_Model::query()
                 ->select('*')
                 ->sortBy($request)
-                ->name($request)
                 ->Pagination($request);
             return view('admin.page.order-detail.render_table')->with('order_details', $order_details)->render();
         }

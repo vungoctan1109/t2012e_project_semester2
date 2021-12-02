@@ -39,19 +39,10 @@
                                 </select>
                             </div>
                             <div class="col-md-2 m-3">
-                                <label for="name">Search by Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Name user..."
-                                       name="name">
-                            </div>
-                            <div class="col-md-2 m-3">
                                 <label for="sortBy">Sort by </label>
                                 <select class="form-control" name="sortBy">
                                     <option value="created_at_desc" selected>Created At (DESC)</option>
                                     <option value="created_at_asc">Created At (ASC)</option>
-                                    <option value="name_desc">Name (DESC)</option>
-                                    <option value="name_asc">Name (ASC)</option>
-                                    <option value="id_desc">ID (DESC)</option>
-                                    <option value="id_asc">ID (ASC)</option>
                                 </select>
                             </div>
                         </div>
