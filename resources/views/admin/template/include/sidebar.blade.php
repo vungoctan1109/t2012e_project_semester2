@@ -19,7 +19,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/admin/dashboard" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Dashboard
                     </p>
@@ -27,7 +28,7 @@
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-table"></i>
+                    <i class="nav-icon fas fa-boxes"></i>
                     <p>
                         Manage Category
                         <i class="fas fa-angle-left right"></i>
@@ -56,7 +57,7 @@
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-table"></i>
+                    <i class="nav-icon fas fa-tags"></i>
                     <p>
                         Manage Brand
                         <i class="fas fa-angle-left right"></i>
@@ -85,7 +86,7 @@
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-table"></i>
+                    <i class="nav-icon fas fa-mobile-alt"></i>
                     <p>
                         Manage Mobile
                         <i class="fas fa-angle-left right"></i>
@@ -108,7 +109,7 @@
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-table"></i>
+                    <i class="nav-icon fas fa-user"></i>
                     <p>Manage Account
                         <i class="fas fa-angle-left right"></i>
                     </p>
@@ -130,7 +131,7 @@
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-table"></i>
+                    <i class="nav-icon fas fa-archive"></i>
                     <p>Manage Order
                         <i class="fas fa-angle-left right"></i>
                     </p>
@@ -153,7 +154,7 @@
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-table"></i>
+                    <i class="nav-icon fas fa-box-open"></i>
                     <p>
                         Manage Order Detail
                         <i class="fas fa-angle-left right"></i>

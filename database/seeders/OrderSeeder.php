@@ -33,6 +33,36 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
+                'created_at'=>Carbon::now()->addMonth(-1),
+                'updated_at'=>Carbon::now()->addMonth(-1)
+            ],[
+                'userId'=> 1,
+                'status'=> $faker->numberBetween(0,3),
+                'name'=>  $faker ->name,
+                'comment'=> $faker ->sentence,
+                'province'=> 'Thanh Hóa',
+                'district'=> 'Hoằng Hóa',
+                'ward'=> 'Hoằng Tân',
+                'address_detail'=>  'Cẩm Trung, Hoằng Tân, Hoằng Hóa, Thanh Hóa',
+                'phone'=>  $faker->phoneNumber(),
+                'email'=>  $faker->email,
+                'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
+                'checkOut'=>  true,
+                'created_at'=>Carbon::now()->addMonth(-2),
+                'updated_at'=>Carbon::now()->addMonth(-2)
+            ],[
+                'userId'=> 1,
+                'status'=> $faker->numberBetween(0,3),
+                'name'=>  $faker ->name,
+                'comment'=> $faker ->sentence,
+                'province'=> 'Thanh Hóa',
+                'district'=> 'Hoằng Hóa',
+                'ward'=> 'Hoằng Tân',
+                'address_detail'=>  'Cẩm Trung, Hoằng Tân, Hoằng Hóa, Thanh Hóa',
+                'phone'=>  $faker->phoneNumber(),
+                'email'=>  $faker->email,
+                'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
+                'checkOut'=>  true,
                 'created_at'=>Carbon::now()->addMonth(-3),
                 'updated_at'=>Carbon::now()->addMonth(-3)
             ],[
@@ -48,8 +78,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-87),
-                'updated_at'=>Carbon::now()->addDay(-87)
+                'created_at'=>Carbon::now()->addMonth(-4),
+                'updated_at'=>Carbon::now()->addMonth(-4)
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -63,22 +93,7 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-84),
-                'updated_at'=>Carbon::now()->addDay(-84)
-            ],[
-                'userId'=> 1,
-                'status'=> $faker->numberBetween(0,3),
-                'name'=>  $faker ->name,
-                'comment'=> $faker ->sentence,
-                'province'=> 'Thanh Hóa',
-                'district'=> 'Hoằng Hóa',
-                'ward'=> 'Hoằng Tân',
-                'address_detail'=>  'Cẩm Trung, Hoằng Tân, Hoằng Hóa, Thanh Hóa',
-                'phone'=>  $faker->phoneNumber(),
-                'email'=>  $faker->email,
-                'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
-                'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-81),
+                'created_at'=>Carbon::now()->addMonth(-5),
                 'updated_at'=>Carbon::now()->addDay(-81)
             ],[
                 'userId'=> 1,
@@ -93,7 +108,7 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-78),
+                'created_at'=>Carbon::now()->addMonth(-6),
                 'updated_at'=>Carbon::now()->addDay(-78)
             ],[
                 'userId'=> 1,
@@ -108,7 +123,22 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-75),
+                'created_at'=>Carbon::now()->addMonth(-8),
+                'updated_at'=>Carbon::now()->addDay(-78)
+            ],[
+                'userId'=> 1,
+                'status'=> $faker->numberBetween(0,3),
+                'name'=>  $faker ->name,
+                'comment'=> $faker ->sentence,
+                'province'=> 'Thanh Hóa',
+                'district'=> 'Hoằng Hóa',
+                'ward'=> 'Hoằng Tân',
+                'address_detail'=>  'Cẩm Trung, Hoằng Tân, Hoằng Hóa, Thanh Hóa',
+                'phone'=>  $faker->phoneNumber(),
+                'email'=>  $faker->email,
+                'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
+                'checkOut'=>  true,
+                'created_at'=>Carbon::now()->addMonth(-9),
                 'updated_at'=>Carbon::now()->addDay(-75)
             ],[
                 'userId'=> 1,
@@ -123,8 +153,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-74),
-                'updated_at'=>Carbon::now()->addDay(-74)
+                'created_at'=>Carbon::now()->addMonth(-10),
+                'updated_at'=>Carbon::now()->addDay(-75)
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -138,8 +168,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-71),
-                'updated_at'=>Carbon::now()->addDay(-71)
+                'created_at'=>Carbon::now()->addMonth(-11),
+                'updated_at'=>Carbon::now()->addDay(-72)
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -153,8 +183,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-68),
-                'updated_at'=>Carbon::now()->addDay(-68)
+                'created_at'=>Carbon::now()->addMonth(-3),
+                'updated_at'=>Carbon::now()->addDay(-72)
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -168,8 +198,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-65),
-                'updated_at'=>Carbon::now()->addDay(-65)
+                'created_at'=>Carbon::now()->addMonth(-4),
+                'updated_at'=>Carbon::now()->addDay(-69)
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -183,8 +213,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-62),
-                'updated_at'=>Carbon::now()->addDay(-62)
+                'created_at'=>Carbon::now()->addMonth(-5),
+                'updated_at'=>Carbon::now()->addDay(-69)
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -198,8 +228,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-59),
-                'updated_at'=>Carbon::now()->addDay(-59)
+                'created_at'=>Carbon::now()->addMonth(-6),
+                'updated_at'=>Carbon::now()->addDay(-66)
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -213,8 +243,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-56),
-                'updated_at'=>Carbon::now()->addDay(-56)
+                'created_at'=>Carbon::now()->addMonth(-7),
+                'updated_at'=>Carbon::now()->addDay(-66)
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -228,8 +258,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-53),
-                'updated_at'=>Carbon::now()->addDay(-53)
+                'created_at'=>Carbon::now()->addMonth(-8),
+                'updated_at'=>Carbon::now()->addDay(-63)
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -243,8 +273,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-50),
-                'updated_at'=>Carbon::now()->addDay(-50)
+                'created_at'=>Carbon::now()->addMonth(-9),
+                'updated_at'=>Carbon::now()->addDay(-63)
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -258,8 +288,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-47),
-                'updated_at'=>Carbon::now()->addDay(-47)
+                'created_at'=>Carbon::now()->addMonth(-3),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -273,8 +303,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-44),
-                'updated_at'=>Carbon::now()->addDay(-44)
+                'created_at'=>Carbon::now()->addMonth(-3),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -288,8 +318,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-41),
-                'updated_at'=>Carbon::now()->addDay(-41)
+                'created_at'=>Carbon::now()->addMonth(-4),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -303,8 +333,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-38),
-                'updated_at'=>Carbon::now()->addDay(-38)
+                'created_at'=>Carbon::now()->addMonth(-5),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -318,8 +348,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-35),
-                'updated_at'=>Carbon::now()->addDay(-35)
+                'created_at'=>Carbon::now()->addMonth(-6),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -333,8 +363,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-32),
-                'updated_at'=>Carbon::now()->addDay(-32)
+                'created_at'=>Carbon::now()->addMonth(-7),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -348,8 +378,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-29),
-                'updated_at'=>Carbon::now()->addDay(-29)
+                'created_at'=>Carbon::now()->addMonth(-8),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -363,8 +393,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-26),
-                'updated_at'=>Carbon::now()->addDay(-26)
+                'created_at'=>Carbon::now()->addMonth(-10),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -378,8 +408,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-23),
-                'updated_at'=>Carbon::now()->addDay(-23)
+                'created_at'=>Carbon::now()->addMonth(-11),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -393,8 +423,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-20),
-                'updated_at'=>Carbon::now()->addDay(-20)
+                'created_at'=>Carbon::now()->addMonth(-12),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -408,8 +438,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-17),
-                'updated_at'=>Carbon::now()->addDay(-17)
+                'created_at'=>Carbon::now()->addMonth(-1),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -423,8 +453,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-14),
-                'updated_at'=>Carbon::now()->addDay(-14)
+                'created_at'=>Carbon::now()->addMonth(-3),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -438,8 +468,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-11),
-                'updated_at'=>Carbon::now()->addDay(-11)
+                'created_at'=>Carbon::now()->addMonth(-2),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -453,8 +483,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-8),
-                'updated_at'=>Carbon::now()->addDay(-8)
+                'created_at'=>Carbon::now()->addMonth(-4),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -468,8 +498,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-5),
-                'updated_at'=>Carbon::now()->addDay(-5)
+                'created_at'=>Carbon::now()->addMonth(-5),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -483,8 +513,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(-2),
-                'updated_at'=>Carbon::now()->addDay(-2)
+                'created_at'=>Carbon::now()->addMonth(-6),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -498,8 +528,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(1),
-                'updated_at'=>Carbon::now()->addDay(1)
+                'created_at'=>Carbon::now()->addMonth(-7),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -513,8 +543,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(4),
-                'updated_at'=>Carbon::now()->addDay(4)
+                'created_at'=>Carbon::now()->addMonth(-8),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -528,38 +558,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(7),
-                'updated_at'=>Carbon::now()->addDay(7)
-            ],[
-                'userId'=> 1,
-                'status'=> $faker->numberBetween(0,3),
-                'name'=>  $faker ->name,
-                'comment'=> $faker ->sentence,
-                'province'=> 'Thanh Hóa',
-                'district'=> 'Hoằng Hóa',
-                'ward'=> 'Hoằng Tân',
-                'address_detail'=>  'Cẩm Trung, Hoằng Tân, Hoằng Hóa, Thanh Hóa',
-                'phone'=>  $faker->phoneNumber(),
-                'email'=>  $faker->email,
-                'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
-                'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(10),
-                'updated_at'=>Carbon::now()->addDay(10)
-            ],[
-                'userId'=> 1,
-                'status'=> $faker->numberBetween(0,3),
-                'name'=>  $faker ->name,
-                'comment'=> $faker ->sentence,
-                'province'=> 'Thanh Hóa',
-                'district'=> 'Hoằng Hóa',
-                'ward'=> 'Hoằng Tân',
-                'address_detail'=>  'Cẩm Trung, Hoằng Tân, Hoằng Hóa, Thanh Hóa',
-                'phone'=>  $faker->phoneNumber(),
-                'email'=>  $faker->email,
-                'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
-                'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(13),
-                'updated_at'=>Carbon::now()->addDay(13)
+                'created_at'=>Carbon::now()->addMonth(-9),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -587,8 +587,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(19),
-                'updated_at'=>Carbon::now()->addDay(19)
+                'created_at'=>Carbon::now()->addMonth(-10),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -602,8 +602,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(22),
-                'updated_at'=>Carbon::now()->addDay(22)
+                'created_at'=>Carbon::now()->addMonth(-7),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -617,8 +617,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(25),
-                'updated_at'=>Carbon::now()->addDay(25)
+                'created_at'=>Carbon::now()->addMonth(-3),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -632,8 +632,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(28),
-                'updated_at'=>Carbon::now()->addDay(28)
+                'created_at'=>Carbon::now()->addMonth(-3),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -647,8 +647,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(31),
-                'updated_at'=>Carbon::now()->addDay(31)
+                'created_at'=>Carbon::now()->addMonth(-2),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -662,8 +662,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(34),
-                'updated_at'=>Carbon::now()->addDay(34)
+                'created_at'=>Carbon::now()->addMonth(-3),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -677,8 +677,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(37),
-                'updated_at'=>Carbon::now()->addDay(37)
+                'created_at'=>Carbon::now()->addMonth(-11),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -692,8 +692,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(40),
-                'updated_at'=>Carbon::now()->addDay(40)
+                'created_at'=>Carbon::now()->addMonth(-11),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -707,8 +707,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(43),
-                'updated_at'=>Carbon::now()->addDay(43)
+                'created_at'=>Carbon::now()->addMonth(-10),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -722,8 +722,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(47),
-                'updated_at'=>Carbon::now()->addDay(47)
+                'created_at'=>Carbon::now()->addMonth(-10),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -737,8 +737,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(50),
-                'updated_at'=>Carbon::now()->addDay(50)
+                'created_at'=>Carbon::now()->addMonth(-10),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -752,8 +752,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(53),
-                'updated_at'=>Carbon::now()->addDay(53)
+                'created_at'=>Carbon::now()->addMonth(-11),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -767,8 +767,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(60),
-                'updated_at'=>Carbon::now()->addDay(60)
+                'created_at'=>Carbon::now()->addMonth(-9),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -782,8 +782,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(63),
-                'updated_at'=>Carbon::now()->addDay(63)
+                'created_at'=>Carbon::now()->addMonth(-9),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -797,8 +797,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(66),
-                'updated_at'=>Carbon::now()->addDay(66)
+                'created_at'=>Carbon::now()->addMonth(-9),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -812,8 +812,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(697),
-                'updated_at'=>Carbon::now()->addDay(69)
+                'created_at'=>Carbon::now()->addMonth(-8),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -827,8 +827,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(72),
-                'updated_at'=>Carbon::now()->addDay(72)
+                'created_at'=>Carbon::now()->addMonth(-8),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -842,8 +842,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(75),
-                'updated_at'=>Carbon::now()->addDay(75)
+                'created_at'=>Carbon::now()->addMonth(-8),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -857,8 +857,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(78),
-                'updated_at'=>Carbon::now()->addDay(78)
+                'created_at'=>Carbon::now()->addMonth(-8),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -872,8 +872,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(81),
-                'updated_at'=>Carbon::now()->addDay(81)
+                'created_at'=>Carbon::now()->addMonth(-7),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -887,8 +887,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(84),
-                'updated_at'=>Carbon::now()->addDay(84)
+                'created_at'=>Carbon::now()->addMonth(-7),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -902,8 +902,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(87),
-                'updated_at'=>Carbon::now()->addDay(87)
+                'created_at'=>Carbon::now()->addMonth(-6),
+                'updated_at'=>Carbon::now()
             ],[
                 'userId'=> 1,
                 'status'=> $faker->numberBetween(0,3),
@@ -917,8 +917,8 @@ class OrderSeeder extends Seeder
                 'email'=>  $faker->email,
                 'totalPrice'=>  $faker->numberBetween(1,10)*10000000,
                 'checkOut'=>  true,
-                'created_at'=>Carbon::now()->addDay(90),
-                'updated_at'=>Carbon::now()->addDay(90)
+                'created_at'=>Carbon::now()->addMonth(-6),
+                'updated_at'=>Carbon::now()
             ]
         ]);
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
