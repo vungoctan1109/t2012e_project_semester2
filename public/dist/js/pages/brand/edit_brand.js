@@ -58,7 +58,7 @@ $(document).ready(function () {
     function alertActionFailed(message) {
         Swal.fire({
             position: "top-end",
-            icon: "error",
+            icon: "warning",
             title: `${message}`,
             showConfirmButton: false,
             timer: 1500,
