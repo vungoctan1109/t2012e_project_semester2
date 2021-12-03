@@ -22,21 +22,21 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'id'=> 1,
-                'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'email'=>'quynv@fpt.com',
+                'password'=>bcrypt('123123123'),
                 'fullName'=>'Nguyen Van Quy',
-                'phone'=>$faker->phoneNumber,
-                'address'=>$faker->address,
+                'phone'=>'0918466600',
+                'address'=>'136 Ho Tung Mau, Ha Noi',
                 'avatar'=>'https://res.cloudinary.com/binht2012e/image/upload/v1638387232/xv0w6vr4foru8sauxswz.webp,',
-                'role'=>$faker->numberBetween(0,1),
-                'status'=>$faker->numberBetween(0,1),
+                'role'=>1,
+                'status'=>1,
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'id'=> 2,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
             [
                 'id'=> 3,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
@@ -62,7 +62,7 @@ class UserSeeder extends Seeder
             [
                 'id'=> 4,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
@@ -75,7 +75,7 @@ class UserSeeder extends Seeder
             [
                 'id'=> 5,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
@@ -88,7 +88,7 @@ class UserSeeder extends Seeder
             [
                 'id'=> 6,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
@@ -101,7 +101,7 @@ class UserSeeder extends Seeder
             [
                 'id'=> 7,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
@@ -114,7 +114,7 @@ class UserSeeder extends Seeder
             [
                 'id'=> 8,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
@@ -127,7 +127,7 @@ class UserSeeder extends Seeder
             [
                 'id'=> 9,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
@@ -140,7 +140,7 @@ class UserSeeder extends Seeder
             [
                 'id'=> 10,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
@@ -153,7 +153,7 @@ class UserSeeder extends Seeder
             [
                 'id'=> 11,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
@@ -166,7 +166,7 @@ class UserSeeder extends Seeder
             [
                 'id'=> 12,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
@@ -179,7 +179,7 @@ class UserSeeder extends Seeder
             [
                 'id'=> 13,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
@@ -192,7 +192,7 @@ class UserSeeder extends Seeder
             [
                 'id'=> 14,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
@@ -205,7 +205,7 @@ class UserSeeder extends Seeder
             [
                 'id'=> 15,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
@@ -218,7 +218,7 @@ class UserSeeder extends Seeder
             [
                 'id'=> 16,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
@@ -231,7 +231,7 @@ class UserSeeder extends Seeder
             [
                 'id'=> 17,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
@@ -244,7 +244,7 @@ class UserSeeder extends Seeder
             [
                 'id'=> 18,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
@@ -257,7 +257,7 @@ class UserSeeder extends Seeder
             [
                 'id'=> 19,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
@@ -270,7 +270,7 @@ class UserSeeder extends Seeder
             [
                 'id'=> 20,
                 'email'=>$faker->email,
-                'password_hash'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
+                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
                 'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,

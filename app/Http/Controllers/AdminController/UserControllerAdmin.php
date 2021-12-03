@@ -48,7 +48,7 @@ class UserControllerAdmin extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.page.user.create_user');
     }
 
     /**
@@ -65,7 +65,7 @@ class UserControllerAdmin extends Controller
         if ($check_exist !== null) {
             return response()->json(['status' => 400, 'message' => 'this email account already exist, please try again!!!']);
         }
-        $user->password_hash = Hash::make($request->get('password'));
+        $user->password = Hash::make($request->get('password'));
         $user->fullName = $request->get('fullName');
         $user->phone = $request->get('phone');
         $user->address = $request->get('address');

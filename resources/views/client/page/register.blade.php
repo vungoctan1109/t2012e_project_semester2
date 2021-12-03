@@ -36,11 +36,11 @@
                                 </fieldset>
                                 <fieldset class="wrap-input item-width-in-half left-item ">
                                     <label for="frm-reg-pass">Password</label>
-                                    <input type="text" id="password" name="password" placeholder="Password">
+                                    <input type="password" id="password" name="password" placeholder="Password">
                                 </fieldset>
                                 <fieldset class="wrap-input item-width-in-half ">
                                     <label for="cfpassword">Confirm Password</label>
-                                    <input type="text" id="cfpassword" name="cfpassword"
+                                    <input type="password" id="cfpassword" name="cfpassword"
                                            placeholder="Confirm Password">
                                 </fieldset>
                                 <fieldset class="wrap-input">
