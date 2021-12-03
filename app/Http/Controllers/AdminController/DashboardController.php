@@ -19,6 +19,7 @@ class DashboardController extends Controller
             ->groupByRaw('MONTH(created_at)')
             ->get()
             ->pluck('sum_month');
+
         $chart = (new LarapexChart) -> areaChart()
             ->setTitle('Orders')
             ->addData('Order', $order -> toArray())
@@ -26,7 +27,7 @@ class DashboardController extends Controller
             ->setHeight(300);
         $chartTotal = (new LarapexChart) -> barChart()
             ->setTitle('Sale')
-            ->addData('Sale', $orderTotal -> toArray())
+            ->addData('Sales', $orderTotal -> toArray())
             ->setXAxis(['Jan', 'Feb', 'Mar', 'Apr','May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'])
             ->setHeight(300);
         return view('admin.template.dashboard', ['chart' =>$chart, 'chartTotal' => $chartTotal]);
