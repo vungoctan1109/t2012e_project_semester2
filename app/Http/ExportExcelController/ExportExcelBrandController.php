@@ -10,6 +10,6 @@ use Maatwebsite\Excel\Facades\Excel;
 class ExportExcelBrandController extends Controller
 {
     function excel(){
-        return Excel::download(new BrandExport(), 'brand.xlsx');
+        return Excel::download(new BrandExport(), 'Brands.xlsx');
     }
 }
