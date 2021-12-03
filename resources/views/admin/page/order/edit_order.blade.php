@@ -50,8 +50,8 @@
                             <span class="error email_error"></span>
                         </div>
                         <div class="form-group">
-                            <label for="name">Address</label>
-                            <input type="text" name="address"  class="form-control c" value="{{$result->address}}">
+                            <label for="address_detail">Address</label>
+                            <input type="text" name="address_detail"  class="form-control c" value="{{$result->address_detail}}">
                             <span class="error address_error"></span>
                         </div>
                         <div class="form-group">

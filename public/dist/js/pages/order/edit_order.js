@@ -5,11 +5,11 @@ $(document).ready(function () {
         var name = $('input[name="name"]').val();
         var phone = $('input[name="phone"]').val();
         var email = $('input[name="email"]').val();
-        var address = $('input[name="address"]').val();
+        var address_detail = $('input[name="address_detail"]').val();
         var totalPrice = $('input[name="totalPrice"]').val();
         var checkOut = $('input[name="checkOut"]').val();
         var comment = $('textarea[name="comment"]').val();
-        var data = { name: name, phone: phone, email: email, address: address, totalPrice: totalPrice, checkOut: checkOut, comment: comment};
+        var data = { name: name, phone: phone, email: email, address_detail: address_detail, totalPrice: totalPrice, checkOut: checkOut, comment: comment};
         $.ajaxSetup({
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),

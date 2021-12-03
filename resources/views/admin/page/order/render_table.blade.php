@@ -25,7 +25,7 @@
                     <td style="text-align:center; vertical-align: middle">{{$ord->userId}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$ord->name}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$ord->comment}}</td>
-                    <td style="text-align:center; vertical-align: middle">{{$ord->address}}</td>
+                    <td style="text-align:center; vertical-align: middle">{{$ord->address_detail}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$ord->phone}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$ord->email}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$ord->totalPrice}}</td>

@@ -100,7 +100,7 @@ class OrderControllerAdmin extends Controller
             'name' => 'required',
             'phone' => 'required',
             'email' => 'required',
-            'address' => 'required',
+            'address_detail' => 'required',
             'totalPrice' => 'required',
             'checkOut' => 'required',
             'comment' => 'required'
