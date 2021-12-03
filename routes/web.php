@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController\OrderControllerAdmin;
 use App\Http\Controllers\AdminController\OrderDetailController;
 use App\Http\ExportExcelController\ExportExcelBrandController;
 use App\Http\ExportExcelController\ExportExcelCategoryController;
+use App\Http\ExportExcelController\ExportExcelOrderController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController\CategoryController;
@@ -67,9 +69,9 @@ Route::prefix('admin')->group(function () {
     ]);
 
     #4. order
-    Route::get('/order/fetch_data', [\App\Http\Controllers\AdminController\OrderController::class, 'fetch_data']);
-    Route::resource('order', \App\Http\Controllers\AdminController\OrderController::class)->parameters([
-        'order' => 'order_id'
+    Route::get('/order/fetch_data', [OrderControllerAdmin::class, 'fetch_data']);
+    Route::resource('orders', OrderControllerAdmin::class)->parameters([
+        'orders' => 'order_id'
     ]);
 
     #5. user
@@ -97,6 +99,9 @@ Route::prefix('admin')->group(function () {
 
     #Export excel Brand
     Route::get('/export-excel/excel/brand', [ExportExcelBrandController::class, 'excel']);
+
+    #Export excel Order
+    Route::get('/export-excel/excel/order', [ExportExcelOrderController::class, 'excel']);
 });
 
 Route::prefix('client/page')->group(function () {

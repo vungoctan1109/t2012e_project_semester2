@@ -4,10 +4,14 @@ namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Models\Order as Order_model;
+use App\Models\Order as Order_Model;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
-class OrderController extends Controller
+
+class OrderControllerAdmin extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -78,7 +82,8 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $result = DB::table('orders')->where('id', '=', $id)->first();
+        return view('admin.page.order.edit_order', compact('result'));
     }
 
     /**
@@ -90,7 +95,26 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except(['_token']);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+            'totalPrice' => 'required',
+            'checkOut' => 'required',
+            'comment' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 400, 'errors' => $validator->errors()->toArray(), 'message' => 'Data not valid!']);
+        } else {
+            $result = DB::table('orders')->where('id', '=', $id)->update($data);
+            Order::where('id', $id)->update(array('updated_at' => Carbon::now()));
+            if ($result) {
+                return response()->json(['status' => 200, 'message' => 'Data have been successfully update']);
+            }
+            return response()->json(['status' => 500, 'message' => 'You do not change anything!']);
+        }
     }
 
     /**

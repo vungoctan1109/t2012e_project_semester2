@@ -138,9 +138,15 @@
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                         {{--                        <a href="/client/page/user" class="nav-link"></a>--}}
-                        <a href="/admin/order" class="nav-link">
+                        <a href="/admin/orders" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Show All & Search</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/admin/export-excel/excel/order" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Export Excel</p>
                         </a>
                     </li>
                 </ul>
