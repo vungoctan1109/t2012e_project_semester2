@@ -1,9 +1,10 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController\OrderDetailController;
 use App\Http\ExportExcelController\ExportExcelBrandController;
 use App\Http\ExportExcelController\ExportExcelCategoryController;
-use Illuminate\Support\Facades\Route;
+use App\Http\ExportExcelController\ExportExcelOrderController;
 
 use App\Http\Controllers\AdminController\CategoryController;
 use App\Http\Controllers\AdminController\BrandController;
@@ -11,6 +12,9 @@ use App\Http\Controllers\AdminController\AccessoryController;
 use App\Http\Controllers\AdminController\LaptopController;
 use App\Http\Controllers\AdminController\MobileController;
 use App\Http\Controllers\AdminController\UserControllerAdmin;
+use App\Http\Controllers\AdminController\OrderControllerAdmin;
+use App\Http\Controllers\AdminController\DashboardController;
+
 use App\Http\Controllers\ClientController\UserController;
 use App\Http\Controllers\ClientController\OrderController;
 use App\Http\Controllers\ClientController\PayPalController;
@@ -33,6 +37,7 @@ use App\Http\Controllers\ClientController\ShoppingCartController;
 #admin
 
 Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
     #user
     Route::post('/update/user', [UserControllerAdmin::class, 'update'])->name('User.Info.Update');
     Route::get('/users_admin/fetch_data', [UserControllerAdmin::class, 'fetch_data']);
@@ -67,9 +72,9 @@ Route::prefix('admin')->group(function () {
     ]);
 
     #4. order
-    Route::get('/order/fetch_data', [\App\Http\Controllers\AdminController\OrderController::class, 'fetch_data']);
-    Route::resource('order', \App\Http\Controllers\AdminController\OrderController::class)->parameters([
-        'order' => 'order_id'
+    Route::get('/order/fetch_data', [OrderControllerAdmin::class, 'fetch_data']);
+    Route::resource('orders', OrderControllerAdmin::class)->parameters([
+        'orders' => 'order_id'
     ]);
 
     #5. user
@@ -97,6 +102,9 @@ Route::prefix('admin')->group(function () {
 
     #Export excel Brand
     Route::get('/export-excel/excel/brand', [ExportExcelBrandController::class, 'excel']);
+
+    #Export excel Order
+    Route::get('/export-excel/excel/order', [ExportExcelOrderController::class, 'excel']);
 });
 
 Route::prefix('client/page')->group(function () {
