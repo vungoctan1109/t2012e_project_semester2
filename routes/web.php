@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\AdminController\AuthController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController\OrderDetailController;
@@ -34,6 +36,16 @@ use App\Http\Controllers\ClientController\ShoppingCartController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+#auth
+Route::prefix('auth')->group(function(){
+    Route::get('/adminlogin', [AuthController::class, 'adminGetLogin'])->name('admin.login');
+    Route::post('/adminlogin', [AuthController::class, 'adminPostLogin'])->name('admin.process.login');
+
+    Route::resource('account', AuthController::class)->parameters([
+        'auth' => 'auth_id'
+    ]);
+});
+
 #admin
 
 Route::prefix('admin')->group(function () {
@@ -105,7 +117,7 @@ Route::prefix('admin')->group(function () {
 
     #Export excel Order
     Route::get('/export-excel/excel/order', [ExportExcelOrderController::class, 'excel']);
-});
+}) ;
 
 Route::prefix('client/page')->group(function () {
 
