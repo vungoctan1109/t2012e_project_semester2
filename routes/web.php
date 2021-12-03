@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController\DashboardController;
 use App\Http\Controllers\AdminController\OrderDetailController;
 use App\Http\ExportExcelController\ExportExcelBrandController;
 use App\Http\ExportExcelController\ExportExcelCategoryController;
@@ -33,6 +34,7 @@ use App\Http\Controllers\ClientController\ShoppingCartController;
 #admin
 
 Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
     #user
     Route::post('/update/user', [UserControllerAdmin::class, 'update'])->name('User.Info.Update');
     Route::get('/users_admin/fetch_data', [UserControllerAdmin::class, 'fetch_data']);
