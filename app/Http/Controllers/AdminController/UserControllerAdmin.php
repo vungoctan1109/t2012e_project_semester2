@@ -48,7 +48,7 @@ class UserControllerAdmin extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.page.user.create_user');
     }
 
     /**

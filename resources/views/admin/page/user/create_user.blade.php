@@ -55,11 +55,11 @@
                         </div>
                         <div class="form-group">
                             <label for="name">Password</label>
-                            <input type="text" name="password" id="password" class="form-control col-3" placeholder="Password">
+                            <input type="password" name="password" id="password" class="form-control col-3" placeholder="Password">
                         </div>
                         <div class="form-group">
                             <label for="cfpassword">Confirm Password</label>
-                            <input type="text" name="cfpassword" class="form-control col-3" placeholder="Confirm Password">
+                            <input type="password" name="cfpassword" class="form-control col-3" placeholder="Confirm Password">
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number</label>

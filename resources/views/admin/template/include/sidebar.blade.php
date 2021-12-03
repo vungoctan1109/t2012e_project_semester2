@@ -115,7 +115,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/client/page/user/create" class="nav-link">
+                        <a href="/admin/user_admin/create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Create account</p>
                         </a>
