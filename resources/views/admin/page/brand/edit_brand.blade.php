@@ -58,5 +58,5 @@
 @endSection
 @section('script_private')
     <script src="/dist/js/pages/brand/edit_brand.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endSection
