@@ -34,81 +34,81 @@ class CategorySeeder extends Seeder
             ],
             [
                 'id'=> 3,
-                'name'=>'Headphone',
+                'name'=>'Accessory',
                 'description'=>'accessories for computers and laptops',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
-            [
-                'id'=> 4,
-                'name'=>'Backup Charger',
-                'description'=>'accessories for computers and laptops',
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'id'=> 5,
-                'name'=>'Memory Card',
-                'description'=>'accessories for computers and laptops',
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'id'=> 6,
-                'name'=>'Screen Protector',
-                'description'=>'accessories for computers and laptops',
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'id'=> 7,
-                'name'=>'USB-Hard Drive',
-                'description'=>'accessories for computers and laptops',
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'id'=> 8,
-                'name'=>'Charging Cable',
-                'description'=>'accessories for computers and laptops',
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'id'=> 9,
-                'name'=>'Mouse',
-                'description'=>'accessories for computers and laptops',
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'id'=> 10,
-                'name'=>'Keyboard',
-                'description'=>'accessories for computers and laptops',
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'id'=> 11,
-                'name'=>'Laptop backpack',
-                'description'=>'accessories for computers and laptops',
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'id'=> 12,
-                'name'=>'TV Box',
-                'description'=>'accessories for computers and laptops',
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'id'=> 13,
-                'name'=>'Router',
-                'description'=>'accessories for computers and laptops',
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ]
+            // [
+            //     'id'=> 4,
+            //     'name'=>'Backup Charger',
+            //     'description'=>'accessories for computers and laptops',
+            //     'created_at'=>Carbon::now(),
+            //     'updated_at'=>Carbon::now()
+            // ],
+            // [
+            //     'id'=> 5,
+            //     'name'=>'Memory Card',
+            //     'description'=>'accessories for computers and laptops',
+            //     'created_at'=>Carbon::now(),
+            //     'updated_at'=>Carbon::now()
+            // ],
+            // [
+            //     'id'=> 6,
+            //     'name'=>'Screen Protector',
+            //     'description'=>'accessories for computers and laptops',
+            //     'created_at'=>Carbon::now(),
+            //     'updated_at'=>Carbon::now()
+            // ],
+            // [
+            //     'id'=> 7,
+            //     'name'=>'USB-Hard Drive',
+            //     'description'=>'accessories for computers and laptops',
+            //     'created_at'=>Carbon::now(),
+            //     'updated_at'=>Carbon::now()
+            // ],
+            // [
+            //     'id'=> 8,
+            //     'name'=>'Charging Cable',
+            //     'description'=>'accessories for computers and laptops',
+            //     'created_at'=>Carbon::now(),
+            //     'updated_at'=>Carbon::now()
+            // ],
+            // [
+            //     'id'=> 9,
+            //     'name'=>'Mouse',
+            //     'description'=>'accessories for computers and laptops',
+            //     'created_at'=>Carbon::now(),
+            //     'updated_at'=>Carbon::now()
+            // ],
+            // [
+            //     'id'=> 10,
+            //     'name'=>'Keyboard',
+            //     'description'=>'accessories for computers and laptops',
+            //     'created_at'=>Carbon::now(),
+            //     'updated_at'=>Carbon::now()
+            // ],
+            // [
+            //     'id'=> 11,
+            //     'name'=>'Laptop backpack',
+            //     'description'=>'accessories for computers and laptops',
+            //     'created_at'=>Carbon::now(),
+            //     'updated_at'=>Carbon::now()
+            // ],
+            // [
+            //     'id'=> 12,
+            //     'name'=>'TV Box',
+            //     'description'=>'accessories for computers and laptops',
+            //     'created_at'=>Carbon::now(),
+            //     'updated_at'=>Carbon::now()
+            // ],
+            // [
+            //     'id'=> 13,
+            //     'name'=>'Router',
+            //     'description'=>'accessories for computers and laptops',
+            //     'created_at'=>Carbon::now(),
+            //     'updated_at'=>Carbon::now()
+            // ]
         ]);
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }

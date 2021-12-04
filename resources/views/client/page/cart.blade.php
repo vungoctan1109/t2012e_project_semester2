@@ -12,31 +12,7 @@
             </ul>
         </div>
         <div class=" main-content-area">
-            @include('client.page.fetch_data.list_cart')             
-            <div class="summary">
-                <div class="order-summary">
-                    <h4 class="title-box">Order Summary</h4>
-                    <p class="summary-info"><span class="title">Subtotal</span><b class="index"
-                            id="total_bill">{{number_format(Cart::getTotal(), 0, '', '.')}} VND</b></p>
-                    <p class="summary-info"><span class="title">Shipping</span><b class="index">Free Shipping</b>
-                    </p>
-                    <p class="summary-info total-info "><span class="title">Total</span><b class="index"
-                            id="total-info">{{number_format(Cart::getTotal(), 0, '', '.')}} VND</b></p>
-                    </p>
-                </div>
-                <div class="checkout-info">
-                    <label class="checkbox-field">
-                        <input class="frm-input " name="have-code" id="have-code" value="" type="checkbox"><span>I
-                            have promo code</span>
-                    </label>
-                    <a class="btn btn-checkout" href="{{route('client.checkout')}}">Check out</a>
-                    <a class="link-to-shop" href="shop.html">Continue Shopping<i class="fa fa-arrow-circle-right"
-                            aria-hidden="true"></i></a>
-                </div>
-                <div class="update-clear">
-                    <a class="btn btn-clear" href="#">Clear Shopping Cart</a>
-                </div>
-            </div>
+            @include('client.page.fetch_data.list_cart')          
             <div class="wrap-show-advance-info-box style-1 box-in-site">
                 <h3 class="title-box">Most Viewed Products</h3>
                 <div class="wrap-products">

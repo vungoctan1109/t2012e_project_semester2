@@ -152,13 +152,13 @@
                                     aria-hidden="true"></i></a>
                         </li>
                         <li class="menu-item">
-                            <a href="{{route('client.shop')}}" class="link-term mercado-item-title">Mobile</a>
+                            <a href="/client/page/shop/mobile" class="link-term mercado-item-title">Mobile</a>
                         </li>
                         <li class="menu-item">
-                            <a href="{{route('client.shop')}}" class="link-term mercado-item-title">Laptop</a>
+                            <a href="/client/page/shop/mobile" class="link-term mercado-item-title">Laptop</a>
                         </li>
                         <li class="menu-item">
-                            <a href="{{route('client.shop')}}" class="link-term mercado-item-title">Accessory</a>
+                            <a href="/client/page/shop/mobile" class="link-term mercado-item-title">Accessory</a>
                         </li>
 {{--                        <li class="menu-item">--}}
 {{--                            <a href="{{route('cart.list')}}" class="link-term mercado-item-title">Cart</a>--}}

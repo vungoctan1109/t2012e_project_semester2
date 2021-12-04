@@ -14,7 +14,7 @@ class Mobile extends Model
     }
     public function order_detail()
     {
-        return $this->hasMany(OrderDetail::class,'mobileID', 'id');        
+        return $this->hasMany(OrderDetail::class, 'mobileID', 'id');
     }
     //get url thumbnail
     public function getMainThumbnailAttribute()
@@ -142,11 +142,78 @@ class Mobile extends Model
         }
         return $query;
     }
+    #FIXME
+    #brand arr client
+    public function scopeBrandArr($query, $request)
+    {
+        if ($request->has('brandArrID')) {
+            if (count($request->get('brandArrID')) > 0 && !in_array("-1", $request->get('brandArrID'))) {
+                $query->whereIn('brandID', $request->get('brandArrID'));
+                return $query;
+            }
+            return $query;
+        }
+    }
+    #price mobile client
+    public function scopePriceClient($query, $request)
+    {
+        if ($request->has('price_filter')) {
+            if (isset($request->price_filter) && $request->price_filter != -1) {
+                switch ($request->price_filter) {
+                    case '1':
+                        return $query->where('price', '<=', 2000000);
+                    case '2':
+                        return $query->whereBetween('price', [2000000, 4000000]);
+                    case '3':
+                        return $query->whereBetween('price', [4000000, 7000000]);
+                    case '4':
+                        return $query->whereBetween('price', [7000000, 13000000]);
+                    case '5':
+                        return $query->where('price', '>=', 13000000);
+                }
+            }
+        }
+        return $query;
+    }
+    #battery
+    public function scopeBattery($query, $request)
+    {
+        if ($request->has('battery_filter')) {
+            if (isset($request->battery_filter) && $request->battery_filter != -1) {
+                switch ($request->battery_filter) {
+                    case '1':
+                        return $query->where('pin', '<=', 3000);
+                    case '2':
+                        return $query->whereBetween('pin', [3000, 4000]);                  
+                    case '3':
+                        return $query->where('pin', '>=', 4000);
+                }
+            }
+        }
+        return $query;
+    }
+    #screen
+    public function scopeScreen($query, $request)
+    {
+        if ($request->has('screen_filter')) {
+            if (isset($request->screen_filter) && $request->screen_filter != -1) {
+                switch ($request->screen_filter) {
+                    case '1':
+                        return $query->where('screenSize', '<=', 5);
+                    case '2':
+                        return $query->where('screenSize', '<=', 6);                 
+                    case '3':
+                        return $query->where('screenSize', '>=', 6);
+                }
+            }
+        }
+        return $query;
+    }
 
     public function scopeRam($query, $request)
     {
         if ($request->has('ram')) {
-            if (isset($request->ram) && ($request->ram) != 99) {
+            if (isset($request->ram) && ($request->ram) != 99 && ($request->ram) != -1) {
                 $query->where('ram', $request->ram);
                 return $query;
             }

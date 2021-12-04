@@ -1,27 +1,26 @@
 <?php
-
 use App\Http\Controllers\AdminController\AuthController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ExportExcelController;
 use App\Http\Controllers\AdminController\OrderDetailController;
 use App\Http\ExportExcelController\ExportExcelBrandController;
 use App\Http\ExportExcelController\ExportExcelCategoryController;
 use App\Http\ExportExcelController\ExportExcelOrderController;
-
 use App\Http\Controllers\AdminController\CategoryController;
 use App\Http\Controllers\AdminController\BrandController;
-use App\Http\Controllers\AdminController\AccessoryController;
 use App\Http\Controllers\AdminController\LaptopController;
 use App\Http\Controllers\AdminController\MobileController;
 use App\Http\Controllers\AdminController\UserControllerAdmin;
 use App\Http\Controllers\AdminController\OrderControllerAdmin;
 use App\Http\Controllers\AdminController\DashboardController;
-
 use App\Http\Controllers\ClientController\UserController;
 use App\Http\Controllers\ClientController\OrderController;
 use App\Http\Controllers\ClientController\PayPalController;
-use App\Http\Controllers\ClientController\ShopMobileController;
+use App\Http\Controllers\AdminController\AccessoryController;
+use App\Http\Controllers\ClientController\MobileShopController;
 use App\Http\Controllers\ClientController\ShoppingCartController;
+
+#Route admin
 
 
 
@@ -48,6 +47,7 @@ Route::prefix('auth')->group(function(){
 
 #admin
 
+
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     #user
@@ -67,7 +67,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('brand', BrandController::class)->parameters([
         'brand' => 'brand_id'
     ]);
-
     //all product start here -------------------------------------------------------
     //1. mobile
     Route::get('/mobile/fetch_data', [MobileController::class, 'fetch_data']);
@@ -82,17 +81,16 @@ Route::prefix('admin')->group(function () {
     Route::resource('accessory', AccessoryController::class)->parameters([
         'accessory' => 'accessory_id'
     ]);
-
     #4. order
     Route::get('/order/fetch_data', [OrderControllerAdmin::class, 'fetch_data']);
     Route::resource('orders', OrderControllerAdmin::class)->parameters([
         'orders' => 'order_id'
     ]);
-
     #5. user
     Route::resource('user', UserControllerAdmin::class)->parameters([
         'user' => 'user_id'
     ]);
+
 
     #6. order-detail
     Route::get('/order-detail/fetch_data', [OrderDetailController::class, 'fetch_data']);
@@ -100,29 +98,31 @@ Route::prefix('admin')->group(function () {
         'order-detail' => 'order-detail_id'
     ]);
 
+
     Route::get('form', function () {
         return view('admin.template.form');
     });
     Route::get('table', function () {
         return view('admin.template.table_data');
     });
-
-
+    #Export excel
+    Route::get('/export_excel', [ExportExcelController::class, 'index']);
+    Route::get('/export_excel/excel', [ExportExcelController::class, 'excel']);
+});
+#Route client
     #Export excel Category
     Route::get('/export-excel/category', [ExportExcelCategoryController::class, 'index']);
     Route::get('/export-excel/excel/category', [ExportExcelCategoryController::class, 'excel']);
-
     #Export excel Brand
     Route::get('/export-excel/excel/brand', [ExportExcelBrandController::class, 'excel']);
-
     #Export excel Order
     Route::get('/export-excel/excel/order', [ExportExcelOrderController::class, 'excel']);
-}) ;
+
+
 
 Route::prefix('client/page')->group(function () {
-
     #Route resource order
-    #thankyou
+    #thankyou 
     Route::get('thankyou/{id}', [OrderController::class, 'show_thankyou'])->name('client.thankyou');
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'
@@ -131,16 +131,23 @@ Route::prefix('client/page')->group(function () {
     Route::resource('user', UserController::class)->parameters([
         'user' => 'user_id'
     ]);
-
+    #order resource
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'
     ]);
-
-    #shop
-    Route::get('shop', [ShopMobileController::class, 'index'])->name('client.shop');
-    Route::get('/shop/fetch_data', [ShopMobileController::class, 'fetch_data']);
-    Route::get('shop/mobile/{mobile_id}', [ShopMobileController::class, 'show'])->name('client.show_phone');
-    Route::post('shop/mobile/filter', [ShopMobileController::class, 'fetch_data'])->name('client.shop.fetch_data');
+    #shop mobile
+    Route::post('shop/mobile/fetch_data', [MobileShopController::class, 'fetch_data'])->name('mobile_client.fetch_data');
+    Route::resource('shop/mobile', MobileShopController::class, [
+        'names' => [
+            'index' => 'mobile_client.index',
+            'show' => 'mobile_client.show',
+            'store' => 'mobile_client.store',
+            'create' => 'mobile_client.create',
+            'update' => 'mobile_client.update',
+            'edit' => 'mobile_client.edit',
+            'destroy' => 'mobile_client.destroy'
+        ]
+    ]);
     #cart
     Route::prefix('shopping')->group(function () {
         Route::get('cart', [ShoppingCartController::class, 'cartList'])->name('cart.list');
@@ -162,11 +169,6 @@ Route::prefix('client/page')->group(function () {
     Route::get('home', function () {
         return view('client.page.home');
     })->name('client.home');
-    #cart
-    Route::get('cart', function () {
-        return view('client.page.cart');
-    })->name('client.cart');
-    #checkout
     #detail
     Route::get('detail', [ShopMobileController::class, 'get_detail'])->name('client.detail');
     #login
@@ -196,5 +198,9 @@ Route::prefix('client/page')->group(function () {
     # return policy
     Route::get('return-policy', function () {
         return view('client.page.return_policy');
-    })->name('client.return_policy');
+    })->name('client.return_policy');   
+});
+#route fall back show error page 404! 
+Route::fallback(function () {
+    return view('client.page.error.page_404');
 });
