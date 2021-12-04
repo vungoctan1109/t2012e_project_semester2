@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Carbon\Carbon;
 use App\Models\Category as Category_Model;
 use Illuminate\Http\Request;

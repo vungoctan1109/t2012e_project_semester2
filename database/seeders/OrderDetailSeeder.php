@@ -38,7 +38,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addMonth(-3)
             ],[
                 'orderID' => 2,
-                'mobileID' => 1,
+                'mobileID' => 3,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -46,7 +46,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-84),
             ],[
                 'orderID' => 2,
-                'mobileID' => 2,
+                'mobileID' => 4,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -54,7 +54,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-81)
             ],[
                 'orderID' => 3,
-                'mobileID' => 1,
+                'mobileID' => 5,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -70,7 +70,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-78)
             ],[
                 'orderID' => 4,
-                'mobileID' => 1,
+                'mobileID' => 10,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -78,7 +78,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-78)
             ],[
                 'orderID' => 4,
-                'mobileID' => 2,
+                'mobileID' => 11,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -86,7 +86,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-75)
             ],[
                 'orderID' => 5,
-                'mobileID' => 1,
+                'mobileID' => 7,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -94,15 +94,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-75)
             ],[
                 'orderID' => 5,
-                'mobileID' => 2,
-                'quantity' => 1,
-                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
-                'discount' => $faker->numberBetween(1, 3) * 0.1,
-                'created_at' => Carbon::now()->addDay(-72),
-                'updated_at' => Carbon::now()->addDay(-72)
-            ],[
-                'orderID' => 6,
-                'mobileID' => 1,
+                'mobileID' => 5,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -114,11 +106,11 @@ class OrderDetailSeeder extends Seeder
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
-                'created_at' => Carbon::now()->addDay(-69),
-                'updated_at' => Carbon::now()->addDay(-69)
+                'created_at' => Carbon::now()->addDay(-72),
+                'updated_at' => Carbon::now()->addDay(-72)
             ],[
-                'orderID' => 7,
-                'mobileID' => 1,
+                'orderID' => 6,
+                'mobileID' => 8,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -126,7 +118,15 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-69)
             ],[
                 'orderID' => 7,
-                'mobileID' => 2,
+                'mobileID' => 9,
+                'quantity' => 1,
+                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+                'discount' => $faker->numberBetween(1, 3) * 0.1,
+                'created_at' => Carbon::now()->addDay(-69),
+                'updated_at' => Carbon::now()->addDay(-69)
+            ],[
+                'orderID' => 7,
+                'mobileID' => 10,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -134,7 +134,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-66)
             ],[
                 'orderID' => 8,
-                'mobileID' => 1,
+                'mobileID' => 11,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -142,7 +142,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-66)
             ],[
                 'orderID' => 8,
-                'mobileID' => 2,
+                'mobileID' => 12,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -150,7 +150,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-63)
             ],[
                 'orderID' => 9,
-                'mobileID' => 1,
+                'mobileID' => 5,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -158,7 +158,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-63)
             ],[
                 'orderID' => 9,
-                'mobileID' => 2,
+                'mobileID' => 4,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -166,7 +166,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-60)
             ],[
                 'orderID' => 10,
-                'mobileID' => 1,
+                'mobileID' => 8,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -174,7 +174,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-57)
             ],[
                 'orderID' => 10,
-                'mobileID' => 2,
+                'mobileID' => 7,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -182,7 +182,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-54)
             ],[
                 'orderID' => 11,
-                'mobileID' => 1,
+                'mobileID' => 6,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -190,7 +190,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-51)
             ],[
                 'orderID' => 11,
-                'mobileID' => 2,
+                'mobileID' => 3,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -198,7 +198,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-48)
             ],[
                 'orderID' => 12,
-                'mobileID' => 1,
+                'mobileID' => 2,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -206,7 +206,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-45)
             ],[
                 'orderID' => 12,
-                'mobileID' => 2,
+                'mobileID' => 4,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -214,7 +214,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-42)
             ],[
                 'orderID' => 13,
-                'mobileID' => 1,
+                'mobileID' => 5,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -222,7 +222,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-39)
             ],[
                 'orderID' => 13,
-                'mobileID' => 2,
+                'mobileID' => 6,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -230,7 +230,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-36)
             ],[
                 'orderID' => 14,
-                'mobileID' => 1,
+                'mobileID' => 4,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -238,7 +238,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-33)
             ],[
                 'orderID' => 14,
-                'mobileID' => 2,
+                'mobileID' => 7,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -246,7 +246,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-30)
             ],[
                 'orderID' => 15,
-                'mobileID' => 1,
+                'mobileID' => 8,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -270,7 +270,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-21)
             ],[
                 'orderID' => 16,
-                'mobileID' => 2,
+                'mobileID' => 3,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -278,7 +278,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-18)
             ],[
                 'orderID' => 17,
-                'mobileID' => 1,
+                'mobileID' => 4,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -286,7 +286,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-15)
             ],[
                 'orderID' => 17,
-                'mobileID' => 2,
+                'mobileID' => 5,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -294,7 +294,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-12)
             ],[
                 'orderID' => 18,
-                'mobileID' => 1,
+                'mobileID' => 5,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -302,7 +302,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-9)
             ],[
                 'orderID' => 18,
-                'mobileID' => 2,
+                'mobileID' => 6,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -310,7 +310,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-6)
             ],[
                 'orderID' => 19,
-                'mobileID' => 1,
+                'mobileID' => 7,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -318,7 +318,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-3)
             ],[
                 'orderID' => 19,
-                'mobileID' => 2,
+                'mobileID' => 8,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -326,7 +326,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ],[
                 'orderID' => 20,
-                'mobileID' => 1,
+                'mobileID' => 9,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -334,7 +334,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(3)
             ],[
                 'orderID' => 20,
-                'mobileID' => 2,
+                'mobileID' => 1,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -342,7 +342,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(6)
             ],[
                 'orderID' => 21,
-                'mobileID' => 1,
+                'mobileID' => 3,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -358,7 +358,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(12)
             ],[
                 'orderID' => 22,
-                'mobileID' => 1,
+                'mobileID' => 4,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -366,7 +366,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(15)
             ],[
                 'orderID' => 22,
-                'mobileID' => 2,
+                'mobileID' => 5,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -374,7 +374,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(187)
             ],[
                 'orderID' => 23,
-                'mobileID' => 1,
+                'mobileID' => 5,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -382,7 +382,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(21)
             ],[
                 'orderID' => 23,
-                'mobileID' => 2,
+                'mobileID' => 1,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -390,7 +390,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(24)
             ],[
                 'orderID' => 24,
-                'mobileID' => 1,
+                'mobileID' => 6,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -398,7 +398,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(27)
             ],[
                 'orderID' => 24,
-                'mobileID' => 2,
+                'mobileID' => 8,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -406,7 +406,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(30)
             ],[
                 'orderID' => 25,
-                'mobileID' => 1,
+                'mobileID' => 6,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -414,7 +414,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(33)
             ],[
                 'orderID' => 25,
-                'mobileID' => 2,
+                'mobileID' => 7,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -422,7 +422,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(36)
             ],[
                 'orderID' => 26,
-                'mobileID' => 1,
+                'mobileID' => 7,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -430,7 +430,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(39)
             ],[
                 'orderID' => 27,
-                'mobileID' => 2,
+                'mobileID' => 7,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -438,7 +438,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(42)
             ],[
                 'orderID' => 28,
-                'mobileID' => 1,
+                'mobileID' => 8,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -446,7 +446,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(45)
             ],[
                 'orderID' => 28,
-                'mobileID' => 2,
+                'mobileID' => 5,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -454,7 +454,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(48)
             ],[
                 'orderID' => 29,
-                'mobileID' => 1,
+                'mobileID' => 9,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -462,7 +462,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(51)
             ],[
                 'orderID' => 29,
-                'mobileID' => 2,
+                'mobileID' => 1,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -470,7 +470,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(54)
             ],[
                 'orderID' => 30,
-                'mobileID' => 1,
+                'mobileID' => 10,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -478,7 +478,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(57)
             ],[
                 'orderID' => 30,
-                'mobileID' => 2,
+                'mobileID' => 12,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -486,7 +486,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(60)
             ],[
                 'orderID' => 31,
-                'mobileID' => 1,
+                'mobileID' => 11,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -494,7 +494,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(63)
             ],[
                 'orderID' => 31,
-                'mobileID' => 2,
+                'mobileID' => 15,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -502,7 +502,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(66)
             ],[
                 'orderID' => 32,
-                'mobileID' => 1,
+                'mobileID' => 16,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -518,7 +518,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(72)
             ],[
                 'orderID' => 33,
-                'mobileID' => 1,
+                'mobileID' => 4,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -526,7 +526,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(75)
             ],[
                 'orderID' => 33,
-                'mobileID' => 2,
+                'mobileID' => 8,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -534,7 +534,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(78)
             ],[
                 'orderID' => 34,
-                'mobileID' => 1,
+                'mobileID' => 5,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -542,7 +542,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(81)
             ],[
                 'orderID' => 34,
-                'mobileID' => 2,
+                'mobileID' => 12,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -558,7 +558,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-60)
             ],[
                 'orderID' => 35,
-                'mobileID' => 2,
+                'mobileID' => 14,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -566,7 +566,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-57)
             ],[
                 'orderID' => 36,
-                'mobileID' => 1,
+                'mobileID' => 4,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -574,7 +574,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-60)
             ],[
                 'orderID' => 36,
-                'mobileID' => 2,
+                'mobileID' => 5,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,
@@ -590,7 +590,7 @@ class OrderDetailSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDay(-60)
             ],[
                 'orderID' => 37,
-                'mobileID' => 2,
+                'mobileID' => 8,
                 'quantity' => 1,
                 'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
                 'discount' => $faker->numberBetween(1, 3) * 0.1,

@@ -92,7 +92,7 @@
                     <div class="card-header">
                         <h3 class="card-title">
                             <i class="fas fa-chart-area mr-1"></i>
-                            Number Of Orders
+                            Orders
                         </h3>
                     </div><!-- /.card-header -->
                     <div class="card-body">
@@ -121,30 +121,21 @@
             <section class="col-lg-5 connectedSortable">
 
                 <!-- Map card -->
-                <div class="card bg-gradient-primary">
-                    <div class="card-header border-0">
+                <div class="card">
+                    <div class="card-header">
                         <h3 class="card-title">
-                            <i class="fas fa-map-marker-alt mr-1"></i>
-                            Visitors
+                            <i class="fas fa-mobile-alt mr-1"></i>
+                            Top Sale Mobile
                         </h3>
                         <!-- card tools -->
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-primary btn-sm daterange" title="Date range">
-                                <i class="far fa-calendar-alt"></i>
-                            </button>
-                            <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse"
-                                    title="Collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
                         <!-- /.card-tools -->
                     </div>
                     <div class="card-body">
-                        <div id="world-map" style="height: 250px; width: 100%;"></div>
+                        {!! $chartTopSale->container() !!}
                     </div>
                     <!-- /.card-body-->
                     <div class="card-footer bg-transparent">
-                        <div class="row">
+                        <div class="row" style="display: none">
                             <div class="col-4 text-center">
                                 <div id="sparkline-1"></div>
                                 <div class="text-white">Visitors</div>
@@ -217,6 +208,8 @@
 @section('script_private')
     <script src="{{ $chart->cdn() }}"></script>
     <script src="{{ $chartTotal->cdn() }}"></script>
+    <script src="{{ $chartTopSale->cdn() }}"></script>
     {{ $chart->script() }}
     {{ $chartTotal->script() }}
+    {{ $chartTopSale->script() }}
 @endSection
