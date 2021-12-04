@@ -440,7 +440,7 @@ class MobileSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
                 ],
-            [
+                [
                 'id' => 21,
                 'categoryID' => 1,
                 'brandID' => 9,
@@ -523,6 +523,7 @@ class MobileSeeder extends Seeder
                 'updated_at' => Carbon::now()
                 ],
                 ['id' => 25,
+                'categoryID' => 1,
                 'brandID' => 9,
                 'name' => 'Oppo A54',
                 'quantity' => $faker->numberBetween(1, 9) * 100,
