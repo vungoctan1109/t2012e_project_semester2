@@ -65,7 +65,7 @@ class BrandController extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 400, 'errors' => $validator->errors()->toArray(), 'message' => 'Data not valid!']);
         } else {
-            $brand = new Brand();
+            $brand = new Brand_Model();
             $brand->name = $request->get('name');
             $brand->description = $request->get('description');
             $brand->created_at = Carbon::now();
