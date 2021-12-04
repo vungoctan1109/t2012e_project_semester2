@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ClientController;
 
 use App\Http\Controllers\Controller;
+use App\Models\Mobile;
 use Illuminate\Http\Request;
 
 class ShoppingCartController extends Controller
@@ -16,17 +17,27 @@ class ShoppingCartController extends Controller
     #SAVE
     public function addToCart(Request $request)
     {
-        \Cart::add([
-            'id' => $request->id,
-            'name' => $request->name,
-            'price' => $request->price,
-            'quantity' => $request->quantity,
-            'attributes' => array(
-                'image' => $request->image,
-            )
-        ]);
-        $total_quantity = \Cart::getTotalQuantity();
-        return response()->json(['status' => 200,'message' => 'Add to cart successfully!!', 'total_quantity' => $total_quantity]);
+        $mobile = Mobile::find($request->id);
+
+        if ($mobile) {
+            if ($mobile->status != -1 && $mobile->status != 0 && $mobile->quantity > 0 && $request->quantity <= $mobile->quantity){
+                \Cart::add([
+                    'id' => $request->id,
+                    'name' => $request->name,
+                    'price' => $request->price,
+                    'quantity' => $request->quantity,
+                    'attributes' => array(
+                        'image' => $request->image,
+                        'current_quantity' => $request->current_quantity
+                    )
+                ]);
+                $total_quantity = \Cart::getTotalQuantity();
+                return response()->json(['status' => 200,'message' => 'Thêm thành công!!', 'total_quantity' => $total_quantity]);
+            }else{
+                $total_quantity = \Cart::getTotalQuantity();
+                return response()->json(['status' => 400,'message' => 'Sản phẩm đã hết hàng hoặc ngừng bán!!', 'total_quantity' => $total_quantity]);
+            }
+        }
     }
     #UPDATE
     public function updateCart(Request $request)

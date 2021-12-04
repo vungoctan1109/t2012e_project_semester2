@@ -4,7 +4,7 @@
         <ul class="product-list grid-products equal-container">
             @foreach ($mobiles as $mobile)
             @php
-            $price = number_format($mobile -> price, 0, '', ','); // 1,000,000
+            $price = number_format($mobile -> price, 0, '', ',');
             @endphp
             <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
                 <div class="product product-style-3 equal-elem">
@@ -15,7 +15,8 @@
                         </a>
                     </div>
                     <div class="product-info">
-                        <a href="#" class="product-name"><span>{{$mobile -> name}}</span></a>
+                        <a href="#" class="product-name"><span>{{$mobile -> name}}</span><br></a>
+                        <strong>({{strtoupper($mobile -> strStatus)}})</strong>
                         <div class="wrap-price"><span class="product-price">{{$price}} (VND)</span>
                         </div>
                         <form id="formCart">
@@ -24,6 +25,7 @@
                             <input type="hidden" value="{{$mobile -> price}}" name="price" />
                             <input type="hidden" value="{{$mobile -> name}}" name="name">
                             <input type="hidden" value="{{$mobile -> mainThumbnail}}" name="image">
+                            <input type="hidden" value="{{$mobile -> quantity}}" name="current_quantity">
                             <input type="hidden" value="1" name="quantity">
                             <a href="#" class="btn add-to-cart" id="btnAddToCart">Add To Cart</a>
                         </form>
@@ -46,7 +48,7 @@
     </div>
 
     <div class="row">
-        <div class="wrap-pagination-info" id="pagination">            
+        <div class="wrap-pagination-info" id="pagination">
             @php
             $link_limit = 7;
             @endphp
@@ -64,11 +66,11 @@
                             $half_total_links = floor($link_limit / 2);
                             $from = $mobiles->currentPage() - $half_total_links;
                             $to = $mobiles->currentPage() + $half_total_links;
-                            if ($mobiles->currentPage() < $half_total_links) { 
+                            if ($mobiles->currentPage() < $half_total_links) {
                                 $to +=$half_total_links - $mobiles->
                                 currentPage();
                             }
-                            if ($mobiles->lastPage() - $mobiles->currentPage() < $half_total_links) { 
+                            if ($mobiles->lastPage() - $mobiles->currentPage() < $half_total_links) {
                                 $from -=$half_total_links - ($mobiles->lastPage() - $mobiles->currentPage()) - 1;
                             }
                         @endphp
@@ -92,7 +94,7 @@
                 @if(count($mobiles) > 0)
                 <p class="result-count">Showing {{($mobiles->currentpage()-1)*$mobiles->perpage()+1}} to {{$mobiles->currentpage()*$mobiles->perpage()}} of {{$mobiles->total()}} entries</p>
                 @endif
-            @endif                    
+            @endif
         </div>
     </div>
 </div>

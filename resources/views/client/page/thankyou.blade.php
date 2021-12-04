@@ -50,8 +50,17 @@
                                     <address>
                                         <h5><strong>Billed To:</strong><br></h5>
                                         <b>Name: {{$order -> name}}</b><br>
-                                        <b>Address: {{$order -> address}}</b><br>
+                                        <b>Email: {{$order -> email}} </b><br>
                                         <b>Phone: {{$order -> phone}}</b><br>
+                                        @php
+                                          $address = '';
+                                          if (isset($order -> address_detail)){
+                                              $address = $order -> address_detail . ', ' .$order -> ward . ', ' .$order -> district . ', ' .$order -> province;
+                                          }else{
+                                              $address = $order -> ward . ', ' .$order -> district . ', ' .$order -> province;
+                                          }
+                                        @endphp
+                                        <b>Address: {{$address}}</b><br>
                                     </address>
                                 </div>
                             </div>
@@ -64,14 +73,13 @@
                                         @endif
                                         @if($order -> checkOut == 1)
                                         <strong>Payment Method: Paypal</strong><br>
-                                        {{$order -> email}}
                                         @endif
                                     </address>
                                 </div>
                                 <div class="col-xs-6 text-right">
                                     <address>
                                         <strong>Order Date:</strong><br>
-                                        March 7, 2014<br><br>
+                                        {{date('d-m-Y', strtotime($order->created_at))}}<br><br>
                                     </address>
                                 </div>
                             </div>
@@ -92,30 +100,30 @@
                                                     <td class="text-left"><strong>Item</strong></td>
                                                     <td class="text-center"><strong>Price (VND)</strong></td>
                                                     <td class="text-center"><strong>Quantity</strong></td>
-                                                    <td class="text-right"><strong>Totals (VND)</strong></td>                                                    
+                                                    <td class="text-right"><strong>Totals (VND)</strong></td>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($order_details as $item)
                                                 @php
                                                  $price_format = number_format($item -> unitPrice * $item -> quantity, 0, '', '.');
-                                                 $totalPrice_format = number_format($order -> totalPrice, 0, '', '.'); 
-                                                 $unitPrice_format = number_format($item -> unitPrice, 0, '', '.');                                                                                                 
+                                                 $totalPrice_format = number_format($order -> totalPrice, 0, '', '.');
+                                                 $unitPrice_format = number_format($item -> unitPrice, 0, '', '.');
                                                 @endphp
                                                 <tr>
                                                     <td class="text-left">{{$item -> mobile -> name }}</td>
                                                     <td class="text-center">{{$unitPrice_format}}</td>
                                                     <td class="text-center">{{$item -> quantity}}</td>
-                                                    <td class="text-right">{{$price_format}}</td>                                                    
+                                                    <td class="text-right">{{$price_format}}</td>
                                                 </tr>
                                                 @endforeach
                                                 <tr>
                                                     <td class="text-left"></td>
                                                     <td class="text-center"></td>
-                                                    <td class="text-center"></td>                                                    
-                                                    <td class="text-right">{{$totalPrice_format}}</td>                                                                                                       
+                                                    <td class="text-center"></td>
+                                                    <td class="text-right">{{$totalPrice_format}}</td>
                                                 </tr>
-                                                <!-- foreach ($order->lineItems as $line) or some such thing here -->                                                
+                                                <!-- foreach ($order->lineItems as $line) or some such thing here -->
                                             </tbody>
                                         </table>
                                     </div>
@@ -139,7 +147,7 @@
 <script>
     $(document).ready(function () {
     $('body').addClass('inner-page about-us');Ì
-  
+
 });
 
 </script>

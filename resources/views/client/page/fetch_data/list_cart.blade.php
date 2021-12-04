@@ -24,7 +24,7 @@
                 </div>
                 <div class="quantity">
                     <div class="quantity-input">
-                        <input type="text" name="product-quatity" value="{{$item->quantity}}" data-max="100"
+                        <input type="text" name="product-quatity" value="{{$item->quantity}}" data-max="{{$item -> attributes -> current_quantity}}"
                             pattern="[0-9]*" class="quantity_item">
                         <a class="btn btn-increase btn-quantity" href="#"></a>
                         <a class="btn btn-reduce btn-quantity" href="#"></a>
