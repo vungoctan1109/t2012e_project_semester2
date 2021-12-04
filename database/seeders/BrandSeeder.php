@@ -74,7 +74,13 @@ class BrandSeeder extends Seeder
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
-
+            [
+                'id'=> 9,
+                'name'=>'OPPO',
+                'description'=>'Guangdong Oppo Mobile Telecommunications Corp., Ltd, doing business as OPPO, is a Chinese consumer electronics and mobile communications company headquartered in Dongguan, Guangdong. Its major product lines include smartphones, smart devices, audio devices, power banks, and other electronic products.',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ]
         ]);
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }

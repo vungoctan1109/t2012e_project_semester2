@@ -1,23 +1,39 @@
 <?php
 
-namespace App\Http\Controllers\ClientController;
-
+namespace App\Http\Controllers\AdminController;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\OrderDetail as OrderDetail_model;
+use App\Models\Order as Order_model;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class OrderDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $order_details = OrderDetail_Model::query()
+            ->select('*')
+            ->orderBy('created_at', 'DESC')
+            ->paginate(9);
+        if ($request->ajax()) {
+            return view('admin.page.order-detail.render_table', ['order_details' => $order_details])->render();
+        }
+        return view('admin.page.order-detail.table_data', ['order_details' => $order_details]);
+    }
+
+    public function fetch_data(Request $request)
+    {
+        if ($request->ajax()) {
+            $order_details = OrderDetail_Model::query()
+                ->select('*')
+                ->sortBy($request)
+                ->Pagination($request);
+            return view('admin.page.order-detail.render_table')->with('order_details', $order_details)->render();
+        }
     }
 
     /**
@@ -27,7 +43,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.page.user.create_user');
+        //
     }
 
     /**
@@ -38,28 +54,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User();
-        $user->email = $request->get('email');
-        $check_exist = User::where('email','=',$request->get('email'))->first();
-        if($check_exist !== null){
-            return response()->json(['status' => 400, 'message' => 'this email account already exist, please try again!!!']);
-        }
-        $user->password = Hash::make($request->get('password'));
-        $user->fullName = $request->get('fullName');
-        $user->phone = $request->get('phone');
-        $user->address = $request->get('address');
-        $user->avatar = $request->get('avatar');
-        $user->description = $request->get('description');
-        $user->role = 0;
-        $user->status = 1;
-        $user->created_at = Carbon::now();
-        $user->updated_at = Carbon::now();
-        $result = $user->save();
-        if($result){
-            return response()->json(['status' => 200, 'message' => 'save user info success']);
-        }else{
-            return response()->json(['status' => 500, 'message' => 'save user info false']);
-        }
+        //
     }
 
     /**

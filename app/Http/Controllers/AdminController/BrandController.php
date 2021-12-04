@@ -65,7 +65,7 @@ class BrandController extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 400, 'errors' => $validator->errors()->toArray(), 'message' => 'Data not valid!']);
         } else {
-            $brand = new Brand();
+            $brand = new Brand_Model();
             $brand->name = $request->get('name');
             $brand->description = $request->get('description');
             $brand->created_at = Carbon::now();
@@ -119,7 +119,7 @@ class BrandController extends Controller
             return response()->json(['status' => 400, 'errors' => $validator->errors()->toArray(), 'message' => 'Data not valid!']);
         } else {
             $result = DB::table('brands')->where('id', '=', $id)->update($data);
-            Brand::where('id', $id)->update(array('updated_at' => Carbon::now()));
+            Brand_Model::where('id', $id)->update(array('updated_at' => Carbon::now()));
             if ($result) {
                 return response()->json(['status' => 200, 'message' => 'Data have been successfully update']);
             }

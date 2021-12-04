@@ -6,7 +6,7 @@
                 <th style="text-align: center;width: 2%;">Check</th>
                 <th style="text-align: center;width: 2%;">ID</th>
                 <th style="text-align: center;width: 8%;">name</th>
-                <th style="text-align: center;width: 4%;">brandID</th>
+                <th style="text-align: center;width: 4%;">brand</th>
                 <th style="text-align: center;width: 4%;">quantity</th>
                 <th style="text-align: center;width: 4%;">saleOff</th>
                 <th style="text-align: center;width: 8%;">price (VND)</th>
@@ -52,7 +52,7 @@
                     <th style="text-align: center;width: 2%;">Check</th>
                     <th style="text-align: center;width: 2%;">ID</th>
                     <th style="text-align: center;width: 8%;">name</th>
-                    <th style="text-align: center;width: 4%;">brandID</th>
+                    <th style="text-align: center;width: 4%;">brand</th>
                     <th style="text-align: center;width: 4%;">quantity</th>
                     <th style="text-align: center;width: 4%;">saleOff</th>
                     <th style="text-align: center;width: 8%;">price (VND)</th>

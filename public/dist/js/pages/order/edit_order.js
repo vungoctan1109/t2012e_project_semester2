@@ -1,17 +1,22 @@
 $(document).ready(function () {
     $("#btn-submit").click(function (e) {
         e.preventDefault();
-        var id = $('input[name="id"]').val()
+        var id = $('input[name="id"]').val();
         var name = $('input[name="name"]').val();
-        var description = $('textarea[name="description"]').val();
-        var data = { name: name, description: description };
+        var phone = $('input[name="phone"]').val();
+        var email = $('input[name="email"]').val();
+        var address_detail = $('input[name="address_detail"]').val();
+        var totalPrice = $('input[name="totalPrice"]').val();
+        var checkOut = $('input[name="checkOut"]').val();
+        var comment = $('textarea[name="comment"]').val();
+        var data = { name: name, phone: phone, email: email, address_detail: address_detail, totalPrice: totalPrice, checkOut: checkOut, comment: comment};
         $.ajaxSetup({
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
         });
         $.ajax({
-            url: "/admin/category/" + id,
+            url: "/admin/orders/" + id,
             method: "PUT",
             data: data,
             beforeSend: function () {
@@ -26,16 +31,15 @@ $(document).ready(function () {
                     if (response.status == 200) {
                         setTimeout(function () {
                             alertAction(response.message);
-                        }, 1500);
+                        }, 500);
                         alertProcessData();
                         return;
                     }
                     if (response.status == 500) {
                         setTimeout(function () {
                             alertActionFailed(response.message);
-                        }, 1500);
+                        }, 500);
                         alertProcessData();
-
                         return;
                     }
                 }
@@ -58,7 +62,7 @@ $(document).ready(function () {
     function alertActionFailed(message) {
         Swal.fire({
             position: "top-end",
-            icon: "warning",
+            icon: "error",
             title: `${message}`,
             showConfirmButton: false,
             timer: 1500,

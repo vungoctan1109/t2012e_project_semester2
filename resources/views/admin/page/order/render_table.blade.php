@@ -25,17 +25,17 @@
                     <td style="text-align:center; vertical-align: middle">{{$ord->userId}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$ord->name}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$ord->comment}}</td>
-                    <td style="text-align:center; vertical-align: middle">{{$ord->address}}</td>
+                    <td style="text-align:center; vertical-align: middle">{{$ord->address_detail}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$ord->phone}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$ord->email}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$ord->totalPrice}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$ord->checkOut}}</td>
                     <td style="text-align:center; vertical-align: middle">{{date('d-m-Y', strtotime($ord->created_at))}}</td>
                     <td style="text-align:center; vertical-align: middle">
-                        <a class="btn btn-primary btn-sm m-1" href="{{route('order.show', $ord->id)}}">
+                        <a class="btn btn-primary btn-sm m-1" href="{{route('orders.show', $ord->id)}}">
                             <i class="fas fa-folder">View</i>
                         </a>
-                        <a class="btn btn-info btn-sm m-1" href="admin/order/{{$ord->id}}/edit">
+                        <a class="btn btn-info btn-sm m-1" href="{{route('orders.edit', $ord)}}">
                             <i class="fas fa-pencil-alt">Edit</i>
                         </a>
                         <a class="btn btn-danger btn-sm delete m-1" href="admin/order/{{$ord->id}}">

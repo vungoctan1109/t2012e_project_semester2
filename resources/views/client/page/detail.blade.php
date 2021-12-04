@@ -97,6 +97,7 @@
                                 <a href="#" class="btn btn-wishlist">Add Wishlist</a>
                             </div>
                         </div>
+<<<<<<< HEAD
                     </div>
                     <div class="advance-info">
                         <div class="tab-control normal">
@@ -107,6 +108,13 @@
                         <div class="tab-contents">
                             <div class="tab-content-item active" id="description">
                                 {!! $mobile -> detail !!}
+=======
+                        <div class="advance-info">
+                            <div class="tab-control normal">
+                                <a href="#description" class="tab-control-item active">description</a>
+                                <a href="#add_infomation" class="tab-control-item">Addtional Infomation</a>
+                                <a href="#review" class="tab-control-item">Comments</a>
+>>>>>>> 6b49d37008fdb36fda0dc86146b22fe64529a008
                             </div>
                             <div class="tab-content-item " id="add_infomation">
                                 <table class="shop_attributes">
@@ -123,6 +131,7 @@
                                             <th>Battery</th>
                                             <td>{{$mobile -> pin}} mAh</td>
                                         </tr>
+<<<<<<< HEAD
                                     </tbody>
                                 </table>
                             </div>
@@ -212,6 +221,13 @@
                                         </div><!-- #review_form -->
                                     </div><!-- #review_form_wrapper -->
 
+=======
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-content-item " id="review">
+                                    <div class="fb-comments" data-href="http://127.0.0.1:8000/client/page/shop/mobile/{{$mobile -> pin}}" data-width="" data-numposts="5" data-order-by="reverse_time"></div>
+>>>>>>> 6b49d37008fdb36fda0dc86146b22fe64529a008
                                 </div>
                             </div>
                         </div>
