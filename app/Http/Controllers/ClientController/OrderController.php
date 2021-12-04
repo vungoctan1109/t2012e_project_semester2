@@ -46,7 +46,10 @@ class OrderController extends Controller
     {
         $shipName = $request->get('name');
         $shipEmail = $request->get('email');
-        $shipAddress = $request->get('address');
+        $shipProvince = $request->get('province');
+        $shipDistrict = $request->get('district');
+        $shipWard = $request->get('ward');
+        $shipAddressDetail = $request->get('address_detail');
         $shipPhone = $request->get('phone');
         $shipNote = $request->get('comment');
         //tao order
@@ -55,7 +58,10 @@ class OrderController extends Controller
         $order->name = $shipName;
         $order->email = $shipEmail;
         $order->phone = $shipPhone;
-        $order->address = $shipAddress;
+        $order->province = $shipProvince;
+        $order->district = $shipDistrict;
+        $order->ward = $shipWard;
+        $order->address_detail = $shipAddressDetail;
         $order->comment = $shipNote;
         $order->checkOut = false;
         $order->created_at = Carbon::now();
@@ -176,7 +182,7 @@ class OrderController extends Controller
     public function get_ward(Request $request)
     {
         $district = District::query()->select('*')->where('name', 'LIKE', '%' . $request->get('district') . '%')->first();
-        $wards = Ward::query()->select('*')->where('district_id', $district->id)->get();       
+        $wards = Ward::query()->select('*')->where('district_id', $district->id)->get();
         return response()->json(['status' => 200, 'wards' => $wards]);
     }
 }

@@ -120,7 +120,7 @@
                 $( "#slider-range" ).slider({
                     range: true,
                     min: 0,
-                    max: 10000000,
+                    max: 100000000,
                     values: [ 0 , 0 ],
                     slide: function( event, ui ) {
 						$( "#amount_min" ).val( ui.values[ 0 ].toLocaleString('it-IT', {style : 'currency', currency : 'VND'}));
@@ -398,7 +398,7 @@
 						_children.height(parseInt(max_height, 10));
 					}
 				});
-			}, 1000);
+			}, 500);
 		},
 
 		mercado_price_quantity: function(){

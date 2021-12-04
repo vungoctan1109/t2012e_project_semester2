@@ -1,43 +1,27 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\AdminController\CategoryController;
+use App\Http\Controllers\ExportExcelController;
 use App\Http\Controllers\AdminController\BrandController;
-use App\Http\Controllers\AdminController\AccessoryController;
+use App\Http\Controllers\ClientController\UserController;
 use App\Http\Controllers\AdminController\LaptopController;
 use App\Http\Controllers\AdminController\MobileController;
-use App\Http\Controllers\AdminController\UserControllerAdmin;
-use App\Http\Controllers\ClientController\UserController;
-
 use App\Http\Controllers\ClientController\OrderController;
 use App\Http\Controllers\ClientController\PayPalController;
-<<<<<<< HEAD
 use App\Http\Controllers\AdminController\CategoryController;
-use App\Http\Controllers\ClientController\AddressController;
 use App\Http\Controllers\AdminController\AccessoryController;
-=======
->>>>>>> df56c321608533149c1d68d8bad089884ecf3060
+use App\Http\Controllers\AdminController\UserControllerAdmin;
+use App\Http\Controllers\ClientController\MobileShopController;
 use App\Http\Controllers\ClientController\ShopMobileController;
 use App\Http\Controllers\ClientController\ShoppingCartController;
-use App\Http\Controllers\ExportExcelController;
-
-
-
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-#admin
-
+#Route admin
 Route::prefix('admin')->group(function () {
+    #user
+    Route::post('/update/user', [UserControllerAdmin::class, 'update'])->name('User.Info.Update');
+    Route::get('/users_admin/fetch_data', [UserControllerAdmin::class, 'fetch_data']);
+    Route::resource('user_admin', UserControllerAdmin::class)->parameters([
+        'user_admin' => 'user_admin_id'
+    ]);
     #category
     Route::get('/category/fetch_data', [CategoryController::class, 'fetch_data']);
     Route::resource('category', CategoryController::class)->parameters([
@@ -49,7 +33,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('brand', BrandController::class)->parameters([
         'brand' => 'brand_id'
     ]);
-
     //all product start here -------------------------------------------------------
     //1. mobile
     Route::get('/mobile/fetch_data', [MobileController::class, 'fetch_data']);
@@ -64,35 +47,27 @@ Route::prefix('admin')->group(function () {
     Route::resource('accessory', AccessoryController::class)->parameters([
         'accessory' => 'accessory_id'
     ]);
-<<<<<<< HEAD
-=======
-    #1. order
+    #4. order
     Route::get('/order/fetch_data', [\App\Http\Controllers\AdminController\OrderController::class, 'fetch_data']);
     Route::resource('order', \App\Http\Controllers\AdminController\OrderController::class)->parameters([
         'order' => 'order_id'
     ]);
-
-    #4. user
+    #5. user
     Route::resource('user', UserControllerAdmin::class)->parameters([
         'user' => 'user_id'
     ]);
-
->>>>>>> df56c321608533149c1d68d8bad089884ecf3060
     Route::get('form', function () {
         return view('admin.template.form');
     });
     Route::get('table', function () {
         return view('admin.template.table_data');
     });
-
-
     #Export excel
     Route::get('/export_excel', [ExportExcelController::class, 'index']);
     Route::get('/export_excel/excel', [ExportExcelController::class, 'excel']);
 });
-
+#Route client
 Route::prefix('client/page')->group(function () {
-<<<<<<< HEAD
     #Route resource order
     #thankyou 
     Route::get('thankyou/{id}', [OrderController::class, 'show_thankyou'])->name('client.thankyou');
@@ -100,22 +75,26 @@ Route::prefix('client/page')->group(function () {
         'order' => 'order_id'
     ]);
     #shop resource
-=======
     Route::resource('user', UserController::class)->parameters([
         'user' => 'user_id'
     ]);
-
+    #order resource
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'
     ]);
-    #thankyou
-    Route::get('thankyou/{id}', [OrderController::class, 'show_thankyou'])->name('client.thankyou');
-    #shop
->>>>>>> df56c321608533149c1d68d8bad089884ecf3060
-    Route::get('shop', [ShopMobileController::class, 'index'])->name('client.shop');
-    Route::get('/shop/fetch_data', [ShopMobileController::class, 'fetch_data']);
-    Route::get('shop/mobile/{mobile_id}', [ShopMobileController::class, 'show'])->name('client.show_phone');
-    Route::post('shop/mobile/filter', [ShopMobileController::class, 'fetch_data'])->name('client.shop.fetch_data');
+    #shop mobile
+    Route::post('shop/mobile/fetch_data', [MobileShopController::class, 'fetch_data'])->name('mobile_client.fetch_data');
+    Route::resource('shop/mobile', MobileShopController::class, [
+        'names' => [
+            'index' => 'mobile_client.index',
+            'show' => 'mobile_client.show',
+            'store' => 'mobile_client.store',
+            'create' => 'mobile_client.create',
+            'update' => 'mobile_client.update',
+            'edit' => 'mobile_client.edit',
+            'destroy' => 'mobile_client.destroy'
+        ]
+    ]);
     #cart
     Route::prefix('shopping')->group(function () {
         Route::get('cart', [ShoppingCartController::class, 'cartList'])->name('cart.list');
@@ -137,11 +116,6 @@ Route::prefix('client/page')->group(function () {
     Route::get('home', function () {
         return view('client.page.home');
     })->name('client.home');
-    #cart
-    Route::get('cart', function () {
-        return view('client.page.cart');
-    })->name('client.cart');
-    #checkout
     #detail
     Route::get('detail', [ShopMobileController::class, 'get_detail'])->name('client.detail');
     #login
@@ -171,23 +145,9 @@ Route::prefix('client/page')->group(function () {
     # return policy
     Route::get('return-policy', function () {
         return view('client.page.return_policy');
-    })->name('client.return_policy');
-<<<<<<< HEAD
-=======
-
-
-    #cart
-    Route::prefix('shopping')->group(function () {
-        Route::get('cart', [ShoppingCartController::class, 'cartList'])->name('cart.list');
-        Route::post('cart', [ShoppingCartController::class, 'addToCart'])->name('cart.store');
-        Route::post('update-cart', [ShoppingCartController::class, 'updateCart'])->name('cart.update');
-        Route::post('remove', [ShoppingCartController::class, 'removeCart'])->name('cart.remove');
-        Route::post('clear', [ShoppingCartController::class, 'clearAllCart'])->name('cart.clear');
-    });
-    #payPal
-    Route::get('/checkout', [PayPalController::class, 'index'])->name('client.checkout');
-    Route::get('/checkout-total', [PayPalController::class, 'getTotal'])->name('client.checkout_total');
-    //Update order_checkout
-    Route::post('/update/checkout_order', [OrderController::class, 'update'])->name('order.update.checkout');
->>>>>>> df56c321608533149c1d68d8bad089884ecf3060
+    })->name('client.return_policy');   
+});
+#route fall back show error page 404! 
+Route::fallback(function () {
+    return view('client.page.error.page_404');
 });
