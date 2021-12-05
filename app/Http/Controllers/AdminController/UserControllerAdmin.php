@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -89,9 +91,11 @@ class UserControllerAdmin extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($user_id)
     {
-        //
+        $orders = Order::where('userId', $user_id)->paginate(50);
+        $result = User::find($user_id);
+        return view('admin.page.user.detail_user', ['user' => $result, 'order' => $orders]);
     }
 
     /**

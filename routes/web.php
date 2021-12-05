@@ -100,12 +100,14 @@ Route::prefix('admin')->group(function () {
     ]);
 
     #7. Export Excel Admin
-    Route::get('/export-excel/category', [ExportExcelCategoryController::class, 'index']);
     Route::get('/export-excel/excel/category', [ExportExcelCategoryController::class, 'excel']);
     #Export excel Brand
     Route::get('/export-excel/excel/brand', [ExportExcelBrandController::class, 'excel']);
     #Export excel Order
     Route::get('/export-excel/excel/order', [ExportExcelOrderController::class, 'excel']);
+    #Export excel Mobile
+    Route::get('/export-excel/excel/mobile', [ExportExcelMobileController::class, 'excel']);
+
 
     Route::get('form', function () {
         return view('admin.template.form');
