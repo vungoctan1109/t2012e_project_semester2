@@ -2,6 +2,7 @@
 use App\Http\Controllers\AdminController\AuthController;
 use App\Http\ExportExcelController\ExportExcelMobileController;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\AdminController\OrderDetailController;
 use App\Http\ExportExcelController\ExportExcelBrandController;
 use App\Http\ExportExcelController\ExportExcelCategoryController;
@@ -98,6 +99,13 @@ Route::prefix('admin')->group(function () {
         'order-detail' => 'order-detail_id'
     ]);
 
+    #7. Export Excel Admin
+    Route::get('/export-excel/category', [ExportExcelCategoryController::class, 'index']);
+    Route::get('/export-excel/excel/category', [ExportExcelCategoryController::class, 'excel']);
+    #Export excel Brand
+    Route::get('/export-excel/excel/brand', [ExportExcelBrandController::class, 'excel']);
+    #Export excel Order
+    Route::get('/export-excel/excel/order', [ExportExcelOrderController::class, 'excel']);
 
     Route::get('form', function () {
         return view('admin.template.form');
@@ -105,21 +113,9 @@ Route::prefix('admin')->group(function () {
     Route::get('table', function () {
         return view('admin.template.table_data');
     });
-    #Export excel
+
 });
 #Route client
-    #Export excel Category
-    Route::get('/export-excel/category', [ExportExcelCategoryController::class, 'excel']);
-    #Export excel Brand
-    Route::get('/export-excel/excel/brand', [ExportExcelBrandController::class, 'excel']);
-    #Export excel Mobile
-    Route::get('/export-excel/excel/mobile', [ExportExcelMobileController::class, 'excel']);
-    #Export excel Order
-    Route::get('/export-excel/excel/order', [ExportExcelOrderController::class, 'excel']);
-
-
-
-
 Route::prefix('client/page')->group(function () {
     #Route resource order
     #thankyou

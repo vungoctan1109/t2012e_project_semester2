@@ -8,14 +8,16 @@ $(document).ready(function () {
             method: "POST",
             data: data,
             success: function (response) {
-                $("#total_cart").text(response.total_quantity + " items");
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: `${response.message}`,
-                    showConfirmButton: false,
-                    timer: 1000,
-                });
+                if (response.status == 200){
+                    var action = 'success';
+                    $("#total_cart").text(response.total_quantity + " items");
+                    alertCheckCart(action, response.message);
+                }
+                if (response.status == 400){
+                    var action = 'warning';
+                    $("#total_cart").text(response.total_quantity + " items");
+                    alertCheckCart(action, response.message);
+                }
             },
             error: function (response) {
                 Swal.fire({
@@ -28,4 +30,13 @@ $(document).ready(function () {
             },
         });
     });
+    function alertCheckCart(action, message) {
+        Swal.fire({
+            position: "bottom-start",
+            icon: `${action}`,
+            title: `${message}`,
+            showConfirmButton: false,
+            timer: 1000,
+        });
+    }
 });

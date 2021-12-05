@@ -262,80 +262,73 @@
                 </div><!-- Categories widget-->
 
                 <div class="widget mercado-widget widget-product">
-                    <h2 class="widget-title">Popular Products</h2>
+                    <h2 class="widget-title">Sản phẩm bán chạy</h2>
                     <div class="widget-content">
                         <ul class="products">
+                            @foreach($mobiles_popular as $item)
+                                @php
+                                    $arrayThumbnail = [];
+                                    $price_popular = number_format($item -> price, 0, '', ',');
+                                    $defaultThumbnail = 'https://res.cloudinary.com/quynv300192/image/upload/v1634800182/ixdpahcfqqmee12obutt.png';
+                                    if ($item -> thumbnail != null && strlen($item -> thumbnail) > 0) {
+                                        $item -> thumbnail = substr($item -> thumbnail, 0, -1);
+                                        $arrayThumbnail = explode(',', $item -> thumbnail);
+                                        if (sizeof($arrayThumbnail) > 0) {
+                                            $thumbnail = $arrayThumbnail[0];
+                                        }else{
+                                            $thumbnail = $defaultThumbnail;
+                                        }
+                                    }
+                                @endphp
                             <li class="product-item">
                                 <div class="product product-widget-style">
                                     <div class="thumbnnail">
-                                        <a href="detail.html"
-                                            title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                            <figure><img src="/client-assets/assets/images/products/digital_01.jpg"
+                                        <a href="{{route('mobile_client.show', $item -> id)}}"
+                                            title="{{$item -> name}}">
+                                            <figure><img src="{{$thumbnail}}"
                                                     alt=""></figure>
                                         </a>
                                     </div>
                                     <div class="product-info">
-                                        <a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional
-                                                Speaker...</span></a>
-                                        <div class="wrap-price"><span class="product-price">$168.00</span></div>
+                                        <a href="{{route('mobile_client.show', $item -> id)}}" class="product-name"><span>{{$item -> name}}</span></a>
+                                        <div class="wrap-price"><span class="product-price">{{$price_popular}} (VND)</span></div>
                                     </div>
                                 </div>
                             </li>
-
-                            <li class="product-item">
-                                <div class="product product-widget-style">
-                                    <div class="thumbnnail">
-                                        <a href="detail.html"
-                                            title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                            <figure><img src="/client-assets/assets/images/products/digital_17.jpg"
-                                                    alt=""></figure>
-                                        </a>
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional
-                                                Speaker...</span></a>
-                                        <div class="wrap-price"><span class="product-price">$168.00</span></div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="product-item">
-                                <div class="product product-widget-style">
-                                    <div class="thumbnnail">
-                                        <a href="detail.html"
-                                            title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                            <figure><img src="/client-assets/assets/images/products/digital_18.jpg"
-                                                    alt=""></figure>
-                                        </a>
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional
-                                                Speaker...</span></a>
-                                        <div class="wrap-price"><span class="product-price">$168.00</span></div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="product-item">
-                                <div class="product product-widget-style">
-                                    <div class="thumbnnail">
-                                        <a href="detail.html"
-                                            title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                            <figure><img src="/client-assets/assets/images/products/digital_20.jpg"
-                                                    alt=""></figure>
-                                        </a>
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional
-                                                Speaker...</span></a>
-                                        <div class="wrap-price"><span class="product-price">$168.00</span></div>
-                                    </div>
-                                </div>
-                            </li>
-
+                            @endforeach
                         </ul>
                     </div>
-                </div>
+                </div><br><br>
+                @if(isset($mobiles_recent_view) && count($mobiles_recent_view) > 0)
+                    <div class="widget mercado-widget widget-product">
+                        <h2 class="widget-title">Sản phẩm xem gần đây</h2>
+                        <div class="widget-content">
+                            <ul class="products">
+                                @foreach ($mobiles_recent_view as $item)
+                                    @php
+                                        $price_recent_item = number_format($item -> price, 0, '', ','); // 1,000,000
+                                    @endphp
+                                    <li class="product-item">
+                                        <div class="product product-widget-style">
+                                            <div class="thumbnnail">
+                                                <a href="{{route('mobile_client.show', $item -> id)}}"
+                                                   title="{{$item -> name}}">
+                                                    <figure><img src="{{$item -> mainThumbnail}}" alt=""></figure>
+                                                </a>
+                                            </div>
+                                            <div class="product-info">
+                                                <a href="{{route('mobile_client.show', $item -> id)}}"
+                                                   class="product-name"><span>{{$item -> name}}</span></a>
+                                                <div class="wrap-price"><span class="product-price">{{$price_recent_item}}(VND)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div><!-- recent view widget-->
+                @endIf
 
             </div>
             <!--end sitebar-->
@@ -347,7 +340,7 @@
                         <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5"
                             data-loop="false" data-nav="true" data-dots="false"
                             data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"5"}}'>
-                            @foreach ($mobile_related as $item)
+                            @foreach ($mobiles_related as $item)
                             @php
                             $price = number_format($item -> price, 0, '', ','); // 1,000,000
                             @endphp
@@ -365,7 +358,7 @@
                                         <a href="{{route('mobile_client.show', $item -> id)}}" class="function-link">quick view</a>
                                     </div>
                                 </div>
-                                <div class="product-info">                                    
+                                <div class="product-info">
                                     <a href="#" class="product-name"><span>{{$item -> name}}</span></a>
                                     <div class="wrap-price"><span class="product-price">{{$price}} (VND)</span></div>
                                 </div>
@@ -374,8 +367,10 @@
                         </div>
                     </div>
                     <!--End wrap-products-->
+
                 </div>
             </div>
+
 
         </div>
         <!--end row-->

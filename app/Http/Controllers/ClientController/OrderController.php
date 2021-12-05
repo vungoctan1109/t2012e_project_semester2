@@ -96,7 +96,12 @@ class OrderController extends Controller
             foreach ($arrayOderDetail as $orderDetail) {
                 $orderDetail->orderID = $orderID1;
                 if ($orderDetail->quantity > 0) {
-                    $orderDetail->save();
+                    if ($orderDetail->save()){
+                        $mobile = Mobile::find($orderDetail->mobileID);
+                        DB::table('mobiles')
+                            ->where('id', $mobile -> id)
+                            ->update(['quantity' => $mobile -> quantity - $orderDetail->quantity]);
+                    }
                 }
             }
             DB::commit();
