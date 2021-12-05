@@ -5,18 +5,12 @@
             <tr>
                 <th style="text-align: center;width: 2%;">Check</th>
                 <th style="text-align: center;width: 2%;">ID</th>
-                <th style="text-align: center;width: 8%;">email </th>
-                <th style="text-align: center;width: 8%;">fullName</th>
-                <th style="text-align: center;width: 4%;">phone</th>
-                <th style="text-align: center;width: 18%;">address</th>
-                <th style="text-align: center;width: 2%;">role</th>
-                <th style="text-align: center;width: 10%;">avatar</th>
-                <th style="text-align: center;width: 4%;">status</th>
-                <th style="text-align: center;width: 7%;">email_verified_at</th>
-                <th style="text-align: center;width: 5%;">remember_token</th>
-                <th style="text-align: center;width: 5%;">created_at</th>
-                <th style="text-align: center;width: 5%;">updated_at</th>
-                <th style="text-align: center;width: 16%;">Action</th>
+                <th style="text-align: center;width: 8%;">Account (Email) </th>
+                <th style="text-align: center;width: 2%;">Account Type</th>
+                <th style="text-align: center;width: 8%;">Full Name</th>
+                <th style="text-align: center;width: 4%;">Status</th>
+                <th style="text-align: center;width: 5%;">Updated At</th>
+                <th style="text-align: center;width: 13%;">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -25,23 +19,15 @@
                     <td style="text-align:center; vertical-align: middle"><input type="checkbox" value="{{$user->id}}"/></td>
                     <td style="text-align:center; vertical-align: middle">{{$user->id}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$user->email}}</td>
-                    <td style="text-align:center; vertical-align: middle">{{$user->fullName}}</td>
-                    <td style="text-align:center; vertical-align: middle">{{$user->phone}}</td>
-                    <td style="text-align:center; vertical-align: middle">{{$user->address}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$user->strRolllle}}</td>
-                    <td style="text-align:center; vertical-align: middle">
-                        <img width="120px" src="{{$user->mainAvatar}}" alt="">
-                    </td>
+                    <td style="text-align:center; vertical-align: middle">{{$user->fullName}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$user->strStatus}}</td>
-                    <td style="text-align:center; vertical-align: middle">{{$user->email_verified_at}}</td>
-                    <td style="text-align:center; vertical-align: middle">{{$user->remember_token}}</td>
                     <td style="text-align:center; vertical-align: middle">{{date('d-m-Y', strtotime($user->created_at))}}</td>
-                    <td style="text-align:center; vertical-align: middle">{{date('d-m-Y', strtotime($user->updated_at))}}</td>
                     <td style="text-align:center; vertical-align: middle">
-                        <a class="btn btn-primary btn-sm m-1" href="{{route('user_admin.show', $user->id)}}">
+                        <a class="btn btn-primary btn-sm m-1" href="/admin/user/{{$user->id}}">
                             <i class="fas fa-folder">View</i>
                         </a>
-                        <a class="btn btn-info btn-sm m-1" href="/admin/user_admin/{{$user->id}}/edit ">
+                        <a class="btn btn-info btn-sm m-1" href="/admin/user_admin/{{$user->id}}/edit">
                             <i class="fas fa-pencil-alt">Edit</i>
                         </a>
                         <a  class="btn btn-danger btn-sm delete m-1" userID = '{{$user->id}}'>
@@ -55,18 +41,12 @@
             <tr>
                 <th style="text-align: center;width: 2%;">Check</th>
                 <th style="text-align: center;width: 2%;">ID</th>
-                <th style="text-align: center;width: 8%;">email </th>
-                <th style="text-align: center;width: 8%;">fullName</th>
-                <th style="text-align: center;width: 4%;">phone</th>
-                <th style="text-align: center;width: 18%;">address</th>
-                <th style="text-align: center;width: 2%;">role</th>
-                <th style="text-align: center;width: 10%;">avatar</th>
-                <th style="text-align: center;width: 4%;">status</th>
-                <th style="text-align: center;width: 7%;">email_verified_at</th>
-                <th style="text-align: center;width: 5%;">remember_token</th>
-                <th style="text-align: center;width: 5%;">created_at</th>
-                <th style="text-align: center;width: 5%;">updated_at</th>
-                <th style="text-align: center;width: 16%;">Action</th>
+                <th style="text-align: center;width: 8%;">Account (Email) </th>
+                <th style="text-align: center;width: 2%;">Account Type</th>
+                <th style="text-align: center;width: 8%;">Full Name</th>
+                <th style="text-align: center;width: 4%;">Status</th>
+                <th style="text-align: center;width: 5%;">Updated At</th>
+                <th style="text-align: center;width: 13%;">Action</th>
             </tr>
             </thead>
         </table>

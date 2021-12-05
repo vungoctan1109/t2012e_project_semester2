@@ -10,6 +10,11 @@ class Order extends Model
     use HasFactory;
     //Scope start here
     #pagination
+    public function getFPriceAttribute()
+    {
+        return number_format($this->totalPrice, 0, ',', ' ');
+    }
+
     public function scopePagination($query, $request)
     {
         if ($request->has('pagination_limit')) {
