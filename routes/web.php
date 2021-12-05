@@ -164,7 +164,7 @@ Route::prefix('client/page')->group(function () {
         return view('client.page.home');
     })->name('client.home');
     #detail
-    Route::get('detail', [ShopMobileController::class, 'get_detail'])->name('client.detail');
+//    Route::get('detail', [ShopMobileController::class, 'get_detail'])->name('client.detail');
     #login
     Route::get('login', function () {
         return view('client.page.login');

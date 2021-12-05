@@ -4,13 +4,13 @@
             <thead>
             <tr>
                 <th style="text-align: center;width: 2%;">Check</th>
-                <th style="text-align: center;">Order ID</th>
-                <th style="text-align: center;">Mobile ID</th>
+                <th style="text-align: center;width: 2%;">Order ID</th>
+                <th style="text-align: center;width: 25%;">Mobile</th>
                 <th style="text-align: center;width: 4%;">Quantity</th>
-                <th style="text-align: center;width: 15%;">Unit Price (VND)</th>
+                <th style="text-align: center;width: 12%;">Unit Price (VND)</th>
                 <th style="text-align: center;width: 10%;">Discount (%)</th>
                 <th style="text-align: center;width: 10%;">Created At</th>
-                <th style="text-align: center;width: 30%;">Action</th>
+                <th style="text-align: center;width: 27%;">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -18,9 +18,9 @@
                 <tr>
                     <td style="text-align:center; vertical-align: middle"><input type="checkbox" value=""/></td>
                     <td style="text-align:center; vertical-align: middle">{{$order_detail->orderID}}</td>
-                    <td style="text-align:center; vertical-align: middle">{{$order_detail->mobileID}}</td>
+                    <td style="text-align:center; vertical-align: middle">{{$order_detail->mobile->name}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$order_detail->quantity}}</td>
-                    <td style="text-align:center; vertical-align: middle">{{$order_detail->unitPrice}}</td>
+                    <td style="text-align:center; vertical-align: middle">{{$order_detail->fUnitPrice}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$order_detail->discount * 100}}</td>
                     <td style="text-align:center; vertical-align: middle">{{date('d-m-Y', strtotime($order_detail->created_at))}}</td>
                     <td style="text-align:center; vertical-align: middle">
@@ -40,13 +40,13 @@
             <thead>
             <tr>
                 <th style="text-align: center;width: 2%;">Check</th>
-                <th style="text-align: center;">Order ID</th>
-                <th style="text-align: center;">Mobile ID</th>
+                <th style="text-align: center;width: 2%;">Order ID</th>
+                <th style="text-align: center;width: 25%;">Mobile</th>
                 <th style="text-align: center;width: 4%;">Quantity</th>
-                <th style="text-align: center;width: 15%;">Unit Price (VND)</th>
+                <th style="text-align: center;width: 12%;">Unit Price (VND)</th>
                 <th style="text-align: center;width: 10%;">Discount (%)</th>
                 <th style="text-align: center;width: 10%;">Created At</th>
-                <th style="text-align: center;width: 30%;">Action</th>
+                <th style="text-align: center;width: 27%;">Action</th>
             </tr>
             </thead>
         </table>
