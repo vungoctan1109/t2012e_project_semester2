@@ -16,7 +16,7 @@
             <tbody>
             @foreach($order_details as $order_detail)
                 <tr>
-                    <td style="text-align:center; vertical-align: middle"><input type="checkbox" value=""/></td>
+                    <td style="text-align:center; vertical-align: middle"><input type="checkbox" value="{{$order_detail->orderID}}"/></td>
                     <td style="text-align:center; vertical-align: middle">{{$order_detail->orderID}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$order_detail->mobileID}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$order_detail->quantity}}</td>
@@ -26,9 +26,6 @@
                     <td style="text-align:center; vertical-align: middle">
                         <a class="btn btn-primary btn-sm m-1" href="">
                             <i class="fas fa-folder">View</i>
-                        </a>
-                        <a class="btn btn-info btn-sm m-1" href="">
-                            <i class="fas fa-pencil-alt">Edit</i>
                         </a>
                         <a class="btn btn-danger btn-sm delete m-1" href="">
                             <i class="fas fa-trash">Delete</i>
