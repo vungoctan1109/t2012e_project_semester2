@@ -1,7 +1,7 @@
 <?php
 use App\Http\Controllers\AdminController\AuthController;
+use App\Http\ExportExcelController\ExportExcelMobileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ExportExcelController;
 use App\Http\Controllers\AdminController\OrderDetailController;
 use App\Http\ExportExcelController\ExportExcelBrandController;
 use App\Http\ExportExcelController\ExportExcelCategoryController;
@@ -106,23 +106,23 @@ Route::prefix('admin')->group(function () {
         return view('admin.template.table_data');
     });
     #Export excel
-    Route::get('/export_excel', [ExportExcelController::class, 'index']);
-    Route::get('/export_excel/excel', [ExportExcelController::class, 'excel']);
 });
 #Route client
     #Export excel Category
-    Route::get('/export-excel/category', [ExportExcelCategoryController::class, 'index']);
-    Route::get('/export-excel/excel/category', [ExportExcelCategoryController::class, 'excel']);
+    Route::get('/export-excel/category', [ExportExcelCategoryController::class, 'excel']);
     #Export excel Brand
     Route::get('/export-excel/excel/brand', [ExportExcelBrandController::class, 'excel']);
+    #Export excel Mobile
+    Route::get('/export-excel/excel/mobile', [ExportExcelMobileController::class, 'excel']);
     #Export excel Order
     Route::get('/export-excel/excel/order', [ExportExcelOrderController::class, 'excel']);
 
 
 
+
 Route::prefix('client/page')->group(function () {
     #Route resource order
-    #thankyou 
+    #thankyou
     Route::get('thankyou/{id}', [OrderController::class, 'show_thankyou'])->name('client.thankyou');
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'
@@ -198,9 +198,9 @@ Route::prefix('client/page')->group(function () {
     # return policy
     Route::get('return-policy', function () {
         return view('client.page.return_policy');
-    })->name('client.return_policy');   
+    })->name('client.return_policy');
 });
-#route fall back show error page 404! 
+#route fall back show error page 404!
 Route::fallback(function () {
     return view('client.page.error.page_404');
 });

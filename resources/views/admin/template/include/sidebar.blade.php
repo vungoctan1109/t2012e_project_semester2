@@ -48,7 +48,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/admin/export-excel/category" class="nav-link">
+                        <a href="/export-excel/category" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Export Excel</p>
                         </a>
@@ -77,7 +77,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/admin/export-excel/excel/brand" class="nav-link">
+                        <a href="/export-excel/excel/brand" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Export Excel</p>
                         </a>
@@ -103,6 +103,12 @@
                         <a href="/admin/mobile" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Show All & Search</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/export-excel/excel/mobile" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Export Excel</p>
                         </a>
                     </li>
                 </ul>
@@ -145,7 +151,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/admin/export-excel/excel/order" class="nav-link">
+                        <a href="/export-excel/excel/order" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Export Excel</p>
                         </a>
