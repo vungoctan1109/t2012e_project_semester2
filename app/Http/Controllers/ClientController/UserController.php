@@ -95,23 +95,35 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $result = DB::table('users')
-            ->where('id', $request->get('id'))
-            ->update([
-                'fullName' => $request->get('fullName'),
-                'phone' => $request->get('phone'),
-                'address' => $request->get('address'),
-                'avatar' => $request->get('avatar'),
-                'description' => $request->get('description'),
-                'updated_at' => Carbon::now()
-            ]);
-        if ($result) {
-            return response()->json(['status' => 200, 'message' => 'update user info success', 'id'=> $request->get('id')]);
-        } else {
-            return response()->json(['status' => 500, 'message' => 'update user info false']);
+//        $result = DB::table('users')
+//            ->where('id', $request->get('id'))
+//            ->update([
+//                'fullName' => $request->get('fullName'),
+//                'phone' => $request->get('phone'),
+//                'address' => $request->get('address'),
+//                'avatar' => $request->get('avatar'),
+//                'description' => $request->get('description'),
+//                'updated_at' => Carbon::now()
+//            ]);
+        $user = User::find($id);
+        if ($user){
+            $user -> fullName = $request->get('fullName');
+            $user -> phone = $request->get('phone');
+            $user -> address = $request->get('address');
+            $user -> avatar = $request->get('avatar');
+            $user -> description = $request->get('description');
+            $user -> updated_at = Carbon::now();
+            if($user -> save()){
+                return response()->json(['status' => 200, 'message' => 'Update user info success', 'id'=> $user -> id]);
+            }else{
+                return response()->json(['status' => 500, 'message' => 'Update user info false']);
+            }
+        }else{
+            return response()->json(['status' => 404, 'message' => 'User not found']);
         }
+        return response()->json(['status' => 500, 'message' => 'Update user info false']);
     }
 
     /**
