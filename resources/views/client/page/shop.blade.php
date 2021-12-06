@@ -52,10 +52,8 @@
                             <ul class="list-style vertical-list list-limited" data-show="6">
                                 <li class="list-item"><a value='-1' class="filter-link filter-brand active" href="#">Tất
                                         cả</a></li>
-                                @foreach ($brands as $item)
-                                    <li class="list-item"><a value='{{$item -> id}}' class="filter-link filter-brand"
-                                                             href="#">{{$item -> name}}</a>
-                                    </li>
+                                @foreach ($brands as $item) 
+                                    <li class="list-item"><a value='{{$item -> id}}' class="filter-link filter-brand" href="#">{{$item -> name}}</a></li>
                                 @endforeach
                             </ul>
                         </div>
