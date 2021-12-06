@@ -1,37 +1,4 @@
 $(document).ready(function (e) {
-    //jquery validation
-    $("#formOrder").validate({
-        onfocusout: false,
-        onkeyup: false,
-        onclick: false,
-        rules: {
-            "name": {
-                required: true
-            },
-            "email": {
-                required: true
-            },
-            "phone": {
-                required: true
-            },
-            "province": {
-                required: true
-            },
-            "district": {
-                required: true
-            },
-            "ward": {
-                required: true
-            },
-            "address_detail": {
-                required: true
-            },
-            "comment": {
-                required: true
-            }
-        }
-    });
-
     var total;
     var total_vnd;
     $.ajaxSetup({
@@ -62,10 +29,12 @@ $(document).ready(function (e) {
             $("#btnCod").show();
         }
     });
+    var order_id;
     paypal.Button.render(
         {
             // Configure environment
             env: "sandbox",
+            commit: true, // Show Pay Now button
             client: {
                 sandbox:
                     "AbxeXUFr0NtwiRVfz5y8H4gfmSs3WeyCWVOLejqrmegNrR5ySQ-P_KS7l_aEJA2n86onnbMK1ZW3E6f2",
@@ -78,71 +47,85 @@ $(document).ready(function (e) {
                 color: "gold",
                 shape: "pill",
             },
-
-            // Enable Pay Now checkout flow (optional)
-            commit: true,
-            // Set up a payment
-            payment: function (data, actions) {
-                return actions.payment.create({
-                    transactions: [
-                        {
-                            amount: {
-                                total: `${total}`,
-                                currency: "USD",
-                            },
-                        },
-                    ],
+            // Called when page displays
+            validate: function (actions) {
+                actions.disable(); // Allow for validation in onClick()
+                paypalActions = actions; // Save for later enable()/disable() calls
+            },
+            // Called for every click on the PayPal button even if actions.disabled
+            onClick: function (e) {
+                var data1 = $("#formOrder").serialize();
+                $.ajax({
+                    url: "/client/page/order",
+                    method: "post",
+                    data: data1,
+                    beforeSend: function () {
+                        $(document).find("span.error").text(" ");
+                    },
+                    success: function (resp) {
+                        if (resp.status == 200) {
+                            paypalActions.enable();
+                            order_id = resp.orderID;                            
+                        }
+                        if (resp.status == 400) {
+                            paypalActions.disable();
+                            var status = "warning";
+                            alertAction(resp.message, status);
+                            $.each(resp.errors, function (prefix, val) {
+                                $("span." + prefix + "_error").text(val[0]);
+                            });
+                        }
+                        if (resp.status == 500) {
+                            paypalActions.disable();
+                            var status = "error";
+                            alertAction(resp.message, status);
+                        }
+                    }                  
                 });
             },
-            // Execute the payment
-            onAuthorize: function (data, actions) {
-                return actions.payment.execute().then(function () {
-                    // Show a confirmation message to the buyer
-                    var data1 = $("#formOrder").serialize();
-                    $.ajax({
-                        url: "/client/page/order",
-                        method: "post",
-                        data: data1,
-                        success: function (resp) {
-                            var orderID = resp.orderID;
-                            let data3 = {id: orderID};
-                            $.ajax({
-                                url: "/client/page/update/checkout_order",
-                                method: "post",
-                                data: data3,
-                                success: function (resp) {
-                                    if (resp.status == 200) {
-                                        var status = "success";
-                                        alertAction(resp.message, status);
-                                        setTimeout(function () {
-                                            $.ajax({
-                                                url: `/client/page/thankyou/${resp.orderID}`,
-                                                method: "GET",
-                                                success: function () {
-                                                    window.location.href = `/client/page/thankyou/${resp.orderID}`;
-                                                },
-                                            });
-                                        }, 1000);
-                                    }
-                                    if (resp.status == 400) {
-                                        var status = "error";
-                                        alertAction(resp.message, status);
-                                    }
-                                    if (resp.status == 500) {
-                                        var status = "error";
-                                        alertAction(resp.message, status);
-                                    }
+            // Buyer clicked the PayPal button.
+            payment: function (data, actions) {
+                console.log("payment called");
+                return actions.payment.create({
+                    payment: {
+                        transactions: [
+                            {
+                                amount: {
+                                    total: "0.01",
+                                    currency: "USD",
                                 },
-                            });
-                            //sweetalert
-                            Swal.fire({
-                                position: "top-end",
-                                icon: "success",
-                                title: "Payment success !!!!",
-                                showConfirmButton: false,
-                                timer: 2500,
-                            });
-                        },
+                            },
+                        ],
+                    },
+                });
+            },
+            // Buyer logged in and authorized the payment
+            onAuthorize: function (data, actions) {                
+                return actions.payment.execute().then(function () {                 
+                    let data3 = { id:  order_id };                                       
+                    $.ajax({
+                        url: "/client/page/update/checkout_order",
+                        method: "post",
+                        data: data3,
+                        success: function (response) {
+                            if(response.status == 200) {                                
+                                $.ajax({
+                                    url: `/client/page/thankyou/${response.order_id}`,
+                                    method: "GET",
+                                    success: function () {                                    
+                                        window.location.href = `/client/page/thankyou/${response.order_id}`;
+                                    },
+                                });
+                            }
+                            if(response.status == 500) {
+                                var status = "error";
+                                alertAction(response.message, status);
+                            } 
+                            if(response.status == 404) {
+                                var status = "error";
+                                alertAction(response.message, status);
+                            }                            
+                        }
                     });
                 });
             },
@@ -156,25 +139,26 @@ $(document).ready(function (e) {
         $.ajax({
             url: "/client/page/order",
             method: "post",
+            beforeSend: function () {
+                $(document).find("span.error").text(" ");
+            },
             data: data1,
             success: function (resp) {
-                //sweetalert
                 if (resp.status == 200) {
-                    var status = "success";
-                    alertAction(resp.message, status);
-                    setTimeout(function () {
-                        $.ajax({
-                            url: `/client/page/thankyou/${resp.orderID}`,
-                            method: "GET",
-                            success: function () {
-                                window.location.href = `/client/page/thankyou/${resp.orderID}`;
-                            },
-                        });
-                    }, 1000);
+                    $.ajax({
+                        url: `/client/page/thankyou/${resp.orderID}`,
+                        method: "GET",
+                        success: function () {
+                            window.location.href = `/client/page/thankyou/${resp.orderID}`;
+                        },
+                    });
                 }
                 if (resp.status == 400) {
-                    var status = "error";
+                    var status = "warning";
                     alertAction(resp.message, status);
+                    $.each(resp.errors, function (prefix, val) {
+                        $("span." + prefix + "_error").text(val[0]);
+                    });
                 }
                 if (resp.status == 500) {
                     var status = "error";

@@ -81,6 +81,7 @@ class MobileShopController extends Controller
             //related
             $mobiles_related = Mobile_Model::query()->select('*')->where('brandID', $mobile->brandID)->get()->take(10);
             $arr = [];
+            //add and get recent view mobile into session
             if (Session::has('recent_view')) {
                 $arr = Session::get('recent_view');
             }
