@@ -14,6 +14,10 @@ class OrderDetail extends Model
         return $this->hasOne(Mobile::class,'id', 'mobileID');
     }
 
+    public function order(){
+        return $this->hasOne(Order::class, 'id', "orderID");
+    }
+
     public function getFUnitPriceAttribute()
     {
         return number_format($this->unitPrice, 0, ',', ' ');
