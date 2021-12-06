@@ -25,7 +25,6 @@
 @section('content')
     <!-- Main content -->
     <section class="content">
-
         <!-- Default box -->
         <div class="card card-solid">
             <div class="card-body">
@@ -34,7 +33,7 @@
                         <h3 class="d-inline-block d-sm-none">Full name: {{$user->fullName}}</h3>
                         <h3 class="d-inline-block d-sm-none">Full name: {{$user->fullName}}</h3>
                         <div class="col-12">
-                            <img src="{{$user->mainAvatar}}" class="product-image" alt="Product Image">
+                            <img src="{{$user->avatar}}" class="product-image" alt="Product Image">
                         </div>
                     </div>
                     <div class="col-12 col-sm-10">
@@ -64,7 +63,7 @@
                             </a>
                             <a href="/admin/user_admin">
                                 <div class="btn btn-default btn-lg btn-flat">
-                                    Back To List
+                                    View List Account
                                 </div>
                             </a>
                         </div>

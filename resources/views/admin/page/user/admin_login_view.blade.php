@@ -31,7 +31,7 @@
                 $attr = ' ';
             }
             @endphp
-            <span {{$attr}} style="color:red">You need to login first</span>
+            <span {{$attr}} style="color:red">You must be logged in to perform the next steps (Only Admin Account)</span>
         </div>
         <a id="btnSubmit" class="mouseEffect">
             <span></span>

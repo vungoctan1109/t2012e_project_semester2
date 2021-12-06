@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', function (e) {
                     url:'/auth/adminlogout',
                     method:'POST',
                     success: function (){
-                        window.location.href = "/auth/adminlogin";
+                        window.location.href = "/client/page/shop/mobile";
                     }
                 })
             }
@@ -27,3 +27,4 @@ window.addEventListener('DOMContentLoaded', function (e) {
     })
 
 } )
+

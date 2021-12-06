@@ -83,8 +83,8 @@
                             <label for="thumbnail">Avatar</label></br>
                             <button type="button" id="btnThumbnailLink" class="btn btn-info mt-1"
                                     value="Choose your file">Change Avatar</button></br>
-                            <div id="list-preview-image"><img width="120px" src="{{$user->mainAvatar}}" alt=""></div>
-                            <input id="avatar" type="text" value="{{$user->mainAvatar}}" name="avatar" style="display: none">
+                            <div id="list-preview-image"><img width="120px" src="{{$user->avatar}}" alt=""></div>
+                            <input id="avatar" type="text" value="{{$user->avatar}}" name="avatar" style="display: none">
                         </div>
 
 

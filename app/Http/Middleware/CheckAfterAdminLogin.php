@@ -23,8 +23,8 @@ class CheckAfterAdminLogin
             if ( Auth::user()->isAdmin() ) {
                 return redirect(route('home.dashboard'));
             }
-            return $next($request);
         }
+        return $next($request);
         abort(404);  // for other user throw 404 error
     }
 }

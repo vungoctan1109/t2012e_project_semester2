@@ -15,14 +15,8 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function adminGetLogin()
     {
-//        $check = Auth::check();
-//        $checkAdmin = Auth::user()->isAdmin();
-//        if ($check && $checkAdmin){
-//            return Redirect::route('admin.dashboard');
-//        }
         return view('admin.page.user.admin_login_view');
     }
 
