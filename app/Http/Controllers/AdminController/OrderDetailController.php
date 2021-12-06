@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\AdminController;
 use App\Http\Controllers\Controller;
+use App\Models\OrderDetail;
 use App\Models\OrderDetail as OrderDetail_model;
 use App\Models\Order as Order_model;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class OrderDetailController extends Controller
 {
@@ -65,7 +69,8 @@ class OrderDetailController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = DB::table('order_details')->where('orderID', '=', $id)->first();
+        return view('admin.page.order-detail.detail_order-detail', compact('result'));
     }
 
     /**
@@ -76,7 +81,6 @@ class OrderDetailController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -88,7 +92,7 @@ class OrderDetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -97,8 +101,28 @@ class OrderDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            $category = OrderDetail_Model::find($id);
+            if ($category) {
+                if ($category->delete()) {
+                    return response()->json([
+                        'status' => 200,
+                        'message' => 'Data have been successfully deleted!'
+                    ]);
+                } else {
+                    return response()->json([
+                        'status' => 500,
+                        'message' => 'Something went wrong!'
+                    ]);
+                }
+            } else {
+                return response()->json([
+                    'status' => 404,
+                    'message' => 'Object not exist!'
+                ]);
+            }
+        }
     }
 }
