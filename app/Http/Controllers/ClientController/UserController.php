@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\ClientController;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -17,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -68,9 +70,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($user_id)
     {
-        //
+        $orders = Order::where('userId', $user_id)->paginate(50);
+        $result = User::find($user_id);
+        return view('client.page.profile', ['user' => $result, 'order' => $orders]);
     }
 
     /**
@@ -91,9 +95,23 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $result = DB::table('users')
+            ->where('id', $request->get('id'))
+            ->update([
+                'fullName' => $request->get('fullName'),
+                'phone' => $request->get('phone'),
+                'address' => $request->get('address'),
+                'avatar' => $request->get('avatar'),
+                'description' => $request->get('description'),
+                'updated_at' => Carbon::now()
+            ]);
+        if ($result) {
+            return response()->json(['status' => 200, 'message' => 'update user info success', 'id'=> $request->get('id')]);
+        } else {
+            return response()->json(['status' => 500, 'message' => 'update user info false']);
+        }
     }
 
     /**

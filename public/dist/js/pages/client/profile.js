@@ -1,4 +1,18 @@
-window.addEventListener('DOMContentLoaded', function () {
+$(document).ready(function () {
+    var readURL = function (input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.avatar').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $(".file-upload").on('change', function () {
+        readURL(this);
+    });
 
     // upload file Thumbnail
 
@@ -10,12 +24,13 @@ window.addEventListener('DOMContentLoaded', function () {
         },
         (error, result) => {
             if (!error && result && result.event === "success") {
-                console.log(result.info);
+                document.getElementById("list-preview-image").innerHTML = '';
+                document.getElementById("avatar").value = '';
                 document.getElementById("avatar").value = `${result.info.secure_url}`;
                 // alert(document.getElementById("valueUpLoad").value);
                 document.getElementById("list-preview-image").innerHTML = `
                <span class="m-2" id="preview-image" style="position: relative; with:100px; display:inline-block;">
-                   <img src="${result.info.secure_url}" class="img-thumbnail img-bordered" style="width: 100px; ml-2" delete="${result.info.delete_token}">
+                   <img src="${result.info.secure_url}" class="img-thumbnail img-bordered" style="width: 400px; ml-2" delete="${result.info.delete_token}">
                    <i class="fas fa-times btnDeleteImg" style="position: absolute;right: 0;top: 0; cursor: pointer;"></i>
                </span>
                `;
@@ -26,8 +41,8 @@ window.addEventListener('DOMContentLoaded', function () {
     btnThumbnailLink.addEventListener(
         "click",
         function () {
-            document.getElementById("list-preview-image").innerHTML = '';
-            document.getElementById("avatar").value = '';
+            // document.getElementById("list-preview-image").innerHTML = '';
+            // document.getElementById("avatar").value = '';
             myWidget_thumbnail.open();
         },
         false
@@ -105,55 +120,17 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    //jquery validation
-    $("#formRegis").validate({
-        onfocusout: false,
-        onkeyup: false,
-        onclick: false,
-        rules: {
-            "email": {
-                required: true
-            },
-            "fullName": {
-                required: true
-            },
-            "phone": {
-                required: true
-            },
-            "address": {
-                required: true
-            },
-            "description": {
-                required: true
-            },
-            "avatar": {
-                required: true
-            },
-            "password": {
-                required: true,
-                minlength: 8
-            },
-            "cfpassword": {
-                required: true,
-                equalTo: "#password",
-                minlength: 8
-            }
-        }
-    });
-
     //process submit button
-    $('#formRegis').submit(function (e) {
+    $('#btnSaveEdit').click(function (e) {
         e.preventDefault();
         const id = $('input[name=id]').val();
-        const role = $('select[name=role]').val();
         const fullName = $('input[name=fullName]').val();
         const phone = $('input[name=phone]').val();
         const address = $('input[name=address]').val();
         const description = $('input[name=description]').val();
         const avatar = $('input[name=avatar]').val();
-        let data1 = {
+        var data1 = {
             'id': id,
-            'role': role,
             'fullName': fullName,
             'phone': phone,
             'address': address,
@@ -167,18 +144,10 @@ window.addEventListener('DOMContentLoaded', function () {
             }
         });
         $.ajax({
-            url:'/admin/update/user',
-            method:'POST',
+            url:'/client/page/user/'+id,
+            method:'PUT',
             data:data1,
             success: function(res){
-                if(res.status === 400){
-                    Swal.fire({
-                        icon: 'error',
-                        // title: 'Oops...',
-                        text: 'This email already exist',
-                        // footer: '<a href="">Why do I have this issue?</a>'
-                    })
-                }
                 if(res.status === 200){
                     Swal.fire({
                         icon: 'success',
@@ -187,7 +156,7 @@ window.addEventListener('DOMContentLoaded', function () {
                         // footer: '<a href="">Why do I have this issue?</a>'
                     })
                     setTimeout(function() {
-                        window.location.href = "/admin/user_admin";
+                        window.location.href = "/client/page/user/"+res.id;
                     },2000)
 
                 }
@@ -202,4 +171,6 @@ window.addEventListener('DOMContentLoaded', function () {
             }
         })
     })
-})
+
+
+});
