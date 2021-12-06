@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
 {
@@ -14,8 +15,14 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function adminGetLogin()
     {
+//        $check = Auth::check();
+//        $checkAdmin = Auth::user()->isAdmin();
+//        if ($check && $checkAdmin){
+//            return Redirect::route('admin.dashboard');
+//        }
         return view('admin.page.user.admin_login_view');
     }
 
@@ -35,6 +42,12 @@ class AuthController extends Controller
             ];
         }
         return response()->json($data);
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/auth/adminlogin');
     }
 
     public function index()

@@ -134,7 +134,7 @@
                 </div>
                 <h2>Thank you</h2>
                 <p>A confirmation email was sent.</p>
-                <a href="/client/page/shop" class="btn btn-submit btn-submitx">Continue Shopping</a>
+                <a href="/client/page/shop/mobile" class="btn btn-submit btn-submitx">Continue Shopping</a>
             </div>
         </div>
     </div>

@@ -32,15 +32,15 @@
                 <div class="row">
                     <div class="col-12 col-sm-2">
                         <h3 class="d-inline-block d-sm-none">Full name: {{$user->fullName}}</h3>
+                        <h3 class="d-inline-block d-sm-none">Full name: {{$user->fullName}}</h3>
                         <div class="col-12">
                             <img src="{{$user->mainAvatar}}" class="product-image" alt="Product Image">
                         </div>
                     </div>
                     <div class="col-12 col-sm-10">
                         <h3 class="my-3"><b>Full name:</b> {{$user->fullName}}</h3>
-                        <h4><b>Role on page:</b> {{$user->strRolllle}}</h4>
-
-                        <hr>
+                        <h3 class="my-3"><b>Email:</b> {{$user->email}}</h3>
+                        <h4><b>Role:</b> {{$user->strRolllle}}</h4>
                         <h4><b>Account Status:</b> {{$user->strStatus}}</h4>
                         <h4><b>Phone number:</b> {{$user->phone}}</h4>
                         <h4><b>Address:</b> {{$user->address}}</h4>

@@ -23,7 +23,7 @@
         <div class="content-wrapper" style="min-height: 1602px;">
             <!-- Content Header (Page header) -->
             <div class="content-header">
-             @include('admin.template.include.content_header') 
+             @include('admin.template.include.content_header')
             </div>
             <!-- /.content-header -->
             <!-- Main content -->
@@ -42,5 +42,6 @@
     <!-- ./wrapper -->
     @include('admin.template.include.script_common')
     @yield('script_private')
+    <script src="/dist/js/master_layout.js"></script>
 </body>
 </html>

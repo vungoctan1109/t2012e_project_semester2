@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\AdminController\AuthController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController\OrderDetailController;
@@ -36,20 +37,14 @@ use App\Http\Controllers\ClientController\ShoppingCartController;
 |
 */
 #auth
-Route::prefix('auth')->group(function(){
-    Route::get('/adminlogin', [AuthController::class, 'adminGetLogin'])->name('admin.login');
-    Route::post('/adminlogin', [AuthController::class, 'adminPostLogin'])->name('admin.process.login');
 
-    Route::resource('account', AuthController::class)->parameters([
-        'auth' => 'auth_id'
-    ]);
-});
-
-#admin
-
-
-Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+//Admin Route after authentication
+Auth::routes();
+Route::group([
+    'prefix' => 'admin',
+    'middleware' => ['auth', 'admin']
+], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     #user
     Route::post('/update/user', [UserControllerAdmin::class, 'update'])->name('User.Info.Update');
     Route::get('/users_admin/fetch_data', [UserControllerAdmin::class, 'fetch_data']);
@@ -113,6 +108,89 @@ Route::prefix('admin')->group(function () {
         return view('admin.template.table_data');
     });
 });
+
+//Login Admin
+
+Route::group([
+    'prefix' => 'auth',
+//    'middleware' => ['check.after.admin.login']
+],function(){
+    Route::get('/adminlogin', [AuthController::class, 'adminGetLogin'])->name('admin.login');
+    Route::post('/adminlogin', [AuthController::class, 'adminPostLogin'])->name('admin.process.login');
+    Route::post('/adminlogout', [AuthController::class, 'logout'])->name('admin.process.logout');
+
+    Route::resource('account', AuthController::class)->parameters([
+        'auth' => 'auth_id'
+    ]);
+});
+
+//Route before authentication
+#admin
+//Route::prefix('admin')->group(function () {
+//    Route::get('/dashboard', [DashboardController::class, 'index']);
+//    #user
+//    Route::post('/update/user', [UserControllerAdmin::class, 'update'])->name('User.Info.Update');
+//    Route::get('/users_admin/fetch_data', [UserControllerAdmin::class, 'fetch_data']);
+//    Route::resource('user_admin', UserControllerAdmin::class)->parameters([
+//        'user_admin' => 'user_admin_id'
+//    ]);
+//    #category
+//    Route::get('/category/fetch_data', [CategoryController::class, 'fetch_data']);
+//    Route::resource('category', CategoryController::class)->parameters([
+//        'category' => 'category_id'
+//    ]);
+//    #brand
+//    Route::get('/brand/search', [BrandController::class, 'search']);
+//    Route::get('/brand/fetch_data', [BrandController::class, 'fetch_data']);
+//    Route::resource('brand', BrandController::class)->parameters([
+//        'brand' => 'brand_id'
+//    ]);
+//    //all product start here -------------------------------------------------------
+//    //1. mobile
+//    Route::get('/mobile/fetch_data', [MobileController::class, 'fetch_data']);
+//    Route::resource('mobile', MobileController::class)->parameters([
+//        'mobile' => 'mobile_id'
+//    ]);
+//    #2. laptop
+//    Route::resource('laptop', LaptopController::class)->parameters([
+//        'laptop' => 'laptop_id'
+//    ]);
+//    #3. accessory
+//    Route::resource('accessory', AccessoryController::class)->parameters([
+//        'accessory' => 'accessory_id'
+//    ]);
+//    #4. order
+//    Route::get('/order/fetch_data', [OrderControllerAdmin::class, 'fetch_data']);
+//    Route::resource('orders', OrderControllerAdmin::class)->parameters([
+//        'orders' => 'order_id'
+//    ]);
+//    #5. user
+//    Route::resource('user', UserControllerAdmin::class)->parameters([
+//        'user' => 'user_id'
+//    ]);
+//
+//
+//    #6. order-detail
+//    Route::get('/order-detail/fetch_data', [OrderDetailController::class, 'fetch_data']);
+//    Route::resource('order-detail', OrderDetailController::class)->parameters([
+//        'order-detail' => 'order-detail_id'
+//    ]);
+//
+//    #7. Export Excel Admin
+//    Route::get('/export-excel/category', [ExportExcelCategoryController::class, 'index']);
+//    Route::get('/export-excel/excel/category', [ExportExcelCategoryController::class, 'excel']);
+//    #Export excel Brand
+//    Route::get('/export-excel/excel/brand', [ExportExcelBrandController::class, 'excel']);
+//    #Export excel Order
+//    Route::get('/export-excel/excel/order', [ExportExcelOrderController::class, 'excel']);
+//
+//    Route::get('form', function () {
+//        return view('admin.template.form');
+//    });
+//    Route::get('table', function () {
+//        return view('admin.template.table_data');
+//    });
+//});
 #Route client
 Route::prefix('client/page')->group(function () {
     #Route resource order
@@ -198,3 +276,7 @@ Route::prefix('client/page')->group(function () {
 Route::fallback(function () {
     return view('client.page.error.page_404');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
