@@ -39,4 +39,64 @@ window.addEventListener("DOMContentLoaded", function () {
             },
         });
     }
+
+    //delete
+    $(document).on("click", ".delete", function (e) {
+        e.preventDefault();
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                //FIXME:
+                var data = $("#formFilter").serialize();
+                $.ajaxSetup({
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
+                    },
+                });
+                $.ajax({
+                    url: "/admin/order-detail/" + $(this).attr("order_detail_id"),
+                    method: "DELETE",
+                    success: function (response) {
+                        if (response.status == 200) {
+                            alertProcess();
+                            setTimeout(function () {
+                                Swal.fire(
+                                    "Deleted!",
+                                    `${response.message}`,
+                                    "success"
+                                );
+                                $("#data_table").load(
+                                    "/admin/order-detail/fetch_data",
+                                    data
+                                );
+                            }, 1500);
+                        }
+                        if (response.status == 404) {
+                            alertProcess();
+                            setTimeout(function () {
+                                Swal.fire(
+                                    "Delete not success!",
+                                    `${response.message}`,
+                                    "error"
+                                );
+                                $("#data_table").load(
+                                    "/admin/order-detail/fetch_data",
+                                    data
+                                );
+                            }, 1500);
+                        }
+                    },
+                });
+            }
+        });
+    });
 });

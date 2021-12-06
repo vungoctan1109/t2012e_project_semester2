@@ -71,7 +71,8 @@ class OrderControllerAdmin extends Controller
      */
     public function show($id)
     {
-        //
+        $result = DB::table('orders')->where('id', '=', $id)->first();
+        return view('admin.page.order.detail_order', compact('result'));
     }
 
     /**
@@ -123,8 +124,28 @@ class OrderControllerAdmin extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            $category = Order_Model::find($id);
+            if ($category) {
+                if ($category->delete()) {
+                    return response()->json([
+                        'status' => 200,
+                        'message' => 'Data have been successfully deleted!'
+                    ]);
+                } else {
+                    return response()->json([
+                        'status' => 500,
+                        'message' => 'Something went wrong!'
+                    ]);
+                }
+            } else {
+                return response()->json([
+                    'status' => 404,
+                    'message' => 'Object not exist!'
+                ]);
+            }
+        }
     }
 }

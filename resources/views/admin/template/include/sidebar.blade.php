@@ -29,9 +29,7 @@
             <li class="nav-item {{request()->is('admin/category*') ? 'menu-open menu-is-opening' : ''}}">
                 <a href="#" class="nav-link {{request()->is('admin/category*') ? 'active' : ''}}">
                     <i class="nav-icon fas fa-boxes"></i>
-                    <p>
-                        Manage Category
-                        <i class="fas fa-angle-left right"></i>
+                    <p>Manage Category<i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
@@ -48,7 +46,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/admin/export-excel/category" class="nav-link">
+                        <a href="/admin/export-excel/excel/category" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Export Excel</p>
                         </a>
@@ -103,6 +101,12 @@
                         <a href="/admin/mobile" class="nav-link {{request()->is('admin/mobile') ? 'active' : ''}}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Show All & Search</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/admin/export-excel/excel/mobile" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Export Excel</p>
                         </a>
                     </li>
                 </ul>
