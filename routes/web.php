@@ -38,13 +38,14 @@ use App\Http\Controllers\ClientController\ShoppingCartController;
 */
 #auth
 
+
 //Admin Route after authentication
 Auth::routes();
 Route::group([
     'prefix' => 'admin',
     'middleware' => ['auth', 'admin']
 ], function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('home.dashboard');
     #user
     Route::post('/update/user', [UserControllerAdmin::class, 'update'])->name('User.Info.Update');
     Route::get('/users_admin/fetch_data', [UserControllerAdmin::class, 'fetch_data']);
@@ -110,7 +111,6 @@ Route::group([
 });
 
 //Login Admin
-
 Route::group([
     'prefix' => 'auth',
 //    'middleware' => ['check.after.admin.login']

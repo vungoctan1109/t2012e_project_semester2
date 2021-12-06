@@ -21,7 +21,7 @@ class CheckAfterAdminLogin
         {
             // if user is not admin take him to his dashboard
             if ( Auth::user()->isAdmin() ) {
-                return redirect(route('admin.dashboard'));
+                return redirect(route('home.dashboard'));
             }
             return $next($request);
         }

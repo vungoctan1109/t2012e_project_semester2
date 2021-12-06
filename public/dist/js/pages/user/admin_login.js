@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', function () {
             data: data1,
             success: function (response) {
                 if(response.status == 200){
-                    window.location.href = "/admin/dashboard";
+                    window.location.href = "/admin";
                 }else{
                     alert(response.message)
                 }
