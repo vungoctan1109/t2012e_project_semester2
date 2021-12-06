@@ -5,16 +5,12 @@
             <tr>
                 <th style="text-align: center;width: 2%;">Check</th>
                 <th style="text-align: center;width: 2%;">ID</th>
-                <th style="text-align: center;width: 2%;">UserID</th>
-                <th style="text-align: center;width: 8%;">Name</th>
-                <th style="text-align: center;width: 4%;">Comment</th>
-                <th style="text-align: center;width: 4%;">Address</th>
+                <th style="text-align: center;width: 12%;">Name</th>
                 <th style="text-align: center;width: 4%;">Phone</th>
                 <th style="text-align: center;width: 8%;">Email</th>
-                <th style="text-align: center;width: 22%;">Total Price</th>
-                <th style="text-align: center;width: 22%;">Check Out</th>
-                <th style="text-align: center;width: 22%;">Created At</th>
-                <th style="text-align: center;width: 16%;">Action</th>
+                <th style="text-align: center;width: 18%;">Total Price (VND)</th>
+                <th style="text-align: center;width: 15%;">Created At</th>
+                <th style="text-align: center;width: 30%;">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -22,14 +18,10 @@
                 <tr>
                     <td style="text-align:center; vertical-align: middle"><input type="checkbox" value="{{$ord->id}}"/></td>
                     <td style="text-align:center; vertical-align: middle">{{$ord->id}}</td>
-                    <td style="text-align:center; vertical-align: middle">{{$ord->userId}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$ord->name}}</td>
-                    <td style="text-align:center; vertical-align: middle">{{$ord->comment}}</td>
-                    <td style="text-align:center; vertical-align: middle">{{$ord->address_detail}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$ord->phone}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$ord->email}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$ord->totalPrice}}</td>
-                    <td style="text-align:center; vertical-align: middle">{{$ord->checkOut}}</td>
                     <td style="text-align:center; vertical-align: middle">{{date('d-m-Y', strtotime($ord->created_at))}}</td>
                     <td style="text-align:center; vertical-align: middle">
                         <a class="btn btn-primary btn-sm m-1" href="{{route('orders.show', $ord->id)}}">
@@ -49,16 +41,12 @@
                 <tr>
                     <th style="text-align: center;width: 2%;">Check</th>
                     <th style="text-align: center;width: 2%;">ID</th>
-                    <th style="text-align: center;width: 2%;">UserID</th>
-                    <th style="text-align: center;width: 8%;">Name</th>
-                    <th style="text-align: center;width: 4%;">Comment</th>
-                    <th style="text-align: center;width: 4%;">Address</th>
+                    <th style="text-align: center;width: 13%;">Name</th>
                     <th style="text-align: center;width: 4%;">Phone</th>
                     <th style="text-align: center;width: 8%;">Email</th>
-                    <th style="text-align: center;width: 22%;">Total Price</th>
-                    <th style="text-align: center;width: 22%;">Check Out</th>
-                    <th style="text-align: center;width: 22%;">Created At</th>
-                    <th style="text-align: center;width: 16%;">Action</th>
+                    <th style="text-align: center;width: 15%;">Total Price (VND)</th>
+                    <th style="text-align: center;width: 13%;">Created At</th>
+                    <th style="text-align: center;width: 30%;">Action</th>
                 </tr>
             </thead>
         </table>

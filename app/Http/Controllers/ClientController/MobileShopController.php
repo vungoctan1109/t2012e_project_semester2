@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers\ClientController;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Brand as Brand_Model;
@@ -76,8 +77,9 @@ class MobileShopController extends Controller
      */
     public function show($id)
     {
-        if ($mobile = Mobile_Model::find($id)) { 
-            $mobile_related = Mobile_Model::query()->select('*')->where('brandID', $mobile->brandID)->get()->take(10);       
+        if ($mobile = Mobile_Model::find($id)) {
+            //related
+            $mobiles_related = Mobile_Model::query()->select('*')->where('brandID', $mobile->brandID)->get()->take(10);
             $arr = [];
             if (Session::has('recent_view')) {
                 $arr = Session::get('recent_view');
@@ -88,8 +90,16 @@ class MobileShopController extends Controller
                     array_shift($arr);
                 }
             }
+            //popular
+            $mobiles_popular = OrderDetail::query()->selectRaw('mobiles.id, mobiles.name, mobiles.price,mobiles.thumbnail, SUM(order_details.quantity) AS sum_quantity') -> join('mobiles', 'order_details.mobileID', '=', 'mobiles.id')
+                ->groupBy('mobiles.name') ->orderBy('sum_quantity', 'DESC')->take(5) -> get();
+            //recent
+            $mobiles_recent_view = [];
+            if (Session::has('recent_view')) {
+                $mobiles_recent_view = Mobile_Model::findMany(Session::get('recent_view'));
+            }
             Session::put('recent_view', $arr);
-            return view('client.page.detail')->with('mobile', $mobile)->with('mobile_related',$mobile_related);
+            return view('client.page.detail')->with('mobile', $mobile)->with('mobiles_related',$mobiles_related)->with('mobiles_popular',$mobiles_popular)->with('mobiles_recent_view',$mobiles_recent_view);
         }
         return view('client.page.error.page_404');
     }

@@ -1,52 +1,51 @@
 @extends('client.template.form')
 @section('title_page','Shop')
 @section('private_link')
-<meta name="csrf-token" content="{{ csrf_token() }}" />
-<link rel="stylesheet" type="text/css" href="/client-assets/assets/css/style.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
+    <link rel="stylesheet" type="text/css" href="/client-assets/assets/css/style.css">
 @endsection
 @section('main_content_page')
-<main id="main" class="main-site left-sidebar">
-    <div class="container">
-        <div class="wrap-breadcrumb">
-            <ul>
-                <li class="item-link"><a href="#" class="link">home</a></li>
-                <li class="item-link"><span>Digital & Electronics</span></li>
-            </ul>
-        </div>
-        <div class="row">
-            <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
-                <div class="banner-shop">
-                    <a href="#" class="banner-link">
-                        <figure><img src="/client-assets/assets/images/shop-banner.jpg" alt=""></figure>
-                    </a>
-                </div>
-                <div class="wrap-shop-control">
-                    <h1 class="shop-title">Digital & Electronics</h1>
-                    <div class="wrap-right">
-                        <div class="sort-item orderby ">
-                            <select name="orderby" class="use-chosen" id="sortBy">
-                                <option value="price_desc">Price Descending</option>
-                                <option value="price_asc">Price Ascending</option>
-                            </select>
-                        </div>
-                        <div class="sort-item product-per-page">
-                            <select name="post-per-page" class="use-chosen" id="pagination_limit">
-                                <option value="limit_9" selected>Litmit 9</option>
-                                <option value="limit_18">Litmit 18</option>
-                                <option value="limit_32">Litmit 32</option>
-                            </select>
+    <main id="main" class="main-site left-sidebar">
+        <div class="container">
+            <div class="wrap-breadcrumb">
+                <ul>
+                    <li class="item-link"><a href="#" class="link">home</a></li>
+                    <li class="item-link"><span>Digital & Electronics</span></li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
+                    <div class="banner-shop">
+                        <a href="#" class="banner-link">
+                            <figure><img src="/client-assets/assets/images/shop-banner.jpg" alt=""></figure>
+                        </a>
+                    </div>
+                    <div class="wrap-shop-control">
+                        <h1 class="shop-title">Digital & Electronics</h1>
+                        <div class="wrap-right">
+                            <div class="sort-item orderby ">
+                                <select name="orderby" class="use-chosen" id="sortBy">
+                                    <option value="price_desc">Price Descending</option>
+                                    <option value="price_asc">Price Ascending</option>
+                                </select>
+                            </div>
+                            <div class="sort-item product-per-page">
+                                <select name="post-per-page" class="use-chosen" id="pagination_limit">
+                                    <option value="limit_9" selected>Litmit 9</option>
+                                    <option value="limit_18">Litmit 18</option>
+                                    <option value="limit_32">Litmit 32</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
+                    <!--end wrap shop control-->
+                    <!--pagination and fetch_data-->
+                    <div id="data_table">
+                        @include('client.page.fetch_data.pagination_shop_mobile_data')
+                    </div>
                 </div>
-                <!--end wrap shop control-->
-                <!--pagination and fetch_data-->
-                <div id="data_table">
-                    @include('client.page.fetch_data.pagination_shop_mobile_data')
-                </div>
-            </div>
-            <!--end main products area-->
-            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
-                <form action="">
+                <!--end main products area-->
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
                     <div class="widget mercado-widget filter-widget brand-widget">
                         <h2 class="widget-title">Brand</h2>
                         <div class="widget-content">
@@ -54,9 +53,9 @@
                                 <li class="list-item"><a value='-1' class="filter-link filter-brand active" href="#">Tất
                                         cả</a></li>
                                 @foreach ($brands as $item)
-                                <li class="list-item"><a value='{{$item -> id}}' class="filter-link filter-brand"
-                                        href="#">{{$item -> name}}</a>
-                                </li>
+                                    <li class="list-item"><a value='{{$item -> id}}' class="filter-link filter-brand"
+                                                             href="#">{{$item -> name}}</a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>
@@ -85,7 +84,7 @@
                         <div class="widget-content">
                             <ul class="list-style vertical-list list-limited">
                                 <li class="list-item"><a value="-1" class="filter-link filter-battery active"
-                                        href="#">Tất cả</a></li>
+                                                         href="#">Tất cả</a></li>
                                 <li class="list-item"><a value="1" class="filter-link filter-battery" href="#">Dưới 3000
                                         mah</a></li>
                                 <li class="list-item"><a value="2" class="filter-link filter-battery" href="#">Từ 3000 -
@@ -100,7 +99,7 @@
                         <div class="widget-content">
                             <ul class="list-style vertical-list list-limited">
                                 <li class="list-item"><a value='-1' class="filter-link filter-screen active"
-                                        href="#">Tất cả</a></li>
+                                                         href="#">Tất cả</a></li>
                                 <li class="list-item"><a value='1' class="filter-link filter-screen" href="#">Dưới 5.0
                                         inch</a></li>
                                 <li class="list-item"><a value='2' class="filter-link filter-screen" href="#">Dưới 6.0
@@ -127,48 +126,48 @@
                         </div>
                     </div><!-- ram widget-->
                     @if(isset($mobiles_recent_view) && count($mobiles_recent_view) > 0)
-                    <div class="widget mercado-widget widget-product">
-                        <h2 class="widget-title">Sản phẩm xem gần đây</h2>
-                        <div class="widget-content">
-                            <ul class="products">
-                                @foreach ($mobiles_recent_view as $item)
-                                @php
-                                $price_recent_item = number_format($item -> price, 0, '', ','); // 1,000,000
-                                @endphp
-                                <li class="product-item">
-                                    <div class="product product-widget-style">
-                                        <div class="thumbnnail">
-                                            <a href="detail.html"
-                                                title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                                <figure><img src="{{$item -> mainThumbnail}}" alt=""></figure>
-                                            </a>
-                                        </div>
-                                        <div class="product-info">
-                                            <a href="{{route('mobile_client.show', $item -> id)}}"
-                                                class="product-name"><span>{{$item -> name}}</span></a>
-                                            <div class="wrap-price"><span class="product-price">{{$price_recent_item}}(VND)</span></div>
-                                        </div>
-                                    </div>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div><!-- recent view widget-->
+                        <div class="widget mercado-widget widget-product">
+                            <h2 class="widget-title">Sản phẩm xem gần đây</h2>
+                            <div class="widget-content">
+                                <ul class="products">
+                                    @foreach ($mobiles_recent_view as $item)
+                                        @php
+                                            $price_recent_item = number_format($item -> price, 0, '', ','); // 1,000,000
+                                        @endphp
+                                        <li class="product-item">
+                                            <div class="product product-widget-style">
+                                                <div class="thumbnnail">
+                                                    <a href="{{route('mobile_client.show', $item -> id)}}"
+                                                       title="{{$item -> name}}">
+                                                        <figure><img src="{{$item -> mainThumbnail}}" alt=""></figure>
+                                                    </a>
+                                                </div>
+                                                <div class="product-info">
+                                                    <a href="{{route('mobile_client.show', $item -> id)}}"
+                                                       class="product-name"><span>{{$item -> name}}</span></a>
+                                                    <div class="wrap-price"><span class="product-price">{{$price_recent_item}}(VND)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div><!-- recent view widget-->
                     @endIf
-                </form>
+                </div>
+                <!--end sitebar-->
             </div>
-            <!--end sitebar-->
+            <!--end row-->
         </div>
-        <!--end row-->
-    </div>
-    <!--end container-->
-</main>
+        <!--end container-->
+    </main>
 @endsection
 @section('private_scripts')
-<script>
-    $(document).ready(function () {
+    <script>
+        $(document).ready(function () {
             $('body').addClass('home-page home-01');
         });
-</script>
-<script src="/dist/js/pages/client/shopMobile.js"></script>
+    </script>
+    <script src="/dist/js/pages/client/shopMobile.js"></script>
 @endsection

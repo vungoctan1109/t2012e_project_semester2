@@ -5,16 +5,14 @@
             <tr>
                 <th style="text-align: center;width: 2%;">Check</th>
                 <th style="text-align: center;width: 2%;">ID</th>
-                <th style="text-align: center;width: 8%;">name</th>
-                <th style="text-align: center;width: 4%;">brand</th>
-                <th style="text-align: center;width: 4%;">quantity</th>
-                <th style="text-align: center;width: 4%;">saleOff</th>
-                <th style="text-align: center;width: 8%;">price (VND)</th>
-                <th style="text-align: center;width: 22%;">thumbnail</th>
-                <th style="text-align: center;width: 4%;">status</th>
-                <th style="text-align: center;width: 11%;">created_at</th>
-                <th style="text-align: center;width: 11%;">updated_at</th>
-                <th style="text-align: center;width: 16%;">Action</th>
+                <th style="text-align: center;width: 10%;">name</th>
+                <th style="text-align: center;">brand</th>
+                <th style="text-align: center;">quantity</th>
+                <th style="text-align: center;width: 12%;">price (VND)</th>
+                <th style="text-align: center;">thumbnail</th>
+                <th style="text-align: center;width: 8%;">status</th>
+                <th style="text-align: center;">created_at</th>
+                <th style="text-align: center;width: 25%;">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -25,13 +23,11 @@
                     <td style="text-align:center; vertical-align: middle">{{$mobile->name}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$mobile->brand->name}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$mobile->quantity}}</td>
-                    <td style="text-align:center; vertical-align: middle">{{$mobile->saleOff * 100}}%</td>
                     <td style="text-align:center; vertical-align: middle">{{$mobile->fPrice}}</td>
                     <td style="text-align:center; vertical-align: middle">
                         <img width="120px" src="{{$mobile->mainThumbnail}}" alt="">
                     </td>
                     <td style="text-align:center; vertical-align: middle">{{$mobile->strStatus}}</td>
-                    <td style="text-align:center; vertical-align: middle">{{date('d-m-Y', strtotime($mobile->created_at))}}</td>
                     <td style="text-align:center; vertical-align: middle">{{date('d-m-Y', strtotime($mobile->created_at))}}</td>
                     <td style="text-align:center; vertical-align: middle">
                         <a class="btn btn-primary btn-sm m-1" href="{{route('mobile.show', $mobile->id)}}">
@@ -54,12 +50,10 @@
                     <th style="text-align: center;width: 8%;">name</th>
                     <th style="text-align: center;width: 4%;">brand</th>
                     <th style="text-align: center;width: 4%;">quantity</th>
-                    <th style="text-align: center;width: 4%;">saleOff</th>
                     <th style="text-align: center;width: 8%;">price (VND)</th>
                     <th style="text-align: center;width: 22%;">thumbnail</th>
                     <th style="text-align: center;width: 4%;">status</th>
                     <th style="text-align: center;width: 11%;">created_at</th>
-                    <th style="text-align: center;width: 11%;">updated_at</th>
                     <th style="text-align: center;width: 16%;">Action</th>
                 </tr>
             </thead>
