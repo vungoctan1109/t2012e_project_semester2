@@ -14,6 +14,11 @@ class OrderDetail extends Model
         return $this->hasOne(Mobile::class,'id', 'mobileID');
     }
 
+    public function getFUnitPriceAttribute()
+    {
+        return number_format($this->unitPrice, 0, ',', ' ');
+    }
+
     //Scope start here
     #pagination
     public function scopePagination($query, $request)

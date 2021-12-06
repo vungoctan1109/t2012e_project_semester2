@@ -49,7 +49,7 @@ Route::prefix('auth')->group(function(){
 
 
 Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/', [DashboardController::class, 'index']);
     #user
     Route::post('/update/user', [UserControllerAdmin::class, 'update'])->name('User.Info.Update');
     Route::get('/users_admin/fetch_data', [UserControllerAdmin::class, 'fetch_data']);
@@ -164,7 +164,7 @@ Route::prefix('client/page')->group(function () {
         return view('client.page.home');
     })->name('client.home');
     #detail
-    Route::get('detail', [ShopMobileController::class, 'get_detail'])->name('client.detail');
+//    Route::get('detail', [ShopMobileController::class, 'get_detail'])->name('client.detail');
     #login
     Route::get('login', function () {
         return view('client.page.login');
