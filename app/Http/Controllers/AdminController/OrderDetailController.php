@@ -69,7 +69,8 @@ class OrderDetailController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = DB::table('order_details')->where('orderID', '=', $id)->first();
+        return view('admin.page.order-detail.detail_order-detail', compact('result'));
     }
 
     /**
@@ -80,8 +81,6 @@ class OrderDetailController extends Controller
      */
     public function edit($id)
     {
-        $result = DB::table('order-details')->where('orderID', '=', $id)->first();
-        return view('admin.page.order-detail.edit_order-detail', compact('result'));
     }
 
     /**
@@ -93,22 +92,7 @@ class OrderDetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->except(['_token']);
-        $validator = Validator::make($request->all(), [
-            'quantity' => 'required',
-            'unitPrice' => 'required',
-            'discount' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return response()->json(['status' => 400, 'errors' => $validator->errors()->toArray(), 'message' => 'Data not valid!']);
-        } else {
-            $result = DB::table('order_details')->where('id', '=', $id)->update($data);
-            OrderDetail::where('orderID', $id)->update(array('updated_at' => Carbon::now()));
-            if ($result) {
-                return response()->json(['status' => 200, 'message' => 'Data have been successfully update']);
-            }
-            return response()->json(['status' => 500, 'message' => 'You do not change anything!']);
-        }
+
     }
 
     /**
@@ -117,8 +101,28 @@ class OrderDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            $category = OrderDetail_Model::find($id);
+            if ($category) {
+                if ($category->delete()) {
+                    return response()->json([
+                        'status' => 200,
+                        'message' => 'Data have been successfully deleted!'
+                    ]);
+                } else {
+                    return response()->json([
+                        'status' => 500,
+                        'message' => 'Something went wrong!'
+                    ]);
+                }
+            } else {
+                return response()->json([
+                    'status' => 404,
+                    'message' => 'Object not exist!'
+                ]);
+            }
+        }
     }
 }

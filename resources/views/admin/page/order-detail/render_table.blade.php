@@ -20,14 +20,14 @@
                     <td style="text-align:center; vertical-align: middle">{{$order_detail->orderID}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$order_detail->mobile->name}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$order_detail->quantity}}</td>
-                    <td style="text-align:center; vertical-align: middle">{{$order_detail->fUnitPrice}}</td>
+                    <td style="text-align:center; vertical-align: middle">{{$order_detail->mobile->price}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$order_detail->discount * 100}}</td>
                     <td style="text-align:center; vertical-align: middle">{{date('d-m-Y', strtotime($order_detail->created_at))}}</td>
                     <td style="text-align:center; vertical-align: middle">
-                        <a class="btn btn-primary btn-sm m-1" href="">
+                        <a class="btn btn-primary btn-sm m-1" href="{{route('order-detail.show', $order_detail->orderID)}}">
                             <i class="fas fa-folder">View</i>
                         </a>
-                        <a class="btn btn-danger btn-sm delete m-1" href="">
+                        <a class="btn btn-danger btn-sm delete m-1" href="{{route('order-detail.destroy', $order_detail->orderID)}}">
                             <i class="fas fa-trash">Delete</i>
                         </a>
                     </td>
