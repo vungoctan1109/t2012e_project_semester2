@@ -262,36 +262,38 @@
                 </div><!-- Categories widget-->
 
                 <div class="widget mercado-widget widget-product">
-                    <h2 class="widget-title">Sản phẩm bán chạy</h2>
+                    <h2 class="widget-title">Sản phẩm bán chạy nhất</h2>
                     <div class="widget-content">
                         <ul class="products">
                             @foreach($mobiles_popular as $item)
-                                @php
-                                    $arrayThumbnail = [];
-                                    $price_popular = number_format($item -> price, 0, '', ',');
-                                    $defaultThumbnail = 'https://res.cloudinary.com/quynv300192/image/upload/v1634800182/ixdpahcfqqmee12obutt.png';
-                                    if ($item -> thumbnail != null && strlen($item -> thumbnail) > 0) {
-                                        $item -> thumbnail = substr($item -> thumbnail, 0, -1);
-                                        $arrayThumbnail = explode(',', $item -> thumbnail);
-                                        if (sizeof($arrayThumbnail) > 0) {
-                                            $thumbnail = $arrayThumbnail[0];
-                                        }else{
-                                            $thumbnail = $defaultThumbnail;
-                                        }
-                                    }
-                                @endphp
+                            @php
+                            $arrayThumbnail = [];
+                            $price_popular = number_format($item -> price, 0, '', ',');
+                            $defaultThumbnail =
+                            'https://res.cloudinary.com/quynv300192/image/upload/v1634800182/ixdpahcfqqmee12obutt.png';
+                            if ($item -> thumbnail != null && strlen($item -> thumbnail) > 0) {
+                            $item -> thumbnail = substr($item -> thumbnail, 0, -1);
+                            $arrayThumbnail = explode(',', $item -> thumbnail);
+                            if (sizeof($arrayThumbnail) > 0) {
+                            $thumbnail = $arrayThumbnail[0];
+                            }else{
+                            $thumbnail = $defaultThumbnail;
+                            }
+                            }
+                            @endphp
                             <li class="product-item">
                                 <div class="product product-widget-style">
                                     <div class="thumbnnail">
                                         <a href="{{route('mobile_client.show', $item -> id)}}"
                                             title="{{$item -> name}}">
-                                            <figure><img src="{{$thumbnail}}"
-                                                    alt=""></figure>
+                                            <figure><img src="{{$thumbnail}}" alt=""></figure>
                                         </a>
                                     </div>
                                     <div class="product-info">
-                                        <a href="{{route('mobile_client.show', $item -> id)}}" class="product-name"><span>{{$item -> name}}</span></a>
-                                        <div class="wrap-price"><span class="product-price">{{$price_popular}} (VND)</span></div>
+                                        <a href="{{route('mobile_client.show', $item -> id)}}"
+                                            class="product-name"><span>{{$item -> name}}</span></a>
+                                        <div class="wrap-price"><span class="product-price">{{$price_popular}}
+                                                (VND)</span></div>
                                     </div>
                                 </div>
                             </li>
@@ -300,34 +302,35 @@
                     </div>
                 </div><br><br>
                 @if(isset($mobiles_recent_view) && count($mobiles_recent_view) > 0)
-                    <div class="widget mercado-widget widget-product">
-                        <h2 class="widget-title">Sản phẩm xem gần đây</h2>
-                        <div class="widget-content">
-                            <ul class="products">
-                                @foreach ($mobiles_recent_view as $item)
-                                    @php
-                                        $price_recent_item = number_format($item -> price, 0, '', ','); // 1,000,000
-                                    @endphp
-                                    <li class="product-item">
-                                        <div class="product product-widget-style">
-                                            <div class="thumbnnail">
-                                                <a href="{{route('mobile_client.show', $item -> id)}}"
-                                                   title="{{$item -> name}}">
-                                                    <figure><img src="{{$item -> mainThumbnail}}" alt=""></figure>
-                                                </a>
-                                            </div>
-                                            <div class="product-info">
-                                                <a href="{{route('mobile_client.show', $item -> id)}}"
-                                                   class="product-name"><span>{{$item -> name}}</span></a>
-                                                <div class="wrap-price"><span class="product-price">{{$price_recent_item}}(VND)</span>
-                                                </div>
-                                            </div>
+                <div class="widget mercado-widget widget-product">
+                    <h2 class="widget-title">Sản phẩm xem gần đây</h2>
+                    <div class="widget-content">
+                        <ul class="products">
+                            @foreach ($mobiles_recent_view as $item)
+                            @php
+                            $price_recent_item = number_format($item -> price, 0, '', ','); // 1,000,000
+                            @endphp
+                            <li class="product-item">
+                                <div class="product product-widget-style">
+                                    <div class="thumbnnail">
+                                        <a href="{{route('mobile_client.show', $item -> id)}}"
+                                            title="{{$item -> name}}">
+                                            <figure><img src="{{$item -> mainThumbnail}}" alt=""></figure>
+                                        </a>
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="{{route('mobile_client.show', $item -> id)}}"
+                                            class="product-name"><span>{{$item -> name}}</span></a>
+                                        <div class="wrap-price"><span
+                                                class="product-price">{{$price_recent_item}}(VND)</span>
                                         </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div><!-- recent view widget-->
+                                    </div>
+                                </div>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div><!-- recent view widget-->
                 @endIf
 
             </div>
@@ -341,28 +344,34 @@
                             data-loop="false" data-nav="true" data-dots="false"
                             data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"5"}}'>
                             @foreach ($mobiles_related as $item)
-                            @php
-                            $price = number_format($item -> price, 0, '', ','); // 1,000,000
-                            @endphp
-                            <div class="product product-style-2 equal-elem ">
-                                <div class="product-thumnail">
-                                    <a href="{{route('mobile_client.show', $item -> id)}}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                        <figure><img src="{{$item -> mainThumbnail}}"
-                                                width="214" height="214"
-                                                alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-                                    </a>
-                                    <div class="group-flash">
-                                        <span class="flash-item new-label">new</span>
+                                @if ($item -> status == 1)
+                                @php
+                                $price = number_format($item -> price, 0, '', ','); // 1,000,000
+                                @endphp
+                                <div class="product product-style-2 equal-elem ">
+                                    <div class="product-thumnail">
+                                        <a href="{{route('mobile_client.show', $item -> id)}}"
+                                            title="T-Shirt Raw Hem Organic Boro Constrast Denim">
+                                            <figure><img src="{{$item -> mainThumbnail}}" width="214" height="214"
+                                                    alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+                                        </a>
+
+                                        <div class="group-flash">
+                                            <span class="flash-item new-label">HOT</span>
+                                        </div>
+                                        <div class="wrap-btn">
+                                            <a href="{{route('mobile_client.show', $item -> id)}}"
+                                                class="function-link">quick view</a>
+                                        </div>
                                     </div>
-                                    <div class="wrap-btn">
-                                        <a href="{{route('mobile_client.show', $item -> id)}}" class="function-link">quick view</a>
+                                    <div class="product-info">
+                                        <a href="#" class="product-name"><span>{{$item -> name}}</span></a>
+                                        <div class="wrap-price"><span class="product-price">{{$price}} (VND)</span></div>
                                     </div>
                                 </div>
-                                <div class="product-info">
-                                    <a href="#" class="product-name"><span>{{$item -> name}}</span></a>
-                                    <div class="wrap-price"><span class="product-price">{{$price}} (VND)</span></div>
-                                </div>
-                            </div>
+                                @endif
+
+
                             @endforeach
                         </div>
                     </div>

@@ -17,7 +17,7 @@
                     <figure><img src="{{$item-> attributes-> image}}" alt=""></figure>
                 </div>
                 <div class="product-name">
-                    <a class="link-to-product" href="#">{{$item-> name}}</a>
+                    <a class="link-to-product" href="{{route('mobile_client.show', $item -> id)}}">{{$item-> name}}</a>
                 </div>
                 <div class="price-field produtc-price">
                     <p class="price">{{$price_format}} VND</p>
