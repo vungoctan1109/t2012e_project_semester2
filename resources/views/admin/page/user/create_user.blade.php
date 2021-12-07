@@ -80,16 +80,7 @@
                             <div id="list-preview-image"></div>
                             <input id="avatar" type="text" value="" name="avatar" style="display: none">
                         </div>
-{{--                        <div class="form-group">--}}
-{{--                            <label for="status">Status</label>--}}
-{{--                            <select name="status" class="form-control col-2">--}}
-{{--                                <option value="1">In Stock</option>--}}
-{{--                                <option value="2">Preorder</option>--}}
-{{--                                <option value="3">Out of stock</option>--}}
-{{--                                <option value="4">Expiration date</option>--}}
-{{--                            </select>--}}
-{{--                            <span class="error stauts_error"></span>--}}
-{{--                        </div>--}}
+
                         <div class="form-group">
                             <button type="submit" class="btn btn-success" id="btn-submit">Submit</button>
                             <button type="reset" class="btn btn-secondary">Reset</button>
