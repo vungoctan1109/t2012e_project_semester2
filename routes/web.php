@@ -141,6 +141,7 @@ Route::prefix('client/page')->group(function () {
     #Route resource order
     #thankyou
     Route::get('thankyou/{id}', [OrderController::class, 'show_thankyou'])->name('client.thankyou');
+    Route::post('validate', [OrderController::class, 'validateOrder'])->name('validate.order');
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'
     ]);
