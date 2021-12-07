@@ -28,7 +28,7 @@ $(document).ready(function (e) {
             $("#btnPlaceOrder").hide();
             $("#btnCod").show();
         }
-    });    
+    });
     var order_id;
     paypal.Button.render(
         {
@@ -52,7 +52,6 @@ $(document).ready(function (e) {
                 actions.disable(); // Allow for validation in onClick()
                 paypalActions = actions; // Save for later enable()/disable() calls
             },
-
             // Called for every click on the PayPal button even if actions.disabled
             onClick: function (e) {
                 var data1 = $("#formOrder").serialize();
@@ -66,7 +65,7 @@ $(document).ready(function (e) {
                     success: function (resp) {
                         if (resp.status == 200) {
                             paypalActions.enable();
-                            order_id = resp.orderID;                            
+                            order_id = resp.orderID;
                         }
                         if (resp.status == 400) {
                             paypalActions.disable();
@@ -81,7 +80,7 @@ $(document).ready(function (e) {
                             var status = "error";
                             alertAction(resp.message, status);
                         }
-                    }                  
+                    },
                 });
             },
             // Buyer clicked the PayPal button.
@@ -92,7 +91,7 @@ $(document).ready(function (e) {
                         transactions: [
                             {
                                 amount: {
-                                    total: "0.01",
+                                    total: `${total}`,
                                     currency: "USD",
                                 },
                             },
@@ -101,30 +100,36 @@ $(document).ready(function (e) {
                 });
             },
             // Buyer logged in and authorized the payment
-            onAuthorize: function (data, actions) {                
-                return actions.payment.execute().then(function () {                 
-                    let data3 = { id:  order_id };                                       
+            onAuthorize: function (data, actions) {
+                return actions.payment.execute().then(function () {
+                    let data3 = { id: order_id };
                     $.ajax({
                         url: "/client/page/update/checkout_order",
                         method: "post",
                         data: data3,
                         success: function (response) {
-                            if(response.status == 200) {                                
+                            if (response.status == 200) {
                                 $.ajax({
                                     url: `/client/page/thankyou/${response.order_id}`,
                                     method: "GET",
-                                    success: function () {                                    
+                                    success: function () {
                                         window.location.href = `/client/page/thankyou/${response.order_id}`;
                                     },
                                 });
                             }
-                            if(response.status == 500) {
-                                
-                            } 
-                            if(response.status == 404) {
-                                
-                            }                            
-                        }
+                            if (response.status == 500) {
+                                var status = "error";
+                                alertAction(response.message, status);
+                            }
+                            if (response.status == 404) {
+                                var status = "error";
+                                alertAction(response.message, status);
+                            }
+                            if (response.status == 404) {
+                                var status = "error";
+                                alertAction(response.message, status);
+                            }
+                        },
                     });
                 });
             },

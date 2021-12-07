@@ -15,8 +15,8 @@
  <ul class="navbar-nav ml-auto">
      <!-- Navbar Search -->
      <li class="nav-item">
-         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-             <i class="fas fa-expand-arrows-alt"></i>
+         <a class="nav-link" data-widget="fullscreen" href="#" role="button" id="btn-logout">
+            <b>LOGOUT</b>
          </a>
      </li>
  </ul>

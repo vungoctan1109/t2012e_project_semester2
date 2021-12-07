@@ -1,8 +1,9 @@
 <?php
 use App\Http\Controllers\AdminController\AuthController;
+use App\Http\Controllers\ClientController\AuthCustomerController;
+use Illuminate\Support\Facades\Auth;
 use App\Http\ExportExcelController\ExportExcelMobileController;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\AdminController\OrderDetailController;
 use App\Http\ExportExcelController\ExportExcelBrandController;
 use App\Http\ExportExcelController\ExportExcelCategoryController;
@@ -37,20 +38,15 @@ use App\Http\Controllers\ClientController\ShoppingCartController;
 |
 */
 #auth
-Route::prefix('auth')->group(function(){
-    Route::get('/adminlogin', [AuthController::class, 'adminGetLogin'])->name('admin.login');
-    Route::post('/adminlogin', [AuthController::class, 'adminPostLogin'])->name('admin.process.login');
-
-    Route::resource('account', AuthController::class)->parameters([
-        'auth' => 'auth_id'
-    ]);
-});
-
-#admin
 
 
-Route::prefix('admin')->group(function () {
-    Route::get('/', [DashboardController::class, 'index']);
+//Admin Route after authentication
+Auth::routes();
+Route::group([
+    'prefix' => 'admin',
+    'middleware' => ['auth', 'admin']
+], function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('home.dashboard');
     #user
     Route::post('/update/user', [UserControllerAdmin::class, 'update'])->name('User.Info.Update');
     Route::get('/users_admin/fetch_data', [UserControllerAdmin::class, 'fetch_data']);
@@ -117,8 +113,31 @@ Route::prefix('admin')->group(function () {
     });
 
 });
+
+//Login Admin
+Route::group([
+    'prefix' => 'auth',
+    'middleware' => ['check.after.admin.login']
+],function(){
+    Route::get('/adminlogin', [AuthController::class, 'adminGetLogin'])->name('admin.login');
+    Route::post('/adminlogin', [AuthController::class, 'adminPostLogin'])->name('admin.process.login');
+});
+Route::group([
+    'prefix' => 'auth',
+    'middleware' => ['auth']
+],function(){
+    Route::post('/adminlogout', [AuthController::class, 'logout'])->name('admin.process.logout');
+    Route::resource('account', AuthController::class)->parameters([
+        'auth' => 'auth_id'
+    ]);
+});
+
 #Route client
 Route::prefix('client/page')->group(function () {
+    #Customer Login
+    Route::get('/login/get', [AuthCustomerController::class, 'customerGetLogin'])->name('customer.login.get');
+    Route::post('/login', [AuthCustomerController::class, 'customerPostLogin'])->name('customer.login.post');
+    Route::post('/logout', [AuthCustomerController::class, 'logout'])->name('customer.logout');
     #Route resource order
     #thankyou
     Route::get('thankyou/{id}', [OrderController::class, 'show_thankyou'])->name('client.thankyou');
@@ -202,3 +221,7 @@ Route::prefix('client/page')->group(function () {
 Route::fallback(function () {
     return view('client.page.error.page_404');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

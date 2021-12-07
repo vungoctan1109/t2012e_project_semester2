@@ -125,10 +125,10 @@ class OrderController extends Controller
                         }
                     }
                 }
-            }           
+            }
             DB::commit();
-            // \Cart::clear();                           
-            return response()->json(['status' => 200, 'message' => 'save order successfully', 'orderID' => $orderID1]);            
+             \Cart::clear();
+            return response()->json(['status' => 200, 'message' => 'save order successfully', 'orderID' => $orderID1]);
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json(['status' => 500, 'message' => 'save order information false']);
@@ -168,7 +168,7 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
-    {      
+    {
         $order = Order::find($request -> get('id'));
         if($order){
             $order -> checkOut = true;
@@ -180,9 +180,9 @@ class OrderController extends Controller
                 return response()->json(['status' => 500, 'message' => 'Some thing went wrong!']);
             }
         }else {
-            return response()->json(['status' => 404, 'message' => 'Order not found!']);   
-        } 
-        return response()->json(['status' => 500, 'message' => 'Some thing went wrong!']);                  
+            return response()->json(['status' => 404, 'message' => 'Order not found!']);
+        }
+        return response()->json(['status' => 500, 'message' => 'Some thing went wrong!']);
     }
 
     /**
@@ -196,10 +196,10 @@ class OrderController extends Controller
         //
     }
     public function show_thankyou($id)
-    {     
+    {
         $order = Order::find($id);
         $order_details = $order->order_detail;
-        $invoice = view('client.page.fetch_data.view_invoice_confirm_email')->with('order', $order)->with('order_details', $order_details)->render();         
+        $invoice = view('client.page.fetch_data.view_invoice_confirm_email')->with('order', $order)->with('order_details', $order_details)->render();
         return view('client.page.thankyou')->with('invoice', $invoice);
     }
     public function get_district(Request $request)

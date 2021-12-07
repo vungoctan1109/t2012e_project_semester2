@@ -48,9 +48,9 @@ class UserSeeder extends Seeder
             ],
             [
                 'id'=> 3,
-                'email'=>$faker->email,
-                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
-                'fullName'=>$faker->firstName,
+                'email'=>'customer@gmail.com',
+                'password'=>bcrypt('123123123'),
+                'fullName'=>'Chu Dieu Linh',
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
                 'avatar'=>'https://res.cloudinary.com/quynv300192/image/upload/v1638689217/chom-nghe-danh-hot-girl-15-tuoi-linh-ka-bat-ngo-bi-doa-kien_mcrwav.jpg,',

@@ -3,7 +3,6 @@ window.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
         var email = $('input[name=email]').val();
         var password = $('input[name=password]').val();
-
         let data1 = {
             'email': email,
             'password': password
@@ -14,12 +13,12 @@ window.addEventListener('DOMContentLoaded', function () {
             }
         });
         $.ajax({
-            url: '/auth/adminlogin',
+            url: '/client/page/login',
             method: 'POST',
             data: data1,
             success: function (response) {
                 if(response.status == 200){
-                    window.location.href = "/admin";
+                    window.location.href = "/client/page/shop/mobile";
                 }else{
                     alert(response.message)
                 }

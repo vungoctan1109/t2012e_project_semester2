@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
 {
@@ -35,6 +36,12 @@ class AuthController extends Controller
             ];
         }
         return response()->json($data);
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/auth/adminlogin');
     }
 
     public function index()

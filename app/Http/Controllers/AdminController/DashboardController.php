@@ -8,9 +8,16 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\View;
 
 class DashboardController extends Controller
 {
+//    public function __construct()
+//    {
+//        $this->middleware(['auth','admin']);
+//    }
     public function index()
     {
         $order = Order::selectRaw('COUNT(id) AS count_month')

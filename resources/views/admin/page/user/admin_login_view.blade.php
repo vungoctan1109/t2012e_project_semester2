@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="login-box">
-    <h2>Tele Store</h2>
+    <h2>Wiki Mobile</h2>
     <h2>Admin Login</h2>
     <form name="login-form" id="login-form">
         @csrf
@@ -20,8 +20,18 @@
             <label>Account</label>
         </div>
         <div class="user-box">
-            <input type="password" name="password" placeholder="Password">>
+            <input type="password" name="password" placeholder="Password">
             <label>Password</label>
+            @php
+             $check = \Illuminate\Support\Facades\Auth::check();
+            $attr='';
+            if($check){
+                $attr = 'hidden';
+            }else{
+                $attr = ' ';
+            }
+            @endphp
+            <span {{$attr}} style="color:red">You must be logged in to perform the next steps (Only Admin Account)</span>
         </div>
         <a id="btnSubmit" class="mouseEffect">
             <span></span>
