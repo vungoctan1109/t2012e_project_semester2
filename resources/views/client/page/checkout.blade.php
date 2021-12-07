@@ -6,19 +6,17 @@
 @section('main_content_page')
 <main id="main" class="main-site">
     <div class="container">
-
         <div class="wrap-breadcrumb">
             <ul>
                 <li class="item-link"><a href="#" class="link">home</a></li>
                 <li class="item-link"><span>login</span></li>
             </ul>
         </div>
-        <div class=" main-content-area">
+        <div class=" main-content-area">           
             <div class="wrap-address-billing">
                 <h3 class="box-title">Billing Address</h3>
-                <form action="#" method="get" name="formOrder" id="formOrder">
-                    @csrf
-                    <p class="row-in-form m-2">
+                <form action="#" method="get" name="formOrder" id="formOrder">                    
+                    <p class="row-in-form">
                         <label for="fname">Full name<span>*</span></label>
                         <input id="name" type="text" name="name" value="" placeholder="Your name">
                         <span class="error name_error"></span>
@@ -70,10 +68,10 @@
                             <input name="create-account" id="create-account" value="forever" type="checkbox">
                             <span>Create an account?</span>
                         </label>
-                        {{-- <label class="checkbox-field">--}}
-                            {{-- <input name="different-add" id="different-add" value="forever" type="checkbox">--}}
-                            {{-- <span>Ship to a different address?</span>--}}
-                            {{-- </label>--}}
+                        {{-- <label class="checkbox-field">
+                            <input name="different-add" id="different-add" value="forever" type="checkbox">
+                            <span>Ship to a different address?</span>
+                        </label> --}}
                     </p>
                 </form>
             </div>
@@ -89,7 +87,8 @@
                             <span class="payment-desc">You can pay with your paypal account</span>
                         </label>
                         <label class="payment-method">
-                            <input name="payment-method" id="payment-method-paypal" value="cod" type="radio" checked="checked">
+                            <input name="payment-method" id="payment-method-paypal" value="cod" type="radio"
+                                checked="checked">
                             <span>COD</span>
                             <span class="payment-desc">You can pay when recieve goods</span>
                         </label>
@@ -99,17 +98,17 @@
                     <a href="" class="btn btn-medium" id='btnCod'>Place order now</a>
                     <a href="" class="btn btn-medium" id="btnPlaceOrder" style="display: none"></a>
                 </div>
-                {{-- <div class="summary-item shipping-method">--}}
-                    {{-- <h4 class="title-box f-title">Shipping method</h4>--}}
-                    {{-- <p class="summary-info"><span class="title">Flat Rate</span></p>--}}
-                    {{-- <p class="summary-info"><span class="title">Fixed $50.00</span></p>--}}
-                    {{-- <h4 class="title-box">Discount Codes</h4>--}}
-                    {{-- <p class="row-in-form">--}}
-                        {{-- <label for="coupon-code">Enter Your Coupon code:</label>--}}
-                        {{-- <input id="coupon-code" type="text" name="coupon-code" value="" placeholder="">--}}
-                        {{-- </p>--}}
-                    {{-- <a href="#" class="btn btn-small">Apply</a>--}}
-                    {{-- </div>--}}
+                {{-- <div class="summary-item shipping-method">
+                    <h4 class="title-box f-title">Shipping method</h4>
+                    <p class="summary-info"><span class="title">Flat Rate</span></p>
+                    <p class="summary-info"><span class="title">Fixed $50.00</span></p>
+                    <h4 class="title-box">Discount Codes</h4>
+                    <p class="row-in-form">
+                        <label for="coupon-code">Enter Your Coupon code:</label>
+                        <input id="coupon-code" type="text" name="coupon-code" value="" placeholder="">
+                    </p>
+                    <a href="#" class="btn btn-small">Apply</a>
+                </div> --}}
             </div>
 
             <div class="wrap-show-advance-info-box style-1 box-in-site">
@@ -312,6 +311,11 @@
 <script src="/dist/js/pages/client/address.js"></script>
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-{{-- <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>--}}
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="/dist/js/pages/client/checkout.js"></script>
+<script>
+    $(document).ready(function () {
+        $('body').addClass('checkout page');
+    });
+</script>
 @endsection
