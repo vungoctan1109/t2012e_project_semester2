@@ -28,7 +28,7 @@ $(document).ready(function (e) {
             $("#btnPlaceOrder").hide();
             $("#btnCod").show();
         }
-    });
+    });    
     var order_id;
     paypal.Button.render(
         {
@@ -52,6 +52,7 @@ $(document).ready(function (e) {
                 actions.disable(); // Allow for validation in onClick()
                 paypalActions = actions; // Save for later enable()/disable() calls
             },
+
             // Called for every click on the PayPal button even if actions.disabled
             onClick: function (e) {
                 var data1 = $("#formOrder").serialize();
@@ -118,12 +119,10 @@ $(document).ready(function (e) {
                                 });
                             }
                             if(response.status == 500) {
-                                var status = "error";
-                                alertAction(response.message, status);
+                                
                             } 
                             if(response.status == 404) {
-                                var status = "error";
-                                alertAction(response.message, status);
+                                
                             }                            
                         }
                     });
