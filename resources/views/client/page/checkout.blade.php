@@ -53,7 +53,7 @@
                         <datalist id="wards">
                         </datalist>
                         <span class="error ward_error"></span>
-                    </p>
+                    </p>     
                     <p class="row-in-form">
                         <label for="address_detail">Address detail</label>
                         <input id="address_detail" type="text" name="address_detail" value=""
@@ -68,10 +68,10 @@
                             <input name="create-account" id="create-account" value="forever" type="checkbox">
                             <span>Create an account?</span>
                         </label>
-                        {{-- <label class="checkbox-field">
+                        <label class="checkbox-field">
                             <input name="different-add" id="different-add" value="forever" type="checkbox">
                             <span>Ship to a different address?</span>
-                        </label> --}}
+                        </label>
                     </p>
                 </form>
             </div>
@@ -98,7 +98,7 @@
                     <a href="" class="btn btn-medium" id='btnCod'>Place order now</a>
                     <a href="" class="btn btn-medium" id="btnPlaceOrder" style="display: none"></a>
                 </div>
-                {{-- <div class="summary-item shipping-method">
+                <div class="summary-item shipping-method">
                     <h4 class="title-box f-title">Shipping method</h4>
                     <p class="summary-info"><span class="title">Flat Rate</span></p>
                     <p class="summary-info"><span class="title">Fixed $50.00</span></p>
@@ -108,7 +108,7 @@
                         <input id="coupon-code" type="text" name="coupon-code" value="" placeholder="">
                     </p>
                     <a href="#" class="btn btn-small">Apply</a>
-                </div> --}}
+                </div>
             </div>
 
             <div class="wrap-show-advance-info-box style-1 box-in-site">
