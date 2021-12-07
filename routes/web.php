@@ -133,9 +133,26 @@ Route::group([
 });
 
 #Route client
-Route::prefix('client/page')->group(function () {
-    #Customer Login
+
+Route::group([
+    'prefix' => 'client/page',
+    'middleware' => ['check.after.customer.login']
+], function () {
     Route::get('/login/get', [AuthCustomerController::class, 'customerGetLogin'])->name('customer.login.get');
+});
+
+Route::group([
+    'prefix' => 'client/page',
+    'middleware' => ['login_require']
+], function () {
+    Route::resource('user', UserController::class)->parameters([
+        'user' => 'user_id'
+    ]);
+});
+Route::prefix('client/page')->group(function () {
+    Route::get('/404', [UserController::class, 'redirect404'])->name('404page');
+    #Customer Login
+//    Route::get('/login/get', [AuthCustomerController::class, 'customerGetLogin'])->name('customer.login.get');
     Route::post('/login', [AuthCustomerController::class, 'customerPostLogin'])->name('customer.login.post');
     Route::post('/logout', [AuthCustomerController::class, 'logout'])->name('customer.logout');
     #Route resource order
@@ -146,9 +163,9 @@ Route::prefix('client/page')->group(function () {
         'order' => 'order_id'
     ]);
     #shop resource
-    Route::resource('user', UserController::class)->parameters([
-        'user' => 'user_id'
-    ]);
+//    Route::resource('user', UserController::class)->parameters([
+//        'user' => 'user_id'
+//    ]);
     #order resource
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'
