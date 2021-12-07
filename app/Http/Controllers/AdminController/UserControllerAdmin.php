@@ -117,16 +117,11 @@ class UserControllerAdmin extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-//        $check_exist = User::where('email', '=', $request->get('email'))->first();
-//        if ($check_exist !== null) {
-//            return response()->json(['status' => 400, 'message' => 'this email account already exist, please try again!!!']);
-//        }
         $result = DB::table('users')
-            ->where('id', 1)
+            ->where('id', $request->get('id'))
             ->update([
-                'role' => $request->get('role'),
                 'fullName' => $request->get('fullName'),
                 'phone' => $request->get('phone'),
                 'address' => $request->get('address'),
@@ -139,6 +134,7 @@ class UserControllerAdmin extends Controller
         } else {
             return response()->json(['status' => 500, 'message' => 'update user info false']);
         }
+        return response()->json(['status' => 404, 'message' => 'something went wrong']);
     }
 
     /**
