@@ -24,7 +24,7 @@ class Brand extends Model
     }
     public function mobile()
     {
-        return $this->hasMany(Mobile::class);
+        return $this->hasMany(Mobile::class,'id', 'mobileID');
     }
     #sort by
     public function scopeSortBy($query, $request)

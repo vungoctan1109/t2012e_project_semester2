@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\ClientController;
-
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -9,7 +7,6 @@ use App\Models\Brand as Brand_Model;
 use App\Models\Mobile as Mobile_Model;
 use Illuminate\Support\Facades\Session;
 use App\Models\Category as Category_Model;
-
 class MobileShopController extends Controller
 {
     /**
@@ -84,6 +81,7 @@ class MobileShopController extends Controller
             //related
             $mobiles_related = Mobile_Model::query()->select('*')->where('brandID', $mobile->brandID)->get()->take(10);
             $arr = [];
+            //add and get recent view mobile into session
             if (Session::has('recent_view')) {
                 $arr = Session::get('recent_view');
             }

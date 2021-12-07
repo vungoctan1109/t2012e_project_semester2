@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Session;
 use HoangPhi\VietnamMap\Models\Province;
 use HoangPhi\VietnamMap\Models\District;
 use HoangPhi\VietnamMap\Models\Ward;
+use Illuminate\Support\Facades\Validator;
+
+
 
 class OrderController extends Controller
 {
@@ -54,6 +57,17 @@ class OrderController extends Controller
         $shipNote = $request->get('comment');
         //tao order
         $order = new Order();
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required| email',
+            'province' => 'required',
+            'district' => 'required',
+            'ward' => 'required',
+            'phone' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 400, 'errors' => $validator->errors()->toArray(), 'message' => 'Vui lòng nhập đủ thông tin!']);
+        }
         $order->userId = 1; //fix cung vi chua pha trien tinh nang dang nhap
         $order->name = $shipName;
         $order->email = $shipEmail;
@@ -72,6 +86,9 @@ class OrderController extends Controller
         //tao danh sach orderDetail de cho them orderID
         $arrayOderDetail = [];
         $shoppingCart = \Cart::getContent();
+        if (count($shoppingCart) == 0) {
+            return response()->json(['status' => 400, 'message' => 'Không có sản phẩm nào trong giỏ hàng!']);
+        }
         foreach ($shoppingCart as $cartItem) {
             $product = mobile::find($cartItem->id);
             if ($product == null) {
@@ -96,23 +113,28 @@ class OrderController extends Controller
             foreach ($arrayOderDetail as $orderDetail) {
                 $orderDetail->orderID = $orderID1;
                 if ($orderDetail->quantity > 0) {
-                    if ($orderDetail->save()){
+                    if ($orderDetail->save()) {
                         $mobile = Mobile::find($orderDetail->mobileID);
                         DB::table('mobiles')
-                            ->where('id', $mobile -> id)
-                            ->update(['quantity' => $mobile -> quantity - $orderDetail->quantity]);
+                            ->where('id', $mobile->id)
+                            ->update(['quantity' => $mobile->quantity - $orderDetail->quantity]);
+                        if ($mobile->quantity - $orderDetail->quantity == 0) {
+                            DB::table('mobiles')
+                                ->where('id', $mobile->id)
+                                ->update(['status' => -1]);
+                        }
                     }
                 }
             }
             DB::commit();
-            \Cart::clear();
+             \Cart::clear();
             return response()->json(['status' => 200, 'message' => 'save order successfully', 'orderID' => $orderID1]);
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json(['status' => 500, 'message' => 'save order information false']);
         }
         if ($hasError) {
-            return response()->json(['status' => 404, 'message' => 'Sorry i can not find this product']);
+            return response()->json(['status' => 404, 'message' => 'Sorry we can not find this product']);
         }
     }
 
@@ -147,13 +169,20 @@ class OrderController extends Controller
      */
     public function update(Request $request)
     {
-        $id = $request->get('id');
-        $result = DB::table('orders')->where('id', $id)->update([
-            'checkOut' => true,
-            'updated_at' => Carbon::now(),
-            'status' => 1
-        ]);
-        return response()->json(['status' => 200, 'message' => 'save order successfully', 'orderID' => $id]);
+        $order = Order::find($request -> get('id'));
+        if($order){
+            $order -> checkOut = true;
+            $order -> status = 1;
+            $order -> updated_at = Carbon::now();
+            if($order -> update()) {
+                return response()->json(['status' => 200, 'message' => 'save order successfully!',  'order_id' => $order -> id]);
+            }else {
+                return response()->json(['status' => 500, 'message' => 'Some thing went wrong!']);
+            }
+        }else {
+            return response()->json(['status' => 404, 'message' => 'Order not found!']);
+        }
+        return response()->json(['status' => 500, 'message' => 'Some thing went wrong!']);
     }
 
     /**
@@ -168,10 +197,10 @@ class OrderController extends Controller
     }
     public function show_thankyou($id)
     {
-        if ($order = Order::find($id)) {
-            $order_details = $order->order_detail;
-            return view('client.page.thankyou')->with('order', $order)->with('order_details', $order_details);
-        }
+        $order = Order::find($id);
+        $order_details = $order->order_detail;
+        $invoice = view('client.page.fetch_data.view_invoice_confirm_email')->with('order', $order)->with('order_details', $order_details)->render();
+        return view('client.page.thankyou')->with('invoice', $invoice);
     }
     public function get_district(Request $request)
     {

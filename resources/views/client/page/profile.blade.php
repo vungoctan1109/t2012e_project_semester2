@@ -25,12 +25,12 @@
     <main id="main" class="main-site" style="min-height: 50vh;align-items: center;justify-content: center">
         <div class="container bootstrap snippet">
             <div class="row">
-                <div class="col-sm-10"><h1><b>{{$user->fullName}}</b></h1></div>
+                <div class="col-sm-10"><h1><b>{{$admin_user_fullName}}</b></h1></div>
             </div>
             <div class="row">
                 <div class="col-sm-3"><!--left col-->
                     <div id="list-preview-image">
-                        <img src="{{$user->avatar}}" alt="avatar">
+                        <img src="{{$admin_user_avatar}}" alt="avatar">
                         <br><br>
                     </div>
                 </div><!--/col-3-->
