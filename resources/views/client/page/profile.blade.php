@@ -14,8 +14,12 @@
             $checklogin =Auth::check();
         if ($checklogin){
             $admin_user_role = Auth::user()->role;
+            $admin_user_fullName = Auth::user()->fullName;
+            $admin_user_avatar = Auth::user()->avatar;
         }else{
             $admin_user_id = " ";
+            $admin_user_fullName = " ";
+            $admin_user_avatar = " ";
         }
     @endphp
     <main id="main" class="main-site" style="min-height: 50vh;align-items: center;justify-content: center">
