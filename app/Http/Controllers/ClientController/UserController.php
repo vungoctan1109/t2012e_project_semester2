@@ -17,6 +17,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function redirect404(){
+        return view('client.page.error.page_404');
+    }
+
     public function index()
     {
 

@@ -18,7 +18,6 @@ $(document).ready(function (e) {
             $("#grand-total-price").html(total_vnd);
         },
     });
-
     $('input:radio[name="payment-method"]').change(function () {
         if ($(this).is(":checked") && $(this).val() == "paypal") {
             $("#btnPlaceOrder").show();
@@ -29,8 +28,29 @@ $(document).ready(function (e) {
             $("#btnCod").show();
         }
     });
+    function getValueForm() {        
+        var name = $("input[name='name']").val();
+        var email = $('input[name="email"]').val();
+        var phone = $('input[name="phone"]').val();
+        var province = $('input[name="province"]').val();
+        var district = $('input[name="district"]').val();
+        var ward = $('input[name="ward"]').val();
+        var address_detail = $('input[name="address_detail"]').val();
+        var comment = $('input[name="comment"]').val();
+        var data = {
+            name: name,
+            email: email,
+            phone: phone,
+            province: province,
+            district: district,
+            ward: ward,
+            address_detail: address_detail,
+            comment: comment,
+        };        
+        return data;
+    }
     var order_id;
-    paypal.Button.render(
+    paypal.Button.render(        
         {
             // Configure environment
             env: "sandbox",
@@ -46,7 +66,7 @@ $(document).ready(function (e) {
                 size: "medium",
                 color: "gold",
                 shape: "pill",
-            },
+            },            
             // Called when page displays
             validate: function (actions) {
                 actions.disable(); // Allow for validation in onClick()
@@ -54,20 +74,29 @@ $(document).ready(function (e) {
             },
             // Called for every click on the PayPal button even if actions.disabled
             onClick: function (e) {
-                var data1 = $("#formOrder").serialize();
+                paypalActions.disable();
+                var formOrder = getValueForm();
+                formOrder.paymentMethod = 1;
+                console.log(formOrder);
+                $.ajaxSetup({
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
+                    },
+                });
                 $.ajax({
-                    url: "/client/page/order",
+                    url: "/client/page/validate",
                     method: "post",
-                    data: data1,
+                    data: formOrder,
                     beforeSend: function () {
                         $(document).find("span.error").text(" ");
                     },
                     success: function (resp) {
-                        if (resp.status == 200) {
+                        if (resp.status == 202) {
                             paypalActions.enable();
-                            order_id = resp.orderID;
                         }
-                        if (resp.status == 400) {
+                        if (resp.status == 400) {                          
                             paypalActions.disable();
                             var status = "warning";
                             alertAction(resp.message, status);
@@ -75,17 +104,11 @@ $(document).ready(function (e) {
                                 $("span." + prefix + "_error").text(val[0]);
                             });
                         }
-                        if (resp.status == 500) {
-                            paypalActions.disable();
-                            var status = "error";
-                            alertAction(resp.message, status);
-                        }
-                    }
+                    },
                 });
             },
             // Buyer clicked the PayPal button.
             payment: function (data, actions) {
-                console.log("payment called");
                 return actions.payment.create({
                     payment: {
                         transactions: [
@@ -102,31 +125,36 @@ $(document).ready(function (e) {
             // Buyer logged in and authorized the payment
             onAuthorize: function (data, actions) {
                 return actions.payment.execute().then(function () {
-                    let data3 = { id:  order_id };
+                    var formOrder = getValueForm();
+                    formOrder.paymentMethod = 1;                   
+                    $.ajaxSetup({
+                        headers: {
+                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                                "content"
+                            ),
+                        },
+                    });
                     $.ajax({
-                        url: "/client/page/update/checkout_order",
+                        url: "/client/page/order",
                         method: "post",
-                        data: data3,
-                        success: function (response) {
-                            if(response.status == 200) {
+                        data: formOrder,
+                        success: function (resp) {
+                            if (resp.status == 200) {
                                 $.ajax({
-                                    url: `/client/page/thankyou/${response.order_id}`,
+                                    url: `/client/page/thankyou/${resp.orderID}`,
                                     method: "GET",
                                     success: function () {
-                                        window.location.href = `/client/page/thankyou/${response.order_id}`;
+                                        window.location.href = `/client/page/thankyou/${resp.orderID}`;                                       
                                     },
                                 });
                             }
-                            if(response.status == 500) {
+                            if (resp.status == 500) {
+                                paypalActions.disable();
                                 var status = "error";
-                                alertAction(response.message, status);
+                                alertAction(resp.message, status);
                             }
-                            if(response.status == 404) {
-                                var status = "error";
-                                alertAction(response.message, status);
-                            }
-                        }
-                    });
+                        },
+                    });                    
                 });
             },
         },
