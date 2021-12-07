@@ -9,28 +9,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 @endsection
 @section('main_content_page')
-    @php
-        use Illuminate\Support\Facades\Auth;
-            $checklogin =Auth::check();
-        if ($checklogin){
-            $admin_user_role = Auth::user()->role;
-            $admin_user_fullName = Auth::user()->fullName;
-            $admin_user_avatar = Auth::user()->avatar;
-        }else{
-            $admin_user_id = " ";
-            $admin_user_fullName = " ";
-            $admin_user_avatar = " ";
-        }
-    @endphp
     <main id="main" class="main-site" style="min-height: 50vh;align-items: center;justify-content: center">
         <div class="container bootstrap snippet">
             <div class="row">
-                <div class="col-sm-10"><h1><b>{{$admin_user_fullName}}</b></h1></div>
+                <div class="col-sm-10"><h1><b>{{$user->fullName}}</b></h1></div>
             </div>
             <div class="row">
                 <div class="col-sm-3"><!--left col-->
                     <div id="list-preview-image">
-                        <img src="{{$admin_user_avatar}}" alt="avatar">
+                        <img src="{{$user->avatar}}" alt="avatar">
                         <br><br>
                     </div>
                 </div><!--/col-3-->
@@ -38,7 +25,7 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#home">Information Detail</a></li>
                         <li><a data-toggle="tab" href="#messages">Edit Profile</a></li>
-                        <li style="{{$admin_user_role ==1 ? 'display:none' : ''}}"><a data-toggle="tab" href="#settings">Purchase History</a></li>
+                        <li style="{{$user->role ==1 ? 'display:none' : ''}}"><a data-toggle="tab" href="#settings">Purchase History</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="home">
@@ -135,7 +122,7 @@
                                     </div>
                                 </div>
                                 <input id="avatar" type="text" value="{{$user->avatar}}" name="avatar" style="display: none">
-
+                                <input type="text" value="{{$user->id}}" name="id" style="display: none">
                                 <div class="form-group">
                                     <div class="col-xs-12">
                                         <br>
