@@ -1,5 +1,7 @@
 <?php
 use App\Http\Controllers\AdminController\AuthController;
+use App\Http\Controllers\AdminController\FeedbackControllerAdmin;
+use App\Http\Controllers\ClientController\FeedbackController;
 use App\Http\ExportExcelController\ExportExcelMobileController;
 use Illuminate\Support\Facades\Route;
 
@@ -107,6 +109,11 @@ Route::prefix('admin')->group(function () {
     Route::get('/export-excel/excel/order', [ExportExcelOrderController::class, 'excel']);
     #Export excel Mobile
     Route::get('/export-excel/excel/mobile', [ExportExcelMobileController::class, 'excel']);
+    #8. Feedback
+    Route::get('/feedback/fetch_data', [FeedbackControllerAdmin::class, 'fetch_data']);
+    Route::resource('feedback', FeedbackControllerAdmin::class)->parameters([
+        'feedback' => 'feedback_id'
+    ]);
 
 
     Route::get('form', function () {
@@ -128,6 +135,10 @@ Route::prefix('client/page')->group(function () {
     #shop resource
     Route::resource('user', UserController::class)->parameters([
         'user' => 'user_id'
+    ]);
+    #feedback
+    Route::resource('feedback', FeedbackController::class)->parameters([
+        'feedback' => 'feedback_id'
     ]);
     #order resource
     Route::resource('order', OrderController::class)->parameters([
