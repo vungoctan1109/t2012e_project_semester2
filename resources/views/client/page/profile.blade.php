@@ -25,7 +25,6 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#home">Information Detail</a></li>
                         <li><a data-toggle="tab" href="#messages">Edit Profile</a></li>
-                        <li style="{{$user->role ==1 ? 'display:none' : ''}}"><a data-toggle="tab" href="#settings">Purchase History</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="home">
@@ -65,6 +64,11 @@
                                 <div class="form-group">
                                     <div class="col-xs-6">
                                         <label for="password"><h4>Status: {{$user->strStatus}}</h4></label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-6">
+                                        <label for=""><h4><a href="/client/page/orders/{{$user->id}}">History Purchase</a></h4></label>
                                     </div>
                                 </div>
                             </form>
@@ -126,13 +130,13 @@
                                 <div class="form-group">
                                     <div class="col-xs-12">
                                         <br>
-                                        <button type="button" id="btnThumbnailLink" class="btn btn-info mt-1 mb-3"
+                                        <button type="button" id="btnThumbnailLink" class="btn btn-xs btn-danger mt-1 mb-3"
                                                 value="">Change Avatar</button>
                                         <br><br>
-                                        <button class="btn btn-lg btn-primary" type="submit" id="btnSaveEdit"><i
+                                        <button class="btn btn-lg btn-danger" type="submit" id="btnSaveEdit"><i
                                                 class="glyphicon glyphicon-ok-sign" ></i> Save
                                         </button>
-                                        <button class="btn btn-lg" type="reset"><i
+                                        <button class="btn btn-lg btn-danger" type="reset"><i
                                                 class="glyphicon glyphicon-repeat"></i> Reset
                                         </button>
                                     </div>
@@ -140,32 +144,6 @@
                             </form>
 
                         </div><!--/tab-pane-->
-                        <div class="tab-pane" id="settings">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th scope="col"># Order ID</th>
-                                    <th scope="col">Recipient's name</th>
-                                    <th scope="col">Ship Phone</th>
-                                    <th scope="col">Ship Email</th>
-                                    <th scope="col">Total Price (VND)</th>
-                                    <th scope="col">Created At</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($order as $ord)
-                                    <tr>
-                                        <td style="text-align:center; vertical-align: middle">{{$ord->id}}</td>
-                                        <td style="text-align:center; vertical-align: middle">{{$ord->name}}</td>
-                                        <td style="text-align:center; vertical-align: middle">{{$ord->phone}}</td>
-                                        <td style="text-align:center; vertical-align: middle">{{$ord->email}}</td>
-                                        <td style="text-align:center; vertical-align: middle">{{$ord->fPrice}}</td>
-                                        <td style="text-align:center; vertical-align: middle">{{date('d-m-Y', strtotime($ord->created_at))}}</td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
                     </div><!--/tab-pane-->
                 </div><!--/tab-content-->
 

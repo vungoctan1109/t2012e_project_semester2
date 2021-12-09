@@ -22,6 +22,20 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'id'=> 1,
+                'email'=>'guest@gmail.com',
+                'password'=>bcrypt('guest@gmail.com'),
+                'fullName'=>'Khach Vang Lai',
+                'phone'=>'0918466600',
+                'address'=>'Viet Nam',
+                'avatar'=>'https://res.cloudinary.com/quynv300192/image/upload/v1638888511/Wikilogo_muns3z.png',
+                'role'=>0,
+                'description'=>'Khach Vang Lai',
+                'status'=>1,
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'id'=> 2,
                 'email'=>'quynv@fpt.com',
                 'password'=>bcrypt('123123123'),
                 'fullName'=>'Nguyen Van Quy',
@@ -35,7 +49,7 @@ class UserSeeder extends Seeder
                 'updated_at'=>Carbon::now()
             ],
             [
-                'id'=> 2,
+                'id'=> 3,
                 'email'=>'springhero@gmail.com',
                 'password'=>bcrypt('123123123'),
                 'fullName'=>'Spring Very Hero',
@@ -49,24 +63,10 @@ class UserSeeder extends Seeder
                 'updated_at'=>Carbon::now()
             ],
             [
-                'id'=> 3,
+                'id'=> 4,
                 'email'=>'customer@gmail.com',
                 'password'=>bcrypt('123123123'),
                 'fullName'=>'Chu Dieu Linh',
-                'phone'=>$faker->phoneNumber,
-                'address'=>$faker->address,
-                'avatar'=>'https://res.cloudinary.com/quynv300192/image/upload/v1638689217/chom-nghe-danh-hot-girl-15-tuoi-linh-ka-bat-ngo-bi-doa-kien_mcrwav.jpg',
-                'role'=>0,
-                'description'=>'Doc lap tu do hanh phuc',
-                'status'=>1,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
-            [
-                'id'=> 4,
-                'email'=>$faker->email,
-                'password'=>'$2y$10$QEbJvoH8w79vnSMQsyRXNuynBtxuHsUVXLyEdR3Zeg10YTvy07cuK',
-                'fullName'=>$faker->firstName,
                 'phone'=>$faker->phoneNumber,
                 'address'=>$faker->address,
                 'avatar'=>'https://res.cloudinary.com/quynv300192/image/upload/v1638689217/chom-nghe-danh-hot-girl-15-tuoi-linh-ka-bat-ngo-bi-doa-kien_mcrwav.jpg',
