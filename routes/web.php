@@ -1,5 +1,10 @@
 <?php
+
+use App\Http\Controllers\AdminController\ArticleController;
 use App\Http\Controllers\AdminController\AuthController;
+
+use App\Http\Controllers\AdminController\FeedbackControllerAdmin;
+use App\Http\Controllers\ClientController\FeedbackController;
 use App\Http\Controllers\ClientController\AuthCustomerController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\ExportExcelController\ExportExcelMobileController;
@@ -67,17 +72,18 @@ Route::group([
     //all product start here -------------------------------------------------------
     //1. mobile
     Route::get('/mobile/fetch_data', [MobileController::class, 'fetch_data']);
+    Route::delete('/mobile/deleteAll', [MobileController::class, 'deleteAll']);
     Route::resource('mobile', MobileController::class)->parameters([
         'mobile' => 'mobile_id'
     ]);
     #2. laptop
-    Route::resource('laptop', LaptopController::class)->parameters([
-        'laptop' => 'laptop_id'
-    ]);
+    // Route::resource('laptop', LaptopController::class)->parameters([
+    //     'laptop' => 'laptop_id'
+    // ]);
     #3. accessory
-    Route::resource('accessory', AccessoryController::class)->parameters([
-        'accessory' => 'accessory_id'
-    ]);
+    // Route::resource('accessory', AccessoryController::class)->parameters([
+    //     'accessory' => 'accessory_id'
+    // ]);
     #4. order
     Route::get('/order/fetch_data', [OrderControllerAdmin::class, 'fetch_data']);
     Route::resource('orders', OrderControllerAdmin::class)->parameters([
@@ -87,8 +93,6 @@ Route::group([
     Route::resource('user', UserControllerAdmin::class)->parameters([
         'user' => 'user_id'
     ]);
-
-
     #6. order-detail
     Route::get('/order-detail/fetch_data', [OrderDetailController::class, 'fetch_data']);
     Route::resource('order-detail', OrderDetailController::class)->parameters([
@@ -103,7 +107,17 @@ Route::group([
     Route::get('/export-excel/excel/order', [ExportExcelOrderController::class, 'excel']);
     #Export excel Mobile
     Route::get('/export-excel/excel/mobile', [ExportExcelMobileController::class, 'excel']);
+    #8. Feedback
+    Route::get('/feedback/fetch_data', [FeedbackControllerAdmin::class, 'fetch_data']);
+    Route::resource('feedback', FeedbackControllerAdmin::class)->parameters([
+        'feedback' => 'feedback_id'
+    ]);
 
+    #8. Article
+    Route::get('/article/fetch_data', [ArticleController::class, 'fetch_data']);
+    Route::resource('article', ArticleController::class)->parameters([
+        'article' => 'article_id'
+    ]);
 
     Route::get('form', function () {
         return view('admin.template.form');
@@ -168,9 +182,10 @@ Route::prefix('client/page')->group(function () {
         'order' => 'order_id'
     ]);
     #shop resource
-//    Route::resource('user', UserController::class)->parameters([
-//        'user' => 'user_id'
-//    ]);
+    #feedback
+    Route::resource('feedback', FeedbackController::class)->parameters([
+        'feedback' => 'feedback_id'
+    ]);
     #order resource
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'

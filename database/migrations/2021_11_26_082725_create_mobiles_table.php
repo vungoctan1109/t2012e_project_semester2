@@ -34,6 +34,7 @@ class CreateMobilesTable extends Migration
             $table->integer('camera');
             $table->double('screenSize');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

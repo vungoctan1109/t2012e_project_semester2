@@ -4,7 +4,7 @@ window.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
         var data = $("#formFilter").serialize();
         $.ajax({
-            url: "/admin/order/fetch_data",
+            url: "/admin/article/fetch_data",
             method: "GET",
             data: data,
             success: function (response) {
@@ -15,7 +15,7 @@ window.addEventListener("DOMContentLoaded", function () {
     //refresh
     $("#resetFilter").click(function (e) {
         $.ajax({
-            url: "/admin/order",
+            url: "/admin/article",
             method: "GET",
             success: function (response) {
                 $("#data_table").html(response);
@@ -32,7 +32,7 @@ window.addEventListener("DOMContentLoaded", function () {
     function fetch_data(page) {
         var data = $("#formFilter").serialize();
         $.ajax({
-            url: "/admin/order/fetch_data?page=" + page,
+            url: "/admin/article/fetch_data?page=" + page,
             data: data,
             success: function (response) {
                 $("#data_table").html(response);
@@ -40,7 +40,6 @@ window.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    //delete
     $(document).on("click", ".delete", function (e) {
         e.preventDefault();
         Swal.fire({
@@ -63,7 +62,7 @@ window.addEventListener("DOMContentLoaded", function () {
                     },
                 });
                 $.ajax({
-                    url: "/admin/orders/" + $(this).attr("order_id"),
+                    url: "/admin/article/" + $(this).attr("articleID"),
                     method: "DELETE",
                     success: function (response) {
                         if (response.status == 200) {
@@ -75,7 +74,7 @@ window.addEventListener("DOMContentLoaded", function () {
                                     "success"
                                 );
                                 $("#data_table").load(
-                                    "/admin/order/fetch_data",
+                                    "/admin/article/fetch_data",
                                     data
                                 );
                             }, 1500);
@@ -89,7 +88,7 @@ window.addEventListener("DOMContentLoaded", function () {
                                     "error"
                                 );
                                 $("#data_table").load(
-                                    "/admin/order/fetch_data",
+                                    "/admin/article/fetch_data",
                                     data
                                 );
                             }, 1500);

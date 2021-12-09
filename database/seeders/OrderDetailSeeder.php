@@ -21,14 +21,14 @@ class OrderDetailSeeder extends Seeder
         DB::table('order_details')->truncate();
         DB::table('order_details')->insert([
             [
-                'orderID' => 1,
-                'mobileID' => 1,
-                'quantity' => 1,
-                'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
-                'discount' => $faker->numberBetween(1, 3) * 0.1,
-                'created_at' => Carbon::now()->addMonth(-3),
-                'updated_at' => Carbon::now()->addMonth(-3)
-            ],[
+            'orderID' => 1,
+            'mobileID' => 1,
+            'quantity' => 1,
+            'unitPrice' => $faker->numberBetween(1, 10) * 5000000,
+            'discount' => $faker->numberBetween(1, 3) * 0.1,
+            'created_at' => Carbon::now()->addMonth(-3),
+            'updated_at' => Carbon::now()->addMonth(-3)
+        ],[
                 'orderID' => 1,
                 'mobileID' => 2,
                 'quantity' => 1,

@@ -6,12 +6,12 @@
 @section('page-title','Admin | Table')
 @section('breadcrumb')
     <div class="col-sm-6">
-        <h1 class="m-0">Mobile</h1>
+        <h1 class="m-0">Article</h1>
     </div><!-- /.col -->
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Mobile / List</li>
+            <li class="breadcrumb-item active">Article / List</li>
         </ol>
     </div><!-- /.col -->
 @endSection
@@ -39,32 +39,26 @@
                                 </select>
                             </div>
                             <div class="col-md-2 m-3">
-                                <label for="name">Search by Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Name category..."
-                                       name="name">
+                                <label for="name">Search by Title</label>
+                                <input type="text" class="form-control" id="title" placeholder="Article title..."
+                                       name="title">
+                            </div>
+                            <div class="col-md-2 m-3">
+                                <label for="name">Search by Author</label>
+                                <input type="text" class="form-control" id="author" placeholder="Article author..."
+                                       name="author">
                             </div>
                             <div class="col-md-2 m-3">
                                 <label for="sortBy">Sort by </label>
                                 <select class="form-control" name="sortBy">
                                     <option value="created_at_desc" selected>Created At (DESC)</option>
                                     <option value="created_at_asc">Created At (ASC)</option>
-                                    <option value="price_desc">Price(DESC)</option>
-                                    <option value="price_asc">Price(ASC)</option>
                                     <option value="name_desc">Name (DESC)</option>
                                     <option value="name_asc">Name (ASC)</option>
+                                    <option value="name_desc">Author (DESC)</option>
+                                    <option value="name_asc">Author (ASC)</option>
                                     <option value="id_desc">ID (DESC)</option>
                                     <option value="id_asc">ID (ASC)</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2 m-3">
-                                <label for="status">Filter by status</label>
-                                <select class="form-control" name="status" id="status">
-                                    <option value="99" selected>---select---</option>
-                                    <option value="-1">Out of stock</option>
-                                    <option value="0">stop selling</option>
-                                    <option value="1">on sale</option>
-                                    <option value="2">sale off</option>
-                                    <option value="3">top sale</option>
                                 </select>
                             </div>
                             <div class="col-md-2 m-3">
@@ -78,17 +72,7 @@
                             </div>
                         </div>
 
-                         <div class="row">
-                            <div class="col-md-2 m-3">
-                                <label for="from_price">Min by Price</label>
-                                <input type="number" class="form-control" id="from_price" placeholder="Min price..."
-                                    name="from_price">
-                            </div>
-                            <div class="col-md-2 m-3">
-                                <label for="to_price">Max by Price</label>
-                                <input type="number" class="form-control" id="to_price" placeholder="Max price..."
-                                    name="to_price">
-                            </div>
+                        <div class="row">
                             <div class="col-md-2 m-3">
                                 <label for="start_date">Start date</label>
                                 <input type="date" class="form-control" id="start_date" name="start_date">
@@ -97,16 +81,6 @@
                                 <label for="end_date">End date</label>
                                 <input type="date" class="form-control" id="end_date" name="end_date">
                             </div>
-                             <div class="col-md-2 m-3">
-                                 <label for="ram">Filter by RAM</label>
-                                 <select class="form-control" name="ram" id="ram">
-                                     <option value="99" selected>---select---</option>
-                                     <option value="4">4 GB</option>
-                                     <option value="8">8 GB</option>
-                                     <option value="16">16 GB</option>
-                                     <option value="32">32 GB</option>
-                                 </select>
-                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-2 m-3">
@@ -119,19 +93,16 @@
                                         id="resetFilter">Refresh
                                 </button>
                             </div>
-                            <div class="col-md-2 m-3">
-                                <button type="button" class="btn btn-block btn-secondary btn-lg" id="btn-delete-selected" style="background: red">Delete All Select</button>
-                            </div>
                         </div>
                     </form>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body" id="data_table">
-                    @include('admin.page.mobile.render_table')
+                    @include('admin.page.article.render_table')
                 </div>
             </div>
         </div>
         @endSection
         @section('script_private')
-            <script src="/dist/js/pages/mobile/table_data.js"></script>
+            <script src="/dist/js/pages/article/table_data.js"></script>
 @endSection

@@ -28,7 +28,7 @@ $(document).ready(function (e) {
             $("#btnCod").show();
         }
     });
-    function getValueForm() {        
+    function getValueForm() {
         var name = $("input[name='name']").val();
         var email = $('input[name="email"]').val();
         var phone = $('input[name="phone"]').val();
@@ -46,11 +46,11 @@ $(document).ready(function (e) {
             ward: ward,
             address_detail: address_detail,
             comment: comment,
-        };        
+        };
         return data;
     }
     var order_id;
-    paypal.Button.render(        
+    paypal.Button.render(
         {
             // Configure environment
             env: "sandbox",
@@ -66,12 +66,13 @@ $(document).ready(function (e) {
                 size: "medium",
                 color: "gold",
                 shape: "pill",
-            },            
+            },
             // Called when page displays
             validate: function (actions) {
                 actions.disable(); // Allow for validation in onClick()
                 paypalActions = actions; // Save for later enable()/disable() calls
             },
+
             // Called for every click on the PayPal button even if actions.disabled
             onClick: function (e) {
                 paypalActions.disable();
@@ -96,7 +97,7 @@ $(document).ready(function (e) {
                         if (resp.status == 202) {
                             paypalActions.enable();
                         }
-                        if (resp.status == 400) {                          
+                        if (resp.status == 400) {
                             paypalActions.disable();
                             var status = "warning";
                             alertAction(resp.message, status);
@@ -126,7 +127,7 @@ $(document).ready(function (e) {
             onAuthorize: function (data, actions) {
                 return actions.payment.execute().then(function () {
                     var formOrder = getValueForm();
-                    formOrder.paymentMethod = 1;                   
+                    formOrder.paymentMethod = 1;
                     $.ajaxSetup({
                         headers: {
                             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
@@ -144,7 +145,7 @@ $(document).ready(function (e) {
                                     url: `/client/page/thankyou/${resp.orderID}`,
                                     method: "GET",
                                     success: function () {
-                                        window.location.href = `/client/page/thankyou/${resp.orderID}`;                                       
+                                        window.location.href = `/client/page/thankyou/${resp.orderID}`;
                                     },
                                 });
                             }
@@ -154,7 +155,7 @@ $(document).ready(function (e) {
                                 alertAction(resp.message, status);
                             }
                         },
-                    });                    
+                    });
                 });
             },
         },
@@ -163,34 +164,61 @@ $(document).ready(function (e) {
 
     $("#btnCod").click(function (e) {
         e.preventDefault();
-        var data1 = $("#formOrder").serialize();
+        var formOrder = getValueForm();
+        formOrder.paymentMethod = 0;
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
         $.ajax({
-            url: "/client/page/order",
+            url: "/client/page/validate",
             method: "post",
+            data: formOrder,
             beforeSend: function () {
                 $(document).find("span.error").text(" ");
             },
-            data: data1,
             success: function (resp) {
-                if (resp.status == 200) {
+                if (resp.status == 202) {
+                    $.ajaxSetup({
+                        headers: {
+                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                        },
+                    });
                     $.ajax({
-                        url: `/client/page/thankyou/${resp.orderID}`,
-                        method: "GET",
-                        success: function () {
-                            window.location.href = `/client/page/thankyou/${resp.orderID}`;
+                        url: "/client/page/order",
+                        method: "post",                      
+                        data: formOrder,
+                        success: function (resp) {
+                            if (resp.status == 200) {
+                                $.ajax({
+                                    url: `/client/page/thankyou/${resp.orderID}`,
+                                    method: "GET",
+                                    success: function () {
+                                        window.location.href = `/client/page/thankyou/${resp.orderID}`;
+                                    },
+                                });
+                            }
+                            if (resp.status == 500) {
+                                paypalActions.disable();
+                                var status = "error";
+                                alertAction(resp.message, status);
+                            }
+                            if (resp.status == 400) {
+                                paypalActions.disable();
+                                var status = "warning";
+                                alertAction(resp.message, status);
+                            }
                         },
                     });
                 }
                 if (resp.status == 400) {
+                    paypalActions.disable();
                     var status = "warning";
                     alertAction(resp.message, status);
                     $.each(resp.errors, function (prefix, val) {
                         $("span." + prefix + "_error").text(val[0]);
                     });
-                }
-                if (resp.status == 500) {
-                    var status = "error";
-                    alertAction(resp.message, status);
                 }
             },
         });

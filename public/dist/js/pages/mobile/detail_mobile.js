@@ -1,47 +1,11 @@
-window.addEventListener("DOMContentLoaded", function () {
-    //filter
-    $("#filterSubmit").click(function (e) {
-        e.preventDefault();
-        var data = $("#formFilter").serialize();
-        $.ajax({
-            url: "/admin/order/fetch_data",
-            method: "GET",
-            data: data,
-            success: function (response) {
-                $("#data_table").html(response);
-            },
-        });
+$(document).ready(function () {
+    $(document).on("click", ".image-preview", function (e) {
+        var url = $(this).attr("src");
+        $("#curentImage").attr("src", url);
+        $(this).addclass("active");
     });
-    //refresh
-    $("#resetFilter").click(function (e) {
-        $.ajax({
-            url: "/admin/order",
-            method: "GET",
-            success: function (response) {
-                $("#data_table").html(response);
-            },
-        });
-    });
-    //paginate
-    $(document).on("click", ".pagination a", function (e) {
-        e.preventDefault();
-        var page = $(this).attr("href").split("page=")[1];
-        fetch_data(page);
-    });
-    //paginate fetch data
-    function fetch_data(page) {
-        var data = $("#formFilter").serialize();
-        $.ajax({
-            url: "/admin/order/fetch_data?page=" + page,
-            data: data,
-            success: function (response) {
-                $("#data_table").html(response);
-            },
-        });
-    }
-
     //delete
-    $(document).on("click", ".delete", function (e) {
+    $(document).on("click", "#btn-delete", function (e) {
         e.preventDefault();
         Swal.fire({
             title: "Are you sure?",
@@ -54,7 +18,6 @@ window.addEventListener("DOMContentLoaded", function () {
         }).then((result) => {
             if (result.isConfirmed) {
                 //FIXME:
-                var data = $("#formFilter").serialize();
                 $.ajaxSetup({
                     headers: {
                         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
@@ -63,22 +26,14 @@ window.addEventListener("DOMContentLoaded", function () {
                     },
                 });
                 $.ajax({
-                    url: "/admin/orders/" + $(this).attr("order_id"),
+                    url: "/admin/mobile/" + $(this).attr("mobile_id"),
                     method: "DELETE",
                     success: function (response) {
                         if (response.status == 200) {
                             alertProcess();
                             setTimeout(function () {
-                                Swal.fire(
-                                    "Deleted!",
-                                    `${response.message}`,
-                                    "success"
-                                );
-                                $("#data_table").load(
-                                    "/admin/order/fetch_data",
-                                    data
-                                );
-                            }, 1500);
+                                window.location.replace("/admin/mobile");                               
+                            }, 500);
                         }
                         if (response.status == 404) {
                             alertProcess();
@@ -88,9 +43,28 @@ window.addEventListener("DOMContentLoaded", function () {
                                     `${response.message}`,
                                     "error"
                                 );
-                                $("#data_table").load(
-                                    "/admin/order/fetch_data",
-                                    data
+                                window.location.href = "/client/page/404";
+                            }, 500);
+                        }
+                        if (response.status == 500) {
+                            alertProcess();
+                            setTimeout(function () {
+                                Swal.fire(
+                                    "Delete not success!",
+                                    `${response.message}`,
+                                    "error"
+                                );
+                            }, 500);
+                        }
+                    },
+                    error: function (response) {
+                        if (response.status == 500) {
+                            alertProcess();
+                            setTimeout(function () {
+                                Swal.fire(
+                                    "Delete not success!",
+                                    `Something went wrong!!`,
+                                    "error"
                                 );
                             }, 1500);
                         }
@@ -99,12 +73,13 @@ window.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+    //alert alert process
     function alertProcess() {
         let timerInterval;
         Swal.fire({
             title: "Deletion in progress",
             html: "Progress will be completed in about in <b></b> milliseconds.",
-            timer: 1500,
+            timer: 500,
             timerProgressBar: true,
             didOpen: () => {
                 Swal.showLoading();

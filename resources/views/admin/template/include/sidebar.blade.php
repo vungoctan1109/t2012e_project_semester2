@@ -184,6 +184,29 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item {{request()->is('admin/article*') ? 'menu-open menu-is-opening' : ''}}">
+                <a href="#" class="nav-link {{request()->is('admin/article*') ? 'active' : ''}}">
+                    <i class="nav-icon fas fa-newspaper"></i>
+                    <p>
+                        Manage Article
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="/admin/article/create" class="nav-link {{request()->is('admin/article/create') ? 'active' : ''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Create New Article</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/admin/article" class="nav-link {{request()->is('admin/article') ? 'active' : ''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All & Search</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

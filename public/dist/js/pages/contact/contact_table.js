@@ -2,9 +2,17 @@ window.addEventListener("DOMContentLoaded", function () {
     //filter
     $("#filterSubmit").click(function (e) {
         e.preventDefault();
-        var data = $("#formFilter").serialize();
+        var pagination_limit = $('select[name=pagination_limit]').val();
+        var name = $('input[name=name]').val();
+        var sortBy = $('select[name=sortBy]').val();
+        let data = {
+            'pagination_limit':pagination_limit,
+            'name':name,
+            'sortBy':sortBy
+        }
+        console.log(data);
         $.ajax({
-            url: "/admin/order/fetch_data",
+            url: "/admin/feedback/fetch_data",
             method: "GET",
             data: data,
             success: function (response) {
@@ -15,7 +23,7 @@ window.addEventListener("DOMContentLoaded", function () {
     //refresh
     $("#resetFilter").click(function (e) {
         $.ajax({
-            url: "/admin/order",
+            url: "/admin/feedback",
             method: "GET",
             success: function (response) {
                 $("#data_table").html(response);
@@ -32,7 +40,7 @@ window.addEventListener("DOMContentLoaded", function () {
     function fetch_data(page) {
         var data = $("#formFilter").serialize();
         $.ajax({
-            url: "/admin/order/fetch_data?page=" + page,
+            url: "/admin/feedback/fetch_data?page=" + page,
             data: data,
             success: function (response) {
                 $("#data_table").html(response);
@@ -63,7 +71,7 @@ window.addEventListener("DOMContentLoaded", function () {
                     },
                 });
                 $.ajax({
-                    url: "/admin/orders/" + $(this).attr("order_id"),
+                    url: "/admin/feedback/" + $(this).attr("feedbackID"),
                     method: "DELETE",
                     success: function (response) {
                         if (response.status == 200) {
@@ -75,7 +83,7 @@ window.addEventListener("DOMContentLoaded", function () {
                                     "success"
                                 );
                                 $("#data_table").load(
-                                    "/admin/order/fetch_data",
+                                    "/admin/feedback/fetch_data",
                                     data
                                 );
                             }, 1500);
@@ -89,7 +97,7 @@ window.addEventListener("DOMContentLoaded", function () {
                                     "error"
                                 );
                                 $("#data_table").load(
-                                    "/admin/order/fetch_data",
+                                    "/admin/feedback/fetch_data",
                                     data
                                 );
                             }, 1500);
@@ -99,6 +107,8 @@ window.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+
+    //alert alert process
     function alertProcess() {
         let timerInterval;
         Swal.fire({

@@ -28,9 +28,9 @@ class MobileController extends Controller
             ->orderBy('created_at', 'DESC')
             ->paginate(9);
         if ($request->ajax()) {
-            return view('admin.page.mobile.render_table', ['mobiles' => $mobiles, 'brands'=>$brands])->render();
+            return view('admin.page.mobile.render_table', ['mobiles' => $mobiles, 'brands' => $brands])->render();
         }
-        return view('admin.page.mobile.table_data', ['mobiles' => $mobiles, 'brands'=>$brands]);
+        return view('admin.page.mobile.table_data', ['mobiles' => $mobiles, 'brands' => $brands]);
     }
 
     public function fetch_data(Request $request)
@@ -127,8 +127,11 @@ class MobileController extends Controller
      */
     public function show($id)
     {
-        $result = DB::table('mobiles')->where('id', '=', $id)->first();
-        return view('admin.page.mobile.detail_mobile', compact('result'));
+        $mobile = Mobile_Model::find($id);
+        if ($mobile) {
+            return view('admin.page.mobile.detail_mobile')->with('mobile', $mobile);
+        }
+        return view('admin.page.error.page_404')->with('mobile', $mobile);
     }
 
     /**
@@ -139,7 +142,6 @@ class MobileController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -151,7 +153,6 @@ class MobileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
@@ -160,8 +161,42 @@ class MobileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            $mobile = Mobile_Model::find($id);
+            if ($mobile) {
+                if ($mobile->delete()) {
+                    return response()->json([
+                        'status' => 200,
+                        'message' => 'Data have been successfully deleted!'
+                    ]);
+                } else {
+                    return response()->json([
+                        'status' => 500,
+                        'message' => 'Something went wrong!'
+                    ]);
+                }
+            } else {
+                return response()->json([
+                    'status' => 404,
+                    'message' => 'Object not exist!'
+                ]);
+            }
+        }
+    }
+    public function deleteAll(Request $request)
+    {
+        $ids = $request->ids;
+        if (Mobile_Model::query()->whereIn('id', explode(",", $ids))->delete()) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Data have been successfully deleted!'
+            ]);
+        } 
+        return response()->json([
+            'status' => 500,
+            'message' => 'Something went wrong!'
+        ]);       
     }
 }

@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\ClientController;
 
-use App\Http\Controllers\Controller;
-use App\Models\Mobile;
 use App\Models\Order;
+use App\Models\Mobile;
+use App\Mail\OrderPlaced;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
-use HoangPhi\VietnamMap\Models\Province;
-use HoangPhi\VietnamMap\Models\District;
+use App\Http\Controllers\Controller;
 use HoangPhi\VietnamMap\Models\Ward;
+use Illuminate\Support\Facades\Session;
+use HoangPhi\VietnamMap\Models\District;
+use HoangPhi\VietnamMap\Models\Province;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -87,10 +88,10 @@ class OrderController extends Controller
                 $orderDetail->mobileID = $product->id;
                 $orderDetail->quantity = $cartItem->quantity;
                 $orderDetail->unitPrice = $product->price;
-                $orderDetail->discount = 0;
+                $orderDetail->discount = $product -> saleOff;
                 $orderDetail->created_at = Carbon::now();
                 $orderDetail->updated_at = Carbon::now();
-                $order->totalPrice += $cartItem->quantity * $product->price;
+                $order->totalPrice += $cartItem->quantity *  ($product->price - ($product->price * $product -> saleOff));
                 array_push($arrayOderDetail, $orderDetail);
             }
             //save ca 2 vao qua transaction
@@ -124,8 +125,9 @@ class OrderController extends Controller
                         }
                     }
                 }
+                
                 DB::commit();
-                \Cart::clear();
+                \Cart::clear();                  
                 return response()->json(['status' => 200, 'message' => 'Save order successfully', 'orderID' => $order_id]);
             } catch (\Exception $e) {
                 DB::rollBack();

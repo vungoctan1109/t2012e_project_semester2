@@ -18,13 +18,11 @@ $(document).ready(function () {
         (error, result) => {
             if (!error && result && result.event === "success") {
                 console.log(result.info);
-                document.getElementById(
-                    "valueUpLoad"
-                ).value += `${result.info.secure_url},`;
+                document.getElementById("avatar").value = `${result.info.secure_url}`;
                 // alert(document.getElementById("valueUpLoad").value);
-                document.getElementById("list-preview-image").innerHTML += `
-               <span class="m-2" id="preview-image" style="position: relative; with:220px; display:inline-block;">
-                   <img src="${result.info.secure_url}" class="img-thumbnail img-bordered" style="width: 220px; ml-2" delete="${result.info.delete_token}">
+                document.getElementById("list-preview-image").innerHTML = `
+               <span class="m-2" id="preview-image" style="position: relative; with:100px; display:inline-block;">
+                   <img src="${result.info.secure_url}" class="img-thumbnail img-bordered" style="width: 100px; ml-2" delete="${result.info.delete_token}">
                    <i class="fas fa-times btnDeleteImg" style="position: absolute;right: 0;top: 0; cursor: pointer;"></i>
                </span>
                `;
@@ -113,43 +111,22 @@ $(document).ready(function () {
     //submit form ajax
     $("#btn-submit").click(function (e) {
         e.preventDefault();
-        // const editorData = editor.getData();
-        var name = $('input[name="name"]').val();
-        var categoryID = $('select[name="categoryID"]').val();
+        const editorData = editor.getData();
         var brandID = $('select[name="brandID"]').val();
-        var name = $('input[name="name"]').val();
-        var price = $('input[name="price"]').val();
-        var color = $('input[name="color"]').val();
-        var quantity = $('input[name="quantity"]').val();
-        var ram = $('input[name="ram"]').val();
-        var memory = $('input[name="memory"]').val();
-        var pin = $('input[name="pin"]').val();
-        var camera = $('input[name="camera"]').val();
-        var screenSize = $('input[name="screenSize"]').val();
+        var title = $('input[name="title"]').val();
+        var author = $('input[name="author"]').val();
         var thumbnail = $('input[name="thumbnail"]').val();
-        var status = $('select[name="status"]').val();
-        var saleOff = $('input[name="saleOff"]').val();
         var description = $('textarea[name="description"]').val();
         var detail = editorData;
         // console.log(detail);
         // alert(thumbnail);
         var data = {
-            name: name,
+            title: title,
             brandID: brandID,
-            categoryID: categoryID,
-            price: price,
-            color: color,
-            quantity: quantity,
-            ram: ram,
-            memory: memory,
-            pin: pin,
-            camera: camera,
-            screenSize: screenSize,
+            author: author,
             thumbnail: thumbnail,
-            status: status,
-            saleOff: saleOff,
             description: description,
-            detail: detail,
+            detail: detail
         };
         $.ajaxSetup({
             headers: {
@@ -157,7 +134,7 @@ $(document).ready(function () {
             },
         });
         $.ajax({
-            url: "/admin/mobile",
+            url: "/admin/article",
             method: "POST",
             data: data,
             beforeSend: function () {
@@ -175,7 +152,7 @@ $(document).ready(function () {
                         }, 1500);
                         alertProcessData();
                         setTimeout(function() {
-                            window.location.href = "/admin/mobile";
+                            window.location.href = "/admin/article";
                         },3000)
                     }
                     if (response.status == 500) {
