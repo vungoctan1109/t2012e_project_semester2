@@ -127,9 +127,9 @@ class OrderControllerAdmin extends Controller
     public function destroy(Request $request, $id)
     {
         if ($request->ajax()) {
-            $category = Order_Model::find($id);
-            if ($category) {
-                if ($category->delete()) {
+            $order = Order_Model::find($id);
+            if ($order) {
+                if ($order->delete()) {
                     return response()->json([
                         'status' => 200,
                         'message' => 'Data have been successfully deleted!'

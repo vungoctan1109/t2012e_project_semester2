@@ -4,15 +4,26 @@
 </a>
 <!-- Sidebar -->
 <div class="sidebar">
+@php
+    use Illuminate\Support\Facades\Auth;$admin_user = Auth::user();
+@endphp
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-            <img src="/dist/img/avatar4.png" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-            <a href="#" class="d-block">Admin</a>
-        </div>
+        <a href="/admin/user/{{$admin_user->id}}">
+            <div class="image">
+                <img src="{{$admin_user->avatar}}" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <br>
+            <div class="info">
+                <a href="/admin/user/{{$admin_user->id}}" class="d-block">{{$admin_user->fullName}}</a>
+            </div>
+        </a>
     </div>
+{{--    <div class="user-panel mt-3 pb-3 mb-3 d-flex">--}}
+{{--        <div class="info">--}}
+{{--            <button class="btn btn-primary" id="btn-logout">Logout</button>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <!-- SidebarSearch Form -->
     <!-- Sidebar Menu -->
     <nav class="mt-2">
@@ -173,17 +184,23 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item {{request()->is('admin/feedback*') ? 'menu-open menu-is-opening' : ''}}">
-                <a href="#" class="nav-link {{request()->is('admin/feedback*') ? 'active' : ''}}">
-                    <i class="fas fa-comment"></i>
+            <li class="nav-item {{request()->is('admin/article*') ? 'menu-open menu-is-opening' : ''}}">
+                <a href="#" class="nav-link {{request()->is('admin/article*') ? 'active' : ''}}">
+                    <i class="nav-icon fas fa-newspaper"></i>
                     <p>
-                        Manage Feedback
+                        Manage Article
                         <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/admin/feedback" class="nav-link {{request()->is('admin/feedback') ? 'active' : ''}}">
+                        <a href="/admin/article/create" class="nav-link {{request()->is('admin/article/create') ? 'active' : ''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Create New Article</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/admin/article" class="nav-link {{request()->is('admin/article') ? 'active' : ''}}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Show All & Search</p>
                         </a>

@@ -27,7 +27,9 @@ $(document).ready(function () {
                             alertAction(response.message);
                         }, 1500);
                         alertProcessData();
-                        return;
+                        setTimeout(function() {
+                            window.location.href = "/admin/category";
+                        },3000)
                     }
                     if (response.status == 500) {
                         setTimeout(function () {

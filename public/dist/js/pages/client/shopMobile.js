@@ -9,13 +9,13 @@ $(document).ready(function () {
             method: "POST",
             data: data,
             success: function (response) {
-                if (response.status == 200){
-                    var action = 'success';
+                if (response.status == 200) {
+                    var action = "success";
                     $("#total_cart").text(response.total_quantity + " items");
                     alertCheckCart(action, response.message);
                 }
-                if (response.status == 400){
-                    var action = 'warning';
+                if (response.status == 400) {
+                    var action = "warning";
                     $("#total_cart").text(response.total_quantity + " items");
                     alertCheckCart(action, response.message);
                 }
@@ -114,13 +114,52 @@ $(document).ready(function () {
         fetch_data_filter();
     });
     //paginate limit
-    $('#pagination_limit').change(function (e) {
+    $("#pagination_limit").change(function (e) {
         fetch_data_filter();
-    })
+    });
     //sort by
-    $('#sortBy').change(function (e) {
+    $("#sortBy").change(function (e) {
         fetch_data_filter();
-    })
+    });
+    //search by name
+    // $("#btn-search").click(function (e) {
+    //     e.preventDefault();      
+    // });
+    $('input[name="search"]').keyup(function (e) {
+        e.preventDefault();
+        var pagination_limit = $("#pagination_limit").val();
+        var sortBy = $("#sortBy").val();
+        var nameMobile = $('input[name="search"]').val();    
+        var data = {                      
+            pagination_limit: pagination_limit,           
+            sortBy: sortBy,
+            name:nameMobile,
+        };            
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+        $.ajax({
+            url: "/client/page/shop/mobile/fetch_data?page=",
+            method: "POST",
+            beforeSend: function () {
+                $("#listSearch").html('');
+                equalElement();
+            },
+            data: data,
+            success: function (response) {
+                $("#fetchData").html(response.view);
+                for (var i = 0; i < response.mobiles_suggest.length; i++) {
+                    $("#listSearch").append(
+                        `<option>${response.mobiles_suggest[i].name}</option>`
+                    );                    
+                }             
+                equalElement();
+                $content[0].scrollTop = $content[0].scrollHeight;
+            },
+        });
+    });
     //paginate
     $(document).on("click", "#pagination a", function (e) {
         e.preventDefault();
@@ -143,15 +182,16 @@ $(document).ready(function () {
             },
             data: data,
             success: function (response) {
-                $("#fetchData").html(response);
+                $("#fetchData").html(response.view);
                 equalElement();
             },
         });
     }
+
     //get data filter
     function getData() {
         var pagination_limit = $("#pagination_limit").val();
-        var sortBy = $('#sortBy').val();
+        var sortBy = $("#sortBy").val();       
         var priceFilter;
         var batteryFilter;
         var screenFilter;
@@ -176,6 +216,7 @@ $(document).ready(function () {
                 ramFilter = $(this).attr("value");
             }
         });
+
         var data = {
             brandArrID: Array.from(arrayBrand),
             pagination_limit: pagination_limit,
@@ -183,7 +224,7 @@ $(document).ready(function () {
             battery_filter: batteryFilter,
             screen_filter: screenFilter,
             ram: ramFilter,
-            sortBy: sortBy,
+            sortBy: sortBy,          
         };
         return data;
     }
@@ -196,14 +237,14 @@ $(document).ready(function () {
             },
         });
         $.ajax({
-            url: "/client/page/shop/mobile/fetch_data?page=",
+            url: "/client/page/shop/mobile/fetch_data",
             method: "POST",
             beforeSend: function () {
                 equalElement();
             },
             data: data,
             success: function (response) {
-                $("#fetchData").html(response);
+                $("#fetchData").html(response.view);
                 equalElement();
                 $content[0].scrollTop = $content[0].scrollHeight;
             },

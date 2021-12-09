@@ -47,7 +47,20 @@ class MobileShopController extends Controller
                 ->screen($request)
                 ->ram($request)
                 ->pagination($request);
-            return view('client.page.fetch_data.pagination_shop_mobile_data')->with('mobiles', $mobiles)->render();
+            $mobiles_suggest = Mobile_Model::query()
+                ->select('*')
+                ->orderBy('created_at', 'DESC')
+                ->sortBy($request)
+                ->name($request)
+                ->brandArr($request)
+                ->priceClient($request)
+                ->battery($request)
+                ->screen($request)
+                ->ram($request)
+                ->take(5)
+                ->get();
+            $view =  view('client.page.fetch_data.pagination_shop_mobile_data')->with('mobiles', $mobiles)->render();
+            return response()->json(['status' => 200, 'view' => $view,'mobiles_suggest' => $mobiles_suggest]);
         }
     }
 
@@ -84,6 +97,7 @@ class MobileShopController extends Controller
             //related
             $mobiles_related = Mobile_Model::query()->select('*')->where('brandID', $mobile->brandID)->get()->take(10);
             $arr = [];
+            //add and get recent view mobile into session
             if (Session::has('recent_view')) {
                 $arr = Session::get('recent_view');
             }
@@ -94,15 +108,15 @@ class MobileShopController extends Controller
                 }
             }
             //popular
-            $mobiles_popular = OrderDetail::query()->selectRaw('mobiles.id, mobiles.name, mobiles.price,mobiles.thumbnail, SUM(order_details.quantity) AS sum_quantity') -> join('mobiles', 'order_details.mobileID', '=', 'mobiles.id')
-                ->groupBy('mobiles.name') ->orderBy('sum_quantity', 'DESC')->take(5) -> get();
+            $mobiles_popular = OrderDetail::query()->selectRaw('mobiles.id, mobiles.name, mobiles.price,mobiles.thumbnail, SUM(order_details.quantity) AS sum_quantity')->join('mobiles', 'order_details.mobileID', '=', 'mobiles.id')
+                ->groupBy('mobiles.name')->orderBy('sum_quantity', 'DESC')->take(5)->get();
             //recent
             $mobiles_recent_view = [];
             if (Session::has('recent_view')) {
                 $mobiles_recent_view = Mobile_Model::findMany(Session::get('recent_view'));
             }
             Session::put('recent_view', $arr);
-            return view('client.page.detail')->with('mobile', $mobile)->with('mobiles_related',$mobiles_related)->with('mobiles_popular',$mobiles_popular)->with('mobiles_recent_view',$mobiles_recent_view);
+            return view('client.page.detail')->with('mobile', $mobile)->with('mobiles_related', $mobiles_related)->with('mobiles_popular', $mobiles_popular)->with('mobiles_recent_view', $mobiles_recent_view);
         }
         return view('client.page.error.page_404');
     }

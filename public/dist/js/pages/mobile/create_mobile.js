@@ -113,7 +113,7 @@ $(document).ready(function () {
     //submit form ajax
     $("#btn-submit").click(function (e) {
         e.preventDefault();
-        const editorData = editor.getData();
+        // const editorData = editor.getData();
         var name = $('input[name="name"]').val();
         var categoryID = $('select[name="categoryID"]').val();
         var brandID = $('select[name="brandID"]').val();
@@ -131,8 +131,8 @@ $(document).ready(function () {
         var saleOff = $('input[name="saleOff"]').val();
         var description = $('textarea[name="description"]').val();
         var detail = editorData;
-        console.log(detail);
-        alert(thumbnail);
+        // console.log(detail);
+        // alert(thumbnail);
         var data = {
             name: name,
             brandID: brandID,
@@ -174,7 +174,9 @@ $(document).ready(function () {
                             alertAction(response.message);
                         }, 1500);
                         alertProcessData();
-                        return;
+                        setTimeout(function() {
+                            window.location.href = "/admin/mobile";
+                        },3000)
                     }
                     if (response.status == 500) {
                         setTimeout(function () {

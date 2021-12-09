@@ -1,10 +1,14 @@
 <?php
+
+use App\Http\Controllers\AdminController\ArticleController;
 use App\Http\Controllers\AdminController\AuthController;
+
 use App\Http\Controllers\AdminController\FeedbackControllerAdmin;
 use App\Http\Controllers\ClientController\FeedbackController;
+use App\Http\Controllers\ClientController\AuthCustomerController;
+use Illuminate\Support\Facades\Auth;
 use App\Http\ExportExcelController\ExportExcelMobileController;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\AdminController\OrderDetailController;
 use App\Http\ExportExcelController\ExportExcelBrandController;
 use App\Http\ExportExcelController\ExportExcelCategoryController;
@@ -39,20 +43,15 @@ use App\Http\Controllers\ClientController\ShoppingCartController;
 |
 */
 #auth
-Route::prefix('auth')->group(function(){
-    Route::get('/adminlogin', [AuthController::class, 'adminGetLogin'])->name('admin.login');
-    Route::post('/adminlogin', [AuthController::class, 'adminPostLogin'])->name('admin.process.login');
-
-    Route::resource('account', AuthController::class)->parameters([
-        'auth' => 'auth_id'
-    ]);
-});
-
-#admin
 
 
-Route::prefix('admin')->group(function () {
-    Route::get('/', [DashboardController::class, 'index']);
+//Admin Route after authentication
+Auth::routes();
+Route::group([
+    'prefix' => 'admin',
+    'middleware' => ['auth', 'admin']
+], function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('home.dashboard');
     #user
     Route::post('/update/user', [UserControllerAdmin::class, 'update'])->name('User.Info.Update');
     Route::get('/users_admin/fetch_data', [UserControllerAdmin::class, 'fetch_data']);
@@ -73,17 +72,18 @@ Route::prefix('admin')->group(function () {
     //all product start here -------------------------------------------------------
     //1. mobile
     Route::get('/mobile/fetch_data', [MobileController::class, 'fetch_data']);
+    Route::delete('/mobile/deleteAll', [MobileController::class, 'deleteAll']);
     Route::resource('mobile', MobileController::class)->parameters([
         'mobile' => 'mobile_id'
     ]);
     #2. laptop
-    Route::resource('laptop', LaptopController::class)->parameters([
-        'laptop' => 'laptop_id'
-    ]);
+    // Route::resource('laptop', LaptopController::class)->parameters([
+    //     'laptop' => 'laptop_id'
+    // ]);
     #3. accessory
-    Route::resource('accessory', AccessoryController::class)->parameters([
-        'accessory' => 'accessory_id'
-    ]);
+    // Route::resource('accessory', AccessoryController::class)->parameters([
+    //     'accessory' => 'accessory_id'
+    // ]);
     #4. order
     Route::get('/order/fetch_data', [OrderControllerAdmin::class, 'fetch_data']);
     Route::resource('orders', OrderControllerAdmin::class)->parameters([
@@ -93,8 +93,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('user', UserControllerAdmin::class)->parameters([
         'user' => 'user_id'
     ]);
-
-
     #6. order-detail
     Route::get('/order-detail/fetch_data', [OrderDetailController::class, 'fetch_data']);
     Route::resource('order-detail', OrderDetailController::class)->parameters([
@@ -115,6 +113,11 @@ Route::prefix('admin')->group(function () {
         'feedback' => 'feedback_id'
     ]);
 
+    #8. Article
+    Route::get('/article/fetch_data', [ArticleController::class, 'fetch_data']);
+    Route::resource('article', ArticleController::class)->parameters([
+        'article' => 'article_id'
+    ]);
 
     Route::get('form', function () {
         return view('admin.template.form');
@@ -124,18 +127,56 @@ Route::prefix('admin')->group(function () {
     });
 
 });
+
+//Login Admin
+Route::group([
+    'prefix' => 'auth',
+    'middleware' => ['check.after.admin.login']
+],function(){
+    Route::get('/adminlogin', [AuthController::class, 'adminGetLogin'])->name('admin.login');
+    Route::post('/adminlogin', [AuthController::class, 'adminPostLogin'])->name('admin.process.login');
+});
+Route::group([
+    'prefix' => 'auth',
+    'middleware' => ['auth']
+],function(){
+    Route::post('/adminlogout', [AuthController::class, 'logout'])->name('admin.process.logout');
+    Route::resource('account', AuthController::class)->parameters([
+        'auth' => 'auth_id'
+    ]);
+});
+
 #Route client
+
+Route::group([
+    'prefix' => 'client/page',
+    'middleware' => ['check.after.customer.login']
+], function () {
+    Route::get('/login/get', [AuthCustomerController::class, 'customerGetLogin'])->name('customer.login.get');
+});
+
+Route::group([
+    'prefix' => 'client/page',
+    'middleware' => ['login_require']
+], function () {
+    Route::resource('user', UserController::class)->parameters([
+        'user' => 'user_id'
+    ]);
+});
 Route::prefix('client/page')->group(function () {
+    Route::get('/404', [UserController::class, 'redirect404'])->name('404page');
+    #Customer Login
+//    Route::get('/login/get', [AuthCustomerController::class, 'customerGetLogin'])->name('customer.login.get');
+    Route::post('/login', [AuthCustomerController::class, 'customerPostLogin'])->name('customer.login.post');
+    Route::post('/logout', [AuthCustomerController::class, 'logout'])->name('customer.logout');
     #Route resource order
     #thankyou
     Route::get('thankyou/{id}', [OrderController::class, 'show_thankyou'])->name('client.thankyou');
+    Route::post('validate', [OrderController::class, 'validateOrder'])->name('validate.order');
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'
     ]);
     #shop resource
-    Route::resource('user', UserController::class)->parameters([
-        'user' => 'user_id'
-    ]);
     #feedback
     Route::resource('feedback', FeedbackController::class)->parameters([
         'feedback' => 'feedback_id'
@@ -213,3 +254,7 @@ Route::prefix('client/page')->group(function () {
 Route::fallback(function () {
     return view('client.page.error.page_404');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

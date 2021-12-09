@@ -3,6 +3,72 @@
 @section('private_link')
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <link rel="stylesheet" type="text/css" href="/client-assets/assets/css/style.css">
+    <style>
+        @-webkit-keyframes my {
+            0% {
+                color: #F8CD0A;
+            }
+    
+            50% {
+                color: red;
+            }
+    
+            100% {
+                color: #F8CD0A;
+            }
+        }
+    
+        @-moz-keyframes my {
+            0% {
+                color: #F8CD0A;
+            }
+    
+            50% {
+                color: red;
+            }
+    
+            100% {
+                color: #F8CD0A;
+            }
+        }
+    
+        @-o-keyframes my {
+            0% {
+                color: #F8CD0A;
+            }
+    
+            50% {
+                color: red;
+            }
+    
+            100% {
+                color: #F8CD0A;
+            }
+        }
+    
+        @keyframes my {
+            0% {
+                color: #F8CD0A;
+            }
+    
+            50% {
+                color: red;
+            }
+    
+            100% {
+                color: #F8CD0A;
+            }
+        }
+    
+        .discount {       
+            font-size: 15px;
+            font-weight: bold;
+            -webkit-animation: my 700ms infinite;
+            -moz-animation: my 700ms infinite;
+            -o-animation: my 700ms infinite;
+            animation: my 700ms infinite;
+        }
+    </style>
 @endsection
 @section('main_content_page')
     <main id="main" class="main-site left-sidebar">
@@ -52,10 +118,8 @@
                             <ul class="list-style vertical-list list-limited" data-show="6">
                                 <li class="list-item"><a value='-1' class="filter-link filter-brand active" href="#">Tất
                                         cả</a></li>
-                                @foreach ($brands as $item)
-                                    <li class="list-item"><a value='{{$item -> id}}' class="filter-link filter-brand"
-                                                             href="#">{{$item -> name}}</a>
-                                    </li>
+                                @foreach ($brands as $item) 
+                                    <li class="list-item"><a value='{{$item -> id}}' class="filter-link filter-brand" href="#">{{$item -> name}}</a></li>
                                 @endforeach
                             </ul>
                         </div>

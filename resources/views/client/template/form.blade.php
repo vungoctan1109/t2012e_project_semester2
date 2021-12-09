@@ -4,6 +4,7 @@
         <title>@yield('title_page')</title>
         @yield('private_link')
         @include('client.template.include.head')
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
     </head>
     <body>
         <!-- mobile menu -->
@@ -52,5 +53,6 @@
             })();
         </script>
         <!--End of Tawk.to Script-->
+        <script src="/dist/js/pages/client/form.js"></script>
     </body>
 </html>

@@ -11,7 +11,12 @@ class Brand extends Model
     use HasFactory;
     protected $fillable = [
         'id', 'name', 'description', 'created_at', 'updated_at'
-    ];
+    ]; 
+    #relationship
+    public function mobile()
+    {
+        return $this->hasMany(Mobile::class,'id', 'mobileID');
+    }
     public function scopeName($query, $request)
     {
         if ($request->has('name')) {
@@ -22,10 +27,7 @@ class Brand extends Model
         }
         return $query;
     }
-    public function mobile()
-    {
-        return $this->hasMany(Mobile::class);
-    }
+    #scop start here! 
     #sort by
     public function scopeSortBy($query, $request)
     {

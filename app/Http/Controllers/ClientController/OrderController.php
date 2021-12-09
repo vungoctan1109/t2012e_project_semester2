@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers\ClientController;
 
-use App\Http\Controllers\Controller;
-use App\Models\Mobile;
 use App\Models\Order;
+use App\Models\Mobile;
+use App\Mail\OrderPlaced;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
-use HoangPhi\VietnamMap\Models\Province;
-use HoangPhi\VietnamMap\Models\District;
+use App\Http\Controllers\Controller;
 use HoangPhi\VietnamMap\Models\Ward;
+use Illuminate\Support\Facades\Session;
+use HoangPhi\VietnamMap\Models\District;
+use HoangPhi\VietnamMap\Models\Province;
+use Illuminate\Support\Facades\Validator;
+
+
 
 class OrderController extends Controller
 {
@@ -52,68 +56,103 @@ class OrderController extends Controller
         $shipAddressDetail = $request->get('address_detail');
         $shipPhone = $request->get('phone');
         $shipNote = $request->get('comment');
+        $paymentMethod = $request->get('paymentMethod');
         //tao order
         $order = new Order();
-        $order->userId = 1; //fix cung vi chua pha trien tinh nang dang nhap
-        $order->name = $shipName;
-        $order->email = $shipEmail;
-        $order->phone = $shipPhone;
-        $order->province = $shipProvince;
-        $order->district = $shipDistrict;
-        $order->ward = $shipWard;
-        $order->address_detail = $shipAddressDetail;
-        $order->comment = $shipNote;
-        $order->checkOut = false;
-        $order->created_at = Carbon::now();
-        $order->updated_at = Carbon::now();
-        $order->status = 2;
-        //tao order detail
-        $hasError = false;
-        //tao danh sach orderDetail de cho them orderID
-        $arrayOderDetail = [];
-        $shoppingCart = \Cart::getContent();
-        foreach ($shoppingCart as $cartItem) {
-            $product = mobile::find($cartItem->id);
-            if ($product == null) {
-                $hasError = true;
-                break;
+        if (count(\Cart::getContent()) == 0) {
+            return response()->json(['status' => 400, 'message' => 'Không có sản phẩm nào trong giỏ hàng!']);
+        } else {
+            $order->userId = 1; //fix cung vi chua pha trien tinh nang dang nhap
+            $order->name = $shipName;
+            $order->email = $shipEmail;
+            $order->phone = $shipPhone;
+            $order->province = $shipProvince;
+            $order->district = $shipDistrict;
+            $order->ward = $shipWard;
+            $order->address_detail = $shipAddressDetail;
+            $order->comment = $shipNote;
+            $order->created_at = Carbon::now();
+            $order->updated_at = Carbon::now();
+            // $order->status = 2;
+            //tao order detail
+            $hasError = false;
+            //tao danh sach orderDetail de cho them orderID
+            $arrayOderDetail = [];
+            foreach (\Cart::getContent() as $cartItem) {
+                $product = mobile::find($cartItem->id);
+                if ($product == null) {
+                    $hasError = true;
+                    break;
+                }
+                $orderDetail = new Orderdetail();
+                $orderDetail->mobileID = $product->id;
+                $orderDetail->quantity = $cartItem->quantity;
+                $orderDetail->unitPrice = $product->price;
+                $orderDetail->discount = $product -> saleOff;
+                $orderDetail->created_at = Carbon::now();
+                $orderDetail->updated_at = Carbon::now();
+                $order->totalPrice += $cartItem->quantity *  ($product->price - ($product->price * $product -> saleOff));
+                array_push($arrayOderDetail, $orderDetail);
             }
-            $orderDetail = new Orderdetail();
-            $orderDetail->mobileID = $product->id;
-            $orderDetail->quantity = $cartItem->quantity;
-            $orderDetail->unitPrice = $product->price;
-            $orderDetail->discount = 0;
-            $orderDetail->created_at = Carbon::now();
-            $orderDetail->updated_at = Carbon::now();
-            $order->totalPrice += $cartItem->quantity * $product->price;
-            array_push($arrayOderDetail, $orderDetail);
-        }
-        //save ca 2 vao qua transaction
-        try {
-            DB::beginTransaction();
-            $order->save();
-            $orderID1 = $order->id;
-            foreach ($arrayOderDetail as $orderDetail) {
-                $orderDetail->orderID = $orderID1;
-                if ($orderDetail->quantity > 0) {
-                    if ($orderDetail->save()){
-                        $mobile = Mobile::find($orderDetail->mobileID);
-                        DB::table('mobiles')
-                            ->where('id', $mobile -> id)
-                            ->update(['quantity' => $mobile -> quantity - $orderDetail->quantity]);
+            //save ca 2 vao qua transaction
+            try {
+                DB::beginTransaction();
+                if ($paymentMethod == 1) {
+                    $order->checkOut = true;
+                    $order->status = 1;
+                    $order->paymentMethod = $paymentMethod;
+                };
+                if ($paymentMethod == 0) {
+                    $order->checkOut = false;
+                    $order->status = 2;
+                    $order->paymentMethod = $paymentMethod;
+                };
+                $order->save();
+                $order_id = $order->id;
+                foreach ($arrayOderDetail as $orderDetail) {
+                    $orderDetail->orderID = $order_id;
+                    if ($orderDetail->quantity > 0) {
+                        if ($orderDetail->save()) {
+                            $mobile = Mobile::find($orderDetail->mobileID);
+                            DB::table('mobiles')
+                                ->where('id', $mobile->id)
+                                ->update(['quantity' => $mobile->quantity - $orderDetail->quantity]);
+                            if ($mobile->quantity - $orderDetail->quantity == 0) {
+                                DB::table('mobiles')
+                                    ->where('id', $mobile->id)
+                                    ->update(['status' => -1]);
+                            }
+                        }
                     }
                 }
+                
+                DB::commit();
+                \Cart::clear();                  
+                return response()->json(['status' => 200, 'message' => 'Save order successfully', 'orderID' => $order_id]);
+            } catch (\Exception $e) {
+                DB::rollBack();
+                return response()->json(['status' => 500, 'message' => 'Save order information false']);
             }
-            DB::commit();
-            \Cart::clear();
-            return response()->json(['status' => 200, 'message' => 'save order successfully', 'orderID' => $orderID1]);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json(['status' => 500, 'message' => 'save order information false']);
+            if ($hasError) {
+                return response()->json(['status' => 404, 'message' => 'Sorry we can not find this product']);
+            }
         }
-        if ($hasError) {
-            return response()->json(['status' => 404, 'message' => 'Sorry i can not find this product']);
+    }
+    public function validateOrder(Request $request)
+    {
+        $order = new Order();
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required| email',
+            'province' => 'required',
+            'district' => 'required',
+            'ward' => 'required',
+            'phone' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 400, 'errors' => $validator->errors()->toArray(), 'message' => 'Vui lòng nhập đủ thông tin!']);
         }
+        return response()->json(['status' => 202]);
     }
 
     /**
@@ -147,13 +186,20 @@ class OrderController extends Controller
      */
     public function update(Request $request)
     {
-        $id = $request->get('id');
-        $result = DB::table('orders')->where('id', $id)->update([
-            'checkOut' => true,
-            'updated_at' => Carbon::now(),
-            'status' => 1
-        ]);
-        return response()->json(['status' => 200, 'message' => 'save order successfully', 'orderID' => $id]);
+        $order = Order::find($request->get('id'));
+        if ($order) {
+            $order->checkOut = true;
+            $order->status = 1;
+            $order->updated_at = Carbon::now();
+            if ($order->update()) {
+                return response()->json(['status' => 200, 'message' => 'save order successfully!',  'order_id' => $order->id]);
+            } else {
+                return response()->json(['status' => 500, 'message' => 'Some thing went wrong!']);
+            }
+        } else {
+            return response()->json(['status' => 404, 'message' => 'Order not found!']);
+        }
+        return response()->json(['status' => 500, 'message' => 'Some thing went wrong!']);
     }
 
     /**
@@ -168,10 +214,10 @@ class OrderController extends Controller
     }
     public function show_thankyou($id)
     {
-        if ($order = Order::find($id)) {
-            $order_details = $order->order_detail;
-            return view('client.page.thankyou')->with('order', $order)->with('order_details', $order_details);
-        }
+        $order = Order::find($id);
+        $order_details = $order->order_detail;
+        $invoice = view('client.page.fetch_data.view_invoice_confirm_email')->with('order', $order)->with('order_details', $order_details)->render();
+        return view('client.page.thankyou')->with('invoice', $invoice);
     }
     public function get_district(Request $request)
     {

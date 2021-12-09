@@ -42,5 +42,6 @@
     <!-- ./wrapper -->
     @include('admin.template.include.script_common')
     @yield('script_private')
+    <script src="/dist/js/master_layout.js"></script>
 </body>
 </html>
