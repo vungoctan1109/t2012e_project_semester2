@@ -48,8 +48,8 @@ class BrandSeeder extends Seeder
             ],
             [
                 'id'=> 5,
-                'name'=>'HP',
-                'description'=>'The Hewlett-Packard Company, commonly shortened to Hewlett-Packard or HP, was an American multinational information technology company headquartered in Palo Alto, California.',
+                'name'=>'Realme',
+                'description'=>'Realme, stylized as realme, is a Chinese smartphone manufacturer that is a subsidiary of BBK Electronics. It was founded by Sky Li on May 4, 2018, who was former vice president of Oppo and the head of Oppo India. It was a spin-off from Oppo which was collectively owned by Oppo Electronics.',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
@@ -62,15 +62,15 @@ class BrandSeeder extends Seeder
             ],
             [
                 'id'=> 7,
-                'name'=>'Dell',
-                'description'=>'Dell is an American multinational computer technology company that develops, sells, repairs, and supports computers and related products and services, and is owned by its parent company of Dell Technologies.',
+                'name'=>'Vsmart',
+                'description'=>'Vingroups predecessor is Technocom Group founded in 1993 in Ukraine. In the early 2000s, Technocom returned to Vietnam, concentrating on investing in tourism and real estate with two original strategic brands, named Vinpearl and Vincom. In January 2012, both of them merged with each other and officially operated under the name of Vingroup Corporation - a Joint Stock Company.',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'id'=> 8,
-                'name'=>'Acer',
-                'description'=>'Acer Inc. is a Taiwanese multinational hardware and electronics corporation specializing in advanced electronics technology, headquartered in Xizhi, New Taipei City.',
+                'name'=>'Vivo',
+                'description'=>'Vivo Communication Technology Co. Ltd., styled vivo in its logo, is a Chinese technology company headquartered in Dongguan, Guangdong that designs and develops smartphones, smartphone accessories, software and online services.',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],

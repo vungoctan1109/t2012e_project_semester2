@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\AdminController\ArticleController;
 use App\Http\Controllers\AdminController\AuthController;
 use App\Http\Controllers\ClientController\AuthCustomerController;
 use Illuminate\Support\Facades\Auth;
@@ -87,8 +89,6 @@ Route::group([
     Route::resource('user', UserControllerAdmin::class)->parameters([
         'user' => 'user_id'
     ]);
-
-
     #6. order-detail
     Route::get('/order-detail/fetch_data', [OrderDetailController::class, 'fetch_data']);
     Route::resource('order-detail', OrderDetailController::class)->parameters([
@@ -104,6 +104,11 @@ Route::group([
     #Export excel Mobile
     Route::get('/export-excel/excel/mobile', [ExportExcelMobileController::class, 'excel']);
 
+    #8. Article
+    Route::get('/article/fetch_data', [ArticleController::class, 'fetch_data']);
+    Route::resource('article', ArticleController::class)->parameters([
+        'article' => 'article_id'
+    ]);
 
     Route::get('form', function () {
         return view('admin.template.form');

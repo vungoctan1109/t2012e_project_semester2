@@ -1,4 +1,5 @@
-$(document).ready(function () {
+window.addEventListener('DOMContentLoaded', function () {
+
     //CK editor
     let editor;
     ClassicEditor.create(document.querySelector("#editor"))
@@ -9,6 +10,7 @@ $(document).ready(function () {
             console.error(error);
         });
     // upload file Thumbnail
+
     var btnThumbnailLink = document.getElementById("btnThumbnailLink");
     var myWidget_thumbnail = cloudinary.createUploadWidget(
         {
@@ -18,13 +20,11 @@ $(document).ready(function () {
         (error, result) => {
             if (!error && result && result.event === "success") {
                 console.log(result.info);
-                document.getElementById(
-                    "valueUpLoad"
-                ).value += `${result.info.secure_url},`;
+                document.getElementById("avatar").value = `${result.info.secure_url}`;
                 // alert(document.getElementById("valueUpLoad").value);
-                document.getElementById("list-preview-image").innerHTML += `
-               <span class="m-2" id="preview-image" style="position: relative; with:220px; display:inline-block;">
-                   <img src="${result.info.secure_url}" class="img-thumbnail img-bordered" style="width: 220px; ml-2" delete="${result.info.delete_token}">
+                document.getElementById("list-preview-image").innerHTML = `
+               <span class="m-2" id="preview-image" style="position: relative; with:100px; display:inline-block;">
+                   <img src="${result.info.secure_url}" class="img-thumbnail img-bordered" style="width: 100px; ml-2" delete="${result.info.delete_token}">
                    <i class="fas fa-times btnDeleteImg" style="position: absolute;right: 0;top: 0; cursor: pointer;"></i>
                </span>
                `;
@@ -35,6 +35,8 @@ $(document).ready(function () {
     btnThumbnailLink.addEventListener(
         "click",
         function () {
+            document.getElementById("list-preview-image").innerHTML = '';
+            document.getElementById("avatar").value = '';
             myWidget_thumbnail.open();
         },
         false
@@ -59,7 +61,7 @@ $(document).ready(function () {
                     url: "https://api.cloudinary.com/v1_1/binht2012e/delete_by_token",
                     cache: false,
                     method: "POST",
-                    data: { token: delete_token },
+                    data: {token: delete_token},
                     success: function (result) {
                         if (result.result == "ok") {
                             btnDeleteImg.parent().remove();
@@ -103,6 +105,7 @@ $(document).ready(function () {
             }
         });
     });
+
     //remove array
     function removeElement(array, elem) {
         var index = array.indexOf(elem);
@@ -110,55 +113,64 @@ $(document).ready(function () {
             array.splice(index, 1);
         }
     }
-    //submit form ajax
-    $("#btn-submit").click(function (e) {
+
+    //jquery validation
+    // $("#mainForm").validate({
+    //     onfocusout: false,
+    //     onkeyup: false,
+    //     onclick: false,
+    //     rules: {
+    //         "title": {
+    //             required: true
+    //         },
+    //         "brand": {
+    //             required: true
+    //         },
+    //         "author": {
+    //             required: true
+    //         },
+    //         "thumbnail": {
+    //             required: true
+    //         },
+    //         "description": {
+    //             required: true
+    //         },
+    //         "detail": {
+    //             required: true
+    //         }
+    //     }
+    // });
+
+    //process submit button
+    $('#mainForm').submit(function (e) {
         e.preventDefault();
-        // const editorData = editor.getData();
-        var name = $('input[name="name"]').val();
-        var categoryID = $('select[name="categoryID"]').val();
+        const editorData = editor.getData();
+        var id = $('input[name="id"]').val();
         var brandID = $('select[name="brandID"]').val();
-        var name = $('input[name="name"]').val();
-        var price = $('input[name="price"]').val();
-        var color = $('input[name="color"]').val();
-        var quantity = $('input[name="quantity"]').val();
-        var ram = $('input[name="ram"]').val();
-        var memory = $('input[name="memory"]').val();
-        var pin = $('input[name="pin"]').val();
-        var camera = $('input[name="camera"]').val();
-        var screenSize = $('input[name="screenSize"]').val();
+        var title = $('input[name="title"]').val();
+        var author = $('input[name="author"]').val();
         var thumbnail = $('input[name="thumbnail"]').val();
-        var status = $('select[name="status"]').val();
-        var saleOff = $('input[name="saleOff"]').val();
         var description = $('textarea[name="description"]').val();
         var detail = editorData;
         // console.log(detail);
         // alert(thumbnail);
-        var data = {
-            name: name,
+        let data = {
+            title: title,
             brandID: brandID,
-            categoryID: categoryID,
-            price: price,
-            color: color,
-            quantity: quantity,
-            ram: ram,
-            memory: memory,
-            pin: pin,
-            camera: camera,
-            screenSize: screenSize,
+            author: author,
             thumbnail: thumbnail,
-            status: status,
-            saleOff: saleOff,
             description: description,
-            detail: detail,
+            detail: detail
         };
+        console.log(data)
         $.ajaxSetup({
             headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            },
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
         });
         $.ajax({
-            url: "/admin/mobile",
-            method: "POST",
+            url: "/admin/article/" + id,
+            method: "PUT",
             data: data,
             beforeSend: function () {
                 $(document).find("span.error").text("");
@@ -174,24 +186,21 @@ $(document).ready(function () {
                             alertAction(response.message);
                         }, 1500);
                         alertProcessData();
-                        setTimeout(function() {
-                            window.location.href = "/admin/mobile";
-                        },3000)
+                        return;
                     }
                     if (response.status == 500) {
                         setTimeout(function () {
-                            alertAction(response.message);
+                            alertActionFailed(response.message);
                         }, 1500);
                         alertProcessData();
+
                         return;
                     }
                 }
             },
             error: function (response) {},
         });
-    });
-
-    //alert
+    })
     function alertAction(message) {
         Swal.fire({
             position: "top-end",
@@ -201,11 +210,21 @@ $(document).ready(function () {
             timer: 1500,
         });
     }
-    //alert process
+
+    function alertActionFailed(message) {
+        Swal.fire({
+            position: "top-end",
+            icon: "warning",
+            title: `${message}`,
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    }
+
     function alertProcessData() {
         let timerInterval;
         Swal.fire({
-            title: "Insert in progress!",
+            title: "Update in progress!",
             html: "Progress will be completed in about in <b></b> milliseconds.",
             timer: 1500,
             timerProgressBar: true,
@@ -226,4 +245,4 @@ $(document).ready(function () {
             }
         });
     }
-});
+})
