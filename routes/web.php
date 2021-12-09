@@ -141,10 +141,15 @@ Route::group([
     Route::get('/login/get', [AuthCustomerController::class, 'customerGetLogin'])->name('customer.login.get');
 });
 
+Route::get('/order/detail/{order_id}', [UserController::class, 'showOrderByOrderID'])->name('get.order.byOrderID');
+
 Route::group([
     'prefix' => 'client/page',
     'middleware' => ['login_require']
 ], function () {
+    Route::get('/orders/{user_id}', [UserController::class, 'showOrderByID'])->name('get.orders.byID');
+//    Route::get('/order/detail/{order_id}', [UserController::class, 'showOrderByOrderID'])->name('get.order.byOrderID');
+
     Route::resource('user', UserController::class)->parameters([
         'user' => 'user_id'
     ]);

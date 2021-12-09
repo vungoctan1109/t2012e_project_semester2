@@ -33,8 +33,9 @@
                             <a >{{$admin_user_name}} ({{$admin_user_role}})<i
                                     class="fa fa-angle-down" aria-hidden="true"></i></a>
                             <ul class="submenu lang">
-                                <li {{$checklogin ? ' ' : 'hidden'}} class="menu-item"><a title="Register or Login" href="/client/page/user/{{$admin_user_id}}" id="btn-profile">Profile</a></li>
-                                <li {{$checklogin ? ' ' : 'hidden'}} class="menu-item"><a title="Register or Login" href="#" id="btn-logout">Logout</a></li>
+                                <li {{$checklogin ? ' ' : 'hidden'}} class="menu-item"><a title="profile" href="/client/page/user/{{$admin_user_id}}" id="btn-profile">Profile</a></li>
+                                <li style="{{$admin_user_role == 1 ? 'display:none' : ''}} class="menu-item"><a title="history" href="/client/page/orders/{{$admin_user_id}}" id="btn-history">Purchase History</a></li>
+                                <li {{$checklogin ? ' ' : 'hidden'}} class="menu-item"><a title="logout" href="#" id="btn-logout">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -46,8 +47,8 @@
             <div class="mid-section main-info-area">
 
                 <div class="wrap-logo-top left-section">
-                    <a href="{{route('client.home')}}" class="link-to-home"><img
-                            src="/client-assets/assets/images/logo-top-1.png"
+                    <a href="{{route('client.home')}}" class="link-to-home"><img style="height:10vh"
+                            src="https://res.cloudinary.com/quynv300192/image/upload/v1638941504/Screenshot_2-removebg-preview_sg2vht.png"
                             alt="mercado"></a>
                 </div>
 

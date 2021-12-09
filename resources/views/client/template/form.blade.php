@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <title>@yield('title_page')</title>
+        <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/quynv300192/image/upload/v1638888511/Wikilogo_muns3z.png">
         @yield('private_link')
         @include('client.template.include.head')
         <meta name="csrf-token" content="{{ csrf_token() }}" />

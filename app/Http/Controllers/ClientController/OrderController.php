@@ -57,7 +57,7 @@ class OrderController extends Controller
         $shipNote = $request->get('comment');
         $paymentMethod = $request->get('paymentMethod');
         //tao order
-        $order = new Order();      
+        $order = new Order();
         if (count(\Cart::getContent()) == 0) {
             return response()->json(['status' => 400, 'message' => 'Không có sản phẩm nào trong giỏ hàng!']);
         } else {

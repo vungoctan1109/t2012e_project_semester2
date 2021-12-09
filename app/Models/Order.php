@@ -15,6 +15,38 @@ class Order extends Model
         return number_format($this->totalPrice, 0, ',', ' ');
     }
 
+    public function getStrStatusAttribute(){
+        $strStatus = '';
+        if($this->status == 1){
+            $strStatus = 'Đang xử lý';
+        }
+        if($this->status == 2){
+            $strStatus = 'Hoàn tất';
+        }
+        if($this->status == 3){
+            $strStatus = 'Đã hủy';
+        }
+        if($this->status == 4){
+            $strStatus = 'Đang vận chuyển';
+        }
+        if($this->status == 0){
+            $strStatus = 'Đã nhận hàng';
+        }
+         return $strStatus;
+    }
+
+    public function getStrCheckoutAttribute(){
+        $strCheckout = '';
+        if($this->checkOut == 0){
+            $strCheckout = 'Chưa thanh toán';
+        }
+        if($this->checkOut == 1){
+            $strCheckout = 'Đã thanh toán';
+        }
+
+        return $strCheckout;
+    }
+
     public function scopePagination($query, $request)
     {
         if ($request->has('pagination_limit')) {
