@@ -88,10 +88,10 @@ class OrderController extends Controller
                 $orderDetail->mobileID = $product->id;
                 $orderDetail->quantity = $cartItem->quantity;
                 $orderDetail->unitPrice = $product->price;
-                $orderDetail->discount = 0;
+                $orderDetail->discount = $product -> saleOff;
                 $orderDetail->created_at = Carbon::now();
                 $orderDetail->updated_at = Carbon::now();
-                $order->totalPrice += $cartItem->quantity * $product->price;
+                $order->totalPrice += $cartItem->quantity *  ($product->price - ($product->price * $product -> saleOff));
                 array_push($arrayOderDetail, $orderDetail);
             }
             //save ca 2 vao qua transaction

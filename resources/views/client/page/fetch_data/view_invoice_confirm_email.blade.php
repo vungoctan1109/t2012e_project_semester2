@@ -62,13 +62,14 @@
                                     <td class="text-left"><strong>Item</strong></td>
                                     <td class="text-center"><strong>Price (VND)</strong></td>
                                     <td class="text-center"><strong>Quantity</strong></td>
+                                    <td class="text-center"><strong>Discount (%)</strong></td>
                                     <td class="text-right"><strong>Totals (VND)</strong></td>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($order_details as $item)
                                 @php
-                                $price_format = number_format($item -> unitPrice * $item -> quantity, 0,
+                                $price_format = number_format($item -> quantity * ($item -> unitPrice - ($item -> unitPrice * $item ->discount)), 0,
                                 '', '.');
                                 $totalPrice_format = number_format($order -> totalPrice, 0, '', '.');
                                 $unitPrice_format = number_format($item -> unitPrice, 0, '', '.');
@@ -77,11 +78,13 @@
                                     <td class="text-left">{{$item -> mobile -> name }}</td>
                                     <td class="text-center">{{$unitPrice_format}}</td>
                                     <td class="text-center">{{$item -> quantity}}</td>
+                                    <td class="text-center">{{$item -> discount * 100}}</td>
                                     <td class="text-right">{{$price_format}}</td>
                                 </tr>
                                 @endforeach
                                 <tr>
                                     <td class="text-left"></td>
+                                    <td class="text-center"></td>
                                     <td class="text-center"></td>
                                     <td class="text-center"></td>
                                     <td class="text-right">{{$totalPrice_format}}</td>

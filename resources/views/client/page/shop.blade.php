@@ -3,6 +3,72 @@
 @section('private_link')
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <link rel="stylesheet" type="text/css" href="/client-assets/assets/css/style.css">
+    <style>
+        @-webkit-keyframes my {
+            0% {
+                color: #F8CD0A;
+            }
+    
+            50% {
+                color: red;
+            }
+    
+            100% {
+                color: #F8CD0A;
+            }
+        }
+    
+        @-moz-keyframes my {
+            0% {
+                color: #F8CD0A;
+            }
+    
+            50% {
+                color: red;
+            }
+    
+            100% {
+                color: #F8CD0A;
+            }
+        }
+    
+        @-o-keyframes my {
+            0% {
+                color: #F8CD0A;
+            }
+    
+            50% {
+                color: red;
+            }
+    
+            100% {
+                color: #F8CD0A;
+            }
+        }
+    
+        @keyframes my {
+            0% {
+                color: #F8CD0A;
+            }
+    
+            50% {
+                color: red;
+            }
+    
+            100% {
+                color: #F8CD0A;
+            }
+        }
+    
+        .discount {       
+            font-size: 15px;
+            font-weight: bold;
+            -webkit-animation: my 700ms infinite;
+            -moz-animation: my 700ms infinite;
+            -o-animation: my 700ms infinite;
+            animation: my 700ms infinite;
+        }
+    </style>
 @endsection
 @section('main_content_page')
     <main id="main" class="main-site left-sidebar">
