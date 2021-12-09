@@ -58,7 +58,7 @@
         }
     }
 
-    .discount {       
+    .discount {
         font-size: 24px;
         font-weight: bold;
         -webkit-animation: my 700ms infinite;
@@ -103,7 +103,7 @@
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <a href="#" class="count-review">(05 review)</a>
                         </div>
-                        <h2 class="product-name">{{$mobile -> name}}</h2>                                            
+                        <h2 class="product-name">{{$mobile -> name}}</h2>
                         <div class="short-desc">
                             <ul>
                                 <li>Size: {{$mobile -> screenSize}} inch</li>
@@ -111,7 +111,7 @@
                                 <li>Camera: {{$mobile -> camera}} MP</li>
                                 <li>Color: {{$mobile -> color}}</li>
                                 <li>Memory: {{$mobile -> memory}} Gb</li>
-                                <li>Ram: {{$mobile -> ram}} Gb</li>                               
+                                <li>Ram: {{$mobile -> ram}} Gb</li>
                             </ul>
                         </div>
                         <div class="wrap-social">
@@ -121,14 +121,14 @@
                         <?php
                                 $price = number_format($mobile -> price, 0, '', ',');
                                 $price_current = number_format($mobile -> price - ($mobile -> price * $mobile -> saleOff), 0, '', ',');
-                        ?>   
+                        ?>
                         @if ($mobile-> saleOff > 0)
-                        <div class="wrap-price"><span class="product-price discount">Giảm ({{$mobile-> saleOff * 100}}%)</span>  </div>                                          
-                        <div class="wrap-price"><strike class="product-price" style="font-size: 15px">{{$price}} (VND)</strike></div> 
-                        <div class="wrap-price"><span class="product-price" >{{$price_current}} (VND)</span></div> 
+                        <div class="wrap-price"><span class="product-price discount">Giảm ({{$mobile-> saleOff * 100}}%)</span>  </div>
+                        <div class="wrap-price"><strike class="product-price" style="font-size: 15px">{{$price}} (VND)</strike></div>
+                        <div class="wrap-price"><span class="product-price" >{{$price_current}} (VND)</span></div>
                         @else
-                        <div class="wrap-price"><span class="product-price" style="font-size: 15px">{{$price}} (VND)</span></div> 
-                        @endif                                                            
+                        <div class="wrap-price"><span class="product-price" style="font-size: 15px">{{$price}} (VND)</span></div>
+                        @endif
                         <div class="stock-info in-stock">
                             <p class="availability">Status:
                                 <b>{{$mobile->strStatus}}</b>
@@ -415,13 +415,12 @@
                             <div class="product product-style-2 equal-elem ">
                                 <div class="product-thumnail">
                                     <a href="{{route('mobile_client.show', $item -> id)}}"
-                                        title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                        <figure><img src="{{$item -> mainThumbnail}}" width="214" height="214"
-                                                alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+                                        title="{{$item -> name}}">
+                                        <figure><img src="{{$item -> mainThumbnail}}" width="214" height="214" alt="{{$item -> name}}"></figure>
                                     </a>
 
                                     <div class="group-flash">
-                                        <span class="flash-item new-label">HOT</span>
+                                        <span class="flash-item new-label">Related</span>
                                     </div>
                                     <div class="wrap-btn">
                                         <a href="{{route('mobile_client.show', $item -> id)}}"
