@@ -15,7 +15,7 @@ class CreateOrderDetailsTable extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->unsignedBigInteger('orderID');
-            $table->foreign('orderID')->references('id')->on('orders');
+            $table->foreign('orderID')->references('id')->on('orders') ->onDelete('cascade');
             $table->unsignedBigInteger('mobileID');
             $table->foreign('mobileID')->references('id')->on('mobiles');
             $table->primary(['orderID', 'mobileID']);

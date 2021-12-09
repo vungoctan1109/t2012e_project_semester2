@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
-use App\Models\Order;
-use Carbon\Carbon;
+use App\Models\Article;
+use App\Models\Brand;
 use Illuminate\Http\Request;
-use App\Models\Order as Order_Model;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
-
-class OrderControllerAdmin extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,27 +19,32 @@ class OrderControllerAdmin extends Controller
      */
     public function index(Request $request)
     {
-        $order = Order_Model::query()
+        $brands = Brand::all();
+        $articles = Article::query()
             ->select('*')
             ->orderBy('created_at', 'DESC')
             ->paginate(9);
         if ($request->ajax()) {
-            return view('admin.page.order.render_table', ['order' => $order])->render();
+            return view('admin.page.article.render_table', ['articles' => $articles, 'brands'=>$brands])->render();
         }
-        return view('admin.page.order.table_data', ['order' => $order]);
+        return view('admin.page.article.table_data', ['articles' => $articles, 'brands'=>$brands]);
     }
 
     public function fetch_data(Request $request)
     {
         if ($request->ajax()) {
-            $order = Order_Model::query()
+            $articles = Article::query()
                 ->select('*')
-                ->sortBy($request)
-                ->name($request)
+                ->SortBy($request)
+                ->title($request)
+                ->author($request)
+                ->brand($request)
+                ->dateFilter($request)
                 ->Pagination($request);
-            return view('admin.page.order.render_table')->with('order', $order)->render();
+            return view('admin.page.article.render_table')->with('articles', $articles)->render();
         }
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -49,7 +53,8 @@ class OrderControllerAdmin extends Controller
      */
     public function create()
     {
-        //
+        $brands = Brand::all();
+        return view('admin.page.article.create_article')->with('brands', $brands);
     }
 
     /**
@@ -60,7 +65,31 @@ class OrderControllerAdmin extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'brandID' => 'required',
+            'title' => 'required',
+            'author' => 'required',
+            'description' => 'required',
+            'detail' => 'required',
+            'thumbnail' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 400, 'errors' => $validator->errors()->toArray(), 'message' => 'Data not valid!']);
+        } else {
+            $article = new Article();
+            $article->title = $request->get('title');
+            $article->author = $request->get('author');
+            $article->brandID = $request->get('brandID');
+            $article->thumbnail = $request->get('thumbnail');
+            $article->detail = $request->get('detail');
+            $article->description = $request->get('description');
+            $article->created_at = Carbon::now();
+            $article->updated_at = Carbon::now();
+            if ($article->save()) {
+                return response()->json(['status' => 200, 'message' => 'Data have been successfully insert']);
+            }
+            return response()->json(['status' => 500, 'message' => 'Something went wrong!']);
+        }
     }
 
     /**
@@ -71,8 +100,8 @@ class OrderControllerAdmin extends Controller
      */
     public function show($id)
     {
-        $result = DB::table('orders')->where('id', '=', $id)->first();
-        return view('admin.page.order.detail_order', compact('result'));
+        $result = DB::table('articles')->where('id', '=', $id)->first();
+        return view('admin.page.article.detail_article', compact('result'));
     }
 
     /**
@@ -83,8 +112,9 @@ class OrderControllerAdmin extends Controller
      */
     public function edit($id)
     {
-        $result = DB::table('orders')->where('id', '=', $id)->first();
-        return view('admin.page.order.edit_order', compact('result'));
+        $brands = Brand::all();
+        $result = DB::table('articles')->where('id', '=', $id)->first();
+        return view('admin.page.article.edit_article', compact('result', 'brands'));
     }
 
     /**
@@ -98,19 +128,17 @@ class OrderControllerAdmin extends Controller
     {
         $data = $request->except(['_token']);
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
-            'address_detail' => 'required',
-            'totalPrice' => 'required',
-            'checkOut' => 'required',
-            'comment' => 'required'
+            'title' => 'required',
+            'author'=> 'required',
+            'thumbnail'=> 'required',
+            'description'=>'required',
+            'detail'=>'required'
         ]);
         if ($validator->fails()) {
             return response()->json(['status' => 400, 'errors' => $validator->errors()->toArray(), 'message' => 'Data not valid!']);
         } else {
-            $result = DB::table('orders')->where('id', '=', $id)->update($data);
-            Order::where('id', $id)->update(array('updated_at' => Carbon::now()));
+            $result = DB::table('articles')->where('id', '=', $id)->update($data);
+            Article::where('id', $id)->update(array('updated_at' => Carbon::now()));
             if ($result) {
                 return response()->json(['status' => 200, 'message' => 'Data have been successfully update']);
             }
@@ -127,9 +155,9 @@ class OrderControllerAdmin extends Controller
     public function destroy(Request $request, $id)
     {
         if ($request->ajax()) {
-            $order = Order_Model::find($id);
-            if ($order) {
-                if ($order->delete()) {
+            $article = Article::find($id);
+            if ($article) {
+                if ($article->delete()) {
                     return response()->json([
                         'status' => 200,
                         'message' => 'Data have been successfully deleted!'
