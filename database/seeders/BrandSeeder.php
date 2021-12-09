@@ -45,7 +45,7 @@ class BrandSeeder extends Seeder
                 'description'=>'Nokia Corporation is a Finnish multinational telecommunications, information technology, and consumer electronics company, founded in 1865. Nokias main headquarters are in Espoo, Finland, in the greater Helsinki metropolitan area, but the companys actual roots are in the Tampere region of Pirkanmaa.',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
-            ],
+            ],                                         
             [
                 'id'=> 5,
                 'name'=>'Realme',

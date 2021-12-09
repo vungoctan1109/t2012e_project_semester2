@@ -69,17 +69,18 @@ Route::group([
     //all product start here -------------------------------------------------------
     //1. mobile
     Route::get('/mobile/fetch_data', [MobileController::class, 'fetch_data']);
+    Route::delete('/mobile/deleteAll', [MobileController::class, 'deleteAll']);
     Route::resource('mobile', MobileController::class)->parameters([
         'mobile' => 'mobile_id'
     ]);
     #2. laptop
-    Route::resource('laptop', LaptopController::class)->parameters([
-        'laptop' => 'laptop_id'
-    ]);
+    // Route::resource('laptop', LaptopController::class)->parameters([
+    //     'laptop' => 'laptop_id'
+    // ]);
     #3. accessory
-    Route::resource('accessory', AccessoryController::class)->parameters([
-        'accessory' => 'accessory_id'
-    ]);
+    // Route::resource('accessory', AccessoryController::class)->parameters([
+    //     'accessory' => 'accessory_id'
+    // ]);
     #4. order
     Route::get('/order/fetch_data', [OrderControllerAdmin::class, 'fetch_data']);
     Route::resource('orders', OrderControllerAdmin::class)->parameters([

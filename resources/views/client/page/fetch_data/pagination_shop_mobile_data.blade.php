@@ -5,6 +5,7 @@
             @foreach ($mobiles as $mobile)
             @php
             $price = number_format($mobile -> price, 0, '', ',');
+            $price_current = number_format($mobile -> price - ($mobile -> price * $mobile -> saleOff), 0, '', ',');
             @endphp
             <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
                 <div class="product product-style-3 equal-elem">
@@ -17,14 +18,20 @@
                     <div class="product-info">
                         <a href="#" class="product-name"><span>{{$mobile -> name}}</span><br></a>
                         <strong>({{strtoupper($mobile -> strStatus)}})</strong>
-                        <div class="wrap-price"><span class="product-price">{{$price}} (VND)</span>
-                        </div>
+                        @if ($mobile -> saleOff > 0 && $mobile->status != -1 && $mobile -> status != -0 )
+                        <strong class="discount">(Giảm: {{$mobile -> saleOff * 100}}%)</strong>
+                        <div class="wrap-price"><strike class="product-price">{{$price}} (VND)</strike> </div>
+                        @else
+                        <div class="wrap-price"><span class="product-price">{{$price}} (VND)</span> </div>
+                        @endif
                         <form id="formCart">
                             @csrf
                             <input type="hidden" value="{{$mobile -> id}}" name="id" />
-                            <input type="hidden" value="{{$mobile -> price}}" name="price" />
+                            <input type="hidden" value="{{$mobile -> price - ($mobile -> price * $mobile -> saleOff)}}"
+                                name="price" />
                             <input type="hidden" value="{{$mobile -> name}}" name="name">
                             <input type="hidden" value="{{$mobile -> mainThumbnail}}" name="image">
+                            <input type="hidden" value="{{$mobile -> saleOff}}" name="saleOff">
                             <input type="hidden" value="{{$mobile -> quantity}}" name="current_quantity">
                             <input type="hidden" value="1" name="quantity">
                             <a href="#" class="btn add-to-cart" id="btnAddToCart">Add To Cart</a>
@@ -53,47 +60,47 @@
             $link_limit = 7;
             @endphp
             @if ($mobiles->lastPage() > 1)
-                <ul class="page-numbers">
-                    <li class="page-number-item  {{($mobiles->currentPage() == 1) ? 'disabled' : '' }}">
-                        <a class="page-number-item" href="{{ $mobiles->url(1) }}">First</a>
-                    </li>
-                    <li class="page-number-item">
-                        <a class="page-number-item"
-                            href="{{ $mobiles->url($mobiles->currentPage() - 1) }}">Previous</a>
-                    </li>
-                    @for ($i = 1; $i <= $mobiles->lastPage(); $i++)
-                        @php
-                            $half_total_links = floor($link_limit / 2);
-                            $from = $mobiles->currentPage() - $half_total_links;
-                            $to = $mobiles->currentPage() + $half_total_links;
-                            if ($mobiles->currentPage() < $half_total_links) {
-                                $to +=$half_total_links - $mobiles->
-                                currentPage();
+            <ul class="page-numbers">
+                <li class="page-number-item  {{($mobiles->currentPage() == 1) ? 'disabled' : '' }}">
+                    <a class="page-number-item" href="{{ $mobiles->url(1) }}">First</a>
+                </li>
+                <li class="page-number-item">
+                    <a class="page-number-item" href="{{ $mobiles->url($mobiles->currentPage() - 1) }}">Previous</a>
+                </li>
+                @for ($i = 1; $i <= $mobiles->lastPage(); $i++)
+                    @php
+                    $half_total_links = floor($link_limit / 2);
+                    $from = $mobiles->currentPage() - $half_total_links;
+                    $to = $mobiles->currentPage() + $half_total_links;
+                    if ($mobiles->currentPage() < $half_total_links) { $to +=$half_total_links - $mobiles->
+                        currentPage();
+                        }
+                        if ($mobiles->lastPage() - $mobiles->currentPage() < $half_total_links) { $from
+                            -=$half_total_links - ($mobiles->lastPage() - $mobiles->currentPage()) - 1;
                             }
-                            if ($mobiles->lastPage() - $mobiles->currentPage() < $half_total_links) {
-                                $from -=$half_total_links - ($mobiles->lastPage() - $mobiles->currentPage()) - 1;
-                            }
-                        @endphp
-                        @if ($from < $i && $i < $to)
-                            <li class="page-number-item">
-                                <a class="page-number-item {{ ($mobiles->currentPage() == $i) ? 'current' : '' }}" href="{{ $mobiles->url($i) }}">{{ $i }}</a>
-                            </li>
-                        @endif
-                    @endfor
-                        @if($mobiles->currentPage() < $mobiles->lastPage())
-                        <li class="page-number-item">
-                            <a class="page-number-item next-link" href="{{ $mobiles->url($mobiles->currentPage() + 1) }}">Next</a>
-                        </li>
-                        @endif
-                        <li
-                            class="page-number-item {{ ($mobiles->currentPage() == $mobiles->lastPage()) ? ' disabled' : '' }}">
-                            <a class="page-number-item"
-                                href="{{ $mobiles->url($mobiles->lastPage()) }}">Last</a>
-                        </li>
-                </ul>
-                @if(count($mobiles) > 0)
-                <p class="result-count">Showing {{($mobiles->currentpage()-1)*$mobiles->perpage()+1}} to {{$mobiles->currentpage()*$mobiles->perpage()}} of {{$mobiles->total()}} entries</p>
-                @endif
+                            @endphp
+                            @if ($from < $i && $i < $to) <li class="page-number-item">
+                                <a class="page-number-item {{ ($mobiles->currentPage() == $i) ? 'current' : '' }}"
+                                    href="{{ $mobiles->url($i) }}">{{ $i }}</a>
+                                </li>
+                                @endif
+                                @endfor
+                                @if($mobiles->currentPage() < $mobiles->lastPage())
+                                    <li class="page-number-item">
+                                        <a class="page-number-item next-link"
+                                            href="{{ $mobiles->url($mobiles->currentPage() + 1) }}">Next</a>
+                                    </li>
+                                    @endif
+                                    <li
+                                        class="page-number-item {{ ($mobiles->currentPage() == $mobiles->lastPage()) ? ' disabled' : '' }}">
+                                        <a class="page-number-item"
+                                            href="{{ $mobiles->url($mobiles->lastPage()) }}">Last</a>
+                                    </li>
+            </ul>
+            @if(count($mobiles) > 0)
+            <p class="result-count">Showing {{($mobiles->currentpage()-1)*$mobiles->perpage()+1}} to
+                {{$mobiles->currentpage()*$mobiles->perpage()}} of {{$mobiles->total()}} entries</p>
+            @endif
             @endif
         </div>
     </div>

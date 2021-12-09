@@ -1,6 +1,72 @@
 @extends('client.template.form')
 @section('title_page','Detail')
 @section('private_link')
+<style>
+    @-webkit-keyframes my {
+        0% {
+            color: #F8CD0A;
+        }
+
+        50% {
+            color: red;
+        }
+
+        100% {
+            color: #F8CD0A;
+        }
+    }
+
+    @-moz-keyframes my {
+        0% {
+            color: #F8CD0A;
+        }
+
+        50% {
+            color: red;
+        }
+
+        100% {
+            color: #F8CD0A;
+        }
+    }
+
+    @-o-keyframes my {
+        0% {
+            color: #F8CD0A;
+        }
+
+        50% {
+            color: red;
+        }
+
+        100% {
+            color: #F8CD0A;
+        }
+    }
+
+    @keyframes my {
+        0% {
+            color: #F8CD0A;
+        }
+
+        50% {
+            color: red;
+        }
+
+        100% {
+            color: #F8CD0A;
+        }
+    }
+
+    .discount {       
+        font-size: 24px;
+        font-weight: bold;
+        -webkit-animation: my 700ms infinite;
+        -moz-animation: my 700ms infinite;
+        -o-animation: my 700ms infinite;
+        animation: my 700ms infinite;
+    }
+</style>
 @endsection
 @section('main_content_page')
 <main id="main" class="main-site">
@@ -37,12 +103,15 @@
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <a href="#" class="count-review">(05 review)</a>
                         </div>
-                        <h2 class="product-name">{{$mobile -> name}}</h2>
+                        <h2 class="product-name">{{$mobile -> name}}</h2>                                            
                         <div class="short-desc">
                             <ul>
                                 <li>Size: {{$mobile -> screenSize}} inch</li>
-                                <li>Color: {{$mobile -> color}}</li>
+                                <li>Pin: {{$mobile -> pin}} mah</li>
                                 <li>Camera: {{$mobile -> camera}} MP</li>
+                                <li>Color: {{$mobile -> color}}</li>
+                                <li>Memory: {{$mobile -> memory}} Gb</li>
+                                <li>Ram: {{$mobile -> ram}} Gb</li>                               
                             </ul>
                         </div>
                         <div class="wrap-social">
@@ -50,26 +119,19 @@
                                     alt=""></a>
                         </div>
                         <?php
-                                $price_current = number_format($mobile -> price, 0, '', ',');
-                            ?>
-                        <div class="wrap-price"><span class="product-price">{{$price_current}} VND</span></div>
+                                $price = number_format($mobile -> price, 0, '', ',');
+                                $price_current = number_format($mobile -> price - ($mobile -> price * $mobile -> saleOff), 0, '', ',');
+                        ?>   
+                        @if ($mobile-> saleOff > 0)
+                        <div class="wrap-price"><span class="product-price discount">Giảm ({{$mobile-> saleOff * 100}}%)</span>  </div>                                          
+                        <div class="wrap-price"><strike class="product-price" style="font-size: 15px">{{$price}} (VND)</strike></div> 
+                        <div class="wrap-price"><span class="product-price" >{{$price_current}} (VND)</span></div> 
+                        @else
+                        <div class="wrap-price"><span class="product-price" style="font-size: 15px">{{$price}} (VND)</span></div> 
+                        @endif                                                            
                         <div class="stock-info in-stock">
                             <p class="availability">Status:
-                                <b>
-                                    <?php switch($mobile -> status):
-                                            case 1: ?>On Sale
-                                    <?php break; ?>
-                                    <?php case 2: ?>Sales
-                                    <?php break; ?>
-                                    <?php case 3: ?>Top Sales
-                                    <?php break; ?>
-                                    <?php case -1: ?>Out Of Stock
-                                    <?php break; ?>
-                                    <?php case 0: ?>Stop Selling
-                                    <?php break; ?>
-                                    <?php endswitch; ?>
-
-                                </b>
+                                <b>{{$mobile->strStatus}}</b>
                             </p>
                         </div>
                         {{-- <div class="quantity">--}}
@@ -86,9 +148,11 @@
                             <form id="formCart">
                                 @csrf
                                 <input type="hidden" value="{{$mobile -> id}}" name="id" />
-                                <input type="hidden" value="{{$mobile -> price}}" name="price" />
+                                <input type="hidden" value="{{$mobile -> price - ($mobile -> price * $mobile -> saleOff)}}" name="price" />
                                 <input type="hidden" value="{{$mobile -> name}}" name="name">
                                 <input type="hidden" value="{{$mobile -> mainThumbnail}}" name="image">
+                                <input type="hidden" value="{{$mobile -> saleOff}}" name="saleOff">
+                                <input type="hidden" value="{{$mobile -> quantity}}" name="current_quantity">
                                 <input type="hidden" value="1" name="quantity">
                                 <a href="#" class="btn add-to-cart" id="btnAddToCart">Add To Cart</a>
                             </form>
@@ -344,32 +408,32 @@
                             data-loop="false" data-nav="true" data-dots="false"
                             data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"5"}}'>
                             @foreach ($mobiles_related as $item)
-                                @if ($item -> status == 1)
-                                @php
-                                $price = number_format($item -> price, 0, '', ','); // 1,000,000
-                                @endphp
-                                <div class="product product-style-2 equal-elem ">
-                                    <div class="product-thumnail">
-                                        <a href="{{route('mobile_client.show', $item -> id)}}"
-                                            title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                            <figure><img src="{{$item -> mainThumbnail}}" width="214" height="214"
-                                                    alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-                                        </a>
+                            @if ($item -> status == 1)
+                            @php
+                            $price = number_format($item -> price, 0, '', ','); // 1,000,000
+                            @endphp
+                            <div class="product product-style-2 equal-elem ">
+                                <div class="product-thumnail">
+                                    <a href="{{route('mobile_client.show', $item -> id)}}"
+                                        title="T-Shirt Raw Hem Organic Boro Constrast Denim">
+                                        <figure><img src="{{$item -> mainThumbnail}}" width="214" height="214"
+                                                alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+                                    </a>
 
-                                        <div class="group-flash">
-                                            <span class="flash-item new-label">HOT</span>
-                                        </div>
-                                        <div class="wrap-btn">
-                                            <a href="{{route('mobile_client.show', $item -> id)}}"
-                                                class="function-link">quick view</a>
-                                        </div>
+                                    <div class="group-flash">
+                                        <span class="flash-item new-label">HOT</span>
                                     </div>
-                                    <div class="product-info">
-                                        <a href="#" class="product-name"><span>{{$item -> name}}</span></a>
-                                        <div class="wrap-price"><span class="product-price">{{$price}} (VND)</span></div>
+                                    <div class="wrap-btn">
+                                        <a href="{{route('mobile_client.show', $item -> id)}}"
+                                            class="function-link">quick view</a>
                                     </div>
                                 </div>
-                                @endif
+                                <div class="product-info">
+                                    <a href="#" class="product-name"><span>{{$item -> name}}</span></a>
+                                    <div class="wrap-price"><span class="product-price">{{$price}} (VND)</span></div>
+                                </div>
+                            </div>
+                            @endif
 
 
                             @endforeach

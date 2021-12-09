@@ -30,6 +30,7 @@ class ShoppingCartController extends Controller
                             'quantity' => $request->quantity,
                             'attributes' => array(
                                 'image' => $request->image,
+                                'saleOff' => $request->saleOff,
                                 'current_quantity' => $request->current_quantity
                             )
                         ]);  
@@ -46,6 +47,7 @@ class ShoppingCartController extends Controller
                         'quantity' => $request->quantity,
                         'attributes' => array(
                             'image' => $request->image,
+                            'saleOff' => $request->saleOff,
                             'current_quantity' => $request->current_quantity
                         )
                     ]);        

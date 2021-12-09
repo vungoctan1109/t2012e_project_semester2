@@ -4,13 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Mobile extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
+    protected $fillable = [
+        'id', 'categoryID', 'brandID', 'name','quantity','status','saleOff','price','thumbnail','description','detail','color','ram','memory','pin','camera','screenSize','created_at','updated_at'];
     public function brand()
     {
-        return $this->belongsTo(Brand::class, 'brandID');
+        return $this->belongsTo(Brand::class, 'brandID','id');
     }
     public function order_detail()
     {
@@ -50,8 +52,7 @@ class Mobile extends Model
             }
         }
         return [];
-    }
-
+    }   
     //convert status
     public function getStrStatusAttribute()
     {

@@ -3,7 +3,7 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th style="text-align: center;width: 2%;">Check</th>
+                <th style="text-align: center;width: 2%;"><input type="checkbox" class="selectAll"/>Check</th>
                 <th style="text-align: center;width: 2%;">ID</th>
                 <th style="text-align: center;width: 10%;">name</th>
                 <th style="text-align: center;">brand</th>
@@ -18,10 +18,10 @@
             <tbody>
             @foreach($mobiles as $mobile)
                 <tr>
-                    <td style="text-align:center; vertical-align: middle"><input type="checkbox" value="{{$mobile->id}}"/></td>
+                    <td style="text-align:center; vertical-align: middle"><input type="checkbox" value="{{$mobile->id}}" class="checkbox"/></td>
                     <td style="text-align:center; vertical-align: middle">{{$mobile->id}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$mobile->name}}</td>
-                    <td style="text-align:center; vertical-align: middle">{{$mobile->brand->name}}</td>
+                    <td style="text-align:center; vertical-align: middle">{{$mobile->brand->name ?? null}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$mobile->quantity}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$mobile->fPrice}}</td>
                     <td style="text-align:center; vertical-align: middle">
@@ -36,7 +36,7 @@
                         <a class="btn btn-info btn-sm m-1" href="admin/mobile/{{$mobile->id}}/edit">
                             <i class="fas fa-pencil-alt">Edit</i>
                         </a>
-                        <a class="btn btn-danger btn-sm delete m-1" href="admin/mobile/{{$mobile->id}}">
+                        <a class="btn btn-danger btn-sm delete m-1" href="#" id = 'btn-delete' mobile_id = "{{$mobile->id}}">
                             <i class="fas fa-trash">Delete</i>
                         </a>
                     </td>
