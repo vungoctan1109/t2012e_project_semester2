@@ -57,7 +57,7 @@ class Article extends Model
     public function scopeTitle($query, $request)
     {
         if ($request->has('title')) {
-            if (isset($request->name)) {
+            if (isset($request->title)) {
                 $query->where('title', 'LIKE', '%' . $request->title . '%');
                 return $query;
             }

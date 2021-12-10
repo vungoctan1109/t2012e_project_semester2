@@ -60,10 +60,10 @@
 
                         <div class="form-group">
                             <label for="thumbnail">Thumbnail</label></br>
-                            <button type="button" id="btnThumbnailLink" class="btn btn-info mt-2"
+                            <button type="button" id="btnThumbnailLink" class="btn btn-info mt-2 mb-2"
                                     value="Choose your file">Change thumbnail</button></br>
-                            <div id="list-preview-image"><img width="120px" src="{{$result->thumbnail}}" alt=""></div></br>
-                            <input id="valueUpLoad" type="text" value="{{$result->thumbnail}}" name="thumbnail" style="display: none">
+                            <div id="list-preview-image"><img width="200px" src="{{$result->thumbnail}}" alt=""></div></br>
+                            <input id="thumbnail" type="text" value="{{$result->thumbnail}}" name="thumbnail" style="display: none">
                             <span class="error thumbnail_error"></span>
                         </div>
                         <div class="form-group">
@@ -75,7 +75,7 @@
                         <div class="form-group">
                             <label for="detail">Article detail</label>
                             <textarea name="detail" class="ck-editor__editable_inline" id="editor">
-                                {{$result->detail}}
+                                {!! $result->detail !!}
                             </textarea>
                             <span class="error detail_error"></span>
                         </div>

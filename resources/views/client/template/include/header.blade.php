@@ -58,8 +58,8 @@ $admin_user_id = " ";
                 <div class="wrap-search center-section">
                     <div class="wrap-search-form">
                         <form action="#" id="form-search-top" name="form-search-top">
-                            <input type="text" list="listSearch" name="search" value="" placeholder="Search here...">                           
-                            <datalist id="listSearch">                               
+                            <input type="text" list="listSearch" name="search" value="" placeholder="Search here...">
+                            <datalist id="listSearch">
                             </datalist>
                             <button form="form-search-top" type="button" id="btn-search"><i class="fa fa-search"
                                     aria-hidden="true"></i></button>
@@ -124,13 +124,10 @@ $admin_user_id = " ";
                                     aria-hidden="true"></i></a>
                         </li>
                         <li class="menu-item">
-                            <a href="/client/page/shop/mobile" class="link-term mercado-item-title">Mobile</a>
+                            <a href="/client/page/shop/mobile" class="link-term mercado-item-title">Shop</a>
                         </li>
                         <li class="menu-item">
-                            <a href="/client/page/shop/mobile" class="link-term mercado-item-title">Laptop</a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="/client/page/shop/mobile" class="link-term mercado-item-title">Accessory</a>
+                            <a href="/client/page/article" class="link-term mercado-item-title">Article</a>
                         </li>
                         <li class="menu-item">
                             <a href="{{route('client.about')}}" class="link-term mercado-item-title">About Us</a>
