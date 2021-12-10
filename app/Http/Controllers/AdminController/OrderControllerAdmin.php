@@ -155,4 +155,19 @@ class OrderControllerAdmin extends Controller
             }
         }
     }
+
+    public function deleteAll(Request $request)
+    {
+        $ids = $request->ids;
+        if (Order::query()->whereIn('id', explode(",", $ids))->delete()) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Data have been successfully deleted!'
+            ]);
+        }
+        return response()->json([
+            'status' => 500,
+            'message' => 'Something went wrong!'
+        ]);
+    }
 }

@@ -1,7 +1,7 @@
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@yield('page-title')</title>
-
+<link rel="shortcut icon" type="image/x-icon" href="https://res.cloudinary.com/quynv300192/image/upload/v1639148647/Screenshot_2-removebg-preview_sg2vht_nowjfb.png">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -22,4 +22,3 @@
   <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
-    

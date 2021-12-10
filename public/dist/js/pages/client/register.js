@@ -165,7 +165,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 }
             });
             $.ajax({
-                url:'/client/page/user',
+                url:'/client/page/register/save',
                 method:'post',
                 data:data1,
                 success: function(res){
@@ -185,7 +185,7 @@ window.addEventListener('DOMContentLoaded', function () {
                             // footer: '<a href="">Why do I have this issue?</a>'
                         })
                         setTimeout(function() {
-                            window.location.href = "/client/page/login";
+                            window.location.href = "/client/page/login/get";
                         },2000)
 
                     }

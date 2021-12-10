@@ -20,6 +20,7 @@ class CreateFeedbackTable extends Migration
             $table->string('phone');
             $table->text('comment');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

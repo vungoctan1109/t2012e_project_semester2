@@ -22,7 +22,7 @@
                     $userFullName = \Illuminate\Support\Facades\Auth::User()->fullName;
                 @endphp
                 <h3><b>{{$userFullName}}</b> / Lịch sử mua hàng</h3><br>
-                <div class="col-md-5" style="background-color:#e5e5e5">>
+                <div class="col-md-5" style="background-color:#e5e5e5">
                     <h3 style="color:darkred"><b>Danh sách đơn hàng: </b></h3>
                     <table class="table">
                         <thead class="thead-light">
@@ -48,6 +48,7 @@
                         </tbody>
                     </table>
                     {!! $orders->links() !!}
+                    <br>
                 </div>
                 <div class="col-md-7" >
                     <h3 style="color:darkred"><b>Đơn hàng chi tiết:</b></h3>

@@ -23,6 +23,7 @@ class CreateArticlesTable extends Migration
             $table->text('detail');
             $table->text('thumbnail');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

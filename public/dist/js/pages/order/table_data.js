@@ -40,6 +40,94 @@ window.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    //checked all
+    $(document).on("click", ".selectAll", function (e) {
+        $(this)
+            .closest("table")
+            .find(":checkbox")
+            .not(this)
+            .prop("checked", this.checked);
+    });
+    //delete all
+    $(document).on("click", "#btn-delete-selected", function (e) {
+        var allIds = [];
+        $(".checkbox:checked").each(function () {
+            allIds.push($(this).val());
+        });
+        if (allIds.length <= 0) {
+            Swal.fire({
+                icon: "warning",
+                title: "Action false!",
+                text: "Please select row you want to delete!",
+            });
+        } else {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var join_selected_values = allIds.join(",");
+                    $.ajaxSetup({
+                        headers: {
+                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                                "content"
+                            ),
+                        },
+                    });
+                    $.ajax({
+                        url: "/admin/order/deleteAll",
+                        method: "DELETE",
+                        data: "ids=" + join_selected_values,
+                        success: function (response) {
+                            if (response.status == 200) {
+                                alertProcess();
+                                setTimeout(function () {
+                                    var data = $("#formFilter").serialize();
+                                    $("#data_table").load(
+                                        "/admin/order/fetch_data",
+                                        data
+                                    );
+                                    Swal.fire(
+                                        "Deleted!",
+                                        `${response.message}`,
+                                        "success"
+                                    );
+                                }, 500);
+                            }
+                            if (response.status == 500) {
+                                alertProcess();
+                                setTimeout(function () {
+                                    Swal.fire(
+                                        "Delete not success!",
+                                        `${response.message}`,
+                                        "error"
+                                    );
+                                }, 500);
+                            }
+                        },
+                        error: function (response) {
+                            if (response.status == 500) {
+                                alertProcess();
+                                setTimeout(function () {
+                                    Swal.fire(
+                                        "Delete not success!",
+                                        `Something went wrong!!`,
+                                        "error"
+                                    );
+                                }, 1500);
+                            }
+                        },
+                    });
+                }
+            });
+        }
+    });
+
     //delete
     $(document).on("click", ".delete", function (e) {
         e.preventDefault();
