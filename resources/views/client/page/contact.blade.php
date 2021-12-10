@@ -28,6 +28,11 @@
                                 <input type="text" value="" id="phone" name="phone">
                                 <label for="comment">Comment</label>
                                 <textarea name="comment" id="comment"></textarea>
+                                <select name="" class="use-chosen">
+                                    <option value="price_desc">I loss my password</option>
+                                    <option value="price_asc">I need to add or remove login credentials</option>
+                                    <option value="price_asc">Other</option>
+                                </select>
                                 <input type="submit" name="send-feedback" value="Submit">
                             </form>
                         </div>
