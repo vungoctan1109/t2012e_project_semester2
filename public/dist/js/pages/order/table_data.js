@@ -15,7 +15,7 @@ window.addEventListener("DOMContentLoaded", function () {
     //refresh
     $("#resetFilter").click(function (e) {
         $.ajax({
-            url: "/admin/order",
+            url: "/admin/orders",
             method: "GET",
             success: function (response) {
                 $("#data_table").html(response);

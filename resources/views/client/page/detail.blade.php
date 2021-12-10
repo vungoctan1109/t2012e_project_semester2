@@ -1,5 +1,7 @@
 @extends('client.template.form')
-@section('title_page','Detail')
+@section('title_page')
+    {{$mobile -> name}}
+@endsection
 @section('private_link')
 <style>
     @-webkit-keyframes my {
@@ -75,7 +77,8 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="#" class="link">home</a></li>
+                <li class="item-link"><a href="/client/page/home" class="link">home</a></li>
+                <li class="item-link"><a href="/client/page/shop/mobile" class="link">mobile</a></li>
                 <li class="item-link"><span>detail</span></li>
             </ul>
         </div>

@@ -99,7 +99,7 @@
             </ul>
             @if(count($mobiles) > 0)
             <p class="result-count">Showing {{($mobiles->currentpage()-1)*$mobiles->perpage()+1}} to
-                {{$mobiles->currentpage()*$mobiles->perpage()}} of {{$mobiles->total()}} entries</p>
+                {{$mobiles->currentpage()*$mobiles->perpage()}} of {{$mobiles->total()}} items</p>
             @endif
             @endif
         </div>

@@ -19,7 +19,7 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        //
+        return view('client.page.contact');
     }
 
     /**
