@@ -125,9 +125,9 @@ class OrderController extends Controller
                         }
                     }
                 }
-                
+
                 DB::commit();
-                \Cart::clear();                  
+                \Cart::clear();
                 return response()->json(['status' => 200, 'message' => 'Save order successfully', 'orderID' => $order_id]);
             } catch (\Exception $e) {
                 DB::rollBack();
