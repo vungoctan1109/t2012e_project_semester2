@@ -86,7 +86,7 @@ window.addEventListener("DOMContentLoaded", function () {
                                     "/admin/feedback/fetch_data",
                                     data
                                 );
-                            }, 1500);
+                            }, 500);
                         }
                         if (response.status == 404) {
                             alertProcess();
@@ -100,7 +100,7 @@ window.addEventListener("DOMContentLoaded", function () {
                                     "/admin/feedback/fetch_data",
                                     data
                                 );
-                            }, 1500);
+                            }, 500);
                         }
                     },
                 });
@@ -114,7 +114,7 @@ window.addEventListener("DOMContentLoaded", function () {
         Swal.fire({
             title: "Deletion in progress",
             html: "Progress will be completed in about in <b></b> milliseconds.",
-            timer: 1500,
+            timer: 500,
             timerProgressBar: true,
             didOpen: () => {
                 Swal.showLoading();

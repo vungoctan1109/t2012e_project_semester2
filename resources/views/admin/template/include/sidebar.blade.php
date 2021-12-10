@@ -207,6 +207,24 @@
                     </li>
                 </ul>
             </li>
+
+            <li class="nav-item {{request()->is('admin/feedback*') ? 'menu-open menu-is-opening' : ''}}">
+                <a href="#" class="nav-link {{request()->is('admin/feedback*') ? 'active' : ''}}">
+                    <i class="fas fa-envelope"></i>
+                    <p>
+                        Manage Feedback
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="/admin/feedback" class="nav-link {{request()->is('admin/feedback') ? 'active' : ''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Show All & Search</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

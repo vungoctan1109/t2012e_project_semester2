@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AdminController;
 use App\Http\Controllers\Controller;
 use App\Models\Feedback;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FeedbackControllerAdmin extends Controller
 {
@@ -66,7 +67,8 @@ class FeedbackControllerAdmin extends Controller
      */
     public function show($id)
     {
-        //
+        $result = DB::table('feedback')->where('id', '=', $id)->first();
+        return view('admin.page.contact.detail_feedback', compact('result'));
     }
 
     /**
@@ -98,8 +100,28 @@ class FeedbackControllerAdmin extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $feedback_id)
     {
-        //
+        if ($request->ajax()) {
+            $feedback = Feedback::find($feedback_id);
+            if ($feedback) {
+                if ($feedback->delete()) {
+                    return response()->json([
+                        'status' => 200,
+                        'message' => 'Data have been successfully deleted!'
+                    ]);
+                } else {
+                    return response()->json([
+                        'status' => 500,
+                        'message' => 'Something went wrong!'
+                    ]);
+                }
+            } else {
+                return response()->json([
+                    'status' => 404,
+                    'message' => 'Object not exist!'
+                ]);
+            }
+        }
     }
 }
