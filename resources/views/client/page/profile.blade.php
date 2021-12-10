@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for=""><h4><a href="/client/page/orders/{{$user->id}}">History Purchase</a></h4></label>
+                                        <label style="{{$user->role == 1 ? 'display:none' : ' ' }}" for=""><h4><a href="/client/page/orders/{{$user->id}}">History Purchase</a></h4></label>
                                     </div>
                                 </div>
                             </form>

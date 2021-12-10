@@ -95,6 +95,85 @@ class Order extends Model
         }
         return $query;
     }
+    #province
+    public function scopeProvince($query, $request)
+    {
+        if ($request->has('province')) {
+            if (isset($request->province)) {
+                $query->where('province',$request->province);
+                return $query;
+            }
+        }
+        return $query;
+    }
+
+    #phone
+    public function scopePhone($query, $request)
+    {
+        if ($request->has('phone')) {
+            if (isset($request->phone)) {
+                $query->where('phone',$request->phone);
+                return $query;
+            }
+        }
+        return $query;
+    }
+
+    #email
+    public function scopeEmail($query, $request)
+    {
+        if ($request->has('email')) {
+            if (isset($request->email)) {
+                $query->where('email',$request->email);
+                return $query;
+            }
+        }
+        return $query;
+    }
+    #checkOut
+    public function scopeCheckOut($query, $request)
+    {
+        if ($request->has('checkOut')) {
+            if (isset($request->checkOut) && ($request->checkOut) != 99) {
+                $query->where('checkOut',$request->checkOut);
+                return $query;
+            }
+        }
+        return $query;
+    }
+
+    #scope created_at
+    public function scopeDateFilter($query, $request)
+    {
+        if ($request->has('start_date') && $request->has('end_date')) {
+            if (isset($request->start_date) && isset($request->end_date)) {
+                $query->whereBetween('created_at', [$request->start_date, $request->end_date]);
+            }
+        }
+        return $query;
+    }
+
+    public function scopeFromDate($query, $request)
+    {
+        if ($request->has('start_date')) {
+            if (isset($request->start_date) && ($request->start_date) != 99) {
+                $query->where('created_at', '>=', $request->start_date);
+                return $query;
+            }
+        }
+        return $query;
+    }
+
+    public function scopeToDate($query, $request)
+    {
+        if ($request->has('end_date')) {
+            if (isset($request->end_date) && ($request->end_date) != 99) {
+                $query->where('created_at', '<=', $request->end_date);
+                return $query;
+            }
+        }
+        return $query;
+    }
 
     public function order_detail()
     {

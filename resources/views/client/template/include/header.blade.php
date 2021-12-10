@@ -4,10 +4,12 @@ $checklogin =Auth::check();
 if ($checklogin){
 $admin_user_name = Auth::user()->fullName;
 $admin_user_role = Auth::user()->strRolllle;
+$admin_user_role2 = Auth::user()->role;
 $admin_user_id = Auth::user()->id;
 }else{
 $admin_user_name = " ";
 $admin_user_role = " ";
+$admin_user_role2 = " ";
 $admin_user_id = " ";
 }
 @endphp
@@ -37,7 +39,7 @@ $admin_user_id = " ";
                                     aria-hidden="true"></i></a>
                             <ul class="submenu lang">
                                 <li {{$checklogin ? ' ' : 'hidden'}} class="menu-item"><a title="profile" href="/client/page/user/{{$admin_user_id}}" id="btn-profile">Profile</a></li>
-                                <li style="{{$admin_user_role == 1 ? 'display:none' : ''}} class="menu-item"><a title="history" href="/client/page/orders/{{$admin_user_id}}" id="btn-history">Purchase History</a></li>
+                                <li style="{{$admin_user_role2 == 1 ? 'display:none' : ' ' }}" class="menu-item"><a title="history" href="/client/page/orders/{{$admin_user_id}}" id="btn-history">Purchase History</a></li>
                                 <li {{$checklogin ? ' ' : 'hidden'}} class="menu-item"><a title="logout" href="#" id="btn-logout">Logout</a></li>
                             </ul>
                         </li>
@@ -133,7 +135,7 @@ $admin_user_id = " ";
                             <a href="{{route('client.about')}}" class="link-term mercado-item-title">About Us</a>
                         </li>
                         <li class="menu-item">
-                            <a href="{{route('client.contact')}}" class="link-term mercado-item-title">Contact Us</a>
+                            <a style="{{$checklogin ? ' ' : 'display:none'}}" href="/client/page/feedback " class="link-term mercado-item-title">Give Feedback</a>
                         </li>
                     </ul>
                 </div>

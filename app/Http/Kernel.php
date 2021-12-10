@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'login_require' => \App\Http\Middleware\UserAuthenticated::class,
         'check.after.admin.login' => \App\Http\Middleware\CheckAfterAdminLogin::class,
         'check.after.customer.login' => \App\Http\Middleware\CheckAfterCustomerLogin::class,
+        'login_require_only' => \App\Http\Middleware\Login_require_only::class,
     ];
 }

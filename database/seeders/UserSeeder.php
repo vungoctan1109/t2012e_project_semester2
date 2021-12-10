@@ -159,7 +159,20 @@ class UserSeeder extends Seeder
                 'status'=>0,
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
-            ]
+            ],[
+            'id'=> 11,
+            'email'=>'kiennx@fpt.edu.vn',
+            'password'=>bcrypt('111'),
+            'fullName'=>'Nguyễn Xuân Kiên',
+            'phone'=>'0346578094',
+            'address'=>'Lai Xá, Kim Chung, Hoài Đức, Hà Nội',
+            'avatar'=>'https://res.cloudinary.com/kiennx1009/image/upload/v1639063503/wonder-woman-movie-150x150_svw1xt.jpg',
+            'role'=>1,
+            'description'=>'Hello world',
+            'status'=>1,
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now()
+        ]
         ]);
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
