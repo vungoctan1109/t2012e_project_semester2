@@ -8,6 +8,7 @@ use App\Mail\OrderPlaced;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use HoangPhi\VietnamMap\Models\Ward;
@@ -62,7 +63,11 @@ class OrderController extends Controller
         if (count(\Cart::getContent()) == 0) {
             return response()->json(['status' => 400, 'message' => 'Không có sản phẩm nào trong giỏ hàng!']);
         } else {
-            $order->userId = 1; //fix cung vi chua pha trien tinh nang dang nhap
+            $user_id = 1;
+            if(Auth::check()){
+                $user_id = Auth::id();
+            }
+            $order->userId = $user_id;
             $order->name = $shipName;
             $order->email = $shipEmail;
             $order->phone = $shipPhone;
@@ -102,9 +107,9 @@ class OrderController extends Controller
                     $order->status = 1;
                     $order->paymentMethod = $paymentMethod;
                 };
-                if ($paymentMethod == 0) {
+                if ($paymentMethod == 1) {
                     $order->checkOut = false;
-                    $order->status = 2;
+                    $order->status = 1;
                     $order->paymentMethod = $paymentMethod;
                 };
                 $order->save();
@@ -125,9 +130,9 @@ class OrderController extends Controller
                         }
                     }
                 }
-                
+
                 DB::commit();
-                \Cart::clear();                  
+                \Cart::clear();
                 return response()->json(['status' => 200, 'message' => 'Save order successfully', 'orderID' => $order_id]);
             } catch (\Exception $e) {
                 DB::rollBack();
