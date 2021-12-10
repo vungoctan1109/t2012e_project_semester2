@@ -100,6 +100,7 @@
                     <div class ="main-content">
                         {!!$article->detail  !!}
                     </div>
+                    <a class="btn btn-primary" href="/client/page/article" role="button">Quay trở lại trang tin tức</a>
                 </div>
                 <!--end main products area-->
 
