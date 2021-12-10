@@ -8,59 +8,59 @@
             0% {
                 color: #F8CD0A;
             }
-    
+
             50% {
                 color: red;
             }
-    
+
             100% {
                 color: #F8CD0A;
             }
         }
-    
+
         @-moz-keyframes my {
             0% {
                 color: #F8CD0A;
             }
-    
+
             50% {
                 color: red;
             }
-    
+
             100% {
                 color: #F8CD0A;
             }
         }
-    
+
         @-o-keyframes my {
             0% {
                 color: #F8CD0A;
             }
-    
+
             50% {
                 color: red;
             }
-    
+
             100% {
                 color: #F8CD0A;
             }
         }
-    
+
         @keyframes my {
             0% {
                 color: #F8CD0A;
             }
-    
+
             50% {
                 color: red;
             }
-    
+
             100% {
                 color: #F8CD0A;
             }
         }
-    
-        .discount {       
+
+        .discount {
             font-size: 15px;
             font-weight: bold;
             -webkit-animation: my 700ms infinite;
@@ -76,18 +76,17 @@
             <div class="wrap-breadcrumb">
                 <ul>
                     <li class="item-link"><a href="#" class="link">home</a></li>
-                    <li class="item-link"><span>Digital & Electronics</span></li>
+                    <li class="item-link"><span>Mobile</span></li>
                 </ul>
             </div>
             <div class="row">
                 <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
                     <div class="banner-shop">
                         <a href="#" class="banner-link">
-                            <figure><img src="/client-assets/assets/images/shop-banner.jpg" alt=""></figure>
+                            <figure><img src="https://res.cloudinary.com/tanvnth2012002/image/upload/c_scale,h_272,w_870/v1639064578/830-300-830x300-24_rq7xcc.png" alt=""></figure>
                         </a>
                     </div>
                     <div class="wrap-shop-control">
-                        <h1 class="shop-title">Digital & Electronics</h1>
                         <div class="wrap-right">
                             <div class="sort-item orderby ">
                                 <select name="orderby" class="use-chosen" id="sortBy">
@@ -118,7 +117,7 @@
                             <ul class="list-style vertical-list list-limited" data-show="6">
                                 <li class="list-item"><a value='-1' class="filter-link filter-brand active" href="#">Tất
                                         cả</a></li>
-                                @foreach ($brands as $item) 
+                                @foreach ($brands as $item)
                                     <li class="list-item"><a value='{{$item -> id}}' class="filter-link filter-brand" href="#">{{$item -> name}}</a></li>
                                 @endforeach
                             </ul>

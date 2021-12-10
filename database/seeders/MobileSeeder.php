@@ -422,7 +422,7 @@ class MobileSeeder extends Seeder
             [
                 'id' => 20,
                 'categoryID' => 1,
-                'brandID' => 5,
+                'brandID' => 9,
                 'name' => 'OPPO Reno6 5G',
                 'quantity' => 0,
                 'status' => 0,
@@ -443,7 +443,7 @@ class MobileSeeder extends Seeder
             [
                 'id' => 21,
                 'categoryID' => 1,
-                'brandID' => 5,
+                'brandID' => 9,
                 'name' => 'OPPO Reno6 Z 5G',
                 'quantity' => 0,
                 'status' => 0,
@@ -464,7 +464,7 @@ class MobileSeeder extends Seeder
             [
                 'id' => 22,
                 'categoryID' => 1,
-                'brandID' => 5,
+                'brandID' => 9,
                 'name' => 'Oppo A54',
                 'quantity' => $faker->numberBetween(1, 9) * 100,
                 'status' => 1,

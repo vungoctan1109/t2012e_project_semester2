@@ -126,7 +126,10 @@ $admin_user_id = " ";
                                     aria-hidden="true"></i></a>
                         </li>
                         <li class="menu-item">
-                            <a href="/client/page/shop/mobile" class="link-term mercado-item-title">Mobile</a>
+                            <a href="/client/page/shop/mobile" class="link-term mercado-item-title">Shop</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/client/page/article" class="link-term mercado-item-title">Article</a>
                         </li>
                         <li class="menu-item">
                             <a href="{{route('client.about')}}" class="link-term mercado-item-title">About Us</a>

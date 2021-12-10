@@ -59,10 +59,10 @@
 
                         <div class="form-group">
                             <label for="thumbnail">Thumbnail</label></br>
-                            <button type="button" id="btnThumbnailLink" class="btn btn-info mt-1"
+                            <button type="button" id="btnThumbnailLink" class="btn btn-info mt-1 mb-1"
                                     value="Choose your file">Add Thumbnail</button></br>
                             <div id="list-preview-image"></div>
-                            <input id="avatar" type="text" value="" name="thumbnail" style="display: none">
+                            <input id="thumbnail" type="text" value="" name="thumbnail" style="display: none">
                         </div>
                         <div class="form-group">
                             <label>Description</label>

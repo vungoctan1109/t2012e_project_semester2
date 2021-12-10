@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController\AuthController;
 use App\Http\Controllers\AdminController\FeedbackControllerAdmin;
 use App\Http\Controllers\ClientController\FeedbackController;
 use App\Http\Controllers\ClientController\AuthCustomerController;
+use App\Http\Controllers\ClientController\MobileArticleController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\ExportExcelController\ExportExcelMobileController;
 use Illuminate\Support\Facades\Route;
@@ -206,6 +207,15 @@ Route::prefix('client/page')->group(function () {
             'destroy' => 'mobile_client.destroy'
         ]
     ]);
+    #article
+    Route::post('article/fetch_data', [MobileArticleController::class, 'fetch_data'])->name('article_client.fetch_data');
+    Route::resource('article', MobileArticleController::class, [
+        'names' => [
+            'index' => 'article_client.index',
+            'show' => 'article_client.show'
+        ]
+    ]);
+
     #cart
     Route::prefix('shopping')->group(function () {
         Route::get('cart', [ShoppingCartController::class, 'cartList'])->name('cart.list');
