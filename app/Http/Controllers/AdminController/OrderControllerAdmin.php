@@ -37,6 +37,13 @@ class OrderControllerAdmin extends Controller
                 ->select('*')
                 ->sortBy($request)
                 ->name($request)
+                ->province($request)
+                ->phone($request)
+                ->email($request)
+                ->checkOut($request)
+                ->dateFilter($request)
+                ->fromDate($request)
+                ->toDate($request)
                 ->Pagination($request);
             return view('admin.page.order.render_table')->with('order', $order)->render();
         }

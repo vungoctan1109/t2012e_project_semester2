@@ -84,7 +84,7 @@ class UserController extends Controller
 
     public function showOrderByID($user_id)
     {
-        $orders = Order::where('userId', $user_id)->get();
+        $orders = Order::where('userId', $user_id)->paginate(8);
         return view('client.page.order_by_id', ['orders' => $orders]);
     }
 
@@ -94,7 +94,6 @@ class UserController extends Controller
         $orderDetails = OrderDetail::join('mobiles', 'mobiles.id', '=', 'order_details.mobileID')
                                     ->where('order_details.orderID', $order_id)
                                     ->get(['order_details.*','mobiles.name']);
-//        $orderDetails = OrderDetail::where('orderID', $order_id)->get();
         $count = count($orderDetails);
         if ($count > 0) {
             return response()->json(['status' => 200, 'message' => 'get order details done', 'order' => $order, 'orderDetails' => $orderDetails]);

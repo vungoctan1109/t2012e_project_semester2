@@ -76,14 +76,6 @@ Route::group([
     Route::resource('mobile', MobileController::class)->parameters([
         'mobile' => 'mobile_id'
     ]);
-    #2. laptop
-    // Route::resource('laptop', LaptopController::class)->parameters([
-    //     'laptop' => 'laptop_id'
-    // ]);
-    #3. accessory
-    // Route::resource('accessory', AccessoryController::class)->parameters([
-    //     'accessory' => 'accessory_id'
-    // ]);
     #4. order
     Route::get('/order/fetch_data', [OrderControllerAdmin::class, 'fetch_data']);
     Route::resource('orders', OrderControllerAdmin::class)->parameters([
@@ -157,21 +149,32 @@ Route::group([
 
 Route::get('/order/detail/{order_id}', [UserController::class, 'showOrderByOrderID'])->name('get.order.byOrderID');
 
+#login require and be user id
 Route::group([
     'prefix' => 'client/page',
     'middleware' => ['login_require']
 ], function () {
     Route::get('/orders/{user_id}', [UserController::class, 'showOrderByID'])->name('get.orders.byID');
-//    Route::get('/order/detail/{order_id}', [UserController::class, 'showOrderByOrderID'])->name('get.order.byOrderID');
+});
 
+#login require
+Route::group([
+    'prefix' => 'client/page',
+    'middleware' => ['login_require_only']
+], function () {
     Route::resource('user', UserController::class)->parameters([
         'user' => 'user_id'
     ]);
+    #feedback
+    Route::resource('feedback', FeedbackController::class)->parameters([
+        'feedback' => 'feedback_id'
+    ]);
 });
+
+#user route
 Route::prefix('client/page')->group(function () {
     Route::get('/404', [UserController::class, 'redirect404'])->name('404page');
     #Customer Login
-//    Route::get('/login/get', [AuthCustomerController::class, 'customerGetLogin'])->name('customer.login.get');
     Route::post('/login', [AuthCustomerController::class, 'customerPostLogin'])->name('customer.login.post');
     Route::post('/logout', [AuthCustomerController::class, 'logout'])->name('customer.logout');
     #Route resource order
@@ -183,9 +186,9 @@ Route::prefix('client/page')->group(function () {
     ]);
     #shop resource
     #feedback
-    Route::resource('feedback', FeedbackController::class)->parameters([
-        'feedback' => 'feedback_id'
-    ]);
+//    Route::resource('feedback', FeedbackController::class)->parameters([
+//        'feedback' => 'feedback_id'
+//    ]);
     #order resource
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'
@@ -224,24 +227,10 @@ Route::prefix('client/page')->group(function () {
     Route::get('home', function () {
         return view('client.page.home');
     })->name('client.home');
-    #detail
-//    Route::get('detail', [ShopMobileController::class, 'get_detail'])->name('client.detail');
-    #login
-    Route::get('login', function () {
-        return view('client.page.login');
-    })->name('client.login');
-    #register
-    Route::get('register', function () {
-        return view('client.page.register');
-    })->name('client.register');
     #about
     Route::get('about', function () {
         return view('client.page.about');
     })->name('client.about');
-    #contact
-    Route::get('contact', function () {
-        return view('client.page.contact');
-    })->name('client.contact');
     #privacy policy
     Route::get('privacy', function () {
         return view('client.page.privacy');
@@ -259,7 +248,5 @@ Route::prefix('client/page')->group(function () {
 Route::fallback(function () {
     return view('client.page.error.page_404');
 });
-
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
