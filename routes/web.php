@@ -1,30 +1,37 @@
 <?php
 
-use App\Http\Controllers\AdminController\ArticleController;
-use App\Http\Controllers\AdminController\AuthController;
-
-use App\Http\Controllers\AdminController\FeedbackControllerAdmin;
-use App\Http\Controllers\ClientController\FeedbackController;
-use App\Http\Controllers\ClientController\AuthCustomerController;
-use App\Http\Controllers\ClientController\MobileArticleController;
 use Illuminate\Support\Facades\Auth;
-use App\Http\ExportExcelController\ExportExcelMobileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController\OrderDetailController;
-use App\Http\ExportExcelController\ExportExcelBrandController;
-use App\Http\ExportExcelController\ExportExcelCategoryController;
-use App\Http\ExportExcelController\ExportExcelOrderController;
-use App\Http\Controllers\AdminController\CategoryController;
+
+use App\Http\Controllers\AdminController\AuthController;
 use App\Http\Controllers\AdminController\BrandController;
-use App\Http\Controllers\AdminController\MobileController;
-use App\Http\Controllers\AdminController\UserControllerAdmin;
-use App\Http\Controllers\AdminController\OrderControllerAdmin;
-use App\Http\Controllers\AdminController\DashboardController;
+
 use App\Http\Controllers\ClientController\UserController;
+use App\Http\Controllers\AdminController\LaptopController;
+
+use App\Http\Controllers\AdminController\MobileController;
 use App\Http\Controllers\ClientController\OrderController;
+use App\Http\Controllers\AdminController\ArticleController;
 use App\Http\Controllers\ClientController\PayPalController;
+
+use App\Http\Controllers\AdminController\CategoryController;
+use App\Http\Controllers\AdminController\AccessoryController;
+use App\Http\Controllers\AdminController\DashboardController;
+use App\Http\Controllers\AdminController\UserControllerAdmin;
+use App\Http\Controllers\ClientController\FeedbackController;
+use App\Http\Controllers\ClientController\SendMailController;
+use App\Http\Controllers\AdminController\OrderControllerAdmin;
+use App\Http\ExportExcelController\ExportExcelBrandController;
+use App\Http\ExportExcelController\ExportExcelOrderController;
+use App\Http\Controllers\AdminController\OrderDetailController;
+
 use App\Http\Controllers\ClientController\MobileShopController;
+use App\Http\ExportExcelController\ExportExcelMobileController;
+use App\Http\Controllers\AdminController\FeedbackControllerAdmin;
+use App\Http\Controllers\ClientController\AuthCustomerController;
 use App\Http\Controllers\ClientController\ShoppingCartController;
+use App\Http\ExportExcelController\ExportExcelCategoryController;
+use App\Http\Controllers\ClientController\MobileArticleController;
 
 #Route admin
 
@@ -176,6 +183,7 @@ Route::group([
 
 #user route
 Route::prefix('client/page')->group(function () {
+    
     Route::get('/404', [UserController::class, 'redirect404'])->name('404page');
     #Customer Register
     Route::get('/register/get', [UserController::class, 'getViewCreate'])->name('customer.register.get');
@@ -258,6 +266,8 @@ Route::prefix('client/page')->group(function () {
     Route::get('return-policy', function () {
         return view('client.page.return_policy');
     })->name('client.return_policy');
+    #confirm Email
+    Route::get('/confirm-email', [SendMailController::class, 'send_email'])->name('client.confirm.email');
 });
 #route fall back show error page 404!
 Route::fallback(function () {
