@@ -3,6 +3,7 @@
 @section('link_private')
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <meta name="csrf-token" content="{{ csrf_token() }}" />
+<meta name="id" content="{{$mobile -> id}}" />
 <style>
     .error {
         color: red;
@@ -227,7 +228,7 @@
                             @endif
                         </div></br>
                         {{-- <div id="list-preview-image"></div></br> --}}
-                        <input id="valueUpLoad" type="text" value="" name="thumbnail" style="display: none">
+                        <input id="valueUpLoad" type="text" value="{{$stringArr}}" name="thumbnail" style="display: none">
                         <span class="error thumbnail_error"></span>
                     </div>
                     <div class="form-group">
@@ -254,6 +255,9 @@
     <div class="form-group">
         <button type="submit" class="btn btn-success" id="btn-submit">Submit</button>
         <button type="reset" class="btn btn-secondary" id="btn-reset">Reset</button>
+        <a class="btn btn-info " href="{{route('mobile.index')}}">
+            <i class="fas fa-undo-alt">Back list</i>                   
+        </a>      
     </div>
 </div>
 

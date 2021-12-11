@@ -20,7 +20,7 @@ $(document).ready(function () {
                 console.log(result.info);
                 document.getElementById(
                     "valueUpLoad"
-                ).value += (`${result.info.secure_url}` + " ,");
+                ).value += (`${result.info.secure_url}` + ",");
                 // alert(document.getElementById("valueUpLoad").value);
                 document.getElementById("list-preview-image").innerHTML += `
                <span class="m-2" id="preview-image" style="position: relative; with:220px; display:inline-block;">
@@ -131,6 +131,7 @@ $(document).ready(function () {
         var detail = editorData;
         // console.log(detail);
         // alert(thumbnail);
+        thumbnail
         var data = {
             name: name,
             brandID: brandID,

@@ -19,16 +19,12 @@
 @section('content')
 <div class="card-body">
     <div class="row">
+        <input type="hidden" value="{{$mobile-> thumbnail}}" id = "arr_thumbnail">
         <div class="col-12 col-sm-6">
             <div class="col-12">
-                <img src="{{$mobile->mainThumbnail}}" class="product-image curentImage" id="curentImage">
+                <img src="{{$mobile->mainThumbnail}}" class="product-image currentImage" id="currentImage">
             </div>
-            <div class="col-12 product-image-thumbs">
-                @foreach ($mobile-> arrayThumbnail as $thumbnail)
-                <div class="product-image-thumb" style="cursor: pointer;">
-                    <img class="image-preview" src='{{$thumbnail}}'>
-                </div>
-                @endforeach
+            <div class="col-12 product-image-thumbs" id='product-image-thumbs'>              
             </div>
         </div>
         <div class="col-12 col-sm-6">
@@ -108,7 +104,7 @@
             <h6><b>Updated at: </b>{{strtoupper($mobile->updated_at)}}</h6>
             <hr>
             <div class="mt-4">
-                <a class="btn btn-info btn-sm" href="/admin/product/{{$mobile->id}}/edit">
+                <a class="btn btn-info btn-sm" href="/admin/mobile/{{$mobile->id}}/edit"">
                     <i class="fas fa-pencil-alt">Edit</i>
                 </a>
                 <a class="btn btn-danger btn-sm delete" id="btn-delete" href="#" mobile_id= "{{$mobile->id}}">

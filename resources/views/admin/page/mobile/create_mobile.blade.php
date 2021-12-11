@@ -215,11 +215,7 @@
                         <label for="detail">Content detail</label>
                         <textarea name="detail" class="ck-editor__editable_inline" id="editor"></textarea>
                         <span class="error detail_error"></span>
-                    </div>
-                    {{-- <div class="form-group">
-                        <button type="submit" class="btn btn-success" id="btn-submit">Submit</button>
-                        <button type="reset" class="btn btn-secondary">Reset</button>
-                    </div> --}}
+                    </div>                  
             </form>
         </div>
     </div>
