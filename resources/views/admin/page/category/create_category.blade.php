@@ -1,5 +1,5 @@
 @extends('admin.template.master_layout')
-@section('page-title','Admin | Form')
+@section('page-title','Admin | Create Category')
 @section('link_private')
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <meta name="csrf-token" content="{{ csrf_token() }}" />

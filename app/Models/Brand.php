@@ -22,6 +22,11 @@ class Brand extends Model
     {
         return $this->hasMany(Mobile::class,'id', 'mobileID');
     }
+    public function article()
+    {
+        return $this->hasMany(Article::class,'id', 'articleID');
+    }
+
     public function scopeName($query, $request)
     {
         if ($request->has('name')) {

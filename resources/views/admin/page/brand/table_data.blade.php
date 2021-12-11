@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="/dist/css/admin_pages/table_data.css">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection
-@section('page-title','Admin | Table')
+@section('page-title','Admin | Brand')
 @section('breadcrumb')
     <div class="col-sm-6">
         <h1 class="m-0">Brand</h1>

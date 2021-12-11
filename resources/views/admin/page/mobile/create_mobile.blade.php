@@ -1,5 +1,5 @@
 @extends('admin.template.master_layout')
-@section('page-title','Admin | Form')
+@section('page-title','Admin | Create Mobile')
 @section('link_private')
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <meta name="csrf-token" content="{{ csrf_token() }}" />
@@ -215,7 +215,7 @@
                         <label for="detail">Content detail</label>
                         <textarea name="detail" class="ck-editor__editable_inline" id="editor"></textarea>
                         <span class="error detail_error"></span>
-                    </div>                  
+                    </div>
             </form>
         </div>
     </div>
