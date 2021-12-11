@@ -38,6 +38,7 @@ $(document).ready(function () {
     //filter brand
     $(document).on("click", ".filter-brand", function (e) {
         e.preventDefault();
+        equalElement();
         if (!$(this).hasClass("active") && $(this).attr("value") != -1) {
             $(this).addClass("active");
             $(".filter-brand").each(function () {
@@ -72,6 +73,7 @@ $(document).ready(function () {
     //filter price
     $(document).on("click", ".filter-price", function (e) {
         e.preventDefault();
+        equalElement();
         $(".filter-price").each(function () {
             if ($(this).hasClass("active")) {
                 $(this).removeClass("active");
@@ -83,6 +85,7 @@ $(document).ready(function () {
     //filter battery
     $(".filter-battery").click(function (e) {
         e.preventDefault();
+        equalElement();
         $(".filter-battery").each(function () {
             if ($(this).hasClass("active")) {
                 $(this).removeClass("active");
@@ -94,6 +97,7 @@ $(document).ready(function () {
     //filter screen
     $(".filter-screen").click(function (e) {
         e.preventDefault();
+        equalElement();
         $(".filter-screen").each(function () {
             if ($(this).hasClass("active")) {
                 $(this).removeClass("active");
@@ -105,6 +109,7 @@ $(document).ready(function () {
     //filter ram
     $(".filter-ram").click(function (e) {
         e.preventDefault();
+        equalElement();
         $(".filter-ram").each(function () {
             if ($(this).hasClass("active")) {
                 $(this).removeClass("active");
@@ -123,18 +128,19 @@ $(document).ready(function () {
     });
     //search by name
     // $("#btn-search").click(function (e) {
-    //     e.preventDefault();      
+    //     e.preventDefault();
     // });
     $('input[name="search"]').keyup(function (e) {
         e.preventDefault();
+        equalElement();
         var pagination_limit = $("#pagination_limit").val();
         var sortBy = $("#sortBy").val();
-        var nameMobile = $('input[name="search"]').val();    
-        var data = {                      
-            pagination_limit: pagination_limit,           
+        var nameMobile = $('input[name="search"]').val();
+        var data = {
+            pagination_limit: pagination_limit,
             sortBy: sortBy,
             name:nameMobile,
-        };            
+        };
         $.ajaxSetup({
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
@@ -153,8 +159,8 @@ $(document).ready(function () {
                 for (var i = 0; i < response.mobiles_suggest.length; i++) {
                     $("#listSearch").append(
                         `<option>${response.mobiles_suggest[i].name}</option>`
-                    );                    
-                }             
+                    );
+                }
                 equalElement();
                 $content[0].scrollTop = $content[0].scrollHeight;
             },
@@ -163,6 +169,7 @@ $(document).ready(function () {
     //paginate
     $(document).on("click", "#pagination a", function (e) {
         e.preventDefault();
+        equalElement();
         var page = $(this).attr("href").split("page=")[1];
         fetch_data_pagination(page);
     });
@@ -191,7 +198,7 @@ $(document).ready(function () {
     //get data filter
     function getData() {
         var pagination_limit = $("#pagination_limit").val();
-        var sortBy = $("#sortBy").val();       
+        var sortBy = $("#sortBy").val();
         var priceFilter;
         var batteryFilter;
         var screenFilter;
@@ -224,7 +231,7 @@ $(document).ready(function () {
             battery_filter: batteryFilter,
             screen_filter: screenFilter,
             ram: ramFilter,
-            sortBy: sortBy,          
+            sortBy: sortBy,
         };
         return data;
     }
