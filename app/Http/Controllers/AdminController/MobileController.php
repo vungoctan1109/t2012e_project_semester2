@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\AdminController;
 
 
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use App\Models\Brand;
 use App\Models\Mobile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use App\Models\Brand as Brand_Model;
 use App\Models\Mobile as Mobile_Model;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Category as Category_Model;
 
@@ -74,7 +75,6 @@ class MobileController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'categoryID' => 'required',
             'brandID' => 'required',
             'quantity' => 'required',
             'status' => 'required',
@@ -93,26 +93,26 @@ class MobileController extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 400, 'errors' => $validator->errors()->toArray(), 'message' => 'Data not valid!']);
         } else {
-            $mobiles = new Mobile_Model();
-            $mobiles->name = $request->get('name');
-            $mobiles->categoryID = $request->get('categoryID');
-            $mobiles->brandID = $request->get('brandID');
-            $mobiles->quantity = $request->get('quantity');
-            $mobiles->status = $request->get('status');
-            $mobiles->saleOff = $request->get('saleOff');
-            $mobiles->price = $request->get('price');
-            $mobiles->thumbnail = $request->get('thumbnail');
-            $mobiles->color = $request->get('color');
-            $mobiles->ram = $request->get('ram');
-            $mobiles->pin = $request->get('pin');
-            $mobiles->camera = $request->get('camera');
-            $mobiles->screenSize = $request->get('screenSize');
-            $mobiles->memory = $request->get('memory');
-            $mobiles->detail = $request->get('detail');
-            $mobiles->description = $request->get('description');
-            $mobiles->created_at = Carbon::now();
-            $mobiles->updated_at = Carbon::now();
-            if ($mobiles->save()) {
+            $mobile = new Mobile_Model();
+            $mobile->name = $request->get('name');
+            $mobile->categoryID = $request->get('categoryID');
+            $mobile->brandID = $request->get('brandID');
+            $mobile->quantity = $request->get('quantity');
+            $mobile->status = $request->get('status');
+            $mobile->saleOff = $request->get('saleOff');
+            $mobile->price = $request->get('price');
+            $mobile->thumbnail = $request->get('thumbnail');
+            $mobile->color = $request->get('color');
+            $mobile->ram = $request->get('ram');
+            $mobile->pin = $request->get('pin');
+            $mobile->camera = $request->get('camera');
+            $mobile->screenSize = $request->get('screenSize');
+            $mobile->memory = $request->get('memory');
+            $mobile->detail = $request->get('detail');
+            $mobile->description = $request->get('description');
+            $mobile->created_at = Carbon::now();
+            $mobile->updated_at = Carbon::now();
+            if ($mobile->save()) {
                 return response()->json(['status' => 200, 'message' => 'Data have been successfully insert']);
             }
             return response()->json(['status' => 500, 'message' => 'Something went wrong!']);
@@ -128,6 +128,7 @@ class MobileController extends Controller
     public function show($id)
     {
         $mobile = Mobile_Model::find($id);
+
         if ($mobile) {
             return view('admin.page.mobile.detail_mobile')->with('mobile', $mobile);
         }
@@ -142,6 +143,12 @@ class MobileController extends Controller
      */
     public function edit($id)
     {
+        $mobile = Mobile_Model::find($id);
+        $brands = Brand_Model::all();
+        if ($mobile) {
+            return view('admin.page.mobile.edit_mobile')->with('mobile', $mobile)->with('brands', $brands);
+        }
+        return view('admin.page.error.page_404');
     }
 
     /**
@@ -153,6 +160,57 @@ class MobileController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if ($request->ajax()) {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'brandID' => 'required',
+                'quantity' => 'required',
+                'status' => 'required',
+                'saleOff' => 'required',
+                'price' => 'required',
+                'thumbnail' => 'required',
+                'description' => 'required',
+                'detail' => 'required',
+                'color' => 'required',
+                'ram' => 'required',
+                'memory' => 'required',
+                'pin' => 'required',
+                'camera' => 'required',
+                'screenSize' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return response()->json(['status' => 400, 'errors' => $validator->errors()->toArray(), 'message' => 'Data not valid!']);
+            } else {
+                $mobile = Mobile_Model::find($id);
+                if ($mobile) {
+                    $mobile->name = $request->get('name');
+                    $mobile->categoryID = $request->get('categoryID');
+                    $mobile->brandID = $request->get('brandID');
+                    $mobile->quantity = $request->get('quantity');
+                    $mobile->status = $request->get('status');
+                    $mobile->saleOff = $request->get('saleOff');
+                    $mobile->price = $request->get('price');
+                    $mobile->thumbnail = $request->get('thumbnail');
+                    $mobile->color = $request->get('color');
+                    $mobile->ram = $request->get('ram');
+                    $mobile->pin = $request->get('pin');
+                    $mobile->camera = $request->get('camera');
+                    $mobile->screenSize = $request->get('screenSize');
+                    $mobile->memory = $request->get('memory');
+                    $mobile->detail = $request->get('detail');
+                    $mobile->description = $request->get('description');
+                    $mobile->created_at = Carbon::now();
+                    $mobile->updated_at = Carbon::now();
+                    if ($mobile->update()) {
+                        return response()->json(['status' => 200, 'message' => 'Update success!']);
+                    } else {
+                        return response()->json(['status' => 500, 'message' => 'Something went wrong!']);
+                    };
+                } else {
+                    return response()->json(['status' => 404, 'message' => "Object not exist!"]);
+                }
+            }
+        }
     }
 
     /**
@@ -193,10 +251,10 @@ class MobileController extends Controller
                 'status' => 200,
                 'message' => 'Data have been successfully deleted!'
             ]);
-        } 
+        }
         return response()->json([
             'status' => 500,
             'message' => 'Something went wrong!'
-        ]);       
+        ]);
     }
 }

@@ -33,7 +33,7 @@
                         <a class="btn btn-primary btn-sm m-1" href="{{route('mobile.show', $mobile->id)}}">
                             <i class="fas fa-folder">View</i>
                         </a>
-                        <a class="btn btn-info btn-sm m-1" href="admin/mobile/{{$mobile->id}}/edit">
+                        <a class="btn btn-info btn-sm m-1" href="/admin/mobile/{{$mobile->id}}/edit">
                             <i class="fas fa-pencil-alt">Edit</i>
                         </a>
                         <a class="btn btn-danger btn-sm delete m-1" href="#" id = 'btn-delete' mobile_id = "{{$mobile->id}}">
