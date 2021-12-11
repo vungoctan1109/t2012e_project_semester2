@@ -49,7 +49,12 @@ use App\Http\Controllers\ClientController\MobileArticleController;
 |
 */
 #auth
-
+Route::get('/', function () {
+    $mobile_on_sale = \App\Models\Mobile::query()->select('*')->where('status', '=', 2)->get()->take(10);
+    $mobile_latest = \App\Models\Mobile::query()->select('*')->orderBy('created_at','desc')->get()->take(10);
+    $article = \App\Models\Article::query()->select('*')->orderBy('created_at','desc')->get()->take(10);
+    return view('client.page.home')->with('mobile_on_sale', $mobile_on_sale)->with('mobile_latest', $mobile_latest)->with('article', $article);
+})->name('client.home');
 
 //Admin Route after authentication
 Auth::routes();
@@ -183,7 +188,7 @@ Route::group([
 
 #user route
 Route::prefix('client/page')->group(function () {
-    
+
     Route::get('/404', [UserController::class, 'redirect404'])->name('404page');
     #Customer Register
     Route::get('/register/get', [UserController::class, 'getViewCreate'])->name('customer.register.get');
@@ -247,9 +252,7 @@ Route::prefix('client/page')->group(function () {
     Route::get('/province', [OrderController::class, 'get_province'])->name('address.province');
     Route::get('/ward', [OrderController::class, 'get_ward'])->name('address.Ward');
     #home
-    Route::get('home', function () {
-        return view('client.page.home');
-    })->name('client.home');
+
     #about
     Route::get('about', function () {
         return view('client.page.about');

@@ -1315,20 +1315,20 @@ li.menu-item .nav-label.sale-label::before{
     display: inline-block;
 }
 .banner-effect-1 figure::before{
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    bottom: 50%;
-    right: 50%;
-    background: rgba(0,0,0,0.2);
-    opacity: 0;
-    filter: alpha(opacity=0);
-    visibility: hidden;
-    transition: all ease 0.5s 0s;
-    -webkit-transition: all ease 0.5s 0s;
-    -moz-transition: all ease 0.5s 0s;
-    -o-transition: all ease 0.5s 0s;
+    /*content: '';*/
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*bottom: 50%;*/
+    /*right: 50%;*/
+    /*background: rgba(0,0,0,0.2);*/
+    /*opacity: 0;*/
+    /*filter: alpha(opacity=0);*/
+    /*visibility: hidden;*/
+    /*transition: all ease 0.5s 0s;*/
+    /*-webkit-transition: all ease 0.5s 0s;*/
+    /*-moz-transition: all ease 0.5s 0s;*/
+    /*-o-transition: all ease 0.5s 0s;*/
 
 }
 .banner-effect-1 figure img{
@@ -1348,7 +1348,7 @@ li.menu-item .nav-label.sale-label::before{
     z-index: 1;
 }
 .banner-effect-1 figure:hover img{
-    /*transform: scale(1.1);*/
+    transform: scale(1.1);
 }
 .banner-effect-toright figure img,
 .banner-effect-toleft figure img{
