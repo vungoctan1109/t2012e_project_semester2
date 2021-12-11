@@ -3,14 +3,14 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th style="text-align: center;width: 2%;"><input type="checkbox" class="selectAll"/>Check</th>
-                <th style="text-align: center;width: 2%;">ID</th>
-                <th style="text-align: center;width: 8%;">Title</th>
-                <th style="text-align: center;width: 2%;">Brand</th>
-                <th style="text-align: center;width: 8%;">Author</th>
-                <th style="text-align: center;width: 4%;">Thumbnail</th>
-                <th style="text-align: center;width: 5%;">Created At</th>
-                <th style="text-align: center;width: 13%;">Action</th>
+                <th style="text-align: center;width: 5%;"><input type="checkbox" class="selectAll"/>Check</th>
+                <th style="text-align: center;">ID</th>
+                <th style="text-align: center;">Title</th>
+                <th style="text-align: center;">Brand</th>
+                <th style="text-align: center;">Author</th>
+                <th style="text-align: center;">Thumbnail</th>
+                <th style="text-align: center;width: 15%;">Created At</th>
+                <th style="text-align: center;width: 25%;">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -42,14 +42,14 @@
             </tbody>
             <thead>
             <tr>
-                <th style="text-align: center;width: 2%;">Check</th>
-                <th style="text-align: center;width: 2%;">ID</th>
-                <th style="text-align: center;width: 8%;">Title</th>
-                <th style="text-align: center;width: 2%;">Brand</th>
-                <th style="text-align: center;width: 8%;">Author</th>
-                <th style="text-align: center;width: 4%;">Thumbnail</th>
-                <th style="text-align: center;width: 5%;">Created At</th>
-                <th style="text-align: center;width: 13%;">Action</th>
+                <th style="text-align: center;width: 5%;">Check</th>
+                <th style="text-align: center;">ID</th>
+                <th style="text-align: center;">Title</th>
+                <th style="text-align: center;">Brand</th>
+                <th style="text-align: center;width: 10%;">Author</th>
+                <th style="text-align: center;">Thumbnail</th>
+                <th style="text-align: center;width: 15%;">Created At</th>
+                <th style="text-align: center;width: 25%;">Action</th>
             </tr>
             </thead>
         </table>

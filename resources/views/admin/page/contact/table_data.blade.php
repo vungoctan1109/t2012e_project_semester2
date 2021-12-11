@@ -3,15 +3,15 @@
     <link rel="stylesheet" href="/dist/css/admin_pages/mobile_table_data.css">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 @endsection
-@section('page-title','Admin | Table')
+@section('page-title','Admin | Feedback')
 @section('breadcrumb')
     <div class="col-sm-6">
-        <h1 class="m-0">Feedbacks</h1>
+        <h1 class="m-0">Feedback</h1>
     </div><!-- /.col -->
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Feedbacks / List</li>
+            <li class="breadcrumb-item active">Feedback / List</li>
         </ol>
     </div><!-- /.col -->
 @endSection

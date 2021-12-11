@@ -100,8 +100,12 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        $result = DB::table('articles')->where('id', '=', $id)->first();
-        return view('admin.page.article.detail_article', compact('result'));
+        $article = Article::find($id);
+
+        if ($article) {
+            return view('admin.page.article.detail_article')->with('article', $article);
+        }
+        return view('admin.page.error.page_404')->with('article', $article);
     }
 
     /**

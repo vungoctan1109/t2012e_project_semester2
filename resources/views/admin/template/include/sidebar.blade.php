@@ -210,7 +210,7 @@
 
             <li class="nav-item {{request()->is('admin/feedback*') ? 'menu-open menu-is-opening' : ''}}">
                 <a href="#" class="nav-link {{request()->is('admin/feedback*') ? 'active' : ''}}">
-                    <i class="fas fa-envelope"></i>
+                    <i class="nav-icon fas fa-envelope"></i>
                     <p>
                         Manage Feedback
                         <i class="fas fa-angle-left right"></i>

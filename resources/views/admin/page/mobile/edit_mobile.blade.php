@@ -1,5 +1,5 @@
 @extends('admin.template.master_layout')
-@section('page-title','Admin | Form')
+@section('page-title','Admin | Edit Mobile')
 @section('link_private')
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <meta name="csrf-token" content="{{ csrf_token() }}" />
@@ -256,8 +256,8 @@
         <button type="submit" class="btn btn-success" id="btn-submit">Submit</button>
         <button type="reset" class="btn btn-secondary" id="btn-reset">Reset</button>
         <a class="btn btn-info " href="{{route('mobile.index')}}">
-            <i class="fas fa-undo-alt">Back list</i>                   
-        </a>      
+            <i class="fas fa-undo-alt">Back list</i>
+        </a>
     </div>
 </div>
 
