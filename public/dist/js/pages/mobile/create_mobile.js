@@ -131,7 +131,6 @@ $(document).ready(function () {
         var detail = editorData;
         // console.log(detail);
         // alert(thumbnail);
-        thumbnail
         var data = {
             name: name,
             brandID: brandID,
