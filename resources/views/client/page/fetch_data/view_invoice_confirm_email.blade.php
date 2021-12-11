@@ -3,8 +3,8 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="invoice-title">
-
                 <h3 class="pull-right">Order #{{$order -> id}}</h3>
+                <input type="hidden" value="{{$order -> id}}" id="order_id">
             </div>
             <hr>
             <div class="row">
@@ -30,12 +30,14 @@
             <div class="row">
                 <div class="col-xs-6 text-left">
                     <address>
-                        @if($order -> checkOut == 0)
-                        <strong>Payment Method: COD</strong><br>                        
+                        @if($order -> paymentMethod == 0)
+                        <strong>Payment Method: COD</strong><br>                                     
+                        <strong>Checkout Status: Unpaid</strong><br>                      
                         @endif
-                        @if($order -> checkOut == 1)
+                        @if($order -> paymentMethod == 1)
                         <strong>Payment Method: Paypal</strong><br>
-                        @endif
+                        <strong>Checkout Status: Paid</strong><br>
+                        @endif                        
                     </address>
                 </div>
                 <div class="col-xs-6 text-right">
@@ -66,8 +68,8 @@
                                     <td class="text-right"><strong>Totals (VND)</strong></td>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach ($order_details as $item)
+                            <tbody>                                
+                                @foreach ($order->order_detail as $item)
                                 @php
                                 $price_format = number_format($item -> quantity * ($item -> unitPrice - ($item -> unitPrice * $item ->discount)), 0,
                                 '', '.');
