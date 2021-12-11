@@ -30,7 +30,7 @@ $admin_user_id = " ";
                         <li {{$checklogin ? 'hidden' : ' ' }} class="menu-item"><a title="Register or Login"
                                 href="/client/page/login/get">Login</a></li>
                         <li {{$checklogin ? 'hidden' : ' ' }} class="menu-item"><a title="Register or Login"
-                                href="/client/page/register">Register</a>
+                                href="/client/page/register/get">Register</a>
                         </li>
                         {{-- <li {{$checklogin ? ' ' : 'hidden' }} id="btn-logout" class="menu-item"><a
                                 title="Register or Login" href="#">Logout</a></li>--}}
@@ -135,7 +135,7 @@ $admin_user_id = " ";
                             <a href="{{route('client.about')}}" class="link-term mercado-item-title">About Us</a>
                         </li>
                         <li class="menu-item">
-                            <a style="{{$checklogin ? ' ' : 'display:none'}}" href="/client/page/feedback " class="link-term mercado-item-title">Give Feedback</a>
+                            <a href="/client/page/feedback " class="link-term mercado-item-title">Contact Us</a>
                         </li>
                     </ul>
                 </div>

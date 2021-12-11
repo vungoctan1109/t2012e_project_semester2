@@ -98,6 +98,9 @@
                                         id="resetFilter">Refresh
                                 </button>
                             </div>
+                            <div class="col-md-2 m-3">
+                                <button type="button" class="btn btn-block btn-secondary btn-lg" id="btn-delete-selected" style="background: red">Delete All Select</button>
+                            </div>
                         </div>
                     </form>
                 </div>

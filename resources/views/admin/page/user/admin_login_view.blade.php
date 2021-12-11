@@ -22,16 +22,6 @@
         <div class="user-box">
             <input type="password" name="password" placeholder="Password">
             <label>Password</label>
-            @php
-             $check = \Illuminate\Support\Facades\Auth::check();
-            $attr='';
-            if($check){
-                $attr = 'hidden';
-            }else{
-                $attr = ' ';
-            }
-            @endphp
-            <span {{$attr}} style="color:red">You must be logged in to perform the next steps (Only Admin Account)</span>
         </div>
         <a id="btnSubmit" class="mouseEffect">
             <span></span>

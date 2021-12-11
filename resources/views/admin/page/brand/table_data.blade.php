@@ -63,44 +63,7 @@
                                     <option value="id_asc">ID (ASC)</option>
                                 </select>
                             </div>
-                            {{-- <div class="col-md-2 m-3">
-                                <label for="status_product">Filter by status</label>
-                                <select class="form-control" name="status_product" id="status_product">
-                                    <option value="-1">All</option>
-                                    <option value="1">In Stock</option>
-                                    <option value="2">Preorder</option>
-                                    <option value="3">Out of stock</option>
-                                    <option value="4">Expiration date</option>
-                                </select>
-                            </div> --}}
-                            {{-- <div class="col-md-2 m-3">
-                                <label for="category_id">Filter by Category</label>
-                                <select class="form-control" name="category_id" id="category_id">
-                                    <option value="-1">All</option>
-                                </select>
-                            </div> --}}
                         </div>
-
-                        {{-- <div class="row">
-                            <div class="col-md-2 m-3">
-                                <label for="filterByPrice">Min by Price</label>
-                                <input type="number" class="form-control" id="minPrice" placeholder="Min price..."
-                                    name="minPrice">
-                            </div>
-                            <div class="col-md-2 m-3">
-                                <label for="filterByPrice">Max by Price</label>
-                                <input type="number" class="form-control" id="maxPrice" placeholder="Max price..."
-                                    name="maxPrice">
-                            </div>
-                            <div class="col-md-2 m-3">
-                                <label for="startCreate">Start date</label>
-                                <input type="date" class="form-control" id="startCreate" name="startCreate">
-                            </div>
-                            <div class="col-md-2 m-3">
-                                <label for="endCreate">End date</label>
-                                <input type="date" class="form-control" id="endCreate" name="endCreate">
-                            </div>
-                        </div> --}}
                         <div class="row">
                             <div class="col-md-2 m-3">
                                 <button type="submit" class="btn btn-block btn-primary btn-lg"
@@ -109,6 +72,9 @@
                             <div class="col-md-2 m-3">
                                 <button type="reset" class="btn btn-block btn-secondary btn-lg"
                                         id="resetFilter">Refresh</button>
+                            </div>
+                            <div class="col-md-2 m-3">
+                                <button type="button" class="btn btn-block btn-secondary btn-lg" id="btn-delete-selected" style="background: red">Delete All Select</button>
                             </div>
                         </div>
                     </form>

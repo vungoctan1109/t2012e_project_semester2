@@ -5,10 +5,15 @@ namespace App\Models;
 use App\Models\Mobile;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 
 class OrderDetail extends Model
 {
     use HasFactory;
+
+    use Notifiable,
+        SoftDeletes;// add soft delete
     public function mobile()
     {
         return $this->hasOne(Mobile::class,'id', 'mobileID');

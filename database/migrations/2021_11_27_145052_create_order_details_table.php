@@ -23,6 +23,7 @@ class CreateOrderDetailsTable extends Migration
             $table->double('unitPrice');
             $table->double('discount')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

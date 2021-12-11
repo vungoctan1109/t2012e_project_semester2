@@ -3,7 +3,7 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th style="text-align: center;width: 2%;">Check</th>
+                <th style="text-align: center;width: 2%;"><input type="checkbox" class="selectAll"/>Check</th>
                 <th style="text-align: center;width: 2%;">Order ID</th>
                 <th style="text-align: center;width: 25%;">Mobile</th>
                 <th style="text-align: center;width: 4%;">Quantity</th>
@@ -16,7 +16,7 @@
             <tbody>
             @foreach($order_details as $order_detail)
                 <tr>
-                    <td style="text-align:center; vertical-align: middle"><input type="checkbox" value="{{$order_detail->orderID}}"/></td>
+                    <td style="text-align:center; vertical-align: middle"><input type="checkbox" value="{{$order_detail->orderID}}" class="checkbox"/></td>
                     <td style="text-align:center; vertical-align: middle">{{$order_detail->orderID}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$order_detail->mobile->name}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$order_detail->quantity}}</td>

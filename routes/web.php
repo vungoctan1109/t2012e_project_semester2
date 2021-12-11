@@ -55,16 +55,19 @@ Route::group([
     Route::get('/', [DashboardController::class, 'index'])->name('home.dashboard');
     #user
     Route::post('/update/user', [UserControllerAdmin::class, 'update'])->name('User.Info.Update');
+    Route::delete('/users_admin/deleteAll', [UserControllerAdmin::class, 'deleteAll']);
     Route::get('/users_admin/fetch_data', [UserControllerAdmin::class, 'fetch_data']);
     Route::resource('user_admin', UserControllerAdmin::class)->parameters([
         'user_admin' => 'user_admin_id'
     ]);
     #category
+    Route::delete('/category/deleteAll', [CategoryController::class, 'deleteAll']);
     Route::get('/category/fetch_data', [CategoryController::class, 'fetch_data']);
     Route::resource('category', CategoryController::class)->parameters([
         'category' => 'category_id'
     ]);
     #brand
+    Route::delete('/brand/deleteAll', [BrandController::class, 'deleteAll']);
     Route::get('/brand/search', [BrandController::class, 'search']);
     Route::get('/brand/fetch_data', [BrandController::class, 'fetch_data']);
     Route::resource('brand', BrandController::class)->parameters([
@@ -78,15 +81,18 @@ Route::group([
         'mobile' => 'mobile_id'
     ]);
     #4. order
+    Route::delete('/order/deleteAll', [OrderControllerAdmin::class, 'deleteAll']);
     Route::get('/order/fetch_data', [OrderControllerAdmin::class, 'fetch_data']);
     Route::resource('orders', OrderControllerAdmin::class)->parameters([
         'orders' => 'order_id'
     ]);
     #5. user
+    Route::delete('/user/deleteAll', [UserControllerAdmin::class, 'deleteAll']);
     Route::resource('user', UserControllerAdmin::class)->parameters([
         'user' => 'user_id'
     ]);
     #6. order-detail
+    Route::delete('/order-detail/deleteAll', [OrderDetailController::class, 'deleteAll']);
     Route::get('/order-detail/fetch_data', [OrderDetailController::class, 'fetch_data']);
     Route::resource('order-detail', OrderDetailController::class)->parameters([
         'order-detail' => 'order-detail_id'
@@ -101,12 +107,14 @@ Route::group([
     #Export excel Mobile
     Route::get('/export-excel/excel/mobile', [ExportExcelMobileController::class, 'excel']);
     #8. Feedback
+    Route::delete('/feedback/deleteAll', [FeedbackControllerAdmin::class, 'deleteAll']);
     Route::get('/feedback/fetch_data', [FeedbackControllerAdmin::class, 'fetch_data']);
     Route::resource('feedback', FeedbackControllerAdmin::class)->parameters([
         'feedback' => 'feedback_id'
     ]);
 
     #8. Article
+    Route::delete('/article/deleteAll', [ArticleController::class, 'deleteAll']);
     Route::get('/article/fetch_data', [ArticleController::class, 'fetch_data']);
     Route::resource('article', ArticleController::class)->parameters([
         'article' => 'article_id'
@@ -166,15 +174,14 @@ Route::group([
     Route::resource('user', UserController::class)->parameters([
         'user' => 'user_id'
     ]);
-    #feedback
-    Route::resource('feedback', FeedbackController::class)->parameters([
-        'feedback' => 'feedback_id'
-    ]);
 });
 
 #user route
 Route::prefix('client/page')->group(function () {
     Route::get('/404', [UserController::class, 'redirect404'])->name('404page');
+    #Customer Register
+    Route::get('/register/get', [UserController::class, 'getViewCreate'])->name('customer.register.get');
+    Route::post('/register/save', [UserController::class, 'saveCreate'])->name('customer.register.save');
     #Customer Login
     Route::post('/login', [AuthCustomerController::class, 'customerPostLogin'])->name('customer.login.post');
     Route::post('/logout', [AuthCustomerController::class, 'logout'])->name('customer.logout');
@@ -187,9 +194,9 @@ Route::prefix('client/page')->group(function () {
     ]);
     #shop resource
     #feedback
-//    Route::resource('feedback', FeedbackController::class)->parameters([
-//        'feedback' => 'feedback_id'
-//    ]);
+    Route::resource('feedback', FeedbackController::class)->parameters([
+        'feedback' => 'feedback_id'
+    ]);
     #order resource
     Route::resource('order', OrderController::class)->parameters([
         'order' => 'order_id'

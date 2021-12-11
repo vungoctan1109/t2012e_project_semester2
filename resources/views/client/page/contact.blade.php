@@ -7,6 +7,13 @@
     @php
         if (\Illuminate\Support\Facades\Auth::check()){
         $user = \Illuminate\Support\Facades\Auth::user();
+        $fullname = $user->fullName;
+        $email = $user->email;
+        $phone = $user->phone;
+            }else{
+      $fullname = '';
+        $email = '';
+        $phone = '';
             }
     @endphp
     <main id="main" class="main-site left-sidebar">
@@ -25,12 +32,12 @@
                                 <h2 class="box-title">Leave a Message</h2>
                                 <form id="frmFeedBack" action="#" method="get" name="frm-contact">
                                     @csrf
-                                    <label for="name"><h3><b>Full name:</b> {{$user->fullName}}</h3><span></span></label>
-                                    <input style="display:none" type="text" value="{{$user->fullName}}" id="name" name="name">
-                                    <label for="email"><h3><b>Email: </b>{{$user->email}}</h3><span></span></label><br>
-                                    <input style="display:none" type="text" value="{{$user->email}}" id="email" name="email">
-                                    <label for="email"><h3><b>Phone number: </b>{{$user->phone}}</h3><span></span></label><br>
-                                    <input style="display:none"  type="text" value="{{$user->phone}}" id="phone" name="phone">
+                                    <label for="name">Full name:</label>
+                                    <input type="text" value="{{$fullname}}" id="name" name="name">
+                                    <label for="email">Email:</label><br>
+                                    <input type="text" value="{{$email}}" id="email" name="email">
+                                    <label for="email">Phone number:</label><br>
+                                    <input type="text" value="{{$phone}}" id="phone" name="phone">
                                     <label for="comment">Comment</label>
                                     <textarea name="comment" id="comment"></textarea>
                                     <input type="submit" name="send-feedback" value="Submit">

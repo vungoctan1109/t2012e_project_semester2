@@ -38,6 +38,37 @@ class UserController extends Controller
         return view('admin.page.user.create_user');
     }
 
+    public function getViewCreate()
+    {
+        return view('client.page.register');
+    }
+
+    public function saveCreate(Request $request)
+    {
+        $user = new User();
+        $user->email = $request->get('email');
+        $check_exist = User::where('email', '=', $request->get('email'))->first();
+        if ($check_exist !== null) {
+            return response()->json(['status' => 400, 'message' => 'this email account already exist, please try again!!!']);
+        }
+        $user->password = Hash::make($request->get('password'));
+        $user->fullName = $request->get('fullName');
+        $user->phone = $request->get('phone');
+        $user->address = $request->get('address');
+        $user->avatar = $request->get('avatar');
+        $user->description = $request->get('description');
+        $user->role = 0;
+        $user->status = 1;
+        $user->created_at = Carbon::now();
+        $user->updated_at = Carbon::now();
+        $result = $user->save();
+        if ($result) {
+            return response()->json(['status' => 200, 'message' => 'save user info success']);
+        } else {
+            return response()->json(['status' => 500, 'message' => 'save user info false']);
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -92,8 +123,8 @@ class UserController extends Controller
     {
         $order = Order::where('id', $order_id)->first();
         $orderDetails = OrderDetail::join('mobiles', 'mobiles.id', '=', 'order_details.mobileID')
-                                    ->where('order_details.orderID', $order_id)
-                                    ->get(['order_details.*','mobiles.name']);
+            ->where('order_details.orderID', $order_id)
+            ->get(['order_details.*', 'mobiles.name']);
         $count = count($orderDetails);
         if ($count > 0) {
             return response()->json(['status' => 200, 'message' => 'get order details done', 'order' => $order, 'orderDetails' => $orderDetails]);
