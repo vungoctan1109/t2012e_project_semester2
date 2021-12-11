@@ -107,7 +107,7 @@ class OrderController extends Controller
                     $order->status = 1;
                     $order->paymentMethod = $paymentMethod;
                 };
-                if ($paymentMethod == 1) {
+                if ($paymentMethod == 0) {
                     $order->checkOut = false;
                     $order->status = 1;
                     $order->paymentMethod = $paymentMethod;
