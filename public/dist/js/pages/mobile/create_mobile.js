@@ -20,7 +20,7 @@ $(document).ready(function () {
                 console.log(result.info);
                 document.getElementById(
                     "valueUpLoad"
-                ).value += `${result.info.secure_url},`;
+                ).value += (`${result.info.secure_url}` + " ,");
                 // alert(document.getElementById("valueUpLoad").value);
                 document.getElementById("list-preview-image").innerHTML += `
                <span class="m-2" id="preview-image" style="position: relative; with:220px; display:inline-block;">
@@ -64,7 +64,9 @@ $(document).ready(function () {
                         if (result.result == "ok") {
                             btnDeleteImg.parent().remove();
                             var urlDelete = btnDeleteImg.siblings().attr("src");
-                            var arrCurrentValueUpLoad = $("#valueUpLoad").val().split(",");
+                            var arrCurrentValueUpLoad = $("#valueUpLoad")
+                                .val()
+                                .split(",");
                             arrCurrentValueUpLoad.pop();
                             removeElement(arrCurrentValueUpLoad, urlDelete);
                             $("#valueUpLoad").val("");
@@ -93,11 +95,7 @@ $(document).ready(function () {
                         }
                     },
                     error: function () {
-                        Swal.fire(
-                            "Deleted!",
-                            "Something went wrong!",
-                            "error"
-                        );
+                        Swal.fire("Deleted!", "Something went wrong!", "error");
                     },
                 });
             }
@@ -113,7 +111,7 @@ $(document).ready(function () {
     //submit form ajax
     $("#btn-submit").click(function (e) {
         e.preventDefault();
-        // const editorData = editor.getData();
+        const editorData = editor.getData();
         var name = $('input[name="name"]').val();
         var categoryID = $('select[name="categoryID"]').val();
         var brandID = $('select[name="brandID"]').val();
@@ -174,9 +172,9 @@ $(document).ready(function () {
                             alertAction(response.message);
                         }, 1500);
                         alertProcessData();
-                        setTimeout(function() {
+                        setTimeout(function () {
                             window.location.href = "/admin/mobile";
-                        },3000)
+                        }, 3000);
                     }
                     if (response.status == 500) {
                         setTimeout(function () {
@@ -226,4 +224,13 @@ $(document).ready(function () {
             }
         });
     }
+    //reset
+    $("#btn-reset").click(function () {
+        $(":input", ".row")
+            .not(":button, :submit, :reset, :hidden")
+            .val(" ")
+            .removeAttr("checked")
+            .removeAttr("selected");
+        const editorData = editor.setData(' ');
+    });
 });

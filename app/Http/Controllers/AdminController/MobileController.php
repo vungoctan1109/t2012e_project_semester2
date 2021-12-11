@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\AdminController;
 
 
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use App\Models\Brand;
 use App\Models\Mobile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use App\Models\Brand as Brand_Model;
 use App\Models\Mobile as Mobile_Model;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Category as Category_Model;
 
@@ -128,6 +129,7 @@ class MobileController extends Controller
     public function show($id)
     {
         $mobile = Mobile_Model::find($id);
+       
         if ($mobile) {
             return view('admin.page.mobile.detail_mobile')->with('mobile', $mobile);
         }
@@ -142,6 +144,12 @@ class MobileController extends Controller
      */
     public function edit($id)
     {
+        $mobile = Mobile_Model::find($id);
+        $brands = Brand_Model::all();
+        if($mobile) {
+            return view('admin.page.mobile.edit_mobile')->with('mobile', $mobile)->with('brands',$brands);
+        }
+        return view('admin.page.error.page_404');
     }
 
     /**
