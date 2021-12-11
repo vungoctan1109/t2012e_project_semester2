@@ -36,9 +36,9 @@
     <div class="container pb-60">
         <div class="row">
             <div class="col-md-12 text-center">
-                @if(isset($invoice))               
-                    {!!$invoice!!}
-                @endif                                             
+                @if(isset($invoice))
+                {!!$invoice!!}
+                @endif
                 <h2>Thank you</h2>
                 <p>A confirmation email was sent.</p>
                 <a href="{{route('mobile_client.index')}}" class="btn btn-submit btn-submitx">Continue Shopping</a>
@@ -53,9 +53,8 @@
 @section('private_scripts')
 <script>
     $(document).ready(function () {
-    $('body').addClass('inner-page about-us');Ì
-
+    $('body').addClass('inner-page about-us');       
 });
-
 </script>
+<script src="/dist/js/pages/client/confirm_email.js"></script>
 @endsection
