@@ -16,7 +16,6 @@ use App\Http\ExportExcelController\ExportExcelCategoryController;
 use App\Http\ExportExcelController\ExportExcelOrderController;
 use App\Http\Controllers\AdminController\CategoryController;
 use App\Http\Controllers\AdminController\BrandController;
-use App\Http\Controllers\AdminController\LaptopController;
 use App\Http\Controllers\AdminController\MobileController;
 use App\Http\Controllers\AdminController\UserControllerAdmin;
 use App\Http\Controllers\AdminController\OrderControllerAdmin;
@@ -24,7 +23,6 @@ use App\Http\Controllers\AdminController\DashboardController;
 use App\Http\Controllers\ClientController\UserController;
 use App\Http\Controllers\ClientController\OrderController;
 use App\Http\Controllers\ClientController\PayPalController;
-use App\Http\Controllers\AdminController\AccessoryController;
 use App\Http\Controllers\ClientController\MobileShopController;
 use App\Http\Controllers\ClientController\ShoppingCartController;
 

@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', function () {
                         resultHTML += `<tr>
                                             <th scope="row">${i}</th>
                                             <td>${odt.name}</td>
-                                            <td>${convertMoneyFormat(odt.quantity * odt.unitPrice)}</td>
+                                            <td>${convertMoneyFormat(odt.quantity * odt.unitPrice * (1 - odt.discount))}</td>
                                             <td>${convertDateFormat(odt.created_at)}</td>
                                        </tr>`
                         i++;

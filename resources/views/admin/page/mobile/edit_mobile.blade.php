@@ -89,10 +89,10 @@
                     <label for="status">Status</label>
                     <input type="hidden" id="current_status" value="{{$mobile -> status}}">
                     <select name="status" class="form-control col-4" id="status">
-                        <option value="1">In Stock</option>
-                        <option value="2">Preorder</option>
-                        <option value="3">Out of stock</option>
-                        <option value="4">Expiration date</option>
+                        <option value="1">On sale</option>
+                        <option value="2">Out of stock</option>
+                        <option value="3">Stop selling</option>
+                        <option value="4">Sale off</option>
                     </select>
                     <span class="error stauts_error"></span>
                 </div>
