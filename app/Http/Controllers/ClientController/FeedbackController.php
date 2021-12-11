@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Feedback;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -18,7 +19,7 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        //
+        return view('client.page.contact');
     }
 
     /**
@@ -62,7 +63,8 @@ class FeedbackController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = DB::table('feedback')->where('id', '=', $id)->first();
+        return view('admin.page.contact.detail_feedback', compact('result'));
     }
 
     /**

@@ -28,6 +28,7 @@ class CreateOrdersTable extends Migration
             $table->double('totalPrice');
             $table->boolean('checkOut');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Brand as Brand_Model;
@@ -156,5 +157,20 @@ class BrandController extends Controller
                 ]);
             }
         }
+    }
+
+    public function deleteAll(Request $request)
+    {
+        $ids = $request->ids;
+        if (Brand::query()->whereIn('id', explode(",", $ids))->delete()) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Data have been successfully deleted!'
+            ]);
+        }
+        return response()->json([
+            'status' => 500,
+            'message' => 'Something went wrong!'
+        ]);
     }
 }

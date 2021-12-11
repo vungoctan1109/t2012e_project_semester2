@@ -3,7 +3,7 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th style="text-align: center;width: 2%;">Check</th>
+                <th style="text-align: center;width: 2%;"><input type="checkbox" class="selectAll"/>Check</th>
                 <th style="text-align: center;width: 2%;">ID</th>
                 <th style="text-align: center;width: 8%;">Title</th>
                 <th style="text-align: center;width: 2%;">Brand</th>
@@ -16,7 +16,8 @@
             <tbody>
             @foreach($articles as $article)
                 <tr>
-                    <td style="text-align:center; vertical-align: middle"><input type="checkbox" value="{{$article->id}}"/></td>
+                    <td style="text-align:center; vertical-align: middle"><input type="checkbox"
+                                                                                 value="{{$article->id}}" class="checkbox"/></td>
                     <td style="text-align:center; vertical-align: middle">{{$article->id}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$article->title}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$article->strBrand}}</td>
@@ -32,7 +33,7 @@
                         <a class="btn btn-info btn-sm m-1" href="/admin/article/{{$article->id}}/edit">
                             <i class="fas fa-pencil-alt">Edit</i>
                         </a>
-                        <a  class="btn btn-danger btn-sm delete m-1" articleID = '{{$article->id}}'>
+                        <a class="btn btn-danger btn-sm delete m-1" articleID='{{$article->id}}'>
                             <i class="fas fa-trash">Delete</i>
                         </a>
                     </td>

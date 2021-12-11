@@ -3,20 +3,20 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th style="text-align: center;width: 2%;">Check</th>
-                <th style="text-align: center;width: 2%;">ID</th>
-                <th style="text-align: center;width: 8%;">Account (Email) </th>
+                <th style="text-align: center;width: 1%;"><input type="checkbox" class="selectAll"/>Check</th>
+                <th style="text-align: center;width: 3%;">ID</th>
+                <th style="text-align: center;width: 9%;">Account (Email) </th>
                 <th style="text-align: center;width: 2%;">Account Type</th>
-                <th style="text-align: center;width: 8%;">Full Name</th>
+                <th style="text-align: center;width: 10%;">Full Name</th>
                 <th style="text-align: center;width: 4%;">Status</th>
                 <th style="text-align: center;width: 5%;">Updated At</th>
-                <th style="text-align: center;width: 13%;">Action</th>
+                <th style="text-align: center;width: 17%;">Action</th>
             </tr>
             </thead>
             <tbody>
             @foreach($users as $user)
                 <tr>
-                    <td style="text-align:center; vertical-align: middle"><input type="checkbox" value="{{$user->id}}"/></td>
+                    <td style="text-align:center; vertical-align: middle"><input type="checkbox" value="{{$user->id}}" class="checkbox"/></td>
                     <td style="text-align:center; vertical-align: middle">{{$user->id}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$user->email}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$user->strRolllle}}</td>

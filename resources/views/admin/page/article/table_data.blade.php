@@ -53,10 +53,10 @@
                                 <select class="form-control" name="sortBy">
                                     <option value="created_at_desc" selected>Created At (DESC)</option>
                                     <option value="created_at_asc">Created At (ASC)</option>
-                                    <option value="name_desc">Name (DESC)</option>
-                                    <option value="name_asc">Name (ASC)</option>
-                                    <option value="name_desc">Author (DESC)</option>
-                                    <option value="name_asc">Author (ASC)</option>
+                                    <option value="title_desc">Title (DESC)</option>
+                                    <option value="title_asc">Title (ASC)</option>
+                                    <option value="author_desc">Author (DESC)</option>
+                                    <option value="author_asc">Author (ASC)</option>
                                     <option value="id_desc">ID (DESC)</option>
                                     <option value="id_asc">ID (ASC)</option>
                                 </select>
@@ -92,6 +92,9 @@
                                 <button type="reset" class="btn btn-block btn-secondary btn-lg"
                                         id="resetFilter">Refresh
                                 </button>
+                            </div>
+                            <div class="col-md-2 m-3">
+                                <button type="button" class="btn btn-block btn-secondary btn-lg" id="btn-delete-selected" style="background: red">Delete All Select</button>
                             </div>
                         </div>
                     </form>

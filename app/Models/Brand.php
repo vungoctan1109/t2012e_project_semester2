@@ -5,13 +5,18 @@ namespace App\Models;
 use App\Models\Mobile;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 
 class Brand extends Model
 {
     use HasFactory;
+
+    use Notifiable,
+        SoftDeletes;// add soft delete
     protected $fillable = [
         'id', 'name', 'description', 'created_at', 'updated_at'
-    ]; 
+    ];
     #relationship
     public function mobile()
     {
@@ -27,7 +32,7 @@ class Brand extends Model
         }
         return $query;
     }
-    #scop start here! 
+    #scop start here!
     #sort by
     public function scopeSortBy($query, $request)
     {

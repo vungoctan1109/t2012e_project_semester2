@@ -54,6 +54,38 @@
                                     <option value="id_asc">ID (ASC)</option>
                                 </select>
                             </div>
+                            <div class="col-md-2 m-3">
+                                <label for="name">Search by Phone</label>
+                                <input type="text" class="form-control" id="phone" placeholder="Phone"
+                                       name="phone">
+                            </div>
+                            <div class="col-md-2 m-3">
+                                <label for="name">Search by Province</label>
+                                <input type="text" class="form-control" id="province" placeholder="province"
+                                       name="province">
+                            </div>
+                            <div class="col-md-2 m-3">
+                                <label for="name">Search by Email</label>
+                                <input type="text" class="form-control" id="email" placeholder="email"
+                                       name="email">
+                            </div>
+
+                            <div class="col-md-2 m-3">
+                                <label for="start_date">Start date</label>
+                                <input type="date" class="form-control" id="start_date" name="start_date">
+                            </div>
+                            <div class="col-md-2 m-3">
+                                <label for="end_date">End date</label>
+                                <input type="date" class="form-control" id="end_date" name="end_date">
+                            </div>
+                            <div class="col-md-2 m-3">
+                                <label for="checkOut">Search by checkout status</label>
+                                <select class="form-control" name="checkOut" id="checkOut">
+                                    <option value="99" selected>---select---</option>
+                                    <option value="1">Paid</option>
+                                    <option value="0">Unpaid</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-2 m-3">
@@ -65,6 +97,9 @@
                                 <button type="reset" class="btn btn-block btn-secondary btn-lg"
                                         id="resetFilter">Refresh
                                 </button>
+                            </div>
+                            <div class="col-md-2 m-3">
+                                <button type="button" class="btn btn-block btn-secondary btn-lg" id="btn-delete-selected" style="background: red">Delete All Select</button>
                             </div>
                         </div>
                     </form>

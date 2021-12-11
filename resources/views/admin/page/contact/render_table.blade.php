@@ -24,11 +24,8 @@
                     <td style="text-align:center; vertical-align: middle">{{date('d-m-Y', strtotime($feedback->created_at))}}</td>
                     <td style="text-align:center; vertical-align: middle">{{$feedback->comment}}</td>
                     <td style="text-align:center; vertical-align: middle">
-                        <a class="btn btn-primary btn-sm m-1" href="/admin/user/{{$feedback->id}}">
+                        <a class="btn btn-primary btn-sm m-1" href="{{route('feedback.show', $feedback->id)}}">
                             <i class="fas fa-folder">View</i>
-                        </a>
-                        <a class="btn btn-info btn-sm m-1" href="/admin/user_admin/{{$feedback->id}}/edit">
-                            <i class="fas fa-pencil-alt">Edit</i>
                         </a>
                         <a  class="btn btn-danger btn-sm delete m-1" feedbackID = '{{$feedback->id}}'>
                             <i class="fas fa-trash">Delete</i>

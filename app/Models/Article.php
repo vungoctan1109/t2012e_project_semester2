@@ -4,10 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 
 class Article extends Model
 {
     use HasFactory;
+
+    use Notifiable,
+        SoftDeletes;// add soft delete
     public function brand()
     {
         return $this->belongsTo(Brand::class, 'brandID');
@@ -57,7 +62,7 @@ class Article extends Model
     public function scopeTitle($query, $request)
     {
         if ($request->has('title')) {
-            if (isset($request->name)) {
+            if (isset($request->title)) {
                 $query->where('title', 'LIKE', '%' . $request->title . '%');
                 return $query;
             }

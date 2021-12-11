@@ -22,14 +22,17 @@ window.addEventListener('DOMContentLoaded', function () {
                     if (order.checkOut == 0) {
                         strCheckout = 'Chưa thanh toán';
                     }
+
+
+
                     var order_details = res.orderDetails;
                     var resultHTML =
                         `<h4><b>Người Nhận:</b> ${order.name}</h4>` +
                         `<h4><b>Địa chỉ:</b> (${order.address_detail}), ${order.ward}, ${order.district}, ${order.province}</h4>` +
                         `<h4><b>Số điện thoại:</b> ${order.phone}</h4>` +
-                        `<h4><b>Tống giá tiền đơn hàng:</b> ${order.totalPrice}</h4>` +
+                        `<h4><b>Tống giá tiền đơn hàng:</b> ${convertMoneyFormat(order.totalPrice)}</h4>` +
                         `<h4><b>Trạng thái thanh toán:</b> ${strCheckout}</h4>` +
-                        `<h4><b>Ngày đặt hàng:</b> ${order.created_at}</h4>`;
+                        `<h4><b>Ngày đặt hàng:</b> ${convertDateFormat(order.created_at)}</h4>`;
                     resultHTML += '<table class="table table-dark">\n' +
                         '  <thead>\n' +
                         '    <tr>\n' +
@@ -46,8 +49,8 @@ window.addEventListener('DOMContentLoaded', function () {
                         resultHTML += `<tr>
                                             <th scope="row">${i}</th>
                                             <td>${odt.name}</td>
-                                            <td>${odt.quantity * odt.unitPrice}</td>
-                                            <td>${odt.created_at}</td>
+                                            <td>${convertMoneyFormat(odt.quantity * odt.unitPrice)}</td>
+                                            <td>${convertDateFormat(odt.created_at)}</td>
                                        </tr>`
                         i++;
                     })
@@ -61,4 +64,18 @@ window.addEventListener('DOMContentLoaded', function () {
             }
         })
     })
+
+    function convertDateFormat(date_input){
+        return date_input.split("T")[0]
+    }
+
+    function convertMoneyFormat(money){
+        // return (money).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        const formatter = new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND',
+            minimumFractionDigits: 0
+        })
+        return formatter.format(money)
+    }
 })

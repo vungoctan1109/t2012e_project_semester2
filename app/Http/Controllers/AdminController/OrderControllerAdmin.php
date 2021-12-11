@@ -37,6 +37,13 @@ class OrderControllerAdmin extends Controller
                 ->select('*')
                 ->sortBy($request)
                 ->name($request)
+                ->province($request)
+                ->phone($request)
+                ->email($request)
+                ->checkOut($request)
+                ->dateFilter($request)
+                ->fromDate($request)
+                ->toDate($request)
                 ->Pagination($request);
             return view('admin.page.order.render_table')->with('order', $order)->render();
         }
@@ -147,5 +154,20 @@ class OrderControllerAdmin extends Controller
                 ]);
             }
         }
+    }
+
+    public function deleteAll(Request $request)
+    {
+        $ids = $request->ids;
+        if (Order::query()->whereIn('id', explode(",", $ids))->delete()) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Data have been successfully deleted!'
+            ]);
+        }
+        return response()->json([
+            'status' => 500,
+            'message' => 'Something went wrong!'
+        ]);
     }
 }

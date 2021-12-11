@@ -20,11 +20,11 @@ window.addEventListener('DOMContentLoaded', function () {
         (error, result) => {
             if (!error && result && result.event === "success") {
                 console.log(result.info);
-                document.getElementById("avatar").value = `${result.info.secure_url}`;
+                document.getElementById("thumbnail").value = `${result.info.secure_url}`;
                 // alert(document.getElementById("valueUpLoad").value);
                 document.getElementById("list-preview-image").innerHTML = `
-               <span class="m-2" id="preview-image" style="position: relative; with:100px; display:inline-block;">
-                   <img src="${result.info.secure_url}" class="img-thumbnail img-bordered" style="width: 100px; ml-2" delete="${result.info.delete_token}">
+               <span class="m-2" id="preview-image" style="position: relative; width:200px; display:inline-block;">
+                   <img src="${result.info.secure_url}" class="img-thumbnail img-bordered" style="width:200px; ml-2" delete="${result.info.delete_token}">
                    <i class="fas fa-times btnDeleteImg" style="position: absolute;right: 0;top: 0; cursor: pointer;"></i>
                </span>
                `;
@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', function () {
         "click",
         function () {
             document.getElementById("list-preview-image").innerHTML = '';
-            document.getElementById("avatar").value = '';
+            document.getElementById("thumbnail").value = '';
             myWidget_thumbnail.open();
         },
         false

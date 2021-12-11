@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController\AuthController;
 use App\Http\Controllers\AdminController\FeedbackControllerAdmin;
 use App\Http\Controllers\ClientController\FeedbackController;
 use App\Http\Controllers\ClientController\AuthCustomerController;
+use App\Http\Controllers\ClientController\MobileArticleController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\ExportExcelController\ExportExcelMobileController;
 use Illuminate\Support\Facades\Route;
@@ -54,16 +55,19 @@ Route::group([
     Route::get('/', [DashboardController::class, 'index'])->name('home.dashboard');
     #user
     Route::post('/update/user', [UserControllerAdmin::class, 'update'])->name('User.Info.Update');
+    Route::delete('/users_admin/deleteAll', [UserControllerAdmin::class, 'deleteAll']);
     Route::get('/users_admin/fetch_data', [UserControllerAdmin::class, 'fetch_data']);
     Route::resource('user_admin', UserControllerAdmin::class)->parameters([
         'user_admin' => 'user_admin_id'
     ]);
     #category
+    Route::delete('/category/deleteAll', [CategoryController::class, 'deleteAll']);
     Route::get('/category/fetch_data', [CategoryController::class, 'fetch_data']);
     Route::resource('category', CategoryController::class)->parameters([
         'category' => 'category_id'
     ]);
     #brand
+    Route::delete('/brand/deleteAll', [BrandController::class, 'deleteAll']);
     Route::get('/brand/search', [BrandController::class, 'search']);
     Route::get('/brand/fetch_data', [BrandController::class, 'fetch_data']);
     Route::resource('brand', BrandController::class)->parameters([
@@ -76,24 +80,19 @@ Route::group([
     Route::resource('mobile', MobileController::class)->parameters([
         'mobile' => 'mobile_id'
     ]);
-    #2. laptop
-    // Route::resource('laptop', LaptopController::class)->parameters([
-    //     'laptop' => 'laptop_id'
-    // ]);
-    #3. accessory
-    // Route::resource('accessory', AccessoryController::class)->parameters([
-    //     'accessory' => 'accessory_id'
-    // ]);
     #4. order
+    Route::delete('/order/deleteAll', [OrderControllerAdmin::class, 'deleteAll']);
     Route::get('/order/fetch_data', [OrderControllerAdmin::class, 'fetch_data']);
     Route::resource('orders', OrderControllerAdmin::class)->parameters([
         'orders' => 'order_id'
     ]);
     #5. user
+    Route::delete('/user/deleteAll', [UserControllerAdmin::class, 'deleteAll']);
     Route::resource('user', UserControllerAdmin::class)->parameters([
         'user' => 'user_id'
     ]);
     #6. order-detail
+    Route::delete('/order-detail/deleteAll', [OrderDetailController::class, 'deleteAll']);
     Route::get('/order-detail/fetch_data', [OrderDetailController::class, 'fetch_data']);
     Route::resource('order-detail', OrderDetailController::class)->parameters([
         'order-detail' => 'order-detail_id'
@@ -108,12 +107,14 @@ Route::group([
     #Export excel Mobile
     Route::get('/export-excel/excel/mobile', [ExportExcelMobileController::class, 'excel']);
     #8. Feedback
+    Route::delete('/feedback/deleteAll', [FeedbackControllerAdmin::class, 'deleteAll']);
     Route::get('/feedback/fetch_data', [FeedbackControllerAdmin::class, 'fetch_data']);
     Route::resource('feedback', FeedbackControllerAdmin::class)->parameters([
         'feedback' => 'feedback_id'
     ]);
 
     #8. Article
+    Route::delete('/article/deleteAll', [ArticleController::class, 'deleteAll']);
     Route::get('/article/fetch_data', [ArticleController::class, 'fetch_data']);
     Route::resource('article', ArticleController::class)->parameters([
         'article' => 'article_id'
@@ -157,21 +158,31 @@ Route::group([
 
 Route::get('/order/detail/{order_id}', [UserController::class, 'showOrderByOrderID'])->name('get.order.byOrderID');
 
+#login require and be user id
 Route::group([
     'prefix' => 'client/page',
     'middleware' => ['login_require']
 ], function () {
     Route::get('/orders/{user_id}', [UserController::class, 'showOrderByID'])->name('get.orders.byID');
-//    Route::get('/order/detail/{order_id}', [UserController::class, 'showOrderByOrderID'])->name('get.order.byOrderID');
+});
 
+#login require
+Route::group([
+    'prefix' => 'client/page',
+    'middleware' => ['login_require_only']
+], function () {
     Route::resource('user', UserController::class)->parameters([
         'user' => 'user_id'
     ]);
 });
+
+#user route
 Route::prefix('client/page')->group(function () {
     Route::get('/404', [UserController::class, 'redirect404'])->name('404page');
+    #Customer Register
+    Route::get('/register/get', [UserController::class, 'getViewCreate'])->name('customer.register.get');
+    Route::post('/register/save', [UserController::class, 'saveCreate'])->name('customer.register.save');
     #Customer Login
-//    Route::get('/login/get', [AuthCustomerController::class, 'customerGetLogin'])->name('customer.login.get');
     Route::post('/login', [AuthCustomerController::class, 'customerPostLogin'])->name('customer.login.post');
     Route::post('/logout', [AuthCustomerController::class, 'logout'])->name('customer.logout');
     #Route resource order
@@ -203,6 +214,15 @@ Route::prefix('client/page')->group(function () {
             'destroy' => 'mobile_client.destroy'
         ]
     ]);
+    #article
+    Route::post('article/fetch_data', [MobileArticleController::class, 'fetch_data'])->name('article_client.fetch_data');
+    Route::resource('article', MobileArticleController::class, [
+        'names' => [
+            'index' => 'article_client.index',
+            'show' => 'article_client.show'
+        ]
+    ]);
+
     #cart
     Route::prefix('shopping')->group(function () {
         Route::get('cart', [ShoppingCartController::class, 'cartList'])->name('cart.list');
@@ -224,24 +244,10 @@ Route::prefix('client/page')->group(function () {
     Route::get('home', function () {
         return view('client.page.home');
     })->name('client.home');
-    #detail
-//    Route::get('detail', [ShopMobileController::class, 'get_detail'])->name('client.detail');
-    #login
-    Route::get('login', function () {
-        return view('client.page.login');
-    })->name('client.login');
-    #register
-    Route::get('register', function () {
-        return view('client.page.register');
-    })->name('client.register');
     #about
     Route::get('about', function () {
         return view('client.page.about');
     })->name('client.about');
-    #contact
-    Route::get('contact', function () {
-        return view('client.page.contact');
-    })->name('client.contact');
     #privacy policy
     Route::get('privacy', function () {
         return view('client.page.privacy');
@@ -259,7 +265,5 @@ Route::prefix('client/page')->group(function () {
 Route::fallback(function () {
     return view('client.page.error.page_404');
 });
-
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
