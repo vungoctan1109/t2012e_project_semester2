@@ -4,7 +4,7 @@ namespace App\Http\Controllers\ClientController;
 
 use App\Models\Order;
 use App\Models\Mobile;
-use App\Mail\OrderPlaced;
+
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -220,9 +220,12 @@ class OrderController extends Controller
     public function show_thankyou($id)
     {
         $order = Order::find($id);
-        $order_details = $order->order_detail;
-        $invoice = view('client.page.fetch_data.view_invoice_confirm_email')->with('order', $order)->with('order_details', $order_details)->render();
-        return view('client.page.thankyou')->with('invoice', $invoice);
+        if($order) {
+            $order_details = $order->order_detail;
+            $invoice = view('client.page.fetch_data.view_invoice_confirm_email')->with('order', $order)->with('order_details', $order_details)->render();
+            return view('client.page.thankyou')->with('invoice', $invoice);
+        }
+        return view('client.page.error.page_404');       
     }
     public function get_district(Request $request)
     {
