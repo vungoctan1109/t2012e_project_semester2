@@ -50,9 +50,9 @@
                                     <div class="mercado-google-maps" id="az-google-maps57341d9e51968" data-hue=""
                                          data-lightness="1" data-map-style="2" data-saturation="-100"
                                          data-modify-coloring="false" data-title_maps="Kute themes"
-                                         data-phone="088-465 9965 02" data-email="kutethemes@gmail.com"
-                                         data-address="Z115 TP. Thai Nguyen" data-longitude="-0.120850"
-                                         data-latitude="51.508742" data-pin-icon="" data-zoom="16"
+                                         data-phone="088-465 9965 02" data-email="wiki.mobile.store@gmail.com"
+                                         data-address="8A Tôn Thất Thuyết, Hà Nội" data-longitude="105.78226183128689"
+                                         data-latitude="21.028547210187156" data-pin-icon="" data-zoom="16"
                                          data-map-type="ROADMAP"
                                          data-map-height="263">
                                     </div>
@@ -64,7 +64,7 @@
                                         <i class="fa fa-envelope" aria-hidden="true"></i>
                                         <div class="right-info">
                                             <b>Email</b>
-                                            <p>Support1@Mercado.com</p>
+                                            <p>wiki.mobile.store@gmail.com</p>
                                         </div>
                                     </div>
 
