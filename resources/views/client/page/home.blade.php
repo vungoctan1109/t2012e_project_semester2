@@ -73,7 +73,7 @@
                                         </a>
                                         <div class="group-flash">
                                             <span class="flash-item new-label new">new</span>
-                                            @if($mobile->status = 2)
+                                            @if($mobile->status == 2)
                                             <span class="flash-item sale-label discount">sale</span>
                                             @endif
                                         </div>
@@ -90,7 +90,7 @@
                                         '', ',');
                                         @endphp
                                         <div class="wrap-price">
-                                            @if($mobile->status = 2)
+                                            @if($mobile->status == 2)
                                             <ins>
                                                 <p class="product-price">{{$after_sale_price}} (VND)</p>
                                             </ins></br>
@@ -123,7 +123,7 @@
                                         </a>
                                         <div class="group-flash">
                                             <span class="flash-item new-label new">new</span>
-                                            @if($mobile->status = 2)
+                                            @if($mobile->status == 2)
                                             <span class="flash-item sale-label discount">sale</span>
                                             @endif
                                         </div>
@@ -140,7 +140,7 @@
                                         '', ',');
                                         @endphp
                                         <div class="wrap-price">
-                                            @if($mobile->status = 2)
+                                            @if($mobile->status == 2)
                                             <ins>
                                                 <p class="product-price">{{$after_sale_price}} (VND)</p>
                                             </ins></br>
@@ -173,7 +173,7 @@
                                         </a>
                                         <div class="group-flash">
                                             <span class="flash-item new-label new">new</span>
-                                            @if($mobile->status = 2)
+                                            @if($mobile->status == 2)
                                             <span class="flash-item sale-label discount">sale</span>
                                             @endif
                                         </div>
@@ -190,7 +190,7 @@
                                         '', ',');
                                         @endphp
                                         <div class="wrap-price">
-                                            @if($mobile->status = 2)
+                                            @if($mobile->status == 2)
                                             <ins>
                                                 <p class="product-price">{{$after_sale_price}} (VND)</p>
                                             </ins></br>
@@ -223,7 +223,7 @@
                                         </a>
                                         <div class="group-flash">
                                             <span class="flash-item new-label new">new</span>
-                                            @if($mobile->status = 2)
+                                            @if($mobile->status == 2)
                                             <span class="flash-item sale-label discount">sale</span>
                                             @endif
                                         </div>
@@ -240,7 +240,7 @@
                                         '', ',');
                                         @endphp
                                         <div class="wrap-price">
-                                            @if($mobile->status = 2)
+                                            @if($mobile->status == 2)
                                             <ins>
                                                 <p class="product-price">{{$after_sale_price}} (VND)</p>
                                             </ins></br>
@@ -273,7 +273,7 @@
                                         </a>
                                         <div class="group-flash">
                                             <span class="flash-item new-label new">new</span>
-                                            @if($mobile->status = 2)
+                                            @if($mobile->status == 2)
                                             <span class="flash-item sale-label discount">sale</span>
                                             @endif
                                         </div>
@@ -290,7 +290,7 @@
                                         '', ',');
                                         @endphp
                                         <div class="wrap-price">
-                                            @if($mobile->status = 2)
+                                            @if($mobile->status == 2)
                                             <ins>
                                                 <p class="product-price">{{$after_sale_price}} (VND)</p>
                                             </ins></br>
@@ -323,7 +323,7 @@
                                         </a>
                                         <div class="group-flash">
                                             <span class="flash-item new-label new">new</span>
-                                            @if($mobile->status = 2)
+                                            @if($mobile->status == 2)
                                             <span class="flash-item sale-label discount">sale</span>
                                             @endif
                                         </div>
@@ -340,7 +340,7 @@
                                         '', ',');
                                         @endphp
                                         <div class="wrap-price">
-                                            @if($mobile->status = 2)
+                                            @if($mobile->status == 2)
                                             <ins>
                                                 <p class="product-price">{{$after_sale_price}} (VND)</p>
                                             </ins></br>
@@ -373,7 +373,7 @@
                                         </a>
                                         <div class="group-flash">
                                             <span class="flash-item new-label new">new</span>
-                                            @if($mobile->status = 2)
+                                            @if($mobile->status == 2)
                                             <span class="flash-item sale-label discount">sale</span>
                                             @endif
                                         </div>
@@ -390,7 +390,7 @@
                                         '', ',');
                                         @endphp
                                         <div class="wrap-price">
-                                            @if($mobile->status = 2)
+                                            @if($mobile->status == 2)
                                             <ins>
                                                 <p class="product-price">{{$after_sale_price}} (VND)</p>
                                             </ins></br>
@@ -423,7 +423,7 @@
                                         </a>
                                         <div class="group-flash">
                                             <span class="flash-item new-label new">new</span>
-                                            @if($mobile->status = 2)
+                                            @if($mobile->status == 2)
                                             <span class="flash-item sale-label discount">sale</span>
                                             @endif
                                         </div>
@@ -440,7 +440,7 @@
                                         '', ',');
                                         @endphp
                                         <div class="wrap-price">
-                                            @if($mobile->status = 2)
+                                            @if($mobile->status == 2)
                                             <ins>
                                                 <p class="product-price">{{$after_sale_price}} (VND)</p>
                                             </ins></br>
@@ -536,7 +536,7 @@
                                         </a>
                                         <div class="group-flash">
                                             <span class="flash-item new-label new">new</span>
-                                            @if($mobile->status = 2)
+                                            @if($mobile->status == 2)
                                             <span class="flash-item sale-label discount">sale</span>
                                             @endif
                                         </div>
@@ -552,7 +552,7 @@
                                         '', ',');
                                         @endphp
                                         <div class="wrap-price">
-                                            @if($mobile->status = 2)
+                                            @if($mobile->status == 2)
                                             <ins>
                                                 <p class="product-price">{{$after_sale_price}} (VND)</p>
                                             </ins><br>
