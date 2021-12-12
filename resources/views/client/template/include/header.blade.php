@@ -32,8 +32,6 @@ $admin_user_id = " ";
                         <li {{$checklogin ? 'hidden' : ' ' }} class="menu-item"><a title="Register or Login"
                                 href="/client/page/register/get">Register</a>
                         </li>
-                        {{-- <li {{$checklogin ? ' ' : 'hidden' }} id="btn-logout" class="menu-item"><a
-                                title="Register or Login" href="#">Logout</a></li>--}}
                         <li {{$checklogin ? ' ' : 'hidden' }} class="menu-item lang-menu menu-item-has-children parent">
                             <a>{{$admin_user_name}} ({{$admin_user_role}})<i class="fa fa-angle-down"
                                     aria-hidden="true"></i></a>
@@ -96,7 +94,6 @@ $admin_user_id = " ";
                         </a>
                     </div>
                 </div>
-
             </div>
         </div>
 
