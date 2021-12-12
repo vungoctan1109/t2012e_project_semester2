@@ -145,7 +145,26 @@ $(document).ready(function (e) {
                                     url: `/client/page/thankyou/${resp.orderID}`,
                                     method: "GET",
                                     success: function () {
-                                        window.location.href = `/client/page/thankyou/${resp.orderID}`;
+                                        var data = { id: resp.orderID };
+                                        $.ajax({
+                                            url: "/client/page/confirm-email",
+                                            method: "GET",
+                                            data: data,
+                                            success: function (responseSendMail) {
+                                                if(responseSendMail.status == 200){
+                                                    setTimeout(function () {
+                                                        window.location.href = `/client/page/thankyou/${resp.orderID}`;
+                                                    },1500);      
+                                                    alertProcess()                                                                                                
+                                                }   
+                                                if(responseSendMail.status == 404){ 
+                                                    setTimeout(function () {
+                                                        window.location.href = `/client/page/404`;
+                                                    },1500);                                                  
+                                                    alertProcess()
+                                                } 
+                                            },
+                                        });                                           
                                     },
                                 });
                             }
@@ -182,20 +201,41 @@ $(document).ready(function (e) {
                 if (resp.status == 202) {
                     $.ajaxSetup({
                         headers: {
-                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                                "content"
+                            ),
                         },
                     });
                     $.ajax({
                         url: "/client/page/order",
-                        method: "post",                      
+                        method: "post",
                         data: formOrder,
                         success: function (resp) {
-                            if (resp.status == 200) {
+                            if (resp.status == 200) {                                
                                 $.ajax({
                                     url: `/client/page/thankyou/${resp.orderID}`,
                                     method: "GET",
-                                    success: function () {
-                                        window.location.href = `/client/page/thankyou/${resp.orderID}`;
+                                    success: function () {                                        
+                                        var data = { id: resp.orderID };
+                                        $.ajax({
+                                            url: "/client/page/confirm-email",
+                                            method: "GET",
+                                            data: data,
+                                            success: function (responseSendMail) {
+                                                if(responseSendMail.status == 200){
+                                                    setTimeout(function () {
+                                                        window.location.href = `/client/page/thankyou/${resp.orderID}`;
+                                                    },1500);
+                                                    alertProcess()                                                   
+                                                }   
+                                                if(responseSendMail.status == 404){ 
+                                                    setTimeout(function () {
+                                                        window.location.href = `/client/page/404`;
+                                                    },1500);                                                  
+                                                    alertProcess()
+                                                }                                              
+                                            },
+                                        });                                      
                                     },
                                 });
                             }
@@ -223,7 +263,7 @@ $(document).ready(function (e) {
             },
         });
     });
-
+    //alert
     function alertAction(message, status) {
         Swal.fire({
             position: "top-end",
@@ -231,6 +271,31 @@ $(document).ready(function (e) {
             title: `${message}`,
             showConfirmButton: false,
             timer: 1000,
+        });
+    }
+      //alert alert process
+      function alertProcess() {
+        let timerInterval;
+        Swal.fire({
+            title: "Confirm Invoice in progress",
+            html: "Progress will be completed in about in <b></b> milliseconds.",
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading();
+                const b = Swal.getHtmlContainer().querySelector("b");
+                timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft();
+                }, 100);
+            },
+            willClose: () => {
+                clearInterval(timerInterval);
+            },
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log("I was closed by the timer");
+            }
         });
     }
 });
