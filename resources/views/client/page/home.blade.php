@@ -12,7 +12,7 @@
                 <div class="item-slide">
                     <img src="https://res.cloudinary.com/binht2012e/image/upload/c_fill,h_439,w_1170/v1639304234/CC_20S21_20Website_20Banner-02_0_hztmmp.jpg"
                         alt="" class="img-slide">
-                </div>
+                </div>               
                 <div class="item-slide">
                     <img src="https://res.cloudinary.com/tanvnth2012002/image/upload/v1639062406/637738655803121919_F-H1_800x300_yrhuye.jpg"
                         alt="" class="img-slide">
@@ -41,10 +41,10 @@
                     </figure>
                 </a>
             </div>
-        </div>
+        </div>        
         <!--Category-->
         <div class="wrap-show-advance-info-box style-1">
-            <h3 class="title-box">Product Categories</h3>
+            <h3 class="title-box">Product Categories</h3>            
             <div class="wrap-products">
                 <div class="wrap-product-tab tab-style-1">
                     <div class="tab-control">
@@ -464,7 +464,7 @@
         </div>
         <!--On Sale-->
         <div class="wrap-show-advance-info-box style-1 has-countdown">
-            <h3 class="title-box">On Sale</h3>
+            <h3 class="title-box">Sale Off</h3>
             <div class="wrap-top-banner">
                 <a href="#" class="link-banner banner-effect-2">
                     <figure><img
@@ -514,9 +514,8 @@
             <h3 class="title-box">Latest Products</h3>
             <div class="wrap-top-banner">
                 <a href="#" class="link-banner banner-effect-2">
-                    <figure><img
-                            src="https://res.cloudinary.com/binht2012e/image/upload/c_fill,h_240,w_1170/v1639304438/557720_JXtJbaEYDN_iphone_taakoh.jpg"
-                            width="1170" height="240" alt=""></figure>
+                    <figure><img src="https://res.cloudinary.com/binht2012e/image/upload/c_fill,h_240,w_1170/v1639304438/557720_JXtJbaEYDN_iphone_taakoh.jpg" width="1170"
+                            height="240" alt=""></figure>
                 </a>
             </div>
             <div class="wrap-products">

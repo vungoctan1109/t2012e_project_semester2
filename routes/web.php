@@ -50,17 +50,17 @@ use App\Http\Controllers\ClientController\MobileArticleController;
 */
 #auth
 Route::get('/', function () {
-    $mobile_on_sale = \App\Models\Mobile::query()->select('*')->where('status', '=', 2)->get()->take(10);
-    $mobile_latest = \App\Models\Mobile::query()->select('*')->orderBy('created_at','desc')->get()->take(10);
-    $article = \App\Models\Article::query()->select('*')->orderBy('created_at','desc')->get()->take(10);
-    $mobiles_apple = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 1)->orderBy('created_at','desc')->get()->take(10);    
-    $mobiles_ss = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 2)->orderBy('created_at','desc')->get()->take(10);    
-    $mobiles_xiaomi = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 3)->orderBy('created_at','desc')->get()->take(10);    
-    $mobiles_nokia = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 4)->orderBy('created_at','desc')->get()->take(10);    
-    $mobiles_realme = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 5)->orderBy('created_at','desc')->get()->take(10);    
-    $mobiles_vivo = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 8)->orderBy('created_at','desc')->get()->take(10);    
-    $mobiles_oppo = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 9)->orderBy('created_at','desc')->get()->take(10);    
-    $mobiles_asus = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 6)->orderBy('created_at','desc')->get()->take(10);    
+    $mobile_on_sale = \App\Models\Mobile::query()->select('*')->where('status', '=', 2)->get();
+    $mobile_latest = \App\Models\Mobile::query()->select('*')->orderBy('created_at','desc')->get();
+    $article = \App\Models\Article::query()->select('*')->orderBy('created_at','desc')->get();
+    $mobiles_apple = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 1)->orderBy('created_at','desc')->get();    
+    $mobiles_ss = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 2)->orderBy('created_at','desc')->get();    
+    $mobiles_xiaomi = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 3)->orderBy('created_at','desc')->get();    
+    $mobiles_nokia = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 4)->orderBy('created_at','desc')->get();    
+    $mobiles_realme = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 5)->orderBy('created_at','desc')->get();    
+    $mobiles_vivo = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 8)->orderBy('created_at','desc')->get();    
+    $mobiles_oppo = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 9)->orderBy('created_at','desc')->get(); 
+    $mobiles_asus = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 6)->orderBy('created_at','desc')->get();    
     return view('client.page.home')->with('mobile_on_sale', $mobile_on_sale)->with('mobile_latest', $mobile_latest)->with('article', $article)
                                     ->with('mobiles_apple', $mobiles_apple)->with('mobiles_ss', $mobiles_ss)->with('mobiles_xiaomi', $mobiles_xiaomi)
                                     ->with('mobiles_nokia', $mobiles_nokia)

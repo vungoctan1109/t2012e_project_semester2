@@ -1,6 +1,6 @@
 @extends('client.template.form')
 @section('title_page')
-    {{$mobile -> name}}
+{{$mobile -> name}}
 @endsection
 @section('private_link')
 
@@ -61,11 +61,14 @@
                                 $price_current = number_format($mobile -> price - ($mobile -> price * $mobile -> saleOff), 0, '', ',');
                         ?>
                         @if ($mobile-> saleOff > 0)
-                        <div class="wrap-price"><span class="product-price discount">Giảm ({{$mobile-> saleOff * 100}}%)</span>  </div>
-                        <div class="wrap-price"><strike class="product-price" style="font-size: 15px">{{$price}} (VND)</strike></div>
-                        <div class="wrap-price"><span class="product-price" >{{$price_current}} (VND)</span></div>
+                        <div class="wrap-price"><span class="product-price discount">Giảm ({{$mobile-> saleOff *
+                                100}}%)</span> </div>
+                        <div class="wrap-price"><strike class="product-price" style="font-size: 15px">{{$price}}
+                                (VND)</strike></div>
+                        <div class="wrap-price"><span class="product-price">{{$price_current}} (VND)</span></div>
                         @else
-                        <div class="wrap-price"><span class="product-price" style="font-size: 15px">{{$price}} (VND)</span></div>
+                        <div class="wrap-price"><span class="product-price" style="font-size: 15px">{{$price}}
+                                (VND)</span></div>
                         @endif
                         <div class="stock-info in-stock">
                             <p class="availability">Status:
@@ -86,7 +89,9 @@
                             <form id="formCart">
                                 @csrf
                                 <input type="hidden" value="{{$mobile -> id}}" name="id" />
-                                <input type="hidden" value="{{$mobile -> price - ($mobile -> price * $mobile -> saleOff)}}" name="price" />
+                                <input type="hidden"
+                                    value="{{$mobile -> price - ($mobile -> price * $mobile -> saleOff)}}"
+                                    name="price" />
                                 <input type="hidden" value="{{$mobile -> name}}" name="name">
                                 <input type="hidden" value="{{$mobile -> mainThumbnail}}" name="image">
                                 <input type="hidden" value="{{$mobile -> saleOff}}" name="saleOff">
@@ -346,15 +351,14 @@
                             data-loop="false" data-nav="true" data-dots="false"
                             data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"5"}}'>
                             @foreach ($mobiles_related as $item)
-                            @if ($item -> status == 1)
                             @php
                             $price = number_format($item -> price, 0, '', ','); // 1,000,000
                             @endphp
                             <div class="product product-style-2 equal-elem ">
                                 <div class="product-thumnail">
-                                    <a href="{{route('mobile_client.show', $item -> id)}}"
-                                        title="{{$item -> name}}">
-                                        <figure><img src="{{$item -> mainThumbnail}}" width="214" height="214" alt="{{$item -> name}}"></figure>
+                                    <a href="{{route('mobile_client.show', $item -> id)}}" title="{{$item -> name}}">
+                                        <figure><img src="{{$item -> mainThumbnail}}" width="214" height="214"
+                                                alt="{{$item -> name}}"></figure>
                                     </a>
 
                                     <div class="group-flash">
@@ -370,9 +374,6 @@
                                     <div class="wrap-price"><span class="product-price">{{$price}} (VND)</span></div>
                                 </div>
                             </div>
-                            @endif
-
-
                             @endforeach
                         </div>
                     </div>
