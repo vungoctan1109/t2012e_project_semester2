@@ -95,7 +95,10 @@ class UserControllerAdmin extends Controller
     {
         $orders = Order::where('userId', $user_id)->paginate(50);
         $result = User::find($user_id);
-        return view('admin.page.user.detail_user', ['user' => $result, 'order' => $orders]);
+        if ($result){
+            return view('admin.page.user.detail_user', ['user' => $result, 'order' => $orders]);
+        }
+        return view('admin.page.error.page_404')->with('result', $result);
     }
 
     /**
@@ -107,7 +110,10 @@ class UserControllerAdmin extends Controller
     public function edit($user_admin_id)
     {
         $result = User::find($user_admin_id);
-        return view('admin.page.user.edit_user', ['user' => $result]);
+        if ($result){
+            return view('admin.page.user.edit_user', ['user' => $result]);
+        }
+        return view('admin.page.error.page_404')->with('result', $result);
     }
 
     /**
