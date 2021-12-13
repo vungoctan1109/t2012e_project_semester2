@@ -32,7 +32,7 @@
         </a>
     </form>
 </div>
-<script src="/dist/js/library/jquery-3.6.0.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/dist/js/pages/user/admin_login.js"></script>
 </body>
 </html>
