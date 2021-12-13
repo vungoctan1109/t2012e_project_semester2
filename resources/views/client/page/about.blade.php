@@ -9,8 +9,8 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="#" class="link">home</a></li>
-                <li class="item-link"><span>Contact us</span></li>
+                <li class="item-link"><a href="/" class="link">Trang Chủ</a></li>
+                <li class="item-link"><span>Về Chúng Tôi</span></li>
             </ul>
         </div>
     </div>

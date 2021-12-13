@@ -21,24 +21,24 @@ $admin_user_id = " ";
                     <ul>
                         <li class="menu-item">
                             <a title="Hotline: (+123) 456 789" href="#"><span
-                                    class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
+                                    class="icon label-before fa fa-mobile"></span>Đường Dây Nóng: 0123-465-789-111</a>
                         </li>
                     </ul>
                 </div>
                 <div class="topbar-menu right-menu">
                     <ul>
                         <li {{$checklogin ? 'hidden' : ' ' }} class="menu-item"><a title="Register or Login"
-                                href="/client/page/login/get">Login</a></li>
+                                href="/client/page/login/get">Đăng Nhập</a></li>
                         <li {{$checklogin ? 'hidden' : ' ' }} class="menu-item"><a title="Register or Login"
-                                href="/client/page/register/get">Register</a>
+                                href="/client/page/register/get">Đăng Kí</a>
                         </li>
                         <li {{$checklogin ? ' ' : 'hidden' }} class="menu-item lang-menu menu-item-has-children parent">
                             <a>{{$admin_user_name}} ({{$admin_user_role}})<i class="fa fa-angle-down"
                                     aria-hidden="true"></i></a>
                             <ul class="submenu lang">
-                                <li {{$checklogin ? ' ' : 'hidden'}} class="menu-item"><a title="profile" href="/client/page/user/{{$admin_user_id}}" id="btn-profile">Profile</a></li>
+                                <li {{$checklogin ? ' ' : 'hidden'}} class="menu-item"><a title="profile" href="/client/page/user/{{$admin_user_id}}" id="btn-profile">Thông Tin Cá Nhân</a></li>
                                 <li style="{{$admin_user_role2 == 1 ? 'display:none' : ' ' }}" class="menu-item"><a title="history" href="/client/page/orders/{{$admin_user_id}}" id="btn-history">Purchase History</a></li>
-                                <li {{$checklogin ? ' ' : 'hidden'}} class="menu-item"><a title="logout" href="#" id="btn-logout">Logout</a></li>
+                                <li {{$checklogin ? ' ' : 'hidden'}} class="menu-item"><a title="logout" href="#" id="btn-logout">Đăng Xuất</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -58,7 +58,7 @@ $admin_user_id = " ";
                 <div class="wrap-search center-section">
                     <div class="wrap-search-form">
                         <form action="#" id="form-search-top" name="form-search-top">
-                            <input type="text" list="listSearch" name="search" value="" placeholder="Search here...">
+                            <input type="text" list="listSearch" name="search" value="" placeholder="Bạn cần tìm gì ?" id="search">
                             <datalist id="listSearch">
                             </datalist>
                             <button form="form-search-top" type="button" id="btn-search"><i class="fa fa-search"
@@ -72,7 +72,7 @@ $admin_user_id = " ";
                         <a href="#" class="link-direction">
                             <i class="fa fa-heart" aria-hidden="true"></i>
                             <div class="left-info">
-                                <span class="index">0 item</span>
+                                <span class="index">0 items</span>
                                 <span class="title">Wishlist</span>
                             </div>
                         </a>
@@ -82,7 +82,7 @@ $admin_user_id = " ";
                             <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                             <div class="left-info">
                                 <span class="index" id="total_cart">{{ Cart::getTotalQuantity()}} items</span>
-                                <span class="title">CART</span>
+                                <span class="title">Giỏ Hàng</span>
                             </div>
                         </a>
                     </div>
@@ -106,16 +106,16 @@ $admin_user_id = " ";
                                     aria-hidden="true"></i></a>
                         </li>
                         <li class="menu-item">
-                            <a href="/client/page/shop/mobile" class="link-term mercado-item-title">Shop</a>
+                            <a href="/client/page/shop/mobile" class="link-term mercado-item-title">Cửa Hàng</a>
                         </li>
                         <li class="menu-item">
-                            <a href="/client/page/article" class="link-term mercado-item-title">Article</a>
+                            <a href="/client/page/article" class="link-term mercado-item-title">Bài Viết</a>
                         </li>
                         <li class="menu-item">
-                            <a href="{{route('client.about')}}" class="link-term mercado-item-title">About Us</a>
+                            <a href="{{route('client.about')}}" class="link-term mercado-item-title">Về Chúng Tôi</a>
                         </li>
                         <li class="menu-item">
-                            <a href="/client/page/feedback " class="link-term mercado-item-title">Contact Us</a>
+                            <a href="/client/page/feedback " class="link-term mercado-item-title">Liên Hệ Chúng Tôi</a>
                         </li>
                     </ul>
                 </div>

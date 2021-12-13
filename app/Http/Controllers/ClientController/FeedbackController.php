@@ -7,9 +7,7 @@ use App\Models\Feedback;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-
-
+use Illuminate\Support\Facades\Validator;
 class FeedbackController extends Controller
 {
     /**
@@ -40,18 +38,37 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        $feedback = new Feedback();
-        $feedback->name = $request->get('name');
-        $feedback->email = $request->get('email');
-        $feedback->phone = $request->get('phone');
-        $feedback->comment = $request->get('comment');
-        $feedback->created_at = Carbon::now();
-        $feedback->updated_at = Carbon::now();
-        $result = $feedback->save();
-        if($result){
-            return response()->json(['status' => 200, 'message' => 'save feedback info success']);
-        }else{
-            return response()->json(['status' => 500, 'message' => 'save feedback info false']);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'name' => 'required',
+                'email' => 'required',
+                'phone' => 'required',
+                'comment' => 'required'
+            ],
+            [
+                'name.required' => 'Quý khách cần điền họ tên',
+                'email.required' => 'Quý khách cần điền email',
+                'phone.required' => 'Quý khách cần điền số điện thoại',
+                'comment.required' => 'Quý khách cần điền nhận xét'
+            ]
+        );
+        if ($validator->fails()) {
+            return response()->json(['status' => 400, 'errors' => $validator->errors()->toArray(), 'message' => 'Data not valid!']);
+        } else {
+            $feedback = new Feedback();
+            $feedback->name = $request->get('name');
+            $feedback->email = $request->get('email');
+            $feedback->phone = $request->get('phone');
+            $feedback->comment = $request->get('comment');
+            $feedback->created_at = Carbon::now();
+            $feedback->updated_at = Carbon::now();
+            $result = $feedback->save();
+            if ($result) {
+                return response()->json(['status' => 200, 'message' => 'Gửi Phản Hồi Thành Công!']);
+            } else {
+                return response()->json(['status' => 500, 'message' => 'Gửi Phản Hồi Không Thành']);
+            }
         }
     }
 

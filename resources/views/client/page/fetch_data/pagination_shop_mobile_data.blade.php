@@ -1,4 +1,4 @@
-<div id='fetchData'>
+<div id='fetchData' style="display: inline-block;">
     <div class="row">
         @if (count($mobiles) > 0)
         <ul class="product-list grid-products equal-container">
@@ -16,12 +16,12 @@
                         </a>
                     </div>
                     <div class="product-info">
-                        <a href="#" class="product-name"><span>{{$mobile -> name}}</span><br></a>
-                        <strong>({{strtoupper($mobile -> strStatus)}})</strong>
-                        @if ($mobile -> saleOff > 0 && $mobile->status != -1 && $mobile -> status != -0 )
-                        <strong class="discount">(Giảm: {{$mobile -> saleOff * 100}}%)</strong>
-                        <div class="wrap-price"><strike class="product-price">{{$price}} (VND)</strike> </div>
+                        <a href="#" class="product-name"><span>{{$mobile -> name}}</span><br></a>                                               
+                        @if ($mobile -> saleOff > 0 && $mobile->status != -1 && $mobile -> status != -0 )                        
+                        <strong class="discount">Giảm: {{$mobile -> saleOff * 100}}%</strong>
+                        <div class="wrap-price"><span class="product-price">{{$price}} (VND)</span> </div>
                         @else
+                        <strong>{{strtoupper($mobile -> strStatus)}}</strong>
                         <div class="wrap-price"><span class="product-price">{{$price}} (VND)</span> </div>
                         @endif
                         <form id="formCart">
@@ -34,7 +34,7 @@
                             <input type="hidden" value="{{$mobile -> saleOff}}" name="saleOff">
                             <input type="hidden" value="{{$mobile -> quantity}}" name="current_quantity">
                             <input type="hidden" value="1" name="quantity">
-                            <a href="#" class="btn add-to-cart" id="btnAddToCart">Add To Cart</a>
+                            <a href="#" class="btn add-to-cart" id="btnAddToCart">Thêm vào giỏ hàng</a>
                         </form>
                     </div>
                 </div>

@@ -125,11 +125,7 @@ $(document).ready(function () {
     //sort by
     $("#sortBy").change(function (e) {
         fetch_data_filter();
-    });
-    //search by name
-    // $("#btn-search").click(function (e) {
-    //     e.preventDefault();
-    // });
+    });   
     $('input[name="search"]').keyup(function (e) {
         e.preventDefault();
         equalElement();
@@ -159,13 +155,13 @@ $(document).ready(function () {
                 for (var i = 0; i < response.mobiles_suggest.length; i++) {
                     $("#listSearch").append(
                         `<option>${response.mobiles_suggest[i].name}</option>`
-                    );
-                }
+                    );                                                                         
+                }              
                 equalElement();
                 $content[0].scrollTop = $content[0].scrollHeight;
             },
         });
-    });
+    });       
     //paginate
     $(document).on("click", "#pagination a", function (e) {
         e.preventDefault();

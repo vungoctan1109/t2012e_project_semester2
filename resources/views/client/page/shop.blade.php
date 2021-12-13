@@ -9,8 +9,8 @@
         <div class="container">
             <div class="wrap-breadcrumb">
                 <ul>
-                    <li class="item-link"><a href="#" class="link">home</a></li>
-                    <li class="item-link"><span>Mobile</span></li>
+                    <li class="item-link"><a href="#" class="link">Trang chủ</a></li>
+                    <li class="item-link"><span>Điện Thoại</span></li>
                 </ul>
             </div>
             <div class="row">
@@ -24,15 +24,15 @@
                         <div class="wrap-right">
                             <div class="sort-item orderby ">
                                 <select name="orderby" class="use-chosen" id="sortBy">
-                                    <option value="price_desc">Price Descending</option>
-                                    <option value="price_asc">Price Ascending</option>
+                                    <option value="price_desc">Giá giảm dần</option>
+                                    <option value="price_asc">Giá tăng dần</option>
                                 </select>
                             </div>
                             <div class="sort-item product-per-page">
                                 <select name="post-per-page" class="use-chosen" id="pagination_limit">
-                                    <option value="limit_9" selected>Litmit 9</option>
-                                    <option value="limit_18">Litmit 18</option>
-                                    <option value="limit_32">Litmit 32</option>
+                                    <option value="limit_9" selected>Giới hạn 9</option>
+                                    <option value="limit_18">Giới hạn 18</option>
+                                    <option value="limit_32">Giới hạn 32</option>
                                 </select>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                 <!--end main products area-->
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
                     <div class="widget mercado-widget filter-widget brand-widget">
-                        <h2 class="widget-title">Brand</h2>
+                        <h2 class="widget-title">Nhãn Hiệu</h2>
                         <div class="widget-content">
                             <ul class="list-style vertical-list list-limited" data-show="6">
                                 <li class="list-item"><a value='-1' class="filter-link filter-brand active" href="#">Tất
@@ -58,7 +58,7 @@
                         </div>
                     </div><!-- brand widget-->
                     <div class="widget mercado-widget filter-widget brand-widget">
-                        <h2 class="widget-title">Price</h2>
+                        <h2 class="widget-title">Giá</h2>
                         <div class="widget-content">
                             <ul class="list-style vertical-list list-limited">
                                 <li class="list-item"><a value="-1" class="filter-link filter-price active" href="#">Tất

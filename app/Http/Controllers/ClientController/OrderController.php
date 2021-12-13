@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\ClientController;
-
 use App\Models\Order;
 use App\Models\Mobile;
-
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -12,12 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use HoangPhi\VietnamMap\Models\Ward;
-use Illuminate\Support\Facades\Session;
 use HoangPhi\VietnamMap\Models\District;
 use HoangPhi\VietnamMap\Models\Province;
 use Illuminate\Support\Facades\Validator;
-
-
 
 class OrderController extends Controller
 {
@@ -130,16 +125,15 @@ class OrderController extends Controller
                         }
                     }
                 }
-
                 DB::commit();
                 \Cart::clear();
-                return response()->json(['status' => 200, 'message' => 'Save order successfully', 'orderID' => $order_id]);
+                return response()->json(['status' => 200, 'orderID' => $order_id]);
             } catch (\Exception $e) {
                 DB::rollBack();
-                return response()->json(['status' => 500, 'message' => 'Save order information false']);
+                return response()->json(['status' => 500, 'message' => 'Đã xảy ra lỗi!']);
             }
             if ($hasError) {
-                return response()->json(['status' => 404, 'message' => 'Sorry we can not find this product']);
+                return response()->json(['status' => 404, 'message' => 'Đã xảy ra lỗi!']);
             }
         }
     }
@@ -153,6 +147,14 @@ class OrderController extends Controller
             'district' => 'required',
             'ward' => 'required',
             'phone' => 'required',
+        ],
+        [
+            'name.required' => 'Quý khách cần điền họ tên',
+            'email.required' => 'Quý khách cần điền email',
+            'province.required' => 'Quý khách cần điền tỉnh',
+            'district.required' => 'Quý khách cần điền huyện',
+            'ward.required' => 'Quý khách cần điền xã',
+            'phone.required' => 'Quý khách cần điền số điện thoại'
         ]);
         if ($validator->fails()) {
             return response()->json(['status' => 400, 'errors' => $validator->errors()->toArray(), 'message' => 'Vui lòng nhập đủ thông tin!']);
@@ -190,21 +192,7 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
-    {
-        $order = Order::find($request->get('id'));
-        if ($order) {
-            $order->checkOut = true;
-            $order->status = 1;
-            $order->updated_at = Carbon::now();
-            if ($order->update()) {
-                return response()->json(['status' => 200, 'message' => 'save order successfully!',  'order_id' => $order->id]);
-            } else {
-                return response()->json(['status' => 500, 'message' => 'Some thing went wrong!']);
-            }
-        } else {
-            return response()->json(['status' => 404, 'message' => 'Order not found!']);
-        }
-        return response()->json(['status' => 500, 'message' => 'Some thing went wrong!']);
+    {       
     }
 
     /**

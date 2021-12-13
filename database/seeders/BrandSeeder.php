@@ -59,14 +59,7 @@ class BrandSeeder extends Seeder
                 'description'=>'ASUSTek Computer Inc. is a Taiwanese multinational computer and phone hardware and electronics company headquartered in Beitou District, Taipei, Taiwan.',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
-            ],
-            [
-                'id'=> 7,
-                'name'=>'Vsmart',
-                'description'=>'Vingroups predecessor is Technocom Group founded in 1993 in Ukraine. In the early 2000s, Technocom returned to Vietnam, concentrating on investing in tourism and real estate with two original strategic brands, named Vinpearl and Vincom. In January 2012, both of them merged with each other and officially operated under the name of Vingroup Corporation - a Joint Stock Company.',
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ],
+            ],          
             [
                 'id'=> 8,
                 'name'=>'Vivo',
