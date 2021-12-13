@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\ClientController;
 
-use App\Http\Controllers\Controller;
 use App\Models\Mobile;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ShoppingCartController extends Controller
 {
@@ -12,7 +13,9 @@ class ShoppingCartController extends Controller
     public function cartList()
     {
         $cartItems = \Cart::getContent();
-        return view('client.page.cart')->with('cartItems', $cartItems);
+        $mobiles_popular = OrderDetail::query()->selectRaw('mobiles.id, mobiles.name, mobiles.price,mobiles.thumbnail ,mobiles.status,mobiles.saleOff, SUM(order_details.quantity) AS sum_quantity')->join('mobiles', 'order_details.mobileID', '=', 'mobiles.id')
+        ->groupBy('mobiles.name')->orderBy('sum_quantity', 'DESC')->get();
+        return view('client.page.cart')->with('cartItems', $cartItems)->with('mobiles_popular', $mobiles_popular);
     }
     #SAVE
     public function addToCart(Request $request)

@@ -12,8 +12,8 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="#" class="link">home</a></li>
-                <li class="item-link"><span>Thank You</span></li>
+                <li class="item-link"><a href="#" class="link">Trang Chủ</a></li>
+                <li class="item-link"><span>Hoá ĐƠn</span></li>
             </ul>
         </div>
     </div>
@@ -25,8 +25,8 @@
                 {!!$invoice!!}
                 @endif
                 <h2>Thank you</h2>
-                <p>A confirmation email was sent.</p>
-                <a href="{{route('mobile_client.index')}}" class="btn btn-submit btn-submitx">Continue Shopping</a>
+                <p>Một email xác nhận đã được gửi.</p>
+                <a href="{{route('mobile_client.index')}}" class="btn btn-submit btn-submitx">Quay Lại Cửa Hàng</a>
             </div>
         </div>
     </div>

@@ -1,19 +1,19 @@
 <div class="container">
-    <h2>Invoice</h2>
+    <h2>Hóa Đơn</h2>
     <div class="row">
         <div class="col-xs-12">
             <div class="invoice-title">
-                <h3 class="pull-right">Order #{{$order -> id}}</h3>
+                <h3 class="pull-right">Đơn Hàng #{{$order -> id}}</h3>
                 <input type="hidden" value="{{$order -> id}}" id="order_id">
             </div>
             <hr>
             <div class="row">
                 <div class="col-xs-6 text-left">
                     <address>
-                        <h5><strong>Billed To:</strong><br></h5>
-                        <b>Name: {{$order -> name}}</b><br>
+                        <h5><strong>Hóa đơn cho:</strong><br></h5>
+                        <b>Tên: {{$order -> name}}</b><br>
                         <b>Email: {{$order -> email}} </b><br>
-                        <b>Phone: {{$order -> phone}}</b><br>
+                        <b>Điện Thoại: {{$order -> phone}}</b><br>
                         @php
                         $address = '';
                         if (isset($order -> address_detail)){
@@ -31,18 +31,18 @@
                 <div class="col-xs-6 text-left">
                     <address>
                         @if($order -> paymentMethod == 0)
-                        <strong>Payment Method: COD</strong><br>                                     
-                        <strong>Checkout Status: Unpaid</strong><br>                      
+                        <strong>Phương Thức Thanh Toán: COD</strong><br>                                     
+                        <strong>Trạng Thái Thanh Toán: Chưa Thanh Toán</strong><br>                      
                         @endif
                         @if($order -> paymentMethod == 1)
-                        <strong>Payment Method: Paypal</strong><br>
-                        <strong>Checkout Status: Paid</strong><br>
+                        <strong>Phương Thức Thanh Toán: Paypal</strong><br>
+                        <strong>Trạng Thái Thanh Toán: Đã Thanh Toán</strong><br>
                         @endif                        
                     </address>
                 </div>
                 <div class="col-xs-6 text-right">
                     <address>
-                        <strong>Order Date:</strong><br>
+                        <strong>Ngày đặt hàng:</strong><br>
                         {{date('d-m-Y', strtotime($order->created_at))}}<br><br>
                     </address>
                 </div>
@@ -54,18 +54,18 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><strong>Order summary</strong></h3>
+                    <h3 class="panel-title"><strong>THÔNG TIN THANH TOÁN</strong></h3>
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <td class="text-left"><strong>Item</strong></td>
-                                    <td class="text-center"><strong>Price (VND)</strong></td>
-                                    <td class="text-center"><strong>Quantity</strong></td>
-                                    <td class="text-center"><strong>Discount (%)</strong></td>
-                                    <td class="text-right"><strong>Totals (VND)</strong></td>
+                                    <td class="text-left"><strong>Tên Phẩm</strong></td>
+                                    <td class="text-center"><strong>Giá (VND)</strong></td>
+                                    <td class="text-center"><strong>Số Lượng</strong></td>
+                                    <td class="text-center"><strong>Giảm Giá(%)</strong></td>
+                                    <td class="text-right"><strong>Tổng Tiền (VND)</strong></td>
                                 </tr>
                             </thead>
                             <tbody>                                

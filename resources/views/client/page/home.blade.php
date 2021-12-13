@@ -145,10 +145,10 @@
                                             @if($mobile->status == 2)
                                             <ins>
                                                 <p class="product-price">{{$after_sale_price}} (VND)</p>
-                                            </ins></br>
+                                            </ins></br>  
                                             <del>
                                                 <p class="product-price">{{$before_sale_price}} (VND)</p>
-                                            </del>
+                                            </del>                                                                                  
                                             @else
                                             <ins>
                                                 <p class="product-price">{{$before_sale_price}} (VND)</p>
