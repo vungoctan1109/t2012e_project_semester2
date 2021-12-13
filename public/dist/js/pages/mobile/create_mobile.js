@@ -128,9 +128,7 @@ $(document).ready(function () {
         var status = $('select[name="status"]').val();
         var saleOff = $('input[name="saleOff"]').val();
         var description = $('textarea[name="description"]').val();
-        var detail = editorData;
-        console.log(detail);
-        alert(thumbnail);
+        var detail = editorData; 
         var data = {
             name: name,
             brandID: brandID,
