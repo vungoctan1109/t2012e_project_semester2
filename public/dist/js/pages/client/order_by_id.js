@@ -39,7 +39,7 @@ window.addEventListener('DOMContentLoaded', function () {
                         '      <th scope="col">#</th>\n' +
                         '      <th scope="col">Sản phẩm</th>\n' +
                         '      <th scope="col">Số tiền</th>\n' +
-                        '      <th scope="col">Ngày đặt hàng</th>\n' +
+                        '      <th scope="col">Số lượng</th>\n' +
                         '    </tr>\n' +
                         '  </thead>\n' +
                         '  <tbody>'
@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', function () {
                                             <th scope="row">${i}</th>
                                             <td>${odt.name}</td>
                                             <td>${convertMoneyFormat(odt.quantity * odt.unitPrice * (1 - odt.discount))}</td>
-                                            <td>${convertDateFormat(odt.created_at)}</td>
+                                            <td>${odt.quantity}</td>
                                        </tr>`
                         i++;
                     })

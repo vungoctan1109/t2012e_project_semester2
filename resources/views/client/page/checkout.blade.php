@@ -4,6 +4,19 @@
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection
 @section('main_content_page')
+    @php
+        if(\Illuminate\Support\Facades\Auth::check()){
+            $name = \Illuminate\Support\Facades\Auth::user()->fullName;
+            $address = \Illuminate\Support\Facades\Auth::user()->address;
+            $phone = \Illuminate\Support\Facades\Auth::user()->phone;
+            $email = \Illuminate\Support\Facades\Auth::user()->email ;
+        }else{
+            $name = '';
+            $address = '';
+            $phone = '';
+            $email = '';
+        }
+    @endphp
 <main id="main" class="main-site">
     <div class="container">
         <div class="wrap-breadcrumb">
@@ -12,7 +25,7 @@
                 <li class="item-link"><span>login</span></li>
             </ul>
         </div>
-        <div class=" main-content-area">           
+        <div class=" main-content-area">
             <div class="wrap-address-billing">
                 <h3 class="box-title">Địa Chỉ Thanh Toán</h3>
                 <form action="#" method="get" name="formOrder" id="formOrder">                    
@@ -53,10 +66,10 @@
                         <datalist id="wards">
                         </datalist>
                         <span class="error ward_error"></span>
-                    </p>     
+                    </p>
                     <p class="row-in-form">
                         <label for="address_detail">Địa Chỉ Chi Tiết: </label>
-                        <input id="address_detail" type="text" name="address_detail" value=""
+                        <input id="address_detail" type="text" name="address_detail" value="{{$address}}"
                             placeholder="Địa chỉ cụ thể của quý khách ... ">
                     </p>
                     <p class="row-in-form">
