@@ -87,7 +87,10 @@ class BrandController extends Controller
     public function show($id)
     {
         $result = DB::table('brands')->where('id', '=', $id)->first();
-        return view('admin.page.brand.detail_brand', compact('result'));
+        if ($result){
+            return view('admin.page.brand.detail_brand', compact('result'));
+        }
+        return view('admin.page.error.page_404', compact('result'));
     }
 
     /**
@@ -99,7 +102,11 @@ class BrandController extends Controller
     public function edit($id)
     {
         $result = DB::table('brands')->where('id', '=', $id)->first();
-        return view('admin.page.brand.edit_brand', compact('result'));
+        if ($result){
+            return view('admin.page.brand.edit_brand', compact('result'));
+        }
+        return view('admin.page.error.page_404')->with('result', $result);
+
     }
 
     /**

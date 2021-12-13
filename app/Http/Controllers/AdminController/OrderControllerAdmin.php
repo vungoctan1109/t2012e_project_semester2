@@ -79,7 +79,10 @@ class OrderControllerAdmin extends Controller
     public function show($id)
     {
         $result = DB::table('orders')->where('id', '=', $id)->first();
-        return view('admin.page.order.detail_order', compact('result'));
+        if ($result){
+            return view('admin.page.order.detail_order', compact('result'));
+        }
+        return view('admin.page.error.page_404')->with('result', $result);
     }
 
     /**
@@ -91,7 +94,10 @@ class OrderControllerAdmin extends Controller
     public function edit($id)
     {
         $result = DB::table('orders')->where('id', '=', $id)->first();
-        return view('admin.page.order.edit_order', compact('result'));
+        if ($result){
+            return view('admin.page.order.detail_order', compact('result'));
+        }
+        return view('admin.page.error.page_404')->with('result', $result);
     }
 
     /**

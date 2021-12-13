@@ -118,7 +118,10 @@ class ArticleController extends Controller
     {
         $brands = Brand::all();
         $result = DB::table('articles')->where('id', '=', $id)->first();
-        return view('admin.page.article.edit_article', compact('result', 'brands'));
+        if ($result){
+            return view('admin.page.article.edit_article', compact('result', 'brands'));
+        }
+        return view('admin.page.error.page_404')->with('result', $result);
     }
 
     /**
