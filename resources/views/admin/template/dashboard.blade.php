@@ -72,7 +72,7 @@
                     <div class="inner">
                         <h3>{{$feedback}}</h3>
 
-                        <p>New Feedback</p>
+                        <p>New Feedbacks</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-airplane"></i>
