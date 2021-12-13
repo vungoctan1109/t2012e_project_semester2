@@ -1,4 +1,4 @@
-<div id='fetchData'>
+<div id='fetchData' style="display: inline-block;">
     <div class="row">
         @if (count($mobiles) > 0)
         <ul class="product-list grid-products equal-container">

@@ -1,22 +1,24 @@
 $(document).ready(function (e) {
     var total;
     var total_vnd;
-    $.ajaxSetup({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-        },
-    });
-    $.ajax({
-        url: "/client/page/checkout-total",
-        method: "GET",
-        success: function (response) {
-            total = response.paypal_format;
-            total_vnd = response.total.toLocaleString("it-IT", {
-                style: "currency",
-                currency: "VND",
-            });
-            $("#grand-total-price").html(total_vnd);
-        },
+    $(window).load(function () {
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+        $.ajax({
+            url: "/client/page/checkout-total",
+            method: "GET",
+            success: function (response) {
+                total = response.paypal_format;
+                total_vnd = response.total.toLocaleString("it-IT", {
+                    style: "currency",
+                    currency: "VND",
+                });
+                $("#grand-total-price").html(total_vnd);
+            },
+        });
     });
     $('input:radio[name="payment-method"]').change(function () {
         if ($(this).is(":checked") && $(this).val() == "paypal") {
@@ -48,8 +50,7 @@ $(document).ready(function (e) {
             comment: comment,
         };
         return data;
-    }
-    var order_id;
+    }    
     paypal.Button.render(
         {
             // Configure environment
@@ -139,37 +140,16 @@ $(document).ready(function (e) {
                         url: "/client/page/order",
                         method: "post",
                         data: formOrder,
-                        success: function (resp) {
+                        success: function (resp) {                          
                             if (resp.status == 200) {
-                                $.ajax({
-                                    url: `/client/page/thankyou/${resp.orderID}`,
-                                    method: "GET",
-                                    success: function () {
-                                        var data = { id: resp.orderID };
-                                        $.ajax({
-                                            url: "/client/page/confirm-email",
-                                            method: "GET",
-                                            data: data,
-                                            success: function (responseSendMail) {
-                                                if(responseSendMail.status == 200){
-                                                    setTimeout(function () {
-                                                        window.location.href = `/client/page/thankyou/${resp.orderID}`;
-                                                    },1500);      
-                                                    alertProcess()                                                                                                
-                                                }   
-                                                if(responseSendMail.status == 404){ 
-                                                    setTimeout(function () {
-                                                        window.location.href = `/client/page/404`;
-                                                    },1500);                                                  
-                                                    alertProcess()
-                                                } 
-                                            },
-                                        });                                           
-                                    },
-                                });
+                                window.location.href = `/client/page/thankyou/${resp.orderID}`;                               
                             }
                             if (resp.status == 500) {
                                 paypalActions.disable();
+                                var status = "error";
+                                alertAction(resp.message, status);
+                            }
+                            if (resp.status == 404) {                                
                                 var status = "error";
                                 alertAction(resp.message, status);
                             }
@@ -211,49 +191,21 @@ $(document).ready(function (e) {
                         method: "post",
                         data: formOrder,
                         success: function (resp) {
-                            if (resp.status == 200) {                                
-                                $.ajax({
-                                    url: `/client/page/thankyou/${resp.orderID}`,
-                                    method: "GET",
-                                    success: function () {                                        
-                                        var data = { id: resp.orderID };
-                                        $.ajax({
-                                            url: "/client/page/confirm-email",
-                                            method: "GET",
-                                            data: data,
-                                            success: function (responseSendMail) {
-                                                if(responseSendMail.status == 200){
-                                                    setTimeout(function () {
-                                                        window.location.href = `/client/page/thankyou/${resp.orderID}`;
-                                                    },1500);
-                                                    alertProcess()                                                   
-                                                }   
-                                                if(responseSendMail.status == 404){ 
-                                                    setTimeout(function () {
-                                                        window.location.href = `/client/page/404`;
-                                                    },1500);                                                  
-                                                    alertProcess()
-                                                }                                              
-                                            },
-                                        });                                      
-                                    },
-                                });
+                            if (resp.status == 200) {
+                                window.location.href = `/client/page/thankyou/${resp.orderID}`;                                
                             }
-                            if (resp.status == 500) {
-                                paypalActions.disable();
+                            if (resp.status == 500) {                               
                                 var status = "error";
                                 alertAction(resp.message, status);
                             }
-                            if (resp.status == 400) {
-                                paypalActions.disable();
-                                var status = "warning";
+                            if (resp.status == 404) {                                
+                                var status = "error";
                                 alertAction(resp.message, status);
                             }
                         },
                     });
                 }
-                if (resp.status == 400) {
-                    paypalActions.disable();
+                if (resp.status == 400) {                   
                     var status = "warning";
                     alertAction(resp.message, status);
                     $.each(resp.errors, function (prefix, val) {
@@ -273,29 +225,5 @@ $(document).ready(function (e) {
             timer: 1000,
         });
     }
-      //alert alert process
-      function alertProcess() {
-        let timerInterval;
-        Swal.fire({
-            title: "Confirm Invoice in progress",
-            html: "Progress will be completed in about in <b></b> milliseconds.",
-            timer: 1500,
-            timerProgressBar: true,
-            didOpen: () => {
-                Swal.showLoading();
-                const b = Swal.getHtmlContainer().querySelector("b");
-                timerInterval = setInterval(() => {
-                    b.textContent = Swal.getTimerLeft();
-                }, 100);
-            },
-            willClose: () => {
-                clearInterval(timerInterval);
-            },
-        }).then((result) => {
-            /* Read more about handling dismissals below */
-            if (result.dismiss === Swal.DismissReason.timer) {
-                console.log("I was closed by the timer");
-            }
-        });
-    }
+   
 });

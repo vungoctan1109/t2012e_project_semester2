@@ -2,22 +2,7 @@
 @section('title_page','Thank You')
 @section('private_link')
 <style>
-    .invoice-title h2,
-    .invoice-title h3 {
-        display: inline-block;
-    }
-
-    .table>tbody>tr>.no-line {
-        border-top: none;
-    }
-
-    .table>thead>tr>.no-line {
-        border-bottom: none;
-    }
-
-    .table>tbody>tr>.thick-line {
-        border-top: 2px solid;
-    }
+    
 </style>
 @endsection
 @section('main_content_page')
@@ -49,12 +34,8 @@
 
 </main>
 @endsection
-
 @section('private_scripts')
-<script>
-    $(document).ready(function () {
-    $('body').addClass('inner-page about-us');       
-});
 </script>
 <script src="/dist/js/pages/client/confirm_email.js"></script>
+
 @endsection
