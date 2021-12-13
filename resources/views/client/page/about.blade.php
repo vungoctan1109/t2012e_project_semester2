@@ -129,100 +129,63 @@
 
                     <div class="team-member equal-elem">
                         <div class="media">
-                            <a href="#" title="LEONA">
-                                <figure><img src="/client-assets/assets/images/member-leona.jpg" alt="LEONA"></figure>
+                            <a href="#" title="Vũ Ngọc Tân">
+                                <figure><img src="https://res.cloudinary.com/quynv300192/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1620214955/PROJECT%20KI%201/z2465533104846_26e6a50c1c01600b646ae5a00cdedf0a_1_pkailf.jpg" alt="Vũ Ngọc Tân"></figure>
                             </a>
                         </div>
                         <div class="info">
-                            <b class="name">leona</b>
-                            <span class="title">Director</span>
+                            <b class="name">Vũ Ngọc Tân</b>
+                            <span class="title">Team Leader</span>
                             <p class="desc">Contrary to popular belief, Lorem Ipsum is not simply random text...</p>
                         </div>
                     </div>
 
                     <div class="team-member equal-elem">
                         <div class="media">
-                            <a href="#" title="LUCIA">
-                                <figure><img src="/client-assets/assets/images/member-lucia.jpg" alt="LUCIA"></figure>
+                            <a href="#" title="Nguyễn Văn Quý">
+                                <figure><img src="https://res.cloudinary.com/quynv300192/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1620214947/PROJECT%20KI%201/z2465533106434_642d4f2a726ae74a719d108844a1fabd_zuzajt.jpg" alt="Nguyễn Văn Quý"></figure>
                             </a>
                         </div>
                         <div class="info">
-                            <b class="name">LUCIA</b>
-                            <span class="title">Manager</span>
+                            <b class="name">Nguyễn Văn Quý</b>
+                            <span class="title">Team member</span>
                             <p class="desc">Contrary to popular belief, Lorem Ipsum is not simply random text...</p>
                         </div>
                     </div>
 
                     <div class="team-member equal-elem">
                         <div class="media">
-                            <a href="#" title="NANA">
-                                <figure><img src="/client-assets/assets/images/member-nana.jpg" alt="NANA"></figure>
+                            <a href="#" title="Nguyễn Xuân Kiên">
+                                <figure><img src="https://res.cloudinary.com/quynv300192/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1620214948/PROJECT%20KI%201/z2465533101595_248150c62453a44f9e3d652bea05bd26_1_yp0rio.jpg" alt="Nguyễn Xuân Kiên"></figure>
                             </a>
                         </div>
                         <div class="info">
-                            <b class="name">NANA</b>
-                            <span class="title">Marketer</span>
+                            <b class="name">Nguyễn Xuân Kiên</b>
+                            <span class="title">Team member</span>
                             <p class="desc">Contrary to popular belief, Lorem Ipsum is not simply random text...</p>
                         </div>
                     </div>
 
                     <div class="team-member equal-elem">
                         <div class="media">
-                            <a href="#" title="BRAUM">
-                                <figure><img src="/client-assets/assets/images/member-braum.jpg" alt="BRAUM"></figure>
+                            <a href="#" title="Nguyễn Văn Bình">
+                                <figure><img src="https://res.cloudinary.com/quynv300192/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1620214947/PROJECT%20KI%201/z2465533095297_adfb5109b9470be4bca1610f61f41216_r6tgo4.jpg" alt="Nguyễn Văn Bình"></figure>
                             </a>
                         </div>
                         <div class="info">
-                            <b class="name">BRAUM</b>
-                            <span class="title">Member</span>
+                            <b class="name">Nguyễn Văn Bình</b>
+                            <span class="title">Team member</span>
                             <p class="desc">Contrary to popular belief, Lorem Ipsum is not simply random text...</p>
                         </div>
                     </div>
-
-                    <div class="team-member equal-elem">
-                        <div class="media">
-                            <a href="#" title="LUCIA">
-                                <figure><img src="/client-assets/assets/images/member-lucia.jpg" alt="LUCIA"></figure>
-                            </a>
-                        </div>
-                        <div class="info">
-                            <b class="name">LUCIA</b>
-                            <span class="title">Manager</span>
-                            <p class="desc">Contrary to popular belief, Lorem Ipsum is not simply random text...</p>
-                        </div>
-                    </div>
-
-                    <div class="team-member equal-elem">
-                        <div class="media">
-                            <a href="#" title="NANA">
-                                <figure><img src="/client-assets/assets/images/member-nana.jpg" alt="NANA"></figure>
-                            </a>
-                        </div>
-                        <div class="info">
-                            <b class="name">NANA</b>
-                            <span class="title">Marketer</span>
-                            <p class="desc">Contrary to popular belief, Lorem Ipsum is not simply random text...</p>
-                        </div>
-                    </div>
-
                 </div>
-
             </div>
-
         </div>
         <!-- </div> -->
-
-
     </div>
     <!--end container-->
-
 </main>
-
-
-
 @endsection
-
-
 @section('private_scripts')
 <script>
     $(document).ready(function () {
