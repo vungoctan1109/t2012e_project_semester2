@@ -26,7 +26,7 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Order</h3>
+            <h3 class="card-title">Order #{{$result->id}}</h3>
 
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -42,33 +42,55 @@
                 <div class="col-12 col-md-12">
                     <div class="row">
                         <div class="col-12">
-                            <h4>Name</h4>
-                            <div class="post">
-                                <p>{{$result->name}}</p>
-                            </div>
-                            <h4>Phone</h4>
-                            <div class="post">
-                                <p>{{$result->phone}}</p>
-                            </div>
-                            <h4>Email</h4>
-                            <div class="post">
-                                <p>{{$result->email}}</p>
-                            </div>
-                            <h4>Total Price</h4>
-                            <div class="post">
-                                <p>{{$result->totalPrice}}</p>
-                            </div>
-                            <h4>Creat At</h4>
-                            <div class="post">
-                                <p>{{$result->created_at}}</p>
-                            </div>
+                            <p><b>Customer Name:</b> {{$result->name}}</p>
+                            <p><b>Phone:</b> {{$result->phone}}</p>
+                            <p><b>Email:</b> {{$result->email}}</p>
+                            <p><b>Total Price:</b> {{$result->totalPrice}}</p>
+                            <p><b>Created At:</b> {{$result->created_at}}</p>
                         </div>
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th style="text-align: center; ">#</th>
+                                <th style="text-align: center;  " scope="col">Sản phẩm</th>
+                                <th style="text-align: center; " scope="col">Số lượng</th>
+                                <th style="text-align: center; " scope="col">Discount</th>
+                                <th style="text-align: center; " scope="col">Tổng tiền (VND)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @php
+                            $i = 1;
+                            @endphp
+                            @foreach($order_detail as $order )
+                                @php
+                                    $price_before = $order->quantity * $order->unitPrice *(1-$order->discount);
+                                    $price = number_format($price_before, 0, '', ',');
+                                @endphp
+                                <tr>
+                                    <td style="text-align: center">{{$i++}}</td>
+                                    <td style="text-align: center">{{$order->mobile->name}}</td>
+                                    <td style="text-align: center">{{$order->quantity}}</td>
+                                    <td style="text-align: center">{{$order->discount *100}}%</td>
+                                    <td style="text-align: center">{{$price}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                            <thead class="thead-light">
+                            <tr>
+                                <th style="text-align: center; ">#</th>
+                                <th style="text-align: center;  " scope="col">Sản phẩm</th>
+                                <th style="text-align: center; " scope="col">Số lượng</th>
+                                <th style="text-align: center; " scope="col">Discount</th>
+                                <th style="text-align: center; " scope="col">Tổng tiền (VND)</th>
+                            </tr>
+                            </thead>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
         <div class="card-footer">
-            <a href="{{route('orders.edit', $result->id)}}" class="btn btn-info">Edit</a>
             <a href="{{route('orders.index')}}" class="btn btn-default float-right">Back to list</a>
         </div>
         <!-- /.card-body -->

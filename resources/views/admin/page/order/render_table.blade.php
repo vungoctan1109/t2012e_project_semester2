@@ -27,9 +27,6 @@
                         <a class="btn btn-primary btn-sm m-1" href="{{route('orders.show', $ord->id)}}">
                             <i class="fas fa-folder">View</i>
                         </a>
-                        <a class="btn btn-info btn-sm m-1" href="{{route('orders.edit', $ord)}}">
-                            <i class="fas fa-pencil-alt">Edit</i>
-                        </a>
                         <a class="btn btn-danger btn-sm delete m-1" href="{{route('orders.destroy', $ord)}}" order_id = "{{$ord->id}}">
                             <i class="fas fa-trash">Delete</i>
                         </a>

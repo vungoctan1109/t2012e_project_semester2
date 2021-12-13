@@ -8,29 +8,12 @@
                     </a>
                 </div>
                 <div class="col-xs-12 col-sm-9 col-md-9">
-                    <div class="list-group">
-                        <div class="list-group-item">
-                            <div class="row-picture">
-                                <img class="circle img-thumbnail img-box"
-                                     src="https://res.cloudinary.com/tanvnth2012002/image/upload/v1638316998/default-avatar-profile-icon-vector-social-media-user-portrait-176256935_mlifmc.jpg"
-                                     alt="{{$article->author}}">
-                            </div>
-                            <div class="row-content">
-                                <div class="list-group-item-heading">
-                                    <p style="font-size: medium">{{$article->author}}</p>
-                                </div>
-                                <small>
-                                    @php
-                                        $date_format = date("d/m/Y", strtotime($article->created_at));
-                                    @endphp
-                                    <i class="far fa-clock"></i> {{$date_format}}
-                                    <br>
-                                </small>
-                            </div>
-                        </div>
-                    </div>
                     <h4><a href="{{route('article_client.show', $article -> id)}}">{{$article->title}}</a></h4>
-                    <p>{{$article->description}}</p>
+                    @php
+                        $date_format = date("d/m/Y", strtotime($article->created_at));
+                    @endphp
+                    <p><i class="far fa-clock"></i> {{$date_format}}</p>
+                    <p>{{$article->description}}...</p>
                 </div>
             </div>
             <hr>

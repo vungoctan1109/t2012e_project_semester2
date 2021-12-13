@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Order as Order_Model;
@@ -79,8 +80,9 @@ class OrderControllerAdmin extends Controller
     public function show($id)
     {
         $result = DB::table('orders')->where('id', '=', $id)->first();
+        $order_detail = OrderDetail::query()->where('orderID', '=', $id)->get();
         if ($result){
-            return view('admin.page.order.detail_order', compact('result'));
+            return view('admin.page.order.detail_order', compact('result', 'order_detail'));
         }
         return view('admin.page.error.page_404')->with('result', $result);
     }
