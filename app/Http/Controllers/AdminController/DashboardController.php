@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
+use App\Models\Feedback;
 use App\Models\Mobile;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\User;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -49,6 +52,11 @@ class DashboardController extends Controller
             ->addData('Quantity', $top_sale_quantity -> toArray())
             ->setXAxis($top_sale_product -> toArray())
             ->setHeight(300);
-        return view('admin.template.dashboard', ['chart' =>$chart, 'chartTotal' => $chartTotal, 'chartTopSale' => $chartTopSale]);
+
+        $new_order = Order::query()->where('created_at', '<', Carbon::now(), 'and', 'created_at', '>', Carbon::now()->addMonth(-1))->count();
+        $user = User::query()->select('*')->where('role', '=', 0)->count();
+        $product = Mobile::query()->select('*')->count();
+        $feedback = Feedback::query()->select('*')->where('created_at', '<', Carbon::now(), 'and', 'created_at', '>', Carbon::now()->addMonth(-1))->count();
+        return view('admin.template.dashboard', ['chart' =>$chart, 'chartTotal' => $chartTotal, 'chartTopSale' => $chartTopSale, 'new_order'=>$new_order, 'user'=>$user, 'product'=>$product, 'feedback'=>$feedback]);
     }
 }
