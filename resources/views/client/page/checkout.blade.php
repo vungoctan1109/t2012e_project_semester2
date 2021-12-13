@@ -4,6 +4,19 @@
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection
 @section('main_content_page')
+    @php
+        if(\Illuminate\Support\Facades\Auth::check()){
+            $name = \Illuminate\Support\Facades\Auth::user()->fullName;
+            $address = \Illuminate\Support\Facades\Auth::user()->address;
+            $phone = \Illuminate\Support\Facades\Auth::user()->phone;
+            $email = \Illuminate\Support\Facades\Auth::user()->email ;
+        }else{
+            $name = '';
+            $address = '';
+            $phone = '';
+            $email = '';
+        }
+    @endphp
 <main id="main" class="main-site">
     <div class="container">
         <div class="wrap-breadcrumb">
@@ -12,23 +25,23 @@
                 <li class="item-link"><span>login</span></li>
             </ul>
         </div>
-        <div class=" main-content-area">           
+        <div class=" main-content-area">
             <div class="wrap-address-billing">
-                <h3 class="box-title">Billing Address</h3>
-                <form action="#" method="get" name="formOrder" id="formOrder">                    
+                <h3 class="box-title">Billing Information</h3>
+                <form action="#" method="get" name="formOrder" id="formOrder">
                     <p class="row-in-form">
                         <label for="fname">Full name<span>*</span></label>
-                        <input id="name" type="text" name="name" value="" placeholder="Your name">
+                        <input id="name" type="text" name="name" value="{{$name}}" >
                         <span class="error name_error"></span>
                     </p>
                     <p class="row-in-form">
                         <label for="email">Email Address:<span>*</span></label>
-                        <input id="email" type="email" name="email" value="" placeholder="Type your email">
+                        <input id="email" type="email" name="email" value="{{$email}}">
                         <span class="error email_error"></span>
                     </p>
                     <p class="row-in-form">
                         <label for="phone">Phone number<span>*</span></label>
-                        <input id="phone" type="number" name="phone" value="" placeholder="10 digits format">
+                        <input id="phone" type="text" name="phone" value="{{$phone}}">
                         <span class="error phone_error"></span>
                     </p>
                     <p class="row-in-form">
@@ -53,11 +66,10 @@
                         <datalist id="wards">
                         </datalist>
                         <span class="error ward_error"></span>
-                    </p>     
+                    </p>
                     <p class="row-in-form">
                         <label for="address_detail">Address detail</label>
-                        <input id="address_detail" type="text" name="address_detail" value=""
-                            placeholder="Address detail">
+                        <input id="address_detail" type="text" name="address_detail" value="{{$address}}">
                     </p>
                     <p class="row-in-form">
                         <label for="comment">Shipping Note:</label>
