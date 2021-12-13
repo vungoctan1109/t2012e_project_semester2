@@ -125,7 +125,7 @@ $(document).ready(function () {
     //sort by
     $("#sortBy").change(function (e) {
         fetch_data_filter();
-    });   
+    });
     $('input[name="search"]').keyup(function (e) {
         e.preventDefault();
         equalElement();
@@ -135,7 +135,7 @@ $(document).ready(function () {
         var data = {
             pagination_limit: pagination_limit,
             sortBy: sortBy,
-            name:nameMobile,
+            name: nameMobile,
         };
         $.ajaxSetup({
             headers: {
@@ -146,7 +146,7 @@ $(document).ready(function () {
             url: "/client/page/shop/mobile/fetch_data?page=",
             method: "POST",
             beforeSend: function () {
-                $("#listSearch").html('');
+                $("#listSearch").html("");
                 equalElement();
             },
             data: data,
@@ -154,14 +154,14 @@ $(document).ready(function () {
                 $("#fetchData").html(response.view);
                 for (var i = 0; i < response.mobiles_suggest.length; i++) {
                     $("#listSearch").append(
-                        `<option>${response.mobiles_suggest[i].name}</option>`
-                    );                                                                         
-                }              
+                        `<option>/client/page/shop/mobile/${response.mobiles_suggest[i].id}</option>`
+                    );                    
+                }
                 equalElement();
                 $content[0].scrollTop = $content[0].scrollHeight;
             },
         });
-    });       
+    });
     //paginate
     $(document).on("click", "#pagination a", function (e) {
         e.preventDefault();
@@ -279,5 +279,14 @@ $(document).ready(function () {
             showConfirmButton: false,
             timer: 1000,
         });
-    }
+    }   
+    
+    $('#btn-search').click(function()
+    {
+        var value = $('#search').val();
+        alert(value);
+        // alert($('#btn-search [value="' + value + '"]').data('value'));
+    });
+    
+
 });

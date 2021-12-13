@@ -58,11 +58,10 @@ $admin_user_id = " ";
                 <div class="wrap-search center-section">
                     <div class="wrap-search-form">
                         <form action="#" id="form-search-top" name="form-search-top">
-                            <input type="text" list="listSearch" name="search" value="" placeholder="Bạn cần tìm gì ?" id="search">
-                            <datalist id="listSearch">
+                            <input type="text" list="listSearch" name="search" value="" placeholder="Bạn cần tìm gì ?" id="search">                            
+                            <datalist id="listSearch">                                                                                         
                             </datalist>
-                            <button form="form-search-top" type="button" id="btn-search"><i class="fa fa-search"
-                                    aria-hidden="true"></i></button>
+                            <button form="form-search-top" type="button" id="btn-search"><i class="fa fa-search" aria-hidden="true"></i></button>
                         </form>
                     </div>
                 </div>
