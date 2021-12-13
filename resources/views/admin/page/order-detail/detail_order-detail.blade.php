@@ -39,31 +39,24 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-12 col-md-12">
-                    <div class="row">
-                        <div class="col-12">
-                            <h4>Order ID</h4>
-                            <div class="post">
-                                <p>{{$result->orderID}}</p>
-                            </div>
-                            <h4>Mobile ID</h4>
-                            <div class="post">
-                                <p>{{$result->mobileID}}</p>
-                            </div>
-                            <h4>Quantity </h4>
-                            <div class="post">
-                                <p>{{$result->quantity}}</p>
-                            </div>
-                            <h4>Unit Price</h4>
-                            <div class="post">
-                                <p>{{$result->unitPrice}}</p>
-                            </div>
-                            <h4>Create At</h4>
-                            <div class="post">
-                                <p>{{$result->created_at}}</p>
-                            </div>
-                        </div>
+                <div class="col-12 col-sm-4">
+                    <div class="col-12">
+                        <img style="width: 100%" src="{{$result->mobile->mainThumbnail}}" class="product-image currentImage" id="currentImage">
                     </div>
+                    <div class="col-12 product-image-thumbs" id='product-image-thumbs'>
+                    </div>
+                </div>
+                <?php
+                $price_before = $result->quantity * $result->unitPrice *(1-$result->discount);
+                $price = number_format($price_before, 0, '', ',');
+                ?>
+                <div class="col-12 col-sm-8">
+                    <h3 class="my-3">Order #{{$result->orderID}}</h3>
+                    <h5 class="my-3"><b>Product:</b> {{$result->mobile->name}}</h5>
+                    <h5 class="my-3"><b>Quantity:</b> {{$result->quantity}}</h5>
+                    <h5 class="my-3"><b>Discount:</b> {{$result->discount *100}}%</h5>
+                    <h5 class="my-3"><b>Total Price:</b> {{$price}} VND</h5>
+                    <h5 class="my-3"><b>Created At:</b> {{$result->created_at}}</h5>
                 </div>
             </div>
         </div>

@@ -69,8 +69,11 @@ class OrderDetailController extends Controller
      */
     public function show($id)
     {
-        $result = DB::table('order_details')->where('orderID', '=', $id)->first();
-        return view('admin.page.order-detail.detail_order-detail', compact('result'));
+        $result = OrderDetail::query()->where('orderID', '=', $id)->first();
+        if ($result){
+            return view('admin.page.order-detail.detail_order-detail', compact('result'));
+        }
+        return view('admin.page.error.page_404')->with('result', $result);
     }
 
     /**

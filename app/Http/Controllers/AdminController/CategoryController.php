@@ -91,7 +91,10 @@ class CategoryController extends Controller
     public function show($id)
     {
         $result = DB::table('categories')->where('id', '=', $id)->first();
-        return view('admin.page.category.detail_category', compact('result'));
+        if ($result){
+            return view('admin.page.category.detail_category', compact('result'));
+        }
+        return view('admin.page.error.page_404')->with('result', $result);
     }
 
     /**
@@ -103,7 +106,10 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $result = DB::table('categories')->where('id', '=', $id)->first();
-        return view('admin.page.category.edit_category', compact('result'));
+        if ($result){
+            return view('admin.page.category.edit_category', compact('result'));
+        }
+        return view('admin.page.error.page_404')->with('result', $result);
     }
 
     /**

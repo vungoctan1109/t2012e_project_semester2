@@ -68,7 +68,10 @@ class FeedbackControllerAdmin extends Controller
     public function show($id)
     {
         $result = DB::table('feedback')->where('id', '=', $id)->first();
-        return view('admin.page.contact.detail_feedback', compact('result'));
+        if ($result){
+            return view('admin.page.contact.detail_feedback', compact('result'));
+        }
+        return view('admin.page.error.page_404')->with('result', $result);
     }
 
     /**
