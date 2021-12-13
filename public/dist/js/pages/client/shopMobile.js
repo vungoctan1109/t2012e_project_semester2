@@ -281,12 +281,5 @@ $(document).ready(function () {
         });
     }   
     
-    $('#btn-search').click(function()
-    {
-        var value = $('#search').val();
-        alert(value);
-        // alert($('#btn-search [value="' + value + '"]').data('value'));
-    });
-    
 
 });
