@@ -51,8 +51,8 @@ use App\Http\Controllers\ClientController\MobileArticleController;
 #auth
 Route::get('/', function () {
     $mobile_on_sale = \App\Models\Mobile::query()->select('*')->where('status', '=', 2)->get();
-    $mobile_latest = \App\Models\Mobile::query()->select('*')->orderBy('created_at','desc')->get();
-    $article = \App\Models\Article::query()->select('*')->orderBy('created_at','desc')->get();
+    $mobile_latest = \App\Models\Mobile::query()->select('*')->orderBy('created_at','desc')->get()->take(16);
+    $article = \App\Models\Article::query()->select('*')->orderBy('created_at','desc')->get()->take(12);
     $mobiles_apple = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 1)->orderBy('created_at','desc')->get();    
     $mobiles_ss = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 2)->orderBy('created_at','desc')->get();    
     $mobiles_xiaomi = \App\Models\Mobile::query()->select('*')->where('brandID', '=', 3)->orderBy('created_at','desc')->get();    

@@ -3,7 +3,6 @@
 {{$mobile -> name}}
 @endsection
 @section('private_link')
-
 @endsection
 @section('main_content_page')
 <main id="main" class="main-site">
@@ -12,9 +11,9 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="/client/page/home" class="link">home</a></li>
-                <li class="item-link"><a href="/client/page/shop/mobile" class="link">mobile</a></li>
-                <li class="item-link"><span>detail</span></li>
+                <li class="item-link"><a href="/" class="link">Trang Chủ</a></li>
+                <li class="item-link"><a href="/client/page/shop/mobile" class="link">Điện Thoại</a></li>
+                <li class="item-link"><span>Thông Tin Chi Tiết</span></li>
             </ul>
         </div>
         <div class="row">
@@ -74,17 +73,7 @@
                             <p class="availability">Status:
                                 <b>{{$mobile->strStatus}}</b>
                             </p>
-                        </div>
-                        {{-- <div class="quantity">--}}
-                            {{-- <div class="quantity-input">--}}
-                                {{-- <input type="text" name="product-quatity" value="{{$mobile->quantity}}"
-                                    data-max="5" pattern="[0-9]*" --}} {{-- class="quantity_item">--}}
-                                {{-- <a class="btn btn-increase btn-quantity" href="#"></a>--}}
-                                {{-- <a class="btn btn-reduce btn-quantity" href="#"></a>--}}
-                                {{-- <input type="hidden" class="price_item" value="{{$mobile -> price}}">--}}
-                                {{-- <input type="hidden" name="id" class='id' value="{{$mobile -> id}}">--}}
-                                {{-- </div>--}}
-                            {{-- </div>--}}
+                        </div>                        
                         <div class="wrap-butons">
                             <form id="formCart">
                                 @csrf
@@ -107,9 +96,9 @@
                     </div>
                     <div class="advance-info">
                         <div class="tab-control normal">
-                            <a href="#description" class="tab-control-item active">description</a>
-                            <a href="#add_infomation" class="tab-control-item">Addtional Infomation</a>
-                            <a href="#review" class="tab-control-item">Reviews</a>
+                            <a href="#description" class="tab-control-item active">Thông Tin Chi Tiết</a>
+                            <a href="#add_infomation" class="tab-control-item">Thông Tin Kĩ Thuật</a>
+                            <a href="#review" class="tab-control-item">Đánh Giá</a>
                         </div>
                         <div class="tab-contents">
                             <div class="tab-content-item active" id="description">
@@ -123,12 +112,24 @@
                                             <td class="product_weight">{{$mobile -> ram}} Gb</td>
                                         </tr>
                                         <tr>
-                                            <th>Memory</th>
+                                            <th>Màn Hình</th>
+                                            <td class="product_weight">{{$mobile -> screenSize}} Inch</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Bộ Nhớ</th>
                                             <td class="product_dimensions">{{$mobile -> memory}} Gb</td>
                                         </tr>
                                         <tr>
-                                            <th>Battery</th>
+                                            <th>Pin</th>
                                             <td>{{$mobile -> pin}} mAh</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Camera</th>
+                                            <td>{{$mobile -> camera}} MP</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Color</th>
+                                            <td>{{$mobile -> color}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -181,7 +182,6 @@
                                                     <div class="comment-form-rating">
                                                         <span>Your rating</span>
                                                         <p class="stars">
-
                                                             <label for="rated-1"></label>
                                                             <input type="radio" id="rated-1" name="rating" value="1">
                                                             <label for="rated-2"></label>
@@ -236,9 +236,8 @@
                                 <a class="link-to-service" href="#">
                                     <i class="fa fa-truck" aria-hidden="true"></i>
                                     <div class="right-content">
-                                        <b class="title">Free Shipping</b>
-                                        <span class="subtitle">On Oder Over $99</span>
-                                        <p class="desc">Lorem Ipsum is simply dummy text of the printing...</p>
+                                        <b class="title">Miễn Phí Vận Chuyển</b>
+                                        <span class="subtitle">Khi Mua Sản Phẩm Khi Mua Trực Tuyến</span>                                       
                                     </div>
                                 </a>
                             </li>
@@ -247,9 +246,8 @@
                                 <a class="link-to-service" href="#">
                                     <i class="fa fa-gift" aria-hidden="true"></i>
                                     <div class="right-content">
-                                        <b class="title">Special Offer</b>
-                                        <span class="subtitle">Get a gift!</span>
-                                        <p class="desc">Lorem Ipsum is simply dummy text of the printing...</p>
+                                        <b class="title">Ưu Đãi Đặc Biệt</b>
+                                        <span class="subtitle">Nhận Nhiều Ưu Đãi</span>                                        
                                     </div>
                                 </a>
                             </li>
@@ -258,9 +256,8 @@
                                 <a class="link-to-service" href="#">
                                     <i class="fa fa-reply" aria-hidden="true"></i>
                                     <div class="right-content">
-                                        <b class="title">Order Return</b>
-                                        <span class="subtitle">Return within 7 days</span>
-                                        <p class="desc">Lorem Ipsum is simply dummy text of the printing...</p>
+                                        <b class="title">Hoàn Trả Đơn Hàng</b>
+                                        <span class="subtitle">Hoàn Trả Trong 7 Ngày</span>                                       
                                     </div>
                                 </a>
                             </li>
@@ -337,15 +334,40 @@
                             @endforeach
                         </ul>
                     </div>
-                </div><!-- recent view widget-->
+                </div><br><!-- recent view widget-->
                 @endIf
-
+                @if(isset($articles_recent_view) && count($articles_recent_view) > 0)
+                <div class="widget mercado-widget widget-product">
+                    <h2 class="widget-title">Bài viết xem gần đây</h2>
+                    <div class="widget-content">
+                        <ul class="products">
+                            @foreach ($articles_recent_view as $item)
+                            <li class="product-item">
+                                <div class="product product-widget-style">
+                                    <div class="thumbnnail">
+                                        <a href="{{route('article_client.show', $item -> id)}}"
+                                            title="{{$item -> name}}">
+                                            <figure><img src="{{$item -> thumbnail}}" alt=""></figure>
+                                        </a>
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="{{route('article_client.show', $item -> id)}}"
+                                            class="product-name"><span>{{$item -> title}}</span></a>
+                                    </div>
+                                </div>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div><!-- recent view widget-->
+                <br>
+                @endIf
             </div>
             <!--end sitebar-->
 
             <div class="single-advance-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="wrap-show-advance-info-box style-1 box-in-site">
-                    <h3 class="title-box">Related Products</h3>
+                    <h3 class="title-box">Sản Phẩm Liên Quan</h3>
                     <div class="wrap-products">
                         <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5"
                             data-loop="false" data-nav="true" data-dots="false"
@@ -381,6 +403,7 @@
 
                 </div>
             </div>
+
 
 
         </div>

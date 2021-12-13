@@ -14,8 +14,6 @@ use HoangPhi\VietnamMap\Models\District;
 use HoangPhi\VietnamMap\Models\Province;
 use Illuminate\Support\Facades\Validator;
 
-
-
 class OrderController extends Controller
 {
     /**
@@ -149,6 +147,14 @@ class OrderController extends Controller
             'district' => 'required',
             'ward' => 'required',
             'phone' => 'required',
+        ],
+        [
+            'name.required' => 'Quý khách cần điền họ tên',
+            'email.required' => 'Quý khách cần điền email',
+            'province.required' => 'Quý khách cần điền tỉnh',
+            'district.required' => 'Quý khách cần điền huyện',
+            'ward.required' => 'Quý khách cần điền xã',
+            'phone.required' => 'Quý khách cần điền số điện thoại'
         ]);
         if ($validator->fails()) {
             return response()->json(['status' => 400, 'errors' => $validator->errors()->toArray(), 'message' => 'Vui lòng nhập đủ thông tin!']);

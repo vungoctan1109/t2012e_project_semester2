@@ -1,26 +1,4 @@
-window.addEventListener('DOMContentLoaded', function () {
-
-    //jquery validation
-    $("#frmFeedBack").validate({
-        onfocusout: false,
-        onkeyup: false,
-        onclick: false,
-        rules: {
-            "name": {
-                required: true
-            },
-            "email": {
-                required: true
-            },
-            "phone": {
-                required: true
-            },
-            "comment": {
-                required: true
-            }
-        }
-    });
-    if (document.forms['frmFeedBack'].reportValidity()){
+window.addEventListener('DOMContentLoaded', function () {      
         //process submit button
         $('form[name=frm-contact]').submit(function(e){
             e.preventDefault();
@@ -33,8 +11,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 'email':email,
                 'phone':phone,
                 'comment':comment,
-            };
-            console.log(data)
+            };            
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -44,30 +21,29 @@ window.addEventListener('DOMContentLoaded', function () {
                 url:'/client/page/feedback',
                 method:'post',
                 data:data,
+                beforeSend: function () {
+                    $(document).find("span.error").text("");
+                },
                 success: function(res){
-                    if(res.status === 200){
-                        // swal("Good job!", "You clicked the button!", "success")
+                    if(res.status == 200){                        
                         Swal.fire({
-                            icon: 'success',
-                            // title: 'Oops...',
-                            text: 'Send feedback successfully !!!',
-                            // footer: '<a href="">Why do I have this issue?</a>'
-                        })
-                        setTimeout(function() {
-                            window.location.href = "/client/page/home";
-                        },2000)
-
+                            icon: 'success',                            
+                            text: `${res.message}`,                            
+                        })     
+                        $('textarea[name=comment]').val(' ');                 
                     }
-                    if(res.status === 500){
+                    if(res.status == 500){
                         Swal.fire({
-                            icon: 'error',
-                            // title: 'Oops...',
-                            text: 'Send feedback failed !!!',
-                            // footer: '<a href="">Why do I have this issue?</a>'
+                            icon: 'error',                            
+                            text: `${res.message}`,                            
                         })
+                    }
+                    if (res.status == 400) {
+                        $.each(res.errors, function (prefix, val) {
+                            $("span." + prefix + "_error").text(val[0]);
+                        });
                     }
                 }
             })
-        })
-    }
+        })    
 })

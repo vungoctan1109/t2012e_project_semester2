@@ -14,100 +14,95 @@
         </div>
         <div class=" main-content-area">           
             <div class="wrap-address-billing">
-                <h3 class="box-title">Billing Address</h3>
+                <h3 class="box-title">Địa Chỉ Thanh Toán</h3>
                 <form action="#" method="get" name="formOrder" id="formOrder">                    
                     <p class="row-in-form">
-                        <label for="fname">Full name<span>*</span></label>
-                        <input id="name" type="text" name="name" value="" placeholder="Your name">
+                        <label for="fname">Họ Và Tên<span>*</span></label>
+                        <input id="name" type="text" name="name" value="" placeholder="Họ và tên quý khách ...">
                         <span class="error name_error"></span>
                     </p>
                     <p class="row-in-form">
-                        <label for="email">Email Address:<span>*</span></label>
-                        <input id="email" type="email" name="email" value="" placeholder="Type your email">
+                        <label for="email">Địa Chỉ Email:<span>*</span></label>
+                        <input id="email" type="email" name="email" value="" placeholder="Email của quý khách ... ">
                         <span class="error email_error"></span>
                     </p>
                     <p class="row-in-form">
-                        <label for="phone">Phone number<span>*</span></label>
-                        <input id="phone" type="number" name="phone" value="" placeholder="10 digits format">
+                        <label for="phone">Số Điện Thoại<span>*</span></label>
+                        <input id="phone" type="number" name="phone" value="" placeholder="Số điện thoại của quý khách ..">
                         <span class="error phone_error"></span>
                     </p>
                     <p class="row-in-form">
-                        <label for="add">Province:<span>*</span></label>
+                        <label for="add">Tỉnh:<span>*</span></label>
                         <input type="text" list="listProvinces" id="province" type="text" name="province"
-                            placeholder="Your province" />
+                            placeholder="Tỉnh thành của quý khách ..." />
                         <datalist id="listProvinces">
                         </datalist>
                         <span class="error province_error"></span>
                     </p>
                     <p class="row-in-form">
-                        <label for="add">District:<span>*</span></label>
+                        <label for="add">Huyện:<span>*</span></label>
                         <input type="text" list="districts" id="district" type="text" name="district"
-                            placeholder="Your district" />
+                            placeholder="Huyện của quý khách ..." />
                         <datalist id="districts">
                         </datalist>
                         <span class="error district_error"></span>
                     </p>
                     <p class="row-in-form">
-                        <label for="add">Ward:<span>*</span></label>
-                        <input type="text" list="wards" id="ward" type="text" name="ward" placeholder="Your ward" />
+                        <label for="add">Xã:<span>*</span></label>
+                        <input type="text" list="wards" id="ward" type="text" name="ward" placeholder="Xã của quý khách ..." />
                         <datalist id="wards">
                         </datalist>
                         <span class="error ward_error"></span>
                     </p>     
                     <p class="row-in-form">
-                        <label for="address_detail">Address detail</label>
+                        <label for="address_detail">Địa Chỉ Chi Tiết: </label>
                         <input id="address_detail" type="text" name="address_detail" value=""
-                            placeholder="Address detail">
+                            placeholder="Địa chỉ cụ thể của quý khách ... ">
                     </p>
                     <p class="row-in-form">
-                        <label for="comment">Shipping Note:</label>
-                        <input id="comment" type="text" name="comment" value="" placeholder="comments here">
+                        <label for="comment">Ghi Chú:</label>
+                        <input id="comment" type="text" name="comment" value="" placeholder="Ghi chú của quý khách ...">
                     </p>
                     <p class="row-in-form fill-wife">
                         <label class="checkbox-field">
                             <input name="create-account" id="create-account" value="forever" type="checkbox">
-                            <span>Create an account?</span>
+                            <span>quý khách Muốn Tạo Tài Khoản?</span>
                         </label>
                         <label class="checkbox-field">
                             <input name="different-add" id="different-add" value="forever" type="checkbox">
-                            <span>Ship to a different address?</span>
+                            <span>quý khách muốn gửi đến một địa chỉ khác?</span>
                         </label>
                     </p>
                 </form>
             </div>
             <div class="summary summary-checkout">
                 <div class="summary-item payment-method">
-                    <h4 class="title-box">Payment Method</h4>
-                    <p class="summary-info"><span class="title">Select your payment method</span></p>
+                    <h4 class="title-box">PHƯƠNG THỨC THANH TOÁN</h4>
+                    <p class="summary-info"><span class="title">Chọn phương thức thanh toán của quý khách</span></p>
                     <p class="summary-info"><span class="title">COD / Paypal</span></p>
                     <div class="choose-payment-methods">
                         <label class="payment-method">
                             <input name="payment-method" id="payment-method-paypal" value="paypal" type="radio">
                             <span>Paypal</span>
-                            <span class="payment-desc">You can pay with your paypal account</span>
+                            <span class="payment-desc">quý khách có thể thanh toán bằng tài khoản paypal của mình!</span>
                         </label>
                         <label class="payment-method">
                             <input name="payment-method" id="payment-method-paypal" value="cod" type="radio"
                                 checked="checked">
                             <span>COD</span>
-                            <span class="payment-desc">You can pay when recieve goods</span>
+                            <span class="payment-desc">quý khách có thể thanh toán khi nhận hàng!</span>
                         </label>
                     </div>
-                    <p class="summary-info grand-total"><span>Grand Total</span> <span id="grand-total-price"></span>
-                    </p>
-                    <a href="" class="btn btn-medium" id='btnCod'>Place order now</a>
+                    <p class="summary-info grand-total"><span>Tổng Cộng: </span> <span id="grand-total-price"></span></p>
+                    <a href="" class="btn btn-medium" id='btnCod'>Đặt Hàng Ngay Bây giờ</a>
                     <a href="" class="btn btn-medium" id="btnPlaceOrder" style="display: none"></a>
                 </div>
-                <div class="summary-item shipping-method">
-                    <h4 class="title-box f-title">Shipping method</h4>
-                    <p class="summary-info"><span class="title">Flat Rate</span></p>
-                    <p class="summary-info"><span class="title">Fixed $50.00</span></p>
-                    <h4 class="title-box">Discount Codes</h4>
-                    <p class="row-in-form">
-                        <label for="coupon-code">Enter Your Coupon code:</label>
-                        <input id="coupon-code" type="text" name="coupon-code" value="" placeholder="">
+                <div class="summary-item shipping-method">              
+                    <h4 class="title-box">MÃ GIẢM GIÁ</h4>
+                    <p class="row-in-form">                       
+                        <input id="coupon-code" type="text" name="coupon-code" value="" placeholder="Nhập mã giảm giá">
                     </p>
-                    <a href="#" class="btn btn-small">Apply</a>
+                    <a href="#" class="btn btn-small">Áp Dụng</a>
                 </div>
             </div>
 

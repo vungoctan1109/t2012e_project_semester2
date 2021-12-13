@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ClientController;
 
+use App\Models\Article;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -22,7 +23,7 @@ class MobileShopController extends Controller
         $brands = Brand_Model::all();
         $mobiles = Mobile_Model::query()
             ->select('*')
-            ->orderBy('created_at', 'DESC')
+            ->orderBy('price', 'DESC')
             ->paginate(9);
         if ($request->ajax()) {
             return view('client.page.fetch_data.pagination_shop_mobile_data', ['mobiles' => $mobiles])->render();
@@ -37,8 +38,7 @@ class MobileShopController extends Controller
     {
         if ($request->ajax()) {
             $mobiles = Mobile_Model::query()
-                ->select('*')
-                ->orderBy('created_at', 'DESC')
+                ->select('*')                
                 ->sortBy($request)
                 ->name($request)
                 ->brandArr($request)
@@ -48,8 +48,7 @@ class MobileShopController extends Controller
                 ->ram($request)
                 ->pagination($request);
             $mobiles_suggest = Mobile_Model::query()
-                ->select('*')
-                ->orderBy('created_at', 'DESC')
+                ->select('*')                
                 ->sortBy($request)
                 ->name($request)
                 ->brandArr($request)
@@ -62,6 +61,10 @@ class MobileShopController extends Controller
             $view =  view('client.page.fetch_data.pagination_shop_mobile_data')->with('mobiles', $mobiles)->render();
             return response()->json(['status' => 200, 'view' => $view,'mobiles_suggest' => $mobiles_suggest]);
         }
+    }
+    public function fetch_data_link(Request $request)
+    {
+        
     }
 
     /**
@@ -106,7 +109,7 @@ class MobileShopController extends Controller
                 if (sizeof($arr) > 6) {
                     array_shift($arr);
                 }
-            }
+            }          
             //popular
             $mobiles_popular = OrderDetail::query()->selectRaw('mobiles.id, mobiles.name, mobiles.price,mobiles.thumbnail, SUM(order_details.quantity) AS sum_quantity')->join('mobiles', 'order_details.mobileID', '=', 'mobiles.id')
                 ->groupBy('mobiles.name')->orderBy('sum_quantity', 'DESC')->take(5)->get();
@@ -115,8 +118,12 @@ class MobileShopController extends Controller
             if (Session::has('recent_view')) {
                 $mobiles_recent_view = Mobile_Model::findMany(Session::get('recent_view'));
             }
+            //recent view article           
+            if (Session::has('recent_view')) {
+                $articles_recent_view = Article::findMany(Session::get('recent_view'));
+            }            
             Session::put('recent_view', $arr);
-            return view('client.page.detail')->with('mobile', $mobile)->with('mobiles_related', $mobiles_related)->with('mobiles_popular', $mobiles_popular)->with('mobiles_recent_view', $mobiles_recent_view);
+            return view('client.page.detail')->with('mobile', $mobile)->with('mobiles_related', $mobiles_related)->with('mobiles_popular', $mobiles_popular)->with('mobiles_recent_view', $mobiles_recent_view)->with('articles_recent_view',$articles_recent_view);
         }
         return view('client.page.error.page_404');
     }

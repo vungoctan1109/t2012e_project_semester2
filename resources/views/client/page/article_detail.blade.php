@@ -2,77 +2,7 @@
 @section('title_page')
     {{$article -> title}}
 @endsection
-@section('private_link')
-    <style>
-        @-webkit-keyframes my {
-            0% {
-                color: #F8CD0A;
-            }
-
-            50% {
-                color: red;
-            }
-
-            100% {
-                color: #F8CD0A;
-            }
-        }
-
-        @-moz-keyframes my {
-            0% {
-                color: #F8CD0A;
-            }
-
-            50% {
-                color: red;
-            }
-
-            100% {
-                color: #F8CD0A;
-            }
-        }
-
-        @-o-keyframes my {
-            0% {
-                color: #F8CD0A;
-            }
-
-            50% {
-                color: red;
-            }
-
-            100% {
-                color: #F8CD0A;
-            }
-        }
-
-        @keyframes my {
-            0% {
-                color: #F8CD0A;
-            }
-
-            50% {
-                color: red;
-            }
-
-            100% {
-                color: #F8CD0A;
-            }
-        }
-
-        .discount {
-            font-size: 24px;
-            font-weight: bold;
-            -webkit-animation: my 700ms infinite;
-            -moz-animation: my 700ms infinite;
-            -o-animation: my 700ms infinite;
-            animation: my 700ms infinite;
-        }
-
-        .main-content p {
-            font-size: 1.55rem;
-        }
-    </style>
+@section('private_link')      
 @endsection
 @section('main_content_page')
     <main id="main" class="main-site">
@@ -81,9 +11,9 @@
 
             <div class="wrap-breadcrumb">
                 <ul>
-                    <li class="item-link"><a href="/client/page/home" class="link">home</a></li>
-                    <li class="item-link"><a href="/client/page/article">article</a></li>
-                    <li class="item-link"><span>detail</span></li>
+                    <li class="item-link"><a href="/client/page/home" class="link">Trang Chủ</a></li>
+                    <li class="item-link"><a href="/client/page/article">Bài Viết</a></li>
+                    <li class="item-link"><span>Bài Viết Chi Tiết</span></li>
                 </ul>
             </div>
             <div class="row">
@@ -179,7 +109,7 @@
 
                 <div class="single-advance-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="wrap-show-advance-info-box style-1 box-in-site">
-                        <h3 class="title-box">Related Article</h3>
+                        <h3 class="title-box">Bài Viết Liên Quan</h3>
                         <div class="wrap-products">
                             <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5"
                                  data-loop="false" data-nav="true" data-dots="false"
@@ -192,7 +122,6 @@
                                                 <figure><img src="{{$item -> thumbnail}}" width="214" height="214"
                                                              alt="{{$item -> name}}"></figure>
                                             </a>
-
                                             <div class="group-flash">
                                                 <span class="flash-item new-label">Related</span>
                                             </div>

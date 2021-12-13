@@ -1,9 +1,11 @@
 @extends('client.template.form')
 @section('title_page','Home')
 @section('private_link')
+<meta name="csrf-token" content="{{ csrf_token() }}"/>
 @endsection
 @section('main_content_page')
 <main id="main">
+    
     <div class="container">
         <!--MAIN SLIDE-->
         <div class="wrap-main-slide">
@@ -44,7 +46,7 @@
         </div>        
         <!--Category-->
         <div class="wrap-show-advance-info-box style-1">
-            <h3 class="title-box">Product Categories</h3>            
+            <h3 class="title-box"><i class="fas fa-mobile"></i> Sản Phẩm Theo Nhãn Hiệu</h3>            
             <div class="wrap-products">
                 <div class="wrap-product-tab tab-style-1">
                     <div class="tab-control">
@@ -464,7 +466,7 @@
         </div>
         <!--On Sale-->
         <div class="wrap-show-advance-info-box style-1 has-countdown">
-            <h3 class="title-box">Sale Off</h3>
+            <h3 class="title-box"><i class="fas fa-mobile"></i> Sản Phẩm Đang Giảm Giá</h3>
             <div class="wrap-top-banner">
                 <a href="#" class="link-banner banner-effect-2">
                     <figure><img
@@ -511,7 +513,7 @@
 
         <!--Latest Products-->
         <div class="wrap-show-advance-info-box style-1">
-            <h3 class="title-box">Latest Products</h3>
+            <h3 class="title-box"><i class="fas fa-mobile"></i> SẢN PHẨM MỚI NHẤT</h3>
             <div class="wrap-top-banner">
                 <a href="#" class="link-banner banner-effect-2">
                     <figure><img src="https://res.cloudinary.com/binht2012e/image/upload/c_fill,h_240,w_1170/v1639304438/557720_JXtJbaEYDN_iphone_taakoh.jpg" width="1170"
@@ -535,7 +537,7 @@
                                                     alt="{{$mobile -> name}}"></figure>
                                         </a>
                                         <div class="group-flash">
-                                            <span class="flash-item new-label new">new</span>
+                                            <span class="flash-item new-label new">HOT</span>
                                             @if($mobile->status == 2)
                                             <span class="flash-item sale-label discount">sale</span>
                                             @endif
@@ -579,7 +581,8 @@
         </div>
         <!--Article-->
         <div class="wrap-show-advance-info-box style-1 has-countdown">
-            <h3 class="title-box">Article</h3>
+            
+            <h3 class="title-box"><i class="fas fa-newspaper"></i>  Tin Tức Về Sản Phẩm</h3>
             <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5"
                 data-loop="false" data-nav="true" data-dots="false"
                 data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
@@ -610,9 +613,5 @@
 </main>
 @endsection
 @section('private_scripts')
-<script>
-    $(document).ready(function () {
-            $('body').addClass('home-page home-01');
-        });
-</script>
+<script src="/dist/js/pages/client/home.js"></script>
 @endsection

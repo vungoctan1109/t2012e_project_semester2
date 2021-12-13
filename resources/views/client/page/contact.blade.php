@@ -20,8 +20,8 @@
         <div class="container">
             <div class="wrap-breadcrumb">
                 <ul>
-                    <li class="item-link"><a href="/client/page/home" class="link">home</a></li>
-                    <li class="item-link"><span>Contact us</span></li>
+                    <li class="item-link"><a href="/" class="link">Trang Chủ</a></li>
+                    <li class="item-link"><span>Liên Hệ Chúng Tôi</span></li>
                 </ul>
             </div>
             <div class="row">
@@ -29,17 +29,25 @@
                     <div class="wrap-contacts ">
                         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                             <div class="contact-box contact-form">
-                                <h2 class="box-title">Leave a Message</h2>
+                                <h2 class="box-title">Để Lại Phản Hồi</h2>
                                 <form id="frmFeedBack" action="#" method="get" name="frm-contact">
                                     @csrf
-                                    <label for="name">Full name:</label>
+                                    <label for="name">Họ Và Tên:</label>
                                     <input type="text" value="{{$fullname}}" id="name" name="name">
+                                    <span class="error name_error"></span></br>
+                                    </br>
                                     <label for="email">Email:</label><br>
                                     <input type="text" value="{{$email}}" id="email" name="email">
-                                    <label for="email">Phone number:</label><br>
+                                    <span class="error email_error"></span></br>
+                                    </br>
+                                    <label for="email">Số Điện Thoại:</label><br>
                                     <input type="text" value="{{$phone}}" id="phone" name="phone">
-                                    <label for="comment">Comment</label>
+                                    <span class="error phone_error"></span></br>
+                                    </br>
+                                    <label for="comment">Nhận Xét</label>
                                     <textarea name="comment" id="comment"></textarea>
+                                    <span class="error comment_error"></span></br>
+                                   
                                     <input type="submit" name="send-feedback" value="Submit">
                                 </form>
                             </div>
@@ -57,7 +65,7 @@
                                          data-map-height="263">
                                     </div>
                                 </div>
-                                <h2 class="box-title">Contact Detail</h2>
+                                <h2 class="box-title">Thông Tin Liên Hệ</h2>
                                 <div class="wrap-icon-box">
 
                                     <div class="icon-box-item">
@@ -71,7 +79,7 @@
                                     <div class="icon-box-item">
                                         <i class="fa fa-phone" aria-hidden="true"></i>
                                         <div class="right-info">
-                                            <b>Phone</b>
+                                            <b>Đường Dây Nóng</b>
                                             <p>0123-465-789-111</p>
                                         </div>
                                     </div>
@@ -79,8 +87,8 @@
                                     <div class="icon-box-item">
                                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                                         <div class="right-info">
-                                            <b>Mail Office</b>
-                                            <p>Sed ut perspiciatis unde omnis<br/>Street Name, Los Angeles</p>
+                                            <b>Địa Chỉ Công Ty</b>
+                                            <p>8A Tôn Thất Thuyết, Mỹ Đình, HÀ NỘI<br/></p>
                                         </div>
                                     </div>
 
