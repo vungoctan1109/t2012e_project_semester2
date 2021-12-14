@@ -1,11 +1,11 @@
 @extends('client.template.form')
-@section('title_page','Home')
+@section('title_page','Trang chủ')
 @section('private_link')
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 @endsection
 @section('main_content_page')
 <main id="main">
-    
+
     <div class="container">
         <!--MAIN SLIDE-->
         <div class="wrap-main-slide">
@@ -14,7 +14,7 @@
                 <div class="item-slide">
                     <img src="https://res.cloudinary.com/binht2012e/image/upload/c_fill,h_439,w_1170/v1639304234/CC_20S21_20Website_20Banner-02_0_hztmmp.jpg"
                         alt="" class="img-slide">
-                </div>               
+                </div>
                 <div class="item-slide">
                     <img src="https://res.cloudinary.com/tanvnth2012002/image/upload/v1639062406/637738655803121919_F-H1_800x300_yrhuye.jpg"
                         alt="" class="img-slide">
@@ -43,10 +43,10 @@
                     </figure>
                 </a>
             </div>
-        </div>        
+        </div>
         <!--Category-->
         <div class="wrap-show-advance-info-box style-1">
-            <h3 class="title-box"><i class="fas fa-mobile"></i> Sản Phẩm Theo Nhãn Hiệu</h3>            
+            <h3 class="title-box"><i class="fas fa-mobile"></i> Sản Phẩm Theo Nhãn Hiệu</h3>
             <div class="wrap-products">
                 <div class="wrap-product-tab tab-style-1">
                     <div class="tab-control">
@@ -145,10 +145,10 @@
                                             @if($mobile->status == 2)
                                             <ins>
                                                 <p class="product-price">{{$after_sale_price}} (VND)</p>
-                                            </ins></br>  
+                                            </ins></br>
                                             <del>
                                                 <p class="product-price">{{$before_sale_price}} (VND)</p>
-                                            </del>                                                                                  
+                                            </del>
                                             @else
                                             <ins>
                                                 <p class="product-price">{{$before_sale_price}} (VND)</p>
@@ -581,7 +581,7 @@
         </div>
         <!--Article-->
         <div class="wrap-show-advance-info-box style-1 has-countdown">
-            
+
             <h3 class="title-box"><i class="fas fa-newspaper"></i>  Tin Tức Về Sản Phẩm</h3>
             <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5"
                 data-loop="false" data-nav="true" data-dots="false"

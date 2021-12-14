@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','About')
+@section('title_page','Về chúng tôi')
 @section('private_link')
 @endsection
 @section('main_content_page')
@@ -30,19 +30,19 @@
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="aboutus-box-score equal-elem ">
                     <b class="box-score-title">10000</b>
-                    <span class="sub-title">Sản Phẩm Trong Cửa Hàng</span>                    
+                    <span class="sub-title">Sản Phẩm Trong Cửa Hàng</span>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="aboutus-box-score equal-elem ">
                     <b class="box-score-title">90%</b>
-                    <span class="sub-title">Khách Hàng Quay Lại</span>                    
+                    <span class="sub-title">Khách Hàng Quay Lại</span>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="aboutus-box-score equal-elem ">
                     <b class="box-score-title">100.000</b>
-                    <span class="sub-title">NGƯỜI DÙNG TRANG WEB</span>                   
+                    <span class="sub-title">NGƯỜI DÙNG TRANG WEB</span>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
         <div class="row">
 
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
+
                 <div class="aboutus-info style-small-left">
                     <b class="box-title">Giá Trị Cốt Lõi</b>
                     <ul class="txt-content">
@@ -81,7 +81,7 @@
                         bền vững, hoàn thiện hình ảnh một thương hiệu gần gũi, thân thiện và hướng tới mục tiêu phục vụ
                         khách hàng là ưu tiên hàng đầu .</p>
                 </div>
-               
+
 
                 <div class="aboutus-info style-small-left">
                     <b class="box-title">Sứ Mệnh</b>
@@ -94,23 +94,23 @@
                 <div class="aboutus-info style-small-left">
                     <b class="box-title">HỢP TÁC CÙNG CHÚNG TÔI</b>
                     <div class="list-showups">
-                        <label>                            
+                        <label>
                             <span class="check-box"></span>
-                            <span class='function-name'>HỖ TRỢ 24/7</span>                            
+                            <span class='function-name'>HỖ TRỢ 24/7</span>
                         </label>
                         <label>
-                            
+
                             <span class="check-box"></span>
-                            <span class='function-name'>CHẤT LƯỢNG TỐT NHẤT</span>                        
+                            <span class='function-name'>CHẤT LƯỢNG TỐT NHẤT</span>
                         </label>
-                        <label>                            
+                        <label>
                             <span class="check-box"></span>
                             <span class='function-name'>GIAO HÀNG NHANH NHẤT</span>
-                            
+
                         </label>
-                        <label>                            
+                        <label>
                             <span class="check-box"></span>
-                            <span class='function-name'>CHÍNH SÁCH CHĂM SÓC KHÁCH HÀNG ĐỈNH CAO</span>                           
+                            <span class='function-name'>CHÍNH SÁCH CHĂM SÓC KHÁCH HÀNG ĐỈNH CAO</span>
                         </label>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                         </div>
                         <div class="info">
                             <b class="name">Vũ Ngọc Tân</b>
-                            <span class="title">Team Leader</span>                            
+                            <span class="title">Team Leader</span>
                         </div>
                     </div>
 
@@ -148,7 +148,7 @@
                         </div>
                         <div class="info">
                             <b class="name">Nguyễn Văn Quý</b>
-                            <span class="title">Team member</span>                           
+                            <span class="title">Team member</span>
                         </div>
                     </div>
 
@@ -162,7 +162,7 @@
                         </div>
                         <div class="info">
                             <b class="name">Nguyễn Xuân Kiên</b>
-                            <span class="title">Team member</span>                           
+                            <span class="title">Team member</span>
                         </div>
                     </div>
 
@@ -176,7 +176,7 @@
                         </div>
                         <div class="info">
                             <b class="name">Nguyễn Văn Bình</b>
-                            <span class="title">Team member</span>                           
+                            <span class="title">Team member</span>
                         </div>
                     </div>
                 </div>

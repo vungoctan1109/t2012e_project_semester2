@@ -37,7 +37,7 @@ $admin_user_id = " ";
                                     aria-hidden="true"></i></a>
                             <ul class="submenu lang">
                                 <li {{$checklogin ? ' ' : 'hidden'}} class="menu-item"><a title="profile" href="/client/page/user/{{$admin_user_id}}" id="btn-profile">Thông Tin Cá Nhân</a></li>
-                                <li style="{{$admin_user_role2 == 1 ? 'display:none' : ' ' }}" class="menu-item"><a title="history" href="/client/page/orders/{{$admin_user_id}}" id="btn-history">Purchase History</a></li>
+                                <li style="{{$admin_user_role2 == 1 ? 'display:none' : ' ' }}" class="menu-item"><a title="history" href="/client/page/orders/{{$admin_user_id}}" id="btn-history">Lịch sử mua hàng</a></li>
                                 <li {{$checklogin ? ' ' : 'hidden'}} class="menu-item"><a title="logout" href="#" id="btn-logout">Đăng Xuất</a></li>
                             </ul>
                         </li>
@@ -58,8 +58,8 @@ $admin_user_id = " ";
                 <div class="wrap-search center-section">
                     <div class="wrap-search-form">
                         <form action="#" id="form-search-top" name="form-search-top">
-                            <input type="text" list="listSearch" name="search" value="" placeholder="Bạn cần tìm gì ?" id="search">                            
-                            <datalist id="listSearch">                                                                                         
+                            <input type="text" list="listSearch" name="search" value="" placeholder="Bạn cần tìm gì ?" id="search">
+                            <datalist id="listSearch">
                             </datalist>
                             <button form="form-search-top" type="button" id="btn-search"><i class="fa fa-search" aria-hidden="true"></i></button>
                         </form>
