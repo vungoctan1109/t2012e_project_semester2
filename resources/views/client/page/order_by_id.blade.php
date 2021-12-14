@@ -47,7 +47,46 @@
                         @endforeach
                         </tbody>
                     </table>
-                    {!! $orders->links() !!}
+                    <div class=" ">
+                        <div class="wrap-pagination-info" id="pagination">
+                            @php
+                                $link_limit = 4;
+                            @endphp
+                            @if ($orders->lastPage() > 1)
+                                <ul class="page-numbers">
+                                    <li class="page-number-item">
+                                        <a class="page-number-item" href="{{ $orders->url($orders->currentPage() - 1) }}">Previous</a>
+                                    </li>
+                                    @for ($i = 1; $i <= $orders->lastPage(); $i++)
+                                        @php
+                                            $half_total_links = floor($link_limit / 2);
+                                            $from = $orders->currentPage() - $half_total_links;
+                                            $to = $orders->currentPage() + $half_total_links;
+                                            if ($orders->currentPage() < $half_total_links) { $to +=$half_total_links - $orders->
+                                                currentPage();
+                                                }
+                                                if ($orders->lastPage() - $orders->currentPage() < $half_total_links) { $from
+                                                    -=$half_total_links - ($orders->lastPage() - $orders->currentPage()) - 1;
+                                                    }
+                                        @endphp
+                                        @if ($from < $i && $i < $to) <li class="page-number-item">
+                                            <a class="page-number-item {{ ($orders->currentPage() == $i) ? 'current' : '' }}"
+                                               href="{{ $orders->url($i) }}">{{ $i }}</a>
+                                        </li>
+                                        @endif
+                                    @endfor
+                                    @if($orders->currentPage() < $orders->lastPage())
+                                        <li class="page-number-item">
+                                            <a class="page-number-item next-link"
+                                               href="{{ $orders->url($orders->currentPage() + 1) }}">Next</a>
+                                        </li>
+                                    @endif
+                                </ul>
+                            @endif
+                        </div>
+                    </div>
+                    <br>
+                    <br>
                     <br>
                 </div>
                 <div class="col-md-7" >
