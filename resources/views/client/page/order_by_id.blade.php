@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Lịch sử mua hàng')
+@section('title_page','Lịch Sử Mua Hàng')
 @section('private_link')
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 @endsection
@@ -10,7 +10,7 @@
 
             <div class="wrap-breadcrumb">
                 <ul>
-                    <li class="item-link"><a href="/client/page/home" class="link">TRANG CHỦ</a></li>
+                    <li class="item-link"><a href="/" class="link">TRANG CHỦ</a></li>
                     <li class="item-link"><span>LỊCH SỬ MUA HÀNG</span></li>
                 </ul>
             </div>

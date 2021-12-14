@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Đăng nhập')
+@section('title_page','Đăng Nhập')
 @section('private_link')
 @endsection
 @section('main_content_page')
@@ -9,7 +9,7 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="#" class="link">Trang Chủ</a></li>
+                <li class="item-link"><a href="/" class="link">Trang Chủ</a></li>
                 <li class="item-link"><span>Đăng Nhập</span></li>
             </ul>
         </div>

@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Thanh toán')
+@section('title_page','Thanh Toán')
 @section('private_link')
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection
@@ -21,7 +21,7 @@ $email = '';
     <div class="container">
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="#" class="link">Trang Chủ</a></li>
+                <li class="item-link"><a href="/" class="link">Trang Chủ</a></li>
                 <li class="item-link"><span>Thanh Toán</span></li>
             </ul>
         </div>

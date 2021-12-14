@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Trang chủ')
+@section('title_page','Trang Chủ')
 @section('private_link')
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection
@@ -488,7 +488,7 @@
                             <span class="flash-item sale-label discount">sale</span>
                         </div>
                         <div class="wrap-btn">
-                            <a href="#" class="function-link">quick view</a>
+                            <a href="{{route('mobile_client.show', $mobile -> id)}}" class="function-link">quick view</a>
                         </div>
                     </div>
                     <div class="product-info">
@@ -544,7 +544,7 @@
                                             @endif
                                         </div>
                                         <div class="wrap-btn">
-                                            <a href="#" class="function-link">quick view</a>
+                                            <a href="{{route('mobile_client.show', $mobile -> id)}}" class="function-link">quick view</a>
                                         </div>
                                     </div>
                                     <div class="product-info">
@@ -583,11 +583,8 @@
         <!--Article-->
         <div class="wrap-show-advance-info-box style-1 has-countdown">
 
-<<<<<<< HEAD
             <h3 class="title-box"><i class="fas fa-newspaper"></i> Tin Tức Về Sản Phẩm</h3>
-=======
-            <h3 class="title-box"><i class="fas fa-newspaper"></i>  Tin Tức Về Sản Phẩm</h3>
->>>>>>> c1521992ba36f60fdb4bdd061f49d6b629370137
+
             <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5"
                 data-loop="false" data-nav="true" data-dots="false"
                 data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
@@ -602,7 +599,7 @@
                             <span class="flash-item new-label new">Hot</span>
                         </div>
                         <div class="wrap-btn">
-                            <a href="#" class="function-link">quick view</a>
+                            <a href="{{route('article_client.show', $article -> id)}}" class="function-link">quick view</a>
                         </div>
                     </div>
                     <div class="product-info">

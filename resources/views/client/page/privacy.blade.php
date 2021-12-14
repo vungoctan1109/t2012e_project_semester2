@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Privacy Policy')
+@section('title_page','CHÍNH SÁCH BẢO MẬT')
 @section('private_link')
 @endsection
 @section('main_content_page')

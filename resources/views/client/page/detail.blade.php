@@ -20,82 +20,75 @@
             </div>
             <div class="row">
 
-                <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
-                    <div class="wrap-product-detail">
-                        <div class="detail-media">
-                            <div class="product-gallery">
-                                <ul class="slides">
-                                    @foreach($mobile -> arrayThumbnail as $thumbnail)
-                                        <li data-thumb="{{$thumbnail}}">
-                                            <img src="{{$thumbnail}}" alt="product thumbnail"/>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
+
+            <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
+                <div class="wrap-product-detail">
+                    <div class="detail-media">
+                        <div class="product-gallery">
+                            <ul class="slides">
+                                @foreach($mobile -> arrayThumbnail as $thumbnail)
+                                <li data-thumb="{{$thumbnail}}">
+                                    <img src="{{$thumbnail}}" alt="product thumbnail" />
+                                </li>
+                                @endforeach
+                            </ul>
                         </div>
-                        <div class="detail-info">
-                            <div class="product-rating">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <a href="#" class="count-review">(05 review)</a>
-                            </div>
-                            <h2 class="product-name">{{$mobile -> name}}</h2>
-                            <div class="short-desc">
-                                <ul>
-                                    <li>Size: {{$mobile -> screenSize}} inch</li>
-                                    <li>Pin: {{$mobile -> pin}} mah</li>
-                                    <li>Camera: {{$mobile -> camera}} MP</li>
-                                    <li>Color: {{$mobile -> color}}</li>
-                                    <li>Memory: {{$mobile -> memory}} Gb</li>
-                                    <li>Ram: {{$mobile -> ram}} Gb</li>
-                                </ul>
-                            </div>
-                            <div class="wrap-social">
-                                <a class="link-socail" href="#"><img src="/client-assets/assets/images/social-list.png"
-                                                                     alt=""></a>
-                            </div>
-                            <?php
-                            $price = number_format($mobile->price, 0, '', ',');
-                            $price_current = number_format($mobile->price - ($mobile->price * $mobile->saleOff), 0, '', ',');
-                            ?>
-                            @if ($mobile-> saleOff > 0)
-                                <div class="wrap-price"><span class="product-price discount">Giảm ({{$mobile-> saleOff *
-                                100}}%)</span></div>
-                                <div class="wrap-price"><strike class="product-price" style="font-size: 15px">{{$price}}
-                                        (VND)</strike></div>
-                                <div class="wrap-price"><span class="product-price">{{$price_current}} (VND)</span>
-                                </div>
-                            @else
-                                <div class="wrap-price"><span class="product-price" style="font-size: 15px">{{$price}}
+                    </div>
+                    <div class="detail-info">
+                        <div class="product-rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <a href="#" class="count-review">(05 review)</a>
+                        </div>
+                        <h2 class="product-name">{{$mobile -> name}}</h2>
+                        <div class="short-desc">
+                            <ul>
+                                <li>Màn Hình: {{$mobile -> screenSize}} inch</li>
+                                <li>Pin: {{$mobile -> pin}} mah</li>
+                                <li>Camera: {{$mobile -> camera}} MP</li>
+                                <li>Màu: {{$mobile -> color}}</li>
+                                <li>Bộ Nhớ: {{$mobile -> memory}} Gb</li>
+                                <li>Ram: {{$mobile -> ram}} Gb</li>
+                            </ul>
+                        </div>
+                      
+                        <?php
+                                $price = number_format($mobile -> price, 0, '', ',');
+                                $price_current = number_format($mobile -> price - ($mobile -> price * $mobile -> saleOff), 0, '', ',');
+                        ?>
+                        @if ($mobile-> saleOff > 0)
+                        <div class="wrap-price"><span class="product-price discount">Giảm ({{$mobile-> saleOff *
+                                100}}%)</span> </div>
+                        <div class="wrap-price"><strike class="product-price" style="font-size: 15px">{{$price}}
+                                (VND)</strike></div>
+                        <div class="wrap-price"><span class="product-price">{{$price_current}} (VND)</span></div>
+                        @else
+                        <div class="wrap-price"><span class="product-price" style="font-size: 15px">{{$price}}
                                 (VND)</span></div>
-                            @endif
-                            <div class="stock-info in-stock">
-                                <p class="availability">Status:
-                                    <b>{{$mobile->strStatus}}</b>
-                                </p>
-                            </div>
-                            <div class="wrap-butons">
-                                <form id="formCart">
-                                    @csrf
-                                    <input type="hidden" value="{{$mobile -> id}}" name="id"/>
-                                    <input type="hidden"
-                                           value="{{$mobile -> price - ($mobile -> price * $mobile -> saleOff)}}"
-                                           name="price"/>
-                                    <input type="hidden" value="{{$mobile -> name}}" name="name">
-                                    <input type="hidden" value="{{$mobile -> mainThumbnail}}" name="image">
-                                    <input type="hidden" value="{{$mobile -> saleOff}}" name="saleOff">
-                                    <input type="hidden" value="{{$mobile -> quantity}}" name="current_quantity">
-                                    <input type="hidden" value="1" name="quantity">
-                                    <a href="#" class="btn add-to-cart" id="btnAddToCart">Add To Cart</a>
-                                </form>
-                                <div class="wrap-btn">
-                                    <a href="#" class="btn btn-compare">Add Compare</a>
-                                    <a href="#" class="btn btn-wishlist">Add Wishlist</a>
-                                </div>
-                            </div>
+                        @endif
+                        <div class="stock-info in-stock">
+                            <p class="availability">Status:
+                                <b>{{$mobile->strStatus}}</b>
+                            </p>
+                        </div>                        
+                        <div class="wrap-butons">
+                            <form id="formCart">
+                                @csrf
+                                <input type="hidden" value="{{$mobile -> id}}" name="id" />
+                                <input type="hidden"
+                                    value="{{$mobile -> price - ($mobile -> price * $mobile -> saleOff)}}"
+                                    name="price" />
+                                <input type="hidden" value="{{$mobile -> name}}" name="name">
+                                <input type="hidden" value="{{$mobile -> mainThumbnail}}" name="image">
+                                <input type="hidden" value="{{$mobile -> saleOff}}" name="saleOff">
+                                <input type="hidden" value="{{$mobile -> quantity}}" name="current_quantity">
+                                <input type="hidden" value="1" name="quantity">
+                                <a href="#" class="btn add-to-cart" id="btnAddToCart">Thêm vào giỏ hàng</a>
+                            </form>                          
+
                         </div>
                         <div class="advance-info">
                             <div class="tab-control normal">
@@ -131,7 +124,7 @@
                                             <td>{{$mobile -> camera}} MP</td>
                                         </tr>
                                         <tr>
-                                            <th>Color</th>
+                                            <th>Màu</th>
                                             <td>{{$mobile -> color}}</td>
                                         </tr>
                                         </tbody>
