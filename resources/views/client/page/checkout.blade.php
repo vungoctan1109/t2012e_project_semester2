@@ -201,14 +201,5 @@ $email = '';
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="/dist/js/pages/client/checkout.js"></script>
-<<<<<<< HEAD
 <script src="/dist/js/pages/client/home.js"></script>
 @endsection
-=======
-<script>
-    $(document).ready(function () {
-        $('body').addClass('checkout page');
-    });
-</script>
-@endsection
->>>>>>> c1521992ba36f60fdb4bdd061f49d6b629370137
