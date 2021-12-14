@@ -83,13 +83,13 @@ $(document).ready(function () {
     $(document).on("click", ".btn-clear", function (e) {
         e.preventDefault();
         Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            title: "Bạn Chắc Chứ?",
+            text: "Bạn sẽ không thể hàn nguyên điều này!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: "Xoá giỏ hàng",
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajaxSetup({

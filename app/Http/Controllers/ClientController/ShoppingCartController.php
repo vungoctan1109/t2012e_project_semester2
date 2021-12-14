@@ -88,9 +88,9 @@ class ShoppingCartController extends Controller
         if ($quantity == 0) {
             $cartItems = \Cart::getContent();
             $list_cart = view('client.page.fetch_data.list_cart')->with('cartItems', $cartItems)->render();
-            return response()->json(['status' => 200, 'message' => 'Remove item successfully!!', 'quantity' => $quantity, 'total' => $total, 'list_cart' => $list_cart]);
+            return response()->json(['status' => 200, 'message' => 'Xoá sản phẩm trong giỏ hàng thành công!', 'quantity' => $quantity, 'total' => $total, 'list_cart' => $list_cart]);
         }
-        return response()->json(['status' => 200, 'message' => 'Remove item successfully!!', 'quantity' => $quantity, 'total' => $total]);
+        return response()->json(['status' => 500, 'message' => 'Xoá sản phẩm trong giỏ hàng không thành công!', 'quantity' => $quantity, 'total' => $total]);
     }
     #CLEAR
     public function clearAllCart()
@@ -100,6 +100,6 @@ class ShoppingCartController extends Controller
         $total = \Cart::getTotal();
         $cartItems = \Cart::getContent();
         $list_cart = view('client.page.fetch_data.list_cart')->with('cartItems', $cartItems)->render();
-        return response()->json(['status' => 200, 'message' => 'Clear cart successfully!!', 'quantity' => $quantity, 'total' => $total, 'list_cart' => $list_cart]);
+        return response()->json(['status' => 200, 'message' => 'Xoá giỏ hàng thành công!', 'quantity' => $quantity, 'total' => $total, 'list_cart' => $list_cart]);
     }
 }
