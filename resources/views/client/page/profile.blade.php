@@ -23,8 +23,8 @@
                 </div><!--/col-3-->
                 <div class="col-sm-9">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#home">Thông tin chi tiết</a></li>
-                        <li><a data-toggle="tab" href="#messages">Chỉnh sửa thông tin</a></li>
+                        <li class="active"><a data-toggle="tab" href="#home">Thông Tin Cá Nhân</a></li>
+                        <li><a data-toggle="tab" href="#messages">Sửa Thông Tin</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="home">
@@ -42,28 +42,29 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="phone"><h4><b>Số điện thoại:</b> {{$user->phone}}</h4></label>
+                                        <label for="phone"><h4><b>Số Điện Thoại:</b> {{$user->phone}}</h4></label>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="mobile"><h4><b>Địa chỉ:</b> {{$user->address}}</h4></label>
+                                        <label for="mobile"><h4><b>Địa Chỉ:</b> {{$user->address}}</h4></label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="email"><h4><b>Mô tả:</b> {{$user->description}}</h4></label>
+                                        <label for="email"><h4><b>Mô Tả:</b> {{$user->description}}</h4></label>
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <div class="col-xs-6">
+                                        <label for="password"><h4>Trạng Thái Tài Khoản: {{$user->strStatus}}</h4></label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="password"><h4><b>Status:</b> {{$user->strStatus}}</h4></label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-xs-6">
-                                        <label for=""><h4><a href="/client/page/orders/{{$user->id}}">Lịch sử mua hàng</a></h4></label>
+                                        <label for=""><h4><a href="/client/page/orders/{{$user->id}}">Lịch Sử Mua Hàng</a></h4></label>
                                     </div>
                                 </div>
                             </form>
@@ -106,7 +107,9 @@
                                 <div class="form-group">
 
                                     <div class="col-xs-6">
+
                                         <label for="phone"><h4><b>Địa chỉ:</b></h4></label>
+
                                         <input type="text" class="form-control" name="address"
                                                value="{{$user->address}}" title="enter your phone number if any.">
                                     </div>
@@ -114,6 +117,7 @@
 
                                 <div class="form-group">
                                     <div class="col-xs-6">
+
                                         <label for="mobile"><h4><b>Mô tả:</b></h4></label>
                                         <input type="text" class="form-control" name="description"
                                                value="{{$user->description}}"
@@ -129,7 +133,7 @@
                                                 value="">Thay Đổi Avatar</button>
                                         <br><br>
                                         <button class="btn btn-lg btn-danger" type="submit" id="btnSaveEdit"><i
-                                                class="glyphicon glyphicon-ok-sign" ></i> Save
+                                                class="glyphicon glyphicon-ok-sign" ></i> Lưu Thay Đổi
                                         </button>
                                         <button class="btn btn-lg btn-danger" type="reset"><i
                                                 class="glyphicon glyphicon-repeat"></i> Reset

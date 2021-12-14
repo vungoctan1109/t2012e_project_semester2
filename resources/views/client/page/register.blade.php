@@ -11,8 +11,8 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="#" class="link">home</a></li>
-                <li class="item-link"><span>Register</span></li>
+                <li class="item-link"><a href="#" class="link">Trang Chủ</a></li>
+                <li class="item-link"><span>Đăng Kí</span></li>
             </ul>
         </div>
         <div class="row">
@@ -23,46 +23,49 @@
                             <form id="formRegis" class="form-stl" action="#" name="frm-login" method="get">
                                 @csrf
                                 <fieldset class="wrap-title">
-                                    <h3 class="form-title">TẠO TÀI KHOẢN MỚI</h3>
+
+                                    <h3 class="form-title">Tạo tài khoản mới</h3>
                                     <h4 class="form-subtitle">Thông Tin Cá Nhân</h4>
                                 </fieldset>
                                 <fieldset class="wrap-input">
-                                    <label for="frm-reg-email">Địa chỉ email*</label>
-                                    <input type="email" id="frm-reg-email" name="email" placeholder="Địa chỉ email">
+                                    <label for="frm-reg-email">Email*</label>
+                                    <input type="email" id="frm-reg-email" name="email" placeholder="Email">
                                 </fieldset>
                                 <fieldset class="wrap-input">
-                                    <label for="fullName">Tên đầy đủ</label>
-                                    <input type="text" id="fullName" name="fullName" placeholder="Tên đầy đủ">
+                                    <label for="fullName">Họ Và Tên</label>
+                                    <input type="text" id="fullName" name="fullName" placeholder="Họ và tên">
                                 </fieldset>
                                 <fieldset class="wrap-input item-width-in-half left-item ">
-                                    <label for="frm-reg-pass">Mật khẩu</label>
-                                    <input type="password" id="password" name="password" placeholder="Mật khẩu">
+                                    <label for="frm-reg-pass">Mật Khẩu</label>
+                                    <input type="password" id="password" name="password" placeholder="Mât khẩu">
                                 </fieldset>
                                 <fieldset class="wrap-input item-width-in-half ">
-                                    <label for="cfpassword">Xác nhận mật khẩu</label>
+                                    <label for="cfpassword">Xác Nhận Mật Khẩu</label>
+
                                     <input type="password" id="cfpassword" name="cfpassword"
                                            placeholder="Xác nhận mật khẩu">
                                 </fieldset>
                                 <fieldset class="wrap-input">
-                                    <label for="phone">Số điện thoại</label>
+                                    <label for="phone">Số Điện Thoại</label>
+
                                     <input type="text" id="phone" name="phone"
                                            placeholder="Số điện thoại">
                                 </fieldset>
                                 <fieldset class="wrap-input">
-                                    <label for="address">Địa chỉ</label>
+                                    <label for="address">Địa Chỉ</label>
                                     <input type="text" id="address" name="address" placeholder="Địa chỉ">
                                 </fieldset>
                                 <fieldset class="wrap-input">
-                                    <label for="description">Mô tả bản thân</label>
-                                    <input type="text" id="description" name="description" placeholder="Mô tả bản thân">
+                                    <label for="description">Thông Tin Mô Tả</label>
+                                    <input type="text" id="description" name="description" placeholder="Thông tin mô tả">
                                 </fieldset>
                                 <fieldset class="wrap-input">
                                     <button type="button" id="btnThumbnailLink" class="btn btn-info mt-1"
-                                            value="Choose your file">Thêm Avatar</button></br>
+                                            value="Choose your file">Thêm Hình Đại Diện</button></br>
                                     <div id="list-preview-image"></div>
                                     <input id="avatar" type="text" value="" name="avatar" style="display: none">
                                 </fieldset>
-                                <input type="submit" class="btn btn-sign" value="Đăng ký" name="register">
+                                <input type="submit" class="btn btn-sign" value="Đăng Kí" name="Đăng Kí">
                             </form>
                         </div>
                     </div>

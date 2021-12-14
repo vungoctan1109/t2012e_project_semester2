@@ -2,12 +2,12 @@ window.addEventListener('DOMContentLoaded', function (e) {
     $('#btn-logout').click(function (e) {
         e.preventDefault();
         Swal.fire({
-            title: 'Bạn có chắc muốn đăng xuất không ?',
+            title: 'Bạn chắc chắn muốn đăng xuất chứ ?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Đăng xuất'
+            confirmButtonText: 'Xác Nhận'
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajaxSetup({
