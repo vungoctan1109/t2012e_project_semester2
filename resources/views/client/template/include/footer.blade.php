@@ -1,3 +1,10 @@
+@php
+    if (\Illuminate\Support\Facades\Auth::check()){
+    $url_acc = '/client/page/user/'.\Illuminate\Support\Facades\Auth::id();
+        }else{
+            $url_acc = '/client/page/login/get';
+        }
+@endphp
 <div class="wrap-footer-content footer-style-1">
     <div class="wrap-function-info">
         <div class="container">
@@ -102,8 +109,8 @@
                             <div class="item-content">
                                 <div class="wrap-vertical-nav">
                                     <ul>
-                                        <li class="menu-item"><a href="#" class="link-term">Tài Khoản Của Tôi</a></li>                                        
-                                        <li class="menu-item"><a href="#" class="link-term">Phiếu Quà Tặng</a></li>                                       
+                                        <li class="menu-item"><a href={{$url_acc}} class="link-term">Tài Khoản Của Tôi</a></li>
+                                        <li class="menu-item"><a href="#" class="link-term">Phiếu Quà Tặng</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -113,8 +120,8 @@
                             <div class="item-content">
                                 <div class="wrap-vertical-nav">
                                     <ul>
-                                        <li class="menu-item"><a href="/client/page/feedback" class="link-term">Liên Hệ Chúng Tôi</a></li>                                       
-                                        <li class="menu-item"><a href="/client/page/feedback" class="link-term">Bản Đồ</a></li>                                                                               
+                                        <li class="menu-item"><a href="/client/page/feedback" class="link-term">Liên Hệ Chúng Tôi</a></li>
+                                        <li class="menu-item"><a href="/client/page/feedback" class="link-term">Bản Đồ</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -180,7 +187,7 @@
                 </div>
 
             </div>
-        </div>     
+        </div>
     </div>
 
     <div class="coppy-right-box">
