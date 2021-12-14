@@ -31,23 +31,23 @@ $email = '';
                 <form action="#" method="get" name="formOrder" id="formOrder">
                     <p class="row-in-form">
                         <label for="fname">Họ Và Tên<span>*</span></label>
-                        <input id="name" type="text" name="name" value="" placeholder="Họ và tên quý khách ...">
+                        <input id="name" type="text" name="name" value="{{$name}}" placeholder="Họ và tên">
                         <span class="error name_error"></span>
                     </p>
                     <p class="row-in-form">
                         <label for="email">Địa Chỉ Email:<span>*</span></label>
-                        <input id="email" type="email" name="email" value="" placeholder="Email của quý khách ... ">
+                        <input id="email" type="email" name="email" value="{{$email}}" placeholder="Email">
                         <span class="error email_error"></span>
                     </p>
                     <p class="row-in-form">
                         <label for="phone">Số Điện Thoại<span>*</span></label>
-                        <input id="phone" type="number" name="phone" value=""
-                            placeholder="Số điện thoại của quý khách ..">
+                        <input id="phone" type="text" name="phone" value="{{$phone}}"
+                            placeholder="Số điện thoại">
                         <span class="error phone_error"></span>
                     <p class="row-in-form">
                         <label for="add">Tỉnh:<span>*</span></label>
                         <input type="text" list="listProvinces" id="province" type="text" name="province"
-                            placeholder="Tỉnh thành của quý khách ..." />
+                            placeholder="Tỉnh/Thành Phố" />
                         <datalist id="listProvinces">
                         </datalist>
                         <span class="error province_error"></span>
@@ -55,7 +55,7 @@ $email = '';
                     <p class="row-in-form">
                         <label for="add">Huyện:<span>*</span></label>
                         <input type="text" list="districts" id="district" type="text" name="district"
-                            placeholder="Huyện của quý khách ..." />
+                            placeholder="Quận/Huyện" />
                         <datalist id="districts">
                         </datalist>
                         <span class="error district_error"></span>
@@ -63,7 +63,7 @@ $email = '';
                     <p class="row-in-form">
                         <label for="add">Xã:<span>*</span></label>
                         <input type="text" list="wards" id="ward" type="text" name="ward"
-                            placeholder="Xã của quý khách ..." />
+                            placeholder="Xã/Phường" />
                         <datalist id="wards">
                         </datalist>
                         <span class="error ward_error"></span>
@@ -71,20 +71,20 @@ $email = '';
                     <p class="row-in-form">
                         <label for="address_detail">Địa Chỉ Chi Tiết: </label>
                         <input id="address_detail" type="text" name="address_detail" value="{{$address}}"
-                            placeholder="Địa chỉ cụ thể của quý khách ... ">
+                            placeholder="Địa chỉ chi tiết">
                     </p>
                     <p class="row-in-form">
                         <label for="comment">Ghi Chú:</label>
-                        <input id="comment" type="text" name="comment" value="" placeholder="Ghi chú của quý khách ...">
+                        <input id="comment" type="text" name="comment" value="" placeholder="Ghi chú">
                     </p>
                     <p class="row-in-form fill-wife">
                         <label class="checkbox-field">
                             <input name="create-account" id="create-account" value="forever" type="checkbox">
-                            <span>quý khách Muốn Tạo Tài Khoản?</span>
+                            <span>Tạo Tài Khoản?</span>
                         </label>
                         <label class="checkbox-field">
                             <input name="different-add" id="different-add" value="forever" type="checkbox">
-                            <span>quý khách muốn gửi đến một địa chỉ khác?</span>
+                            <span>Gửi đến một địa chỉ khác?</span>
                         </label>
                     </p>
             </div>

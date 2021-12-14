@@ -20,7 +20,13 @@ window.addEventListener('DOMContentLoaded', function () {
                 if(response.status == 200){
                     window.location.href = "/client/page/shop/mobile";
                 }else{
-                    alert(response.message)
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Tài khoản hoặc mật khẩu không đúng',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             }
         })

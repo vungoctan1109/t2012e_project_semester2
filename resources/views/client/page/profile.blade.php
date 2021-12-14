@@ -23,8 +23,8 @@
                 </div><!--/col-3-->
                 <div class="col-sm-9">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#home">Information Detail</a></li>
-                        <li><a data-toggle="tab" href="#messages">Edit Profile</a></li>
+                        <li class="active"><a data-toggle="tab" href="#home">Thông Tin Cá Nhân</a></li>
+                        <li><a data-toggle="tab" href="#messages">Sửa Thông Tin</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="home">
@@ -32,7 +32,7 @@
                             <form class="form" action="##" method="post" id="registrationForm">
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="first_name"><h4><b>Full name:</b> {{$user->fullName}}</h4></label>
+                                        <label for="first_name"><h4><b>Họ Và Tên:</b> {{$user->fullName}}</h4></label>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -42,33 +42,33 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="phone"><h4><b>Phone:</b> {{$user->phone}}</h4></label>
+                                        <label for="phone"><h4><b>Số Điện Thoại:</b> {{$user->phone}}</h4></label>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="mobile"><h4><b>Address:</b> {{$user->address}}</h4></label>
+                                        <label for="mobile"><h4><b>Địa Chỉ:</b> {{$user->address}}</h4></label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="email"><h4><b>Description:</b> {{$user->description}}</h4></label>
+                                        <label for="email"><h4><b>Mô Tả:</b> {{$user->description}}</h4></label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="email"><h4><b>Role:</b> {{$user->strRolllle}}</h4></label>
+                                        <label for="email"><h4><b>Vai trò:</b> {{$user->strRolllle}}</h4></label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="password"><h4>Status: {{$user->strStatus}}</h4></label>
+                                        <label for="password"><h4>Trạng Thái Tài Khoản: {{$user->strStatus}}</h4></label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for=""><h4><a href="/client/page/orders/{{$user->id}}">History Purchase</a></h4></label>
+                                        <label for=""><h4><a href="/client/page/orders/{{$user->id}}">Lịch Sử Mua Hàng</a></h4></label>
                                     </div>
                                 </div>
                             </form>
@@ -89,12 +89,12 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="first_name"><h4><b>Account Type:</b> {{$user->strRolllle}}</h4></label>
+                                        <label for="first_name"><h4><b>Loại Tài Khoản:</b> {{$user->strRolllle}}</h4></label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="last_name"><h4><b>Full Name:</b></h4></label>
+                                        <label for="last_name"><h4><b>Họ Và Tên:</b></h4></label>
                                         <input type="text" class="form-control" name="fullName" id="fullName"
                                                value="{{$user->fullName}}" title="enter your last name if any.">
                                     </div>
@@ -102,7 +102,7 @@
 
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="last_name"><h4><b>Phone Number:</b></h4></label>
+                                        <label for="last_name"><h4><b>Số Điện Thoại:</b></h4></label>
                                         <input type="text" class="form-control" name="phone"
                                                value="{{$user->phone}}" title="enter your last name if any.">
                                     </div>
@@ -111,7 +111,7 @@
                                 <div class="form-group">
 
                                     <div class="col-xs-6">
-                                        <label for="phone"><h4><b>Address:</b></h4></label>
+                                        <label for="phone"><h4><b>Địa Chỉ:</b></h4></label>
                                         <input type="text" class="form-control" name="address"
                                                value="{{$user->address}}" title="enter your phone number if any.">
                                     </div>
@@ -119,7 +119,7 @@
 
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="mobile"><h4><b>Description:</b></h4></label>
+                                        <label for="mobile"><h4><b>Mô Tả:</b></h4></label>
                                         <input type="text" class="form-control" name="description"
                                                value="{{$user->description}}"
                                                title="enter your mobile number if any.">
@@ -131,10 +131,10 @@
                                     <div class="col-xs-12">
                                         <br>
                                         <button type="button" id="btnThumbnailLink" class="btn btn-xs btn-danger mt-1 mb-3"
-                                                value="">Change Avatar</button>
+                                                value="">Thay Đổi Avatar</button>
                                         <br><br>
                                         <button class="btn btn-lg btn-danger" type="submit" id="btnSaveEdit"><i
-                                                class="glyphicon glyphicon-ok-sign" ></i> Save
+                                                class="glyphicon glyphicon-ok-sign" ></i> Lưu Thay Đổi
                                         </button>
                                         <button class="btn btn-lg btn-danger" type="reset"><i
                                                 class="glyphicon glyphicon-repeat"></i> Reset

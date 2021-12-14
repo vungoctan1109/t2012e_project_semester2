@@ -53,7 +53,7 @@
                 <div class="col-md-7" >
                     <h3 style="color:darkred"><b>Đơn hàng chi tiết:</b></h3>
                     <div id="detailOrder">
-                        <h4 style="font-family: 'Georgia', sans-serif; color: dimgrey; font-style: italic">Chưa có thông tin đơn hàng chi tiết</h4><br>
+                        <h4>Chưa có thông tin đơn hàng chi tiết</h4><br>
                     </div>
                 </div>
             </div>

@@ -60,10 +60,10 @@ class User extends Authenticatable
     {
         $strStatus = '';
         if ($this->status == 0) {
-            $strStatus = 'Locked';
+            $strStatus = 'Khóa';
         }
         if ($this->status == 1) {
-            $strStatus = 'Active';
+            $strStatus = 'Đang hoạt động';
         }
         return $strStatus;
     }
@@ -72,7 +72,7 @@ class User extends Authenticatable
     {
         $strRole = '';
         if ($this->role == 0) {
-            $strRole = 'Customer';
+            $strRole = 'Khách Hàng';
         }
         if ($this->role == 1) {
             $strRole = 'Admin';
