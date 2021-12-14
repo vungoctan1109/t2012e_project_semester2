@@ -21,7 +21,13 @@ window.addEventListener('DOMContentLoaded', function () {
                 if(response.status == 200){
                     window.location.href = "/admin";
                 }else{
-                    alert(response.message)
+                    Swal.fire({
+                        position: 'bottom-start',
+                        icon: 'error',
+                        title: response.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             }
         })

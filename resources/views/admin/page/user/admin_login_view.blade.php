@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Admin Login</title>
     <link rel="stylesheet" href="/dist/css/admin_pages/admin_login_view.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <div class="login-box">

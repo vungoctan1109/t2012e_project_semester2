@@ -17,7 +17,6 @@ $(document).ready(function () {
         },
         (error, result) => {
             if (!error && result && result.event === "success") {
-                console.log(result.info);
                 document.getElementById(
                     "valueUpLoad"
                 ).value += (`${result.info.secure_url}` + ",");
@@ -128,8 +127,7 @@ $(document).ready(function () {
         var status = $('select[name="status"]').val();
         var saleOff = $('input[name="saleOff"]').val();
         var description = $('textarea[name="description"]').val();
-        var detail = editorData; 
-        console.log(detail);
+        var detail = editorData;
         var data = {
             name: name,
             brandID: brandID,
