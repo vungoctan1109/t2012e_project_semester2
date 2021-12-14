@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Đăng ký')
+@section('title_page','Đăng Ký')
 @section('private_link')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="/dist/css/client_pages/register.css">

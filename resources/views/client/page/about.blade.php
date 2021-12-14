@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Về chúng tôi')
+@section('title_page','Về Chúng Tôi')
 @section('private_link')
 @endsection
 @section('main_content_page')

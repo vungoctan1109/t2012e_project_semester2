@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Bài viết')
+@section('title_page','Bài Viết')
 @section('private_link')
 <link rel="stylesheet" href="/dist/css/client_pages/article.css">
 @endsection

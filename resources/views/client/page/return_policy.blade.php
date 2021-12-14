@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Return Policy')
+@section('title_page','Chính Sách Hoàn Trả')
 @section('private_link')
 @endsection
 @section('main_content_page')
@@ -140,4 +140,5 @@
         $('body').addClass('inner-page about-us');
     });
 </script>
+<script src="/dist/js/pages/client/home.js"></script>
 @endsection

@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Terms Conditions')
+@section('title_page','Điều Khoản Và Điều Kiện')
 @section('private_link')
 @endsection
 @section('main_content_page')

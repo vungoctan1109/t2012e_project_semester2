@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Lịch sử mua hàng')
+@section('title_page','Lịch Sử Mua Hàng')
 @section('private_link')
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 @endsection

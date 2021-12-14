@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Profile')
+@section('title_page','Thông Tin Cá Nhân')
 @section('private_link')
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <meta charset="utf-8">
@@ -162,4 +162,5 @@
     </script>
     <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
     <script src="/dist/js/pages/client/profile.js"></script>
+    <script src="/dist/js/pages/client/home.js"></script>
 @endsection
