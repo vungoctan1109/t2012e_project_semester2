@@ -184,9 +184,15 @@ window.addEventListener("DOMContentLoaded", function () {
                                     `${response.message}`,
                                     "error"
                                 );
-                                $("#data_table").load(
-                                    "/admin/users_admin/fetch_data",
-                                    data
+                            }, 1500);
+                        }
+                        if (response.status == 401) {
+                            alertProcess();
+                            setTimeout(function () {
+                                Swal.fire(
+                                    "Delete not success!",
+                                    `${response.message}`,
+                                    "error"
                                 );
                             }, 1500);
                         }

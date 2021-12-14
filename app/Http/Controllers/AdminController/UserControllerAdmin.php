@@ -8,6 +8,7 @@ use App\Models\OrderDetail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -151,6 +152,15 @@ class UserControllerAdmin extends Controller
      */
     public function destroy(Request $request, $user_admin_id)
     {
+        if (Auth::check()){
+            $current_id = Auth::id();
+            if ($current_id == $user_admin_id){
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'You can not delete account logging in!'
+                ]);
+            }
+        }
         if ($request->ajax()) {
             $user = User::find($user_admin_id);
             if ($user) {
