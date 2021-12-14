@@ -88,9 +88,12 @@
 @endsection
 @section('private_scripts')
 <script>
-    $(document).ready(function () {
-        $('body').addClass('shopping-cart page');
-    });
+   
 </script>
 <script src="/dist/js/pages/client/cart.js"></script>
+<<<<<<< HEAD
+<script src="/dist/js/pages/client/home.js"></script>
 @endsection
+=======
+@endsection
+>>>>>>> c1521992ba36f60fdb4bdd061f49d6b629370137

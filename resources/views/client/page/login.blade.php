@@ -60,4 +60,5 @@
     });
 </script>
 <script src="/dist/js/pages/client/customer_login.js"></script>
+<script src="/dist/js/pages/client/home.js"></script>
 @endsection

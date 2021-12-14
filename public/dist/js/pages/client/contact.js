@@ -1,4 +1,5 @@
-window.addEventListener('DOMContentLoaded', function () {      
+window.addEventListener('DOMContentLoaded', function () {    
+        $('body').addClass('home-page home-01');  
         //process submit button
         $('form[name=frm-contact]').submit(function(e){
             e.preventDefault();

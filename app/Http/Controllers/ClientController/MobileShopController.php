@@ -48,22 +48,22 @@ class MobileShopController extends Controller
                 ->ram($request)
                 ->pagination($request);
             $mobiles_suggest = Mobile_Model::query()
-                ->select('*')
-                ->sortBy($request)
-                ->name($request)
-                ->brandArr($request)
-                ->priceClient($request)
-                ->battery($request)
-                ->screen($request)
-                ->ram($request)
+                ->select('*')              
+                ->name($request)               
                 ->take(5)
                 ->get();
             $view =  view('client.page.fetch_data.pagination_shop_mobile_data')->with('mobiles', $mobiles)->render();
             return response()->json(['status' => 200, 'view' => $view, 'mobiles_suggest' => $mobiles_suggest]);
         }
     }
-    public function fetch_data_link(Request $request)
-    {
+    public function search_mobile(Request $request)
+    {        
+        $mobiles_suggest = Mobile_Model::query()
+            ->select('*')            
+            ->name($request)                                                            
+            ->take(5)
+            ->get();
+        return response()->json(['status' => 200, 'mobiles_suggest' => $mobiles_suggest]);
     }
 
     /**
@@ -110,7 +110,7 @@ class MobileShopController extends Controller
                 }
             }
             //recent view article   
-            $articles_related = Article::query()->select('*')->where('brandID' , $mobile->brandID)->get()->take(5);
+            $articles_related = Article::query()->select('*')->where('brandID', $mobile->brandID)->get()->take(5);
             //popular
             $mobiles_popular = OrderDetail::query()->selectRaw('mobiles.id, mobiles.name, mobiles.price,mobiles.thumbnail, SUM(order_details.quantity) AS sum_quantity')->join('mobiles', 'order_details.mobileID', '=', 'mobiles.id')
                 ->groupBy('mobiles.name')->orderBy('sum_quantity', 'DESC')->take(5)->get();

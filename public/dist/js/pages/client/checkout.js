@@ -1,4 +1,5 @@
-$(document).ready(function (e) {
+$(document).ready(function (e) {    
+    $('body').addClass('checkout page');    
     var total;
     var total_vnd;
     $(window).load(function () {

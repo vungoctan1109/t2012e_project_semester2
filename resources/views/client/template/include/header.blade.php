@@ -49,8 +49,7 @@ $admin_user_id = " ";
         </div>
 
         <div class="container">
-            <div class="mid-section main-info-area">
-
+            <div class="mid-section main-info-area">                
                 <div class="wrap-logo-top left-section">
                     <a href="{{route('client.home')}}" class="link-to-home"><img style="height:10vh"
                             src="https://res.cloudinary.com/quynv300192/image/upload/v1638941504/Screenshot_2-removebg-preview_sg2vht.png"
@@ -60,8 +59,13 @@ $admin_user_id = " ";
                 <div class="wrap-search center-section">
                     <div class="wrap-search-form">
                         <form action="#" id="form-search-top" name="form-search-top">
+<<<<<<< HEAD
+                            <input type="text" list="listSearch" name="search" value="" placeholder="Bạn cần tìm gì ?" id="search">                            
+                            <datalist id="listSearch">                                                                                                                    
+=======
                             <input type="text" list="listSearch" name="search" value="" placeholder="Bạn cần tìm gì ?" id="search">
                             <datalist id="listSearch">
+>>>>>>> c1521992ba36f60fdb4bdd061f49d6b629370137
                             </datalist>
                             <button form="form-search-top" type="button" id="btn-search"><i class="fa fa-search" aria-hidden="true"></i></button>
                         </form>

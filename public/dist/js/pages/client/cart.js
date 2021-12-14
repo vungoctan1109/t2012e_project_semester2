@@ -1,4 +1,5 @@
-$(document).ready(function () {
+$(document).ready(function () {    
+    $('body').addClass('shopping-cart page');    
     $(document).on("click", ".btn-quantity", function (e) {
         e.preventDefault();
         var quantity = $(this).siblings(".quantity_item").val();
