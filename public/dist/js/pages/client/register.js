@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', function () {
         (error, result) => {
             if (!error && result && result.event === "success") {
                 console.log(result.info);
-                document.getElementById("avatar").value += `${result.info.secure_url}`;
+                document.getElementById("avatar").value = `${result.info.secure_url}`;
                 // alert(document.getElementById("valueUpLoad").value);
                 document.getElementById("list-preview-image").innerHTML = `
                <span class="m-2" id="preview-image" style="position: relative; with:100px; display:inline-block;">

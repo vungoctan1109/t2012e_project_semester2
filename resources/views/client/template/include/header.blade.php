@@ -37,7 +37,9 @@ $admin_user_id = " ";
                                     aria-hidden="true"></i></a>
                             <ul class="submenu lang">
                                 <li {{$checklogin ? ' ' : 'hidden'}} class="menu-item"><a title="profile" href="/client/page/user/{{$admin_user_id}}" id="btn-profile">Thông Tin Cá Nhân</a></li>
-                                <li style="{{$admin_user_role2 == 1 ? 'display:none' : ' ' }}" class="menu-item"><a title="history" href="/client/page/orders/{{$admin_user_id}}" id="btn-history">Lịch sử mua hàng</a></li>
+
+                                <li style="{{$admin_user_role2 == 1 ? 'display:none' : ' ' }}" class="menu-item"><a title="history" href="/client/page/orders/{{$admin_user_id}}" id="btn-history">Lịch Sử Mua Hàng</a></li>
+
                                 <li {{$checklogin ? ' ' : 'hidden'}} class="menu-item"><a title="logout" href="#" id="btn-logout">Đăng Xuất</a></li>
                             </ul>
                         </li>

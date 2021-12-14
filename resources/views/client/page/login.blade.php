@@ -9,8 +9,8 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="#" class="link">home</a></li>
-                <li class="item-link"><span>login</span></li>
+                <li class="item-link"><a href="#" class="link">Trang Chủ</a></li>
+                <li class="item-link"><span>Đăng Nhập</span></li>
             </ul>
         </div>
         <div class="row">
@@ -20,24 +20,24 @@
                         <div class="login-form form-item form-stl">
                             <form name="frm-login">
                                 <fieldset class="wrap-title">
-                                    <h3 class="form-title">ĐĂNG NHẬP VÀO TÀI KHOẢN CỦA BẠN</h3>
+                                    <h3 class="form-title">Đăng Nhập Vào Tài Khoản Của Bạn</h3>
                                 </fieldset>
                                 <fieldset class="wrap-input">
                                     <label for="frm-login-uname">Địa Chỉ Email:</label>
-                                    <input type="text" id="email" name="email" placeholder="Nhập địa chỉ email">
+                                    <input type="text" id="email" name="email" placeholder="nhập địa chỉ email">
                                 </fieldset>
                                 <fieldset class="wrap-input">
-                                    <label for="frm-login-pass">Mật khẩu:</label>
+                                    <label for="frm-login-pass">Mật Khẩu:</label>
                                     <input type="password" id="password" name="password" placeholder="************">
                                 </fieldset>
 
                                 <fieldset class="wrap-input">
                                     <label class="remember-field">
-                                        <input class="frm-input " name="rememberme" id="rememberme" value="forever" type="checkbox"><span>Ghi nhớ mật khẩu</span>
+                                        <input class="frm-input " name="rememberme" id="rememberme" value="forever" type="checkbox"><span>Ghi nhớ mật khẩu ?</span>
                                     </label>
-                                    <a class="link-function left-position" href="#" title="Forgotten password?">Quên mật khẩu?</a>
+                                    <a class="link-function left-position" href="#" title="Forgotten password?">Quên mật khẩu ?</a>
                                 </fieldset>
-                                <input id="btnSubmit" type="button" class="btn btn-submit" value="Đăng nhập" name="submit">
+                                <input id="btnSubmit" type="button" class="btn btn-submit" value="Đăng Nhập" name="submit">
                             </form>
                         </div>
                     </div>
