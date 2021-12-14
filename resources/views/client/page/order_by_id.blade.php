@@ -76,4 +76,5 @@
         });
     </script>
     <script src="/dist/js/pages/client/order_by_id.js"></script>
+    <script src="/dist/js/pages/client/home.js"></script>
 @endsection

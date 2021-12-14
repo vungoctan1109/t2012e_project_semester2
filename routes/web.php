@@ -7,7 +7,7 @@ use App\Http\Controllers\AdminController\AuthController;
 use App\Http\Controllers\AdminController\BrandController;
 
 use App\Http\Controllers\ClientController\UserController;
-use App\Http\Controllers\AdminController\LaptopController;
+
 
 use App\Http\Controllers\AdminController\MobileController;
 use App\Http\Controllers\ClientController\OrderController;
@@ -15,7 +15,7 @@ use App\Http\Controllers\AdminController\ArticleController;
 use App\Http\Controllers\ClientController\PayPalController;
 
 use App\Http\Controllers\AdminController\CategoryController;
-use App\Http\Controllers\AdminController\AccessoryController;
+
 use App\Http\Controllers\AdminController\DashboardController;
 use App\Http\Controllers\AdminController\UserControllerAdmin;
 use App\Http\Controllers\ClientController\FeedbackController;
@@ -99,7 +99,7 @@ Route::group([
     ]);
     //all product start here -------------------------------------------------------
     //1. mobile
-    Route::get('/mobile/fetch_data', [MobileController::class, 'fetch_data']);
+    Route::get('/mobile/fetch_data', [MobileController::class, 'fetch_data']);    
     Route::delete('/mobile/deleteAll', [MobileController::class, 'deleteAll']);
     Route::resource('mobile', MobileController::class)->parameters([
         'mobile' => 'mobile_id'
@@ -228,6 +228,7 @@ Route::prefix('client/page')->group(function () {
     ]);
     #shop mobile
     Route::post('shop/mobile/fetch_data', [MobileShopController::class, 'fetch_data'])->name('mobile_client.fetch_data');
+    Route::post('mobile/search', [MobileShopController::class, 'search_mobile'])->name('mobile_client.search');
     Route::resource('shop/mobile', MobileShopController::class, [
         'names' => [
             'index' => 'mobile_client.index',

@@ -85,4 +85,5 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
     <script src="/dist/js/pages/client/register.js"></script>
+    <script src="/dist/js/pages/client/home.js"></script>
 @endsection

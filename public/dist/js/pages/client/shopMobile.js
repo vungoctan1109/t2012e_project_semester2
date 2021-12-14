@@ -37,7 +37,7 @@ $(document).ready(function () {
     var arrayBrand = new Set();
     //filter brand
     $(document).on("click", ".filter-brand", function (e) {
-        e.preventDefault();      
+        e.preventDefault();
         if (!$(this).hasClass("active") && $(this).attr("value") != -1) {
             $(this).addClass("active");
             $(".filter-brand").each(function () {
@@ -66,67 +66,81 @@ $(document).ready(function () {
                     arrayBrand.delete($(this).attr("value"));
                 }
             }
-        });        
-        fetch_data_filter();     
-        setTimeout(function () {equalElement();},100)
+        });
+        fetch_data_filter();
+        setTimeout(function () {
+            equalElement();
+        }, 100);
     });
     //filter price
     $(document).on("click", ".filter-price", function (e) {
-        e.preventDefault();     
+        e.preventDefault();
         $(".filter-price").each(function () {
             if ($(this).hasClass("active")) {
                 $(this).removeClass("active");
             }
         });
-        $(this).addClass("active");        
-        fetch_data_filter();    
-        setTimeout(function () {equalElement();},100)
+        $(this).addClass("active");
+        fetch_data_filter();
+        setTimeout(function () {
+            equalElement();
+        }, 100);
     });
     //filter battery
     $(".filter-battery").click(function (e) {
-        e.preventDefault();    
+        e.preventDefault();
         $(".filter-battery").each(function () {
             if ($(this).hasClass("active")) {
                 $(this).removeClass("active");
             }
         });
-        $(this).addClass("active");        
-        fetch_data_filter();     
-        setTimeout(function () {equalElement();},100)
+        $(this).addClass("active");
+        fetch_data_filter();
+        setTimeout(function () {
+            equalElement();
+        }, 100);
     });
     //filter screen
     $(".filter-screen").click(function (e) {
-        e.preventDefault();    
+        e.preventDefault();
         $(".filter-screen").each(function () {
             if ($(this).hasClass("active")) {
                 $(this).removeClass("active");
             }
         });
-        $(this).addClass("active");          
-        fetch_data_filter(); 
-        setTimeout(function () {equalElement();},100)   
+        $(this).addClass("active");
+        fetch_data_filter();
+        setTimeout(function () {
+            equalElement();
+        }, 100);
     });
     //filter ram
-    $(".filter-ram").click(function (e) { 
-        e.preventDefault();        
+    $(".filter-ram").click(function (e) {
+        e.preventDefault();
         $(".filter-ram").each(function () {
             if ($(this).hasClass("active")) {
                 $(this).removeClass("active");
             }
         });
-        $(this).addClass("active");        
-        fetch_data_filter(); 
-        setTimeout(function () {equalElement();},100)              
+        $(this).addClass("active");
+        fetch_data_filter();
+        setTimeout(function () {
+            equalElement();
+        }, 100);
     });
     //paginate limit
-    $("#pagination_limit").change(function (e) {             
-        fetch_data_filter();    
-        setTimeout(function () {equalElement();},100)
+    $("#pagination_limit").change(function (e) {
+        fetch_data_filter();
+        setTimeout(function () {
+            equalElement();
+        }, 100);
     });
     //sort by
     $("#sortBy").change(function (e) {
-        fetch_data_filter();   
-        setTimeout(function () {equalElement();},100) 
+        fetch_data_filter();
+        setTimeout(function () {
+            equalElement();
+        }, 100);
         $content[0].scrollTop = $content[0].scrollHeight;
     });
     $('input[name="search"]').keyup(function (e) {
@@ -152,27 +166,49 @@ $(document).ready(function () {
                 equalElement();
             },
             data: data,
-            success: function (response) {          
+            success: function (response) {
                 $("#fetchData").html(response.view);
                 for (var i = 0; i < response.mobiles_suggest.length; i++) {
                     $("#listSearch").append(
-                        `<option>/client/page/shop/mobile/${response.mobiles_suggest[i].id}</option>`
+                        `<option data-value="/client/page/shop/mobile/${response.mobiles_suggest[i].id}" value = "${response.mobiles_suggest[i].name}"></option>`
                     );
                 }
-                setTimeout(function () {equalElement();},100)
+                setTimeout(function () {
+                    equalElement();
+                }, 100);
                 $content[0].scrollTop = $content[0].scrollHeight;
             },
         });
     });
+    $("#btn-search").click(function (e) {
+        e.preventDefault();
+        var value = $("#search").val();
+        if (
+            $('#listSearch [value="' + value + '"]').data("value") != undefined
+        ) {
+            location.href = $('#listSearch [value="' + value + '"]').data(
+                "value"
+            );
+        }else {
+            Swal.fire({
+                icon: "warning",
+                title: "Xin Lỗi",
+                text: "Không có kết quả nào tìm kiếm nào!",                
+            });
+        }
+      
+    });
     //paginate
     $(document).on("click", "#pagination a", function (e) {
         e.preventDefault();
-        var page = $(this).attr("href").split("page=")[1];       
-        fetch_data_pagination(page);     
-        setTimeout(function () {equalElement();},100)   
+        var page = $(this).attr("href").split("page=")[1];
+        fetch_data_pagination(page);
+        setTimeout(function () {
+            equalElement();
+        }, 100);
     });
     //paginate fetch data
-    function fetch_data_pagination(page) {         
+    function fetch_data_pagination(page) {
         var data = getData();
         $.ajaxSetup({
             headers: {
@@ -186,10 +222,12 @@ $(document).ready(function () {
                 equalElement();
             },
             data: data,
-            success: function (response) {  
-                equalElement();               
+            success: function (response) {
+                equalElement();
                 $("#fetchData").html(response.view);
-                setTimeout(function () {equalElement();},100)
+                setTimeout(function () {
+                    equalElement();
+                }, 100);
                 $content[0].scrollTop = $content[0].scrollHeight;
             },
         });
@@ -235,8 +273,8 @@ $(document).ready(function () {
         return data;
     }
     //fetch data filter
-    function fetch_data_filter() {     
-        equalElement();        
+    function fetch_data_filter() {
+        equalElement();
         var data = getData();
         $.ajaxSetup({
             headers: {
@@ -245,15 +283,17 @@ $(document).ready(function () {
         });
         $.ajax({
             url: "/client/page/shop/mobile/fetch_data?nocache=" + Math.random(),
-            method: "POST",            
+            method: "POST",
             beforeSend: function () {
                 equalElement();
             },
             data: data,
             success: function (response) {
                 equalElement();
-                $("#fetchData").html(response.view);                
-                setTimeout(function () {equalElement();},100)
+                $("#fetchData").html(response.view);
+                setTimeout(function () {
+                    equalElement();
+                }, 100);
                 $content[0].scrollTop = $content[0].scrollHeight;
             },
         });

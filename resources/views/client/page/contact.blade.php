@@ -109,9 +109,5 @@
 @section('private_scripts')
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="/dist/js/pages/client/contact.js"></script>
-    {{--<script>--}}
-    {{--    $(document).ready(function () {--}}
-    {{--        $('body').addClass('home-page home-01');--}}
-    {{--    });--}}
-    {{--</script>--}}
+    <script src="/dist/js/pages/client/home.js"></script>
 @endsection

@@ -96,4 +96,5 @@
         $('body').addClass('inner-page about-us');
     });
 </script>
+<script src="/dist/js/pages/client/home.js"></script>
 @endsection

@@ -109,4 +109,5 @@
         });
 </script>
 <script src="/dist/js/pages/client/mobile_detail.js"></script>
+<script src="/dist/js/pages/client/home.js"></script>
 @endsection

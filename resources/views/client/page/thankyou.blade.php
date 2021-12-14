@@ -37,5 +37,5 @@
 @section('private_scripts')
 </script>
 <script src="/dist/js/pages/client/confirm_email.js"></script>
-
+<script src="/dist/js/pages/client/home.js"></script>
 @endsection
