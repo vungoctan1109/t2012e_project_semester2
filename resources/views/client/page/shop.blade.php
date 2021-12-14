@@ -9,7 +9,7 @@
     <div class="container">
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="#" class="link">Trang chủ</a></li>
+                <li class="item-link"><a href="/" class="link">Trang chủ</a></li>
                 <li class="item-link"><span>Điện Thoại</span></li>
             </ul>
         </div>

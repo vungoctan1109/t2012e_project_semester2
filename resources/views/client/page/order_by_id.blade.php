@@ -10,7 +10,7 @@
 
             <div class="wrap-breadcrumb">
                 <ul>
-                    <li class="item-link"><a href="/client/page/home" class="link">TRANG CHỦ</a></li>
+                    <li class="item-link"><a href="/" class="link">TRANG CHỦ</a></li>
                     <li class="item-link"><span>LỊCH SỬ MUA HÀNG</span></li>
                 </ul>
             </div>

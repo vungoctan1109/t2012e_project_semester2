@@ -11,7 +11,7 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="#" class="link">Trang Chủ</a></li>
+                <li class="item-link"><a href="/" class="link">Trang Chủ</a></li>
                 <li class="item-link"><span>Đăng Kí</span></li>
             </ul>
         </div>

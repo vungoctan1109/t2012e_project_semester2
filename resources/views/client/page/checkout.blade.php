@@ -21,7 +21,7 @@ $email = '';
     <div class="container">
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="#" class="link">Trang Chủ</a></li>
+                <li class="item-link"><a href="/" class="link">Trang Chủ</a></li>
                 <li class="item-link"><span>Thanh Toán</span></li>
             </ul>
         </div>

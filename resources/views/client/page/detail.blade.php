@@ -43,18 +43,15 @@
                         <h2 class="product-name">{{$mobile -> name}}</h2>
                         <div class="short-desc">
                             <ul>
-                                <li>Size: {{$mobile -> screenSize}} inch</li>
+                                <li>Màn Hình: {{$mobile -> screenSize}} inch</li>
                                 <li>Pin: {{$mobile -> pin}} mah</li>
                                 <li>Camera: {{$mobile -> camera}} MP</li>
-                                <li>Color: {{$mobile -> color}}</li>
-                                <li>Memory: {{$mobile -> memory}} Gb</li>
+                                <li>Màu: {{$mobile -> color}}</li>
+                                <li>Bộ Nhớ: {{$mobile -> memory}} Gb</li>
                                 <li>Ram: {{$mobile -> ram}} Gb</li>
                             </ul>
                         </div>
-                        <div class="wrap-social">
-                            <a class="link-socail" href="#"><img src="/client-assets/assets/images/social-list.png"
-                                    alt=""></a>
-                        </div>
+                      
                         <?php
                                 $price = number_format($mobile -> price, 0, '', ',');
                                 $price_current = number_format($mobile -> price - ($mobile -> price * $mobile -> saleOff), 0, '', ',');
@@ -86,12 +83,8 @@
                                 <input type="hidden" value="{{$mobile -> saleOff}}" name="saleOff">
                                 <input type="hidden" value="{{$mobile -> quantity}}" name="current_quantity">
                                 <input type="hidden" value="1" name="quantity">
-                                <a href="#" class="btn add-to-cart" id="btnAddToCart">Add To Cart</a>
-                            </form>
-                            <div class="wrap-btn">
-                                <a href="#" class="btn btn-compare">Add Compare</a>
-                                <a href="#" class="btn btn-wishlist">Add Wishlist</a>
-                            </div>
+                                <a href="#" class="btn add-to-cart" id="btnAddToCart">Thêm vào giỏ hàng</a>
+                            </form>                          
                         </div>
                     </div>
                     <div class="advance-info">
@@ -128,7 +121,7 @@
                                             <td>{{$mobile -> camera}} MP</td>
                                         </tr>
                                         <tr>
-                                            <th>Color</th>
+                                            <th>Màu</th>
                                             <td>{{$mobile -> color}}</td>
                                         </tr>
                                     </tbody>
