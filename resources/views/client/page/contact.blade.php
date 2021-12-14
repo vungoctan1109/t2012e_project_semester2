@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Contact Us')
+@section('title_page','Liên hệ với chúng tôi')
 @section('private_link')
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
@@ -47,7 +47,7 @@
                                     <label for="comment">Nhận Xét</label>
                                     <textarea name="comment" id="comment"></textarea>
                                     <span class="error comment_error"></span></br>
-                                   
+
                                     <input type="submit" name="send-feedback" value="Submit">
                                 </form>
                             </div>

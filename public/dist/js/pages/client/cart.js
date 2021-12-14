@@ -85,7 +85,7 @@ $(document).ready(function () {
         e.preventDefault();
         Swal.fire({
             title: "Bạn Chắc Chứ?",
-            text: "Bạn sẽ không thể hàn nguyên điều này!",
+            text: "Tất cả sản phẩm sẽ bị xóa khỏi giỏ hàng!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",

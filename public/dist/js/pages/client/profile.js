@@ -52,13 +52,13 @@ $(document).ready(function () {
         e.preventDefault();
         var btnDeleteImg = $(this);
         Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            title: "Bạn chắc chứ?",
+            text: "Thay đổi này sẽ không được lưu lại!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: "Xóa thay đổi!",
         }).then((result) => {
             if (result.isConfirmed) {
                 //FIXME:

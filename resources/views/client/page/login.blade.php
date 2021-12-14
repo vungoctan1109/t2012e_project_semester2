@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Login')
+@section('title_page','Đăng nhập')
 @section('private_link')
 @endsection
 @section('main_content_page')
@@ -20,24 +20,24 @@
                         <div class="login-form form-item form-stl">
                             <form name="frm-login">
                                 <fieldset class="wrap-title">
-                                    <h3 class="form-title">Log in to your account</h3>
+                                    <h3 class="form-title">ĐĂNG NHẬP VÀO TÀI KHOẢN CỦA BẠN</h3>
                                 </fieldset>
                                 <fieldset class="wrap-input">
-                                    <label for="frm-login-uname">Email Address:</label>
-                                    <input type="text" id="email" name="email" placeholder="Type your email address">
+                                    <label for="frm-login-uname">Địa Chỉ Email:</label>
+                                    <input type="text" id="email" name="email" placeholder="Nhập địa chỉ email">
                                 </fieldset>
                                 <fieldset class="wrap-input">
-                                    <label for="frm-login-pass">Password:</label>
+                                    <label for="frm-login-pass">Mật khẩu:</label>
                                     <input type="password" id="password" name="password" placeholder="************">
                                 </fieldset>
 
                                 <fieldset class="wrap-input">
                                     <label class="remember-field">
-                                        <input class="frm-input " name="rememberme" id="rememberme" value="forever" type="checkbox"><span>Remember me</span>
+                                        <input class="frm-input " name="rememberme" id="rememberme" value="forever" type="checkbox"><span>Ghi nhớ mật khẩu</span>
                                     </label>
-                                    <a class="link-function left-position" href="#" title="Forgotten password?">Forgotten password?</a>
+                                    <a class="link-function left-position" href="#" title="Forgotten password?">Quên mật khẩu?</a>
                                 </fieldset>
-                                <input id="btnSubmit" type="button" class="btn btn-submit" value="Login" name="submit">
+                                <input id="btnSubmit" type="button" class="btn btn-submit" value="Đăng nhập" name="submit">
                             </form>
                         </div>
                     </div>

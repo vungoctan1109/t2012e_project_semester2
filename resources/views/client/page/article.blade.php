@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Article')
+@section('title_page','Bài viết')
 @section('private_link')
 <link rel="stylesheet" href="/dist/css/client_pages/article.css">
 @endsection
@@ -109,5 +109,9 @@
         });
 </script>
 <script src="/dist/js/pages/client/mobile_detail.js"></script>
+<<<<<<< HEAD
 <script src="/dist/js/pages/client/home.js"></script>
 @endsection
+=======
+@endsection
+>>>>>>> c1521992ba36f60fdb4bdd061f49d6b629370137
