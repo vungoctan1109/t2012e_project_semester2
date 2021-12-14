@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Register')
+@section('title_page','Đăng ký')
 @section('private_link')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="/dist/css/client_pages/register.css">
@@ -23,6 +23,7 @@
                             <form id="formRegis" class="form-stl" action="#" name="frm-login" method="get">
                                 @csrf
                                 <fieldset class="wrap-title">
+
                                     <h3 class="form-title">Tạo tài khoản mới</h3>
                                     <h4 class="form-subtitle">Thông Tin Cá Nhân</h4>
                                 </fieldset>
@@ -40,11 +41,13 @@
                                 </fieldset>
                                 <fieldset class="wrap-input item-width-in-half ">
                                     <label for="cfpassword">Xác Nhận Mật Khẩu</label>
+
                                     <input type="password" id="cfpassword" name="cfpassword"
                                            placeholder="Xác nhận mật khẩu">
                                 </fieldset>
                                 <fieldset class="wrap-input">
                                     <label for="phone">Số Điện Thoại</label>
+
                                     <input type="text" id="phone" name="phone"
                                            placeholder="Số điện thoại">
                                 </fieldset>

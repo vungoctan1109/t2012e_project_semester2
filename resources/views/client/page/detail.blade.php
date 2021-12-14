@@ -335,13 +335,13 @@
                         </ul>
                     </div>
                 </div><br><!-- recent view widget-->
-                @endIf
-                @if(isset($articles_recent_view) && count($articles_recent_view) > 0)
+                @endIf    
+                @if(count($articles_related) > 0)
                 <div class="widget mercado-widget widget-product">
-                    <h2 class="widget-title">Bài viết xem gần đây</h2>
+                    <h2 class="widget-title">Bài viết liên quan</h2>
                     <div class="widget-content">
                         <ul class="products">
-                            @foreach ($articles_recent_view as $item)
+                            @foreach ($articles_related as $item)
                             <li class="product-item">
                                 <div class="product product-widget-style">
                                     <div class="thumbnnail">
@@ -360,8 +360,8 @@
                         </ul>
                     </div>
                 </div><!-- recent view widget-->
-                <br>
                 @endIf
+                <br>                
             </div>
             <!--end sitebar-->
 

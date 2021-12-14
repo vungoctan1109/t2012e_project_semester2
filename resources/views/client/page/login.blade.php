@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Login')
+@section('title_page','Đăng nhập')
 @section('private_link')
 @endsection
 @section('main_content_page')

@@ -118,8 +118,8 @@ $(document).ready(function () {
         var thumbnail = $('input[name="thumbnail"]').val();
         var description = $('textarea[name="description"]').val();
         var detail = editorData;
-        console.log(detail);
-        alert(thumbnail);
+        // console.log(detail);
+        // alert(thumbnail);
         var data = {
             title: title,
             brandID: brandID,

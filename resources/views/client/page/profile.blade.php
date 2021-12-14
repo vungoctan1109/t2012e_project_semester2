@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Privacy Policy')
+@section('title_page','Profile')
 @section('private_link')
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <meta charset="utf-8">
@@ -32,7 +32,7 @@
                             <form class="form" action="##" method="post" id="registrationForm">
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="first_name"><h4><b>Họ Và Tên:</b> {{$user->fullName}}</h4></label>
+                                        <label for="first_name"><h4><b>Tên đầy đủ:</b> {{$user->fullName}}</h4></label>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -56,11 +56,7 @@
                                         <label for="email"><h4><b>Mô Tả:</b> {{$user->description}}</h4></label>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-xs-6">
-                                        <label for="email"><h4><b>Vai trò:</b> {{$user->strRolllle}}</h4></label>
-                                    </div>
-                                </div>
+                               
                                 <div class="form-group">
                                     <div class="col-xs-6">
                                         <label for="password"><h4>Trạng Thái Tài Khoản: {{$user->strStatus}}</h4></label>
@@ -89,12 +85,12 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="first_name"><h4><b>Loại Tài Khoản:</b> {{$user->strRolllle}}</h4></label>
+                                        <label for="first_name"><h4><b>Status:</b> {{$user->strStatus}}</h4></label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="last_name"><h4><b>Họ Và Tên:</b></h4></label>
+                                        <label for="last_name"><h4><b>Tên đầy đủ:</b></h4></label>
                                         <input type="text" class="form-control" name="fullName" id="fullName"
                                                value="{{$user->fullName}}" title="enter your last name if any.">
                                     </div>
@@ -102,7 +98,7 @@
 
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="last_name"><h4><b>Số Điện Thoại:</b></h4></label>
+                                        <label for="last_name"><h4><b>Số điện thoại:</b></h4></label>
                                         <input type="text" class="form-control" name="phone"
                                                value="{{$user->phone}}" title="enter your last name if any.">
                                     </div>
@@ -111,7 +107,9 @@
                                 <div class="form-group">
 
                                     <div class="col-xs-6">
-                                        <label for="phone"><h4><b>Địa Chỉ:</b></h4></label>
+
+                                        <label for="phone"><h4><b>Địa chỉ:</b></h4></label>
+
                                         <input type="text" class="form-control" name="address"
                                                value="{{$user->address}}" title="enter your phone number if any.">
                                     </div>
@@ -119,7 +117,8 @@
 
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="mobile"><h4><b>Mô Tả:</b></h4></label>
+
+                                        <label for="mobile"><h4><b>Mô tả:</b></h4></label>
                                         <input type="text" class="form-control" name="description"
                                                value="{{$user->description}}"
                                                title="enter your mobile number if any.">

@@ -1,5 +1,5 @@
 @extends('client.template.form')
-@section('title_page','Shopping cart')
+@section('title_page','Giỏ hàng')
 @section('private_link')
 @endsection
 @section('main_content_page')
@@ -45,7 +45,7 @@
                                 <div class="group-flash">
                                     <span class="flash-item sale-label discount">Top Sale</span>
                                 </div>
-                                
+
                                 <div class="wrap-btn">
                                     <a href="{{route('mobile_client.show', $item -> id)}}" class="function-link">quick view</a>
                                 </div>
