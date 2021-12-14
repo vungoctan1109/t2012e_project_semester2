@@ -115,7 +115,7 @@ class UserController extends Controller
 
     public function showOrderByID($user_id)
     {
-        $orders = Order::where('userId', $user_id)->paginate(8);
+        $orders = Order::where('userId', $user_id)->paginate(5);
         return view('client.page.order_by_id', ['orders' => $orders]);
     }
 
